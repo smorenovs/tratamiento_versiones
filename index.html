@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciclo de Versiones Sostenible — VS Ingeniería</title>
+  <link rel="icon" type="image/png" href="../logo_vs.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* === 1. VARIABLES CSS === */
+    :root {
+      --layer-0: #0B1E27;
+      --layer-1: #0F2633;
+      --layer-2: #132D3A;
+      --layer-3: #1A3D4F;
+      --layer-4: #1F5F72;
+      --vs-cyan:       #4DC8E8;
+      --vs-teal:       #2B8EA6;
+      --vs-deep:       #1F5F72;
+      --vs-navy:       #1A3D4F;
+      --vs-white:      #FFFFFF;
+      --vs-gray-light: #F4F7F9;
+      --vs-gray-mid:   #B0BEC5;
+      --vs-gray-dark:  #546E7A;
+      --vs-text:       #1A3D4F;
+      --gradient-brand: linear-gradient(135deg, #4DC8E8 0%, #2B8EA6 50%, #1F5F72 100%);
+      --gradient-dark:  linear-gradient(135deg, #1A3D4F 0%, #1F5F72 60%, #2B8EA6 100%);
+      --c-success:    #4ADE80;  --c-success-bg: rgba(34,197,94,0.12);
+      --c-warn:       #FBBF24;  --c-warn-bg:    rgba(251,191,36,0.12);
+      --c-danger:     #F87171;  --c-danger-bg:  rgba(239,68,68,0.12);
+      --c-info:       #4DC8E8;  --c-info-bg:    rgba(77,200,232,0.12);
+      --c-neutral:    #B0BEC5;  --c-neutral-bg: rgba(176,190,197,0.10);
+      --font-heading: 'Montserrat', Arial, sans-serif;
+      --font-body:    'Inter', 'Segoe UI', sans-serif;
+      --font-code:    'JetBrains Mono', monospace;
+      --space-1: 4px;  --space-2: 8px;   --space-3: 12px;
+      --space-4: 16px; --space-5: 24px;  --space-6: 32px;
+      --space-7: 48px; --space-8: 64px;
+      --radius-sm:   4px;
+      --radius-md:   8px;
+      --radius-lg:   16px;
+      --radius-xl:   24px;
+      --radius-full: 9999px;
+      --shadow-md:   0 4px 12px rgba(26,61,79,0.30), 0 2px 4px rgba(26,61,79,0.20);
+      --shadow-lg:   0 10px 30px rgba(0,0,0,0.40);
+      --shadow-glow: 0 0 24px rgba(77,200,232,0.22);
+    }
+
+    /* === 2. RESET Y BASE === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--layer-0); color: var(--vs-white); font-family: var(--font-body); font-size: 15px; line-height: 1.65; min-height: 100vh; }
+    .page-wrapper { max-width: 1200px; margin: 0 auto; padding: 48px 48px 80px; }
+    strong { font-weight: 600; color: var(--vs-white); }
+    a { color: var(--vs-cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* === 3. TOPBAR === */
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      height: 64px;
+      background: rgba(11,30,39,0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(77,200,232,0.10);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px;
+    }
+    .topbar-brand { display: flex; align-items: center; gap: 12px; }
+    .logo-mark { width: 36px; height: 36px; flex-shrink: 0; }
+    .logo-mark img { width: 100%; height: 100%; object-fit: contain; }
+    .brand-text { font-family: var(--font-heading); font-weight: 700; font-size: 15px; color: var(--vs-white); }
+    .brand-text span { color: var(--vs-cyan); }
+    .topbar-meta { display: flex; align-items: center; gap: 16px; font-size: 13px; color: var(--vs-gray-mid); }
+    .topbar-divider { width: 1px; height: 16px; background: rgba(255,255,255,0.12); }
+    .topbar-badge {
+      background: rgba(77,200,232,0.12); color: var(--vs-cyan);
+      border: 1px solid rgba(77,200,232,0.25);
+      padding: 3px 10px; border-radius: var(--radius-full);
+      font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
+    }
+
+    /* === 4. HERO === */
+    .hero {
+      background: var(--layer-3);
+      border-radius: var(--radius-xl);
+      padding: 48px 56px;
+      margin-bottom: 32px;
+      position: relative; overflow: hidden;
+      border: 1px solid rgba(77,200,232,0.10);
+    }
+    .hero::after {
+      content: '';
+      position: absolute; right: -60px; top: -60px;
+      width: 320px; height: 320px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(77,200,232,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(77,200,232,0.12); color: var(--vs-cyan);
+      padding: 6px 14px; border-radius: var(--radius-full);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero-eyebrow i { width: 14px; height: 14px; }
+    .hero-title {
+      font-family: var(--font-heading); font-size: 2.4rem; font-weight: 800;
+      color: var(--vs-white); letter-spacing: -0.01em; line-height: 1.2;
+      margin: 0 0 16px;
+    }
+    .hero-title em { font-style: normal; color: var(--vs-cyan); }
+    .hero-desc { color: var(--vs-gray-mid); font-size: 15px; line-height: 1.65; max-width: 640px; margin: 0 0 28px; }
+    .hero-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .hero-chip {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: var(--vs-gray-mid); border-radius: var(--radius-full);
+      padding: 6px 14px; font-size: 13px;
+    }
+    .hero-chip i { color: var(--vs-cyan); width: 14px; height: 14px; }
+
+    /* === 5. KPI GRID === */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px; margin-bottom: 40px;
+    }
+    .kpi-card {
+      background: var(--layer-3);
+      border-radius: var(--radius-lg);
+      padding: 20px 22px;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .kpi-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-glow); }
+    .kpi-icon {
+      width: 36px; height: 36px;
+      background: rgba(77,200,232,0.15); border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--vs-cyan); margin-bottom: 12px;
+    }
+    .kpi-icon i { width: 18px; height: 18px; }
+    .kpi-label { font-size: 11px; font-weight: 600; color: var(--vs-gray-dark); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .kpi-value { font-family: var(--font-heading); font-size: 1.9rem; font-weight: 800; color: var(--vs-white); line-height: 1; margin-bottom: 6px; }
+    .kpi-sub { font-size: 12px; color: var(--vs-gray-mid); display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .kpi-badge { padding: 2px 8px; border-radius: var(--radius-full); font-size: 10px; font-weight: 700; letter-spacing: 0.04em; }
+    .kpi-badge.positive { background: var(--c-success-bg); color: var(--c-success); }
+    .kpi-badge.negative { background: var(--c-danger-bg);  color: var(--c-danger); }
+    .kpi-badge.neutral  { background: var(--c-info-bg);    color: var(--c-info); }
+    .kpi-badge.warn     { background: var(--c-warn-bg);    color: var(--c-warn); }
+
+    /* === 6. TABS === */
+    .tabs-container { background: var(--layer-2); border-radius: var(--radius-xl); overflow: hidden; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 40px; }
+    .tabs-nav { display: flex; overflow-x: auto; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 0 8px; gap: 4px; scrollbar-width: none; }
+    .tabs-nav::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      display: flex; align-items: center; gap: 8px;
+      padding: 14px 18px;
+      font-family: var(--font-body); font-size: 13.5px; font-weight: 500;
+      color: var(--vs-gray-dark);
+      white-space: nowrap; cursor: pointer; background: none; border: none;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .tab-btn i { width: 15px; height: 15px; }
+    .tab-btn:hover { color: var(--vs-gray-mid); background: rgba(255,255,255,0.03); }
+    .tab-btn.active { color: var(--vs-cyan); border-bottom-color: var(--vs-cyan); background: rgba(77,200,232,0.06); font-weight: 600; }
+    .tab-count { font-size: 11px; font-weight: 700; color: var(--vs-cyan); background: rgba(77,200,232,0.15); padding: 1px 7px; border-radius: var(--radius-full); }
+    .tab-panel { display: none; padding: 32px 36px; animation: fadeIn 0.2s ease; }
+    .tab-panel.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+    /* === 7. THEME HEADER === */
+    .theme-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .theme-header-left { display: flex; align-items: flex-start; gap: 16px; }
+    .theme-number { font-family: var(--font-heading); font-size: 3rem; font-weight: 800; color: var(--vs-cyan); opacity: 0.35; line-height: 1; min-width: 60px; }
+    .theme-title { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: var(--vs-white); margin-bottom: 4px; }
+    .theme-desc { font-size: 13.5px; color: var(--vs-gray-mid); line-height: 1.5; max-width: 480px; }
+    .theme-stat-box { background: rgba(77,200,232,0.08); border: 1px solid rgba(77,200,232,0.15); border-radius: var(--radius-lg); padding: 14px 20px; text-align: center; min-width: 130px; flex-shrink: 0; }
+    .theme-stat-box .big { font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: var(--vs-cyan); }
+    .theme-stat-box .label { font-size: 11px; text-transform: uppercase; color: var(--vs-gray-mid); font-weight: 600; letter-spacing: 0.06em; }
+    .theme-stat-box .sub { font-size: 12px; color: var(--vs-gray-dark); margin-top: 2px; }
+
+    /* === 8. BARRAS DE PROGRESO (solo distribuciones reales) === */
+    .subcats { margin-bottom: 28px; }
+    .subcats-title { font-family: var(--font-heading); font-size: 12px; font-weight: 700; color: var(--vs-gray-dark); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
+    .subcat-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .subcat-label { width: 220px; flex-shrink: 0; font-size: 13px; color: var(--vs-gray-mid); }
+    .subcat-bar-wrap { flex: 1; height: 7px; background: rgba(255,255,255,0.06); border-radius: var(--radius-full); overflow: hidden; }
+    .subcat-bar { height: 100%; background: var(--gradient-brand); border-radius: var(--radius-full); transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .subcat-pct { width: 44px; text-align: right; font-size: 13px; font-weight: 600; color: var(--vs-cyan); flex-shrink: 0; }
+    .subcat-note { width: 80px; font-size: 11.5px; color: var(--vs-gray-dark); flex-shrink: 0; }
+
+    /* === 9. KEY POINTS (bullets para info no porcentual) === */
+    .key-points { margin-bottom: 28px; }
+    .key-points-title { font-family: var(--font-heading); font-size: 12px; font-weight: 700; color: var(--vs-gray-dark); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
+    .key-point { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13.5px; color: var(--vs-gray-mid); line-height: 1.55; }
+    .key-point:last-child { border-bottom: none; }
+    .key-point-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--vs-cyan); flex-shrink: 0; margin-top: 8px; }
+    .key-point strong { color: var(--vs-white); }
+
+    /* === 10. INSTR-CARDS === */
+    .instructivos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; }
+    .instr-card {
+      background: var(--layer-3);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-lg);
+      display: flex; flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .instr-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-glow); border-color: rgba(77,200,232,0.22); }
+    .instr-card-header { padding: 18px 20px 14px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; gap: 8px; }
+    .instr-code-badge { font-family: var(--font-code); font-size: 11px; font-weight: 500; color: var(--vs-cyan); background: rgba(77,200,232,0.12); padding: 3px 9px; border-radius: var(--radius-sm); display: inline-block; width: fit-content; }
+    .instr-title { font-family: var(--font-heading); font-size: 14.5px; font-weight: 700; color: var(--vs-white); line-height: 1.4; }
+    .instr-card-body { padding: 16px 20px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
+    .instr-trigger { display: flex; gap: 10px; padding: 10px 12px; background: var(--c-warn-bg); border-left: 3px solid var(--c-warn); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 13px; color: var(--vs-gray-mid); }
+    .instr-trigger i { color: var(--c-warn); flex-shrink: 0; margin-top: 2px; width: 16px; height: 16px; }
+    .instr-warn { display: flex; gap: 10px; padding: 10px 12px; background: var(--c-danger-bg); border-left: 3px solid var(--c-danger); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 13px; color: var(--vs-gray-mid); }
+    .instr-warn i { color: var(--c-danger); flex-shrink: 0; margin-top: 2px; width: 16px; height: 16px; }
+    .instr-escalate { display: flex; gap: 10px; padding: 10px 12px; background: var(--c-info-bg); border-left: 3px solid var(--c-info); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 13px; color: var(--vs-gray-mid); }
+    .instr-escalate i { color: var(--c-info); flex-shrink: 0; margin-top: 2px; width: 16px; height: 16px; }
+    .instr-steps-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--vs-gray-dark); }
+    .instr-steps { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .instr-steps li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--vs-gray-mid); line-height: 1.5; }
+    .step-num { width: 20px; height: 20px; background: var(--vs-teal); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; flex-shrink: 0; margin-top: 1px; }
+    .instr-card-footer { padding: 12px 20px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .instr-priority { font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: var(--radius-full); text-transform: uppercase; letter-spacing: 0.06em; }
+    .instr-priority.alta   { background: var(--c-danger-bg);  color: var(--c-danger); }
+    .instr-priority.media  { background: var(--c-warn-bg);    color: var(--c-warn); }
+    .instr-priority.base   { background: var(--c-info-bg);    color: var(--c-info); }
+    .instr-proc-ref { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--vs-gray-dark); }
+    .instr-proc-ref i { width: 12px; height: 12px; }
+
+    /* === 11. RECOMENDACIONES === */
+    .recs-section { margin-bottom: 48px; }
+    .section-title { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--vs-white); display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .section-title i { color: var(--vs-cyan); width: 20px; height: 20px; }
+    .recs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .rec-card { background: var(--layer-3); border-radius: var(--radius-lg); padding: 22px; border-top: 3px solid; transition: transform 0.2s, box-shadow 0.2s; }
+    .rec-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .rec-card.c1 { border-color: var(--c-danger); }   .rec-card.c1 .rec-card-icon { color: var(--c-danger);  background: var(--c-danger-bg); }
+    .rec-card.c2 { border-color: var(--c-warn); }     .rec-card.c2 .rec-card-icon { color: var(--c-warn);    background: var(--c-warn-bg); }
+    .rec-card.c3 { border-color: var(--c-success); }  .rec-card.c3 .rec-card-icon { color: var(--c-success); background: var(--c-success-bg); }
+    .rec-card.c4 { border-color: var(--vs-cyan); }    .rec-card.c4 .rec-card-icon { color: var(--vs-cyan);   background: rgba(77,200,232,0.12); }
+    .rec-card.c5 { border-color: var(--vs-teal); }    .rec-card.c5 .rec-card-icon { color: var(--vs-teal);   background: rgba(43,142,166,0.15); }
+    .rec-card-icon { width: 40px; height: 40px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+    .rec-card-icon i { width: 20px; height: 20px; }
+    .rec-card h4 { font-family: var(--font-heading); font-size: 14px; font-weight: 700; color: var(--vs-white); margin-bottom: 8px; }
+    .rec-card p { font-size: 13px; color: var(--vs-gray-mid); line-height: 1.6; }
+
+    /* === 12. FOOTER === */
+    .page-footer { text-align: center; padding: 20px 48px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: var(--vs-gray-dark); display: flex; justify-content: center; gap: 12px; align-items: center; }
+    .footer-sep { color: rgba(255,255,255,0.15); }
+
+    /* === 13. LOGIN === */
+    #login-screen {
+      position: fixed; inset: 0; z-index: 1000;
+      background: var(--layer-0);
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.4s ease;
+    }
+    #login-screen.hidden { opacity: 0; pointer-events: none; }
+    .login-card {
+      background: var(--layer-2);
+      border: 1px solid rgba(77,200,232,0.12);
+      border-radius: var(--radius-xl);
+      padding: 48px 40px;
+      width: 100%; max-width: 380px;
+      box-shadow: var(--shadow-lg);
+    }
+    .login-logo { display: flex; justify-content: center; margin-bottom: 24px; }
+    .login-logo img { height: 48px; object-fit: contain; }
+    .login-title { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 800; color: var(--vs-white); text-align: center; margin-bottom: 6px; }
+    .login-subtitle { font-size: 13px; color: var(--vs-gray-dark); text-align: center; margin-bottom: 32px; }
+    .login-field { margin-bottom: 16px; }
+    .login-label { display: block; font-size: 12px; font-weight: 600; color: var(--vs-gray-mid); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+    .login-input {
+      width: 100%; background: #0F2633;
+      border: 1px solid rgba(77,200,232,0.20);
+      border-radius: var(--radius-md);
+      padding: 11px 14px;
+      font-family: var(--font-body); font-size: 14px; color: var(--vs-white);
+      outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .login-input:focus { border-color: var(--vs-cyan); box-shadow: 0 0 0 3px rgba(77,200,232,0.12); }
+    .login-input::placeholder { color: var(--vs-gray-dark); }
+    .login-btn {
+      width: 100%; margin-top: 8px;
+      background: var(--gradient-brand);
+      color: #fff; border: none; border-radius: var(--radius-md);
+      padding: 12px;
+      font-family: var(--font-heading); font-size: 14px; font-weight: 700;
+      cursor: pointer; letter-spacing: 0.02em;
+      transition: opacity 0.2s, box-shadow 0.2s;
+    }
+    .login-btn:hover { opacity: 0.9; box-shadow: var(--shadow-glow); }
+    .login-error {
+      display: none; margin-top: 14px;
+      background: var(--c-danger-bg); border-left: 3px solid var(--c-danger);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 10px 12px; font-size: 13px; color: var(--c-danger);
+    }
+    .login-error.show { display: block; }
+
+    /* === 14. RESPONSIVE === */
+    @media (max-width: 768px) {
+      .page-wrapper { padding: 24px 20px 60px; }
+      .topbar { padding: 0 20px; }
+      .topbar-meta { display: none; }
+      .hero { padding: 32px 28px; }
+      .hero-title { font-size: 1.8rem; }
+      .theme-header { flex-direction: column; }
+      .tab-panel { padding: 24px 20px; }
+      .instructivos-grid { grid-template-columns: 1fr; }
+      .subcat-label { width: 140px; font-size: 11.5px; }
+      .recs-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <div id="login-screen">
+    <div class="login-card">
+      <div class="login-logo">
+        <img src="../logo_vs.png" alt="VS Ingeniería">
+      </div>
+      <div class="login-title">VS Ingeniería en Sistemas</div>
+      <div class="login-subtitle">Ingresá tus credenciales para continuar</div>
+      <div class="login-field">
+        <label class="login-label" for="login-user">Usuario</label>
+        <input class="login-input" id="login-user" type="text" placeholder="tu usuario" autocomplete="username">
+      </div>
+      <div class="login-field">
+        <label class="login-label" for="login-pass">Contraseña</label>
+        <input class="login-input" id="login-pass" type="password" placeholder="••••••••" autocomplete="current-password">
+      </div>
+      <button type="button" class="login-btn" onclick="doLogin()">Ingresar</button>
+      <div class="login-error" id="login-error">Usuario o contraseña incorrectos.</div>
+    </div>
+  </div>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="topbar-brand">
+      <div class="logo-mark">
+        <img src="../logo_vs.png" alt="VS Ingeniería">
+      </div>
+      <span class="brand-text">VS <span>Ingeniería</span> en Sistemas</span>
+    </div>
+    <div class="topbar-meta">
+      <span>Zafiro</span>
+      <div class="topbar-divider"></div>
+      <span>Abril 2026</span>
+      <span class="topbar-badge">Propuesta Estratégica</span>
+    </div>
+  </header>
+
+  <main class="page-wrapper">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-eyebrow">
+        <i data-lucide="git-branch"></i>
+        <span>Gestión de Versiones</span>
+      </div>
+      <h1 class="hero-title">Hacia un Ciclo de Versiones <em>Sostenible y Predecible</em></h1>
+      <p class="hero-desc">Análisis de la situación actual de liberación de versiones de Zafiro y hoja de ruta para implementar una metodología estructurada que permita planificar con datos, comunicar cambios con claridad y proteger la estabilidad del sistema.</p>
+      <div class="hero-chips">
+        <span class="hero-chip"><i data-lucide="layers"></i> 6 Módulos Interrelacionados</span>
+        <span class="hero-chip"><i data-lucide="database"></i> Clientes Multisucursal</span>
+        <span class="hero-chip"><i data-lucide="repeat"></i> Scrum Adaptado — 2 Semanas</span>
+        <span class="hero-chip"><i data-lucide="users"></i> Dirección · Desarrollo · Soporte</span>
+      </div>
+    </div>
+
+    <!-- KPI GRID -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-icon"><i data-lucide="layers"></i></div>
+        <div class="kpi-label">Módulos de Zafiro</div>
+        <div class="kpi-value">6</div>
+        <div class="kpi-sub">Ventas, Compras, Stock, Contabilidad, Cajas, Fondos <span class="kpi-badge neutral">+ Satélites</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon"><i data-lucide="database"></i></div>
+        <div class="kpi-label">BDDs por Release</div>
+        <div class="kpi-value">~80</div>
+        <div class="kpi-sub">Solo entre los 3 clientes grandes <span class="kpi-badge negative">Riesgo Alto</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon"><i data-lucide="alert-triangle"></i></div>
+        <div class="kpi-label">Problemas Críticos</div>
+        <div class="kpi-value">6</div>
+        <div class="kpi-sub">Identificados en el relevamiento inicial <span class="kpi-badge warn">Estructurales</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon"><i data-lucide="users"></i></div>
+        <div class="kpi-label">Equipos Impactados</div>
+        <div class="kpi-value">3</div>
+        <div class="kpi-sub">Dirección, Desarrollo y Soporte <span class="kpi-badge neutral">Todos</span></div>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs-container">
+      <div class="tabs-nav">
+        <button type="button" class="tab-btn active" onclick="switchTab(event,'t1')">
+          <i data-lucide="clock"></i> Ciclo de Versiones <span class="tab-count">2</span>
+        </button>
+        <button type="button" class="tab-btn" onclick="switchTab(event,'t2')">
+          <i data-lucide="list-checks"></i> Definición de Tareas <span class="tab-count">2</span>
+        </button>
+        <button type="button" class="tab-btn" onclick="switchTab(event,'t3')">
+          <i data-lucide="bar-chart-2"></i> Planificación con Datos <span class="tab-count">2</span>
+        </button>
+        <button type="button" class="tab-btn" onclick="switchTab(event,'t4')">
+          <i data-lucide="shield"></i> Integridad del Sprint <span class="tab-count">2</span>
+        </button>
+        <button type="button" class="tab-btn" onclick="switchTab(event,'t5')">
+          <i data-lucide="search"></i> Versión Estable Base <span class="tab-count">2</span>
+        </button>
+        <button type="button" class="tab-btn" onclick="switchTab(event,'t6')">
+          <i data-lucide="message-circle"></i> Comunicación con Clientes <span class="tab-count">2</span>
+        </button>
+      </div>
+
+      <!-- ── TAB 1: Ciclo de Versiones ── -->
+      <div id="t1" class="tab-panel active">
+        <div class="theme-header">
+          <div class="theme-header-left">
+            <div class="theme-number">#1</div>
+            <div>
+              <div class="theme-title">Ciclo de Versiones</div>
+              <div class="theme-desc">Sprint de 2 semanas a cargo de Desarrollo. Una vez aprobada la versión, Soporte coordina el deploy con el cliente los días martes o miércoles.</div>
+            </div>
+          </div>
+          <div class="theme-stat-box">
+            <div class="big">2 sem</div>
+            <div class="label">Sprint Dev</div>
+            <div class="sub">+ deploy por Soporte</div>
+          </div>
+        </div>
+        <div class="subcats">
+          <div class="subcats-title">Distribución del sprint de 10 días hábiles</div>
+          <div class="subcat-row">
+            <div class="subcat-label">Sprint Planning</div>
+            <div class="subcat-bar-wrap"><div class="subcat-bar" data-w="10%"></div></div>
+            <div class="subcat-pct">10%</div>
+            <div class="subcat-note">1 día</div>
+          </div>
+          <div class="subcat-row">
+            <div class="subcat-label">Desarrollo activo</div>
+            <div class="subcat-bar-wrap"><div class="subcat-bar" data-w="80%"></div></div>
+            <div class="subcat-pct">80%</div>
+            <div class="subcat-note">8 días</div>
+          </div>
+          <div class="subcat-row">
+            <div class="subcat-label">Testing interno y revisión final</div>
+            <div class="subcat-bar-wrap"><div class="subcat-bar" data-w="10%"></div></div>
+            <div class="subcat-pct">10%</div>
+            <div class="subcat-note">1 día</div>
+          </div>
+        </div>
+        <div class="instructivos-grid">
+          <div class="instr-card">
+            <div class="instr-card-header">
+              <span class="instr-code-badge">CIC_001</span>
+              <div class="instr-title">Abrir, ejecutar y cerrar un sprint</div>
+            </div>
+            <div class="instr-card-body">
+              <div class="instr-trigger">
+                <i data-lucide="zap"></i>
+                <div><strong>Trigger:</strong> "¿Cuándo empieza el próximo sprint y qué entra?"</div>
+              </div>
+              <div class="instr-steps-title">Pasos clave</div>
+              <ol class="instr-steps">
+                <li><span class="step-num">1</span><strong>Día 1 — Sprint Planning:</strong> revisar el backlog priorizado, seleccionar tareas según velocidad del equipo y registrar el sprint cerrado en Nexus</li>
+                <li><span class="step-num">2</span><strong>Días 2–9 — Desarrollo:</strong> ejecutar las tareas del sprint sin incorporar nuevas; cualquier pedido entrante se registra en el backlog y espera el próximo ciclo</li>
+                <li><span class="step-num">3</span><strong>Día 10 — Testing y revisión:</strong> validar que cada tarea cumple sus criterios de aceptación; si alguna no los cumple, se mueve al siguiente sprint</li>
+                <li><span class="step-num">4</span>Si la versión es aprobada, pasarla a Soporte con las release notes generadas; Soporte coordina el deploy con el cliente</li>
+              </ol>
+              <div class="instr-warn">
+                <i data-lucide="alert-circle"></i>
+                <div><strong>Atención:</strong> Una vez cerrado el sprint, el backlog es definitivo. Ningún pedido nuevo entra al sprint en curso, sin importar quién lo solicite.</div>
+              </div>
+            </div>
+            <div class="instr-card-footer">
+              <span class="instr-priority alta">Prioridad Alta</span>
+              <span class="instr-proc-ref"><i data-lucide="link"></i> Proceso de gestión de sprint</span>
+            </div>
+          </div>
+          <div class="instr-card">
+            <div class="instr-card-header">
+              <span class="instr-code-badge">CIC_002</span>
+              <div class="instr-title">Coordinar y ejecutar el deploy (Soporte)</div>
+            </div>
+            <div class="instr-card-body">
+              <div class="instr-trigger">
+                <i data-lucide="zap"></i>
+                <div><strong>Trigger:</strong> "La versión fue aprobada — ¿cómo procedemos con el deploy?"</div>
+              </div>
+              <div class="instr-steps-title">Pasos clave</div>
+              <ol class="instr-steps">
+                <li><span class="step-num">1</span>Recibir la versión aprobada y las release notes generadas con Claude desde Desarrollo</li>
+                <li><span class="step-num">2</span>Publicar las notas en ZafiroDocs y enviar el pre-aviso al cliente con 2 días hábiles de anticipación</li>
+                <li><span class="step-num">3</span>Confirmar con el cliente la ventana de actualización; planificar el deploy para martes o miércoles como máximo</li>
+                <li><span class="step-num">4</span>Ejecutar el deploy (estructura BDD → contenido BDD → ejecutables) y validar funcionamiento con el cliente</li>
+                <li><span class="step-num">5</span>Mantener soporte activo las primeras 4 horas post-deploy; ante cualquier falla crítica, ejecutar rollback de inmediato</li>
+              </ol>
+              <div class="instr-escalate">
+                <i data-lucide="arrow-up-right"></i>
+                <div><strong>Escalar si:</strong> El deploy genera una falla crítica que no se resuelve en 30 minutos — activar rollback y notificar a Desarrollo para análisis de causa raíz.</div>
+              </div>
+            </div>
+            <div class="instr-card-footer">
+              <span class="instr-priority alta">Prioridad Alta</span>
+              <span class="instr-proc-ref"><i data-lucide="link"></i> Protocolo de deploy de versión</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── TAB 2: Definición de Tareas ── -->
+      <div id="t2" class="tab-panel">
+        <div class="theme-header">
+          <div class="theme-header-left">
+            <div class="theme-number">#2</div>
+            <div>
+              <div class="theme-title">Definición de Tareas</div>
+              <div class="theme-desc">Cada tarea nace del requerimiento crudo del cliente, pasa por análisis con IA para generar casos de uso estandarizados, y solo ingresa al backlog con todos los artefactos completos.</div>
+            </div>
+          </div>
+          <div class="theme-stat-box">
+            <div class="big">5</div>
+            <div class="label">Artefactos</div>
+            <div class="sub">por tarea</div>
+          </div>
+        </div>
+        <div class="subcats">
+          <div class="subcats-title">Completitud requerida de cada tarea antes de ingresar al backlog</div>
+          <div class="subcat-row">
+            <div class="subcat-label">Caso de uso generado con IA</div>
+            <div class="subcat-bar-wrap"><div class="subcat-bar" data-w="100%"></div></div>
+            <div class="subcat-pct">100%</div>
+            <div class="subcat-note">Obligatorio</div>
+          </div>
+          <div class="subcat-row">
+            <div class="subcat-label">Épica asociada</div>
+            <div class="subcat-bar-wrap"><div class="subcat-bar" data-w="100%"></div></div>
+            <div class="subcat-pct">100%</div>
+            <div class="subcat-note">Obligatorio</div>
+          </div>
+          <div class="subcat-row">
+            <div class="subcat-label">Complejidad estimada por IA</div>
+            <div class="subcat-bar-wrap"><div class="subcat-bar" data-w="100%"></div></div>
+            <div class="subcat-pct">100%</div>
+            <div class="subcat-note">Obligatorio</div>
+          </div>
+          <div class="subcat-row">
+            <div class="subcat-label">Criterios de aceptación</div>
+            <div class="subcat-bar-wrap"><div class="subcat-bar" data-w="100%"></div></div>
+            <div class="subcat-pct">100%</div>
+            <div class="subcat-note">Obligatorio</div>
+          </div>
+          <div class="subcat-row">
+            <div class="subcat-label">Puntos de control</div>
+            <div class="subcat-bar-wrap"><div class="subcat-bar" data-w="80%"></div></div>
+            <div class="subcat-pct">80%</div>
+            <div class="subcat-note">Recomendado</div>
+          </div>
+        </div>
+        <div class="instructivos-grid">
+          <div class="instr-card">
+            <div class="instr-card-header">
+              <span class="instr-code-badge">DEF_001</span>
+              <div class="instr-title">Analizar un requerimiento y generar casos de uso con IA</div>
+            </div>
+            <div class="instr-card-body">
+              <div class="instr-trigger">
+                <i data-lucide="zap"></i>
+                <div><strong>Trigger:</strong> "El cliente pidió X — ¿cómo lo llevamos a una tarea del backlog?"</div>
+              </div>
+              <div class="instr-steps-title">Pasos clave</div>
+              <ol class="instr-steps">
+                <li><span class="step-num">1</span>Tomar el requerimiento tal como llega del cliente y cargarlo en la herramienta de análisis con Claude</li>
+                <li><span class="step-num">2</span>Claude genera los casos de uso estandarizados; revisar y validar que reflejen la intención real del cliente</li>
+                <li><span class="step-num">3</span>Claude estima la complejidad de cada caso de uso; el equipo revisa y ajusta si hay contexto técnico que el modelo no tiene</li>
+                <li><span class="step-num">4</span>Definir los criterios de aceptación derivados directamente de los casos de uso y registrar la tarea completa en Nexus</li>
+              </ol>
+              <div class="instr-warn">
+                <i data-lucide="alert-circle"></i>
+                <div><strong>Atención:</strong> Una tarea sin criterios de aceptación definidos no puede ingresar al backlog. Los criterios deben ser medibles y derivarse de los casos de uso, no de la interpretación del desarrollador.</div>
+              </div>
+            </div>
+            <div class="instr-card-footer">
+              <span class="instr-priority alta">Prioridad Alta</span>
+              <span class="instr-proc-ref"><i data-lucide="link"></i> Skill de análisis de requerimientos</span>
+            </div>
+          </div>
+          <div class="instr-card">
+            <div class="instr-card-header">
+              <span class="instr-code-badge">DEF_002</span>
+              <div class="instr-title">Calibrar la estimación con datos reales del equipo</div>
+            </div>
+            <div class="instr-card-body">
+              <div class="instr-trigger">
+                <i data-lucide="zap"></i>
+                <div><strong>Trigger:</strong> "¿Cuánto tiempo va a llevar esta tarea realmente?"</div>
+              </div>
+              <div class="instr-steps-title">Pasos clave</div>
+              <ol class="instr-steps">
+                <li><span class="step-num">1</span>Partir de la estimación de complejidad generada por Claude a partir de los casos de uso</li>
+                <li><span class="step-num">2</span>Comparar con tareas similares completadas en Nexus si existen datos históricos disponibles</li>
+                <li><span class="step-num">3</span>Al cierre del primer sprint bajo el nuevo proceso, cruzar la complejidad estimada con el tiempo real registrado por estado en Nexus</li>
+                <li><span class="step-num">4</span>Usar esa relación para obtener la velocidad de referencia del equipo; actualizar a cada sprint para mejorar la precisión progresivamente</li>
+              </ol>
+              <div class="instr-escalate">
+                <i data-lucide="arrow-up-right"></i>
+                <div><strong>Escalar si:</strong> La desviación entre estimación y tiempo real supera el 50% en más de 3 tareas del mismo sprint — indica que la escala de complejidad necesita recalibración.</div>
+              </div>
+            </div>
+            <div class="instr-card-footer">
+              <span class="instr-priority media">Prioridad Media</span>
+              <span class="instr-proc-ref"><i data-lucide="link"></i> Dashboard de velocidad en Nexus</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── TAB 3: Planificación con Datos ── -->
+      <div id="t3" class="tab-panel">
+        <div class="theme-header">
+          <div class="theme-header-left">
+            <div class="theme-number">#3</div>
+            <div>
+              <div class="theme-title">Planificación con Datos</div>
+              <div class="theme-desc">El backlog de cada sprint se arma combinando análisis de IA, valoración estratégica de gerencia y revisión técnica del equipo. Los datos de velocidad de Nexus son la guía de capacidad.</div>
+            </div>
+          </div>
+          <div class="theme-stat-box">
+            <div class="big">Nexus</div>
+            <div class="label">Fuente</div>
+            <div class="sub">datos históricos</div>
+          </div>
+        </div>
+        <div class="key-points">
+          <div class="key-points-title">Flujo de planificación del sprint</div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>Tomar los requerimientos tal como llegan del cliente, sin filtros ni reformulaciones previas</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div><strong>Claude genera los casos de uso estandarizados</strong> para cada requerimiento y estima la complejidad de forma objetiva y reproducible</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div><strong>Gerencia analiza la importancia estratégica y el valor de negocio</strong> de cada tarea; esa valuación determina la prioridad en el backlog</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>El backlog se ordena por prioridad estratégica y se filtra por la <strong>capacidad del equipo</strong>, calculada a partir de la velocidad histórica en Nexus</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>El equipo revisa el backlog candidato en el Sprint Planning y confirma qué entra; si hay dudas técnicas sobre alguna tarea, se resuelven antes de cerrar el sprint</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>Los datos reales del primer sprint calibran el modelo de estimación; la precisión mejora progresivamente con cada ciclo completado</div>
+          </div>
+        </div>
+        <div class="instructivos-grid">
+          <div class="instr-card">
+            <div class="instr-card-header">
+              <span class="instr-code-badge">PLA_001</span>
+              <div class="instr-title">Calcular la capacidad del equipo para el sprint</div>
+            </div>
+            <div class="instr-card-body">
+              <div class="instr-trigger">
+                <i data-lucide="zap"></i>
+                <div><strong>Trigger:</strong> "¿Cuánto puede comprometer el equipo en este sprint?"</div>
+              </div>
+              <div class="instr-steps-title">Pasos clave</div>
+              <ol class="instr-steps">
+                <li><span class="step-num">1</span>Extraer de Nexus los últimos 3 sprints completados y los puntos de complejidad entregados en cada uno</li>
+                <li><span class="step-num">2</span>Calcular el promedio descartando sprints con condiciones excepcionales (ausencias masivas, cambios mid-sprint)</li>
+                <li><span class="step-num">3</span>Aplicar factor de capacidad: restar días de ausencia previstos para el próximo sprint (feriados, vacaciones)</li>
+                <li><span class="step-num">4</span>Presentar el número al equipo en el Sprint Planning; si hay consenso en ajustarlo, documentar el motivo</li>
+              </ol>
+              <div class="instr-warn">
+                <i data-lucide="alert-circle"></i>
+                <div><strong>Atención:</strong> La capacidad es una guía, no un objetivo a maximizar. Comprometer de menos y entregar todo es mejor que comprometer de más y quedar con tareas incompletas al cierre del sprint.</div>
+              </div>
+            </div>
+            <div class="instr-card-footer">
+              <span class="instr-priority media">Prioridad Media</span>
+              <span class="instr-proc-ref"><i data-lucide="link"></i> Dashboard de velocidad en Nexus</span>
+            </div>
+          </div>
+          <div class="instr-card">
+            <div class="instr-card-header">
+              <span class="instr-code-badge">PLA_002</span>
+              <div class="instr-title">Armar y cerrar el backlog del sprint</div>
+            </div>
+            <div class="instr-card-body">
+              <div class="instr-trigger">
+                <i data-lucide="zap"></i>
+                <div><strong>Trigger:</strong> "¿Qué entra y qué no entra en este sprint?"</div>
+              </div>
+              <div class="instr-steps-title">Pasos clave</div>
+              <ol class="instr-steps">
+                <li><span class="step-num">1</span>Partir del backlog ordenado por prioridad estratégica (valuación de gerencia) y filtrar hasta la capacidad calculada</li>
+                <li><span class="step-num">2</span>Revisar con el equipo: ¿hay bloqueos técnicos, dependencias no resueltas o tareas que no están bien definidas?</li>
+                <li><span class="step-num">3</span>Resolver cualquier duda antes de cerrar; una tarea mal definida no entra al sprint aunque sea prioritaria</li>
+                <li><span class="step-num">4</span>Registrar el sprint cerrado en Nexus y comunicar al equipo que el backlog es definitivo para las próximas 2 semanas</li>
+              </ol>
+              <div class="instr-escalate">
+                <i data-lucide="arrow-up-right"></i>
+                <div><strong>Escalar si:</strong> Gerencia solicita incorporar una tarea que supera la capacidad calculada — la solución es remover otra tarea de peso equivalente, no aumentar el compromiso del equipo.</div>
+              </div>
+            </div>
+            <div class="instr-card-footer">
+              <span class="instr-priority alta">Prioridad Alta</span>
+              <span class="instr-proc-ref"><i data-lucide="link"></i> Proceso de Sprint Planning</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── TAB 4: Integridad del Sprint ── -->
+      <div id="t4" class="tab-panel">
+        <div class="theme-header">
+          <div class="theme-header-left">
+            <div class="theme-number">#4</div>
+            <div>
+              <div class="theme-title">Integridad del Sprint</div>
+              <div class="theme-desc">Lo que entra al sprint, sale en ese sprint. Ante pedidos nuevos: próximo sprint. Ante fallas críticas de versión: rollback, no hotfix.</div>
+            </div>
+          </div>
+          <div class="theme-stat-box">
+            <div class="big">0</div>
+            <div class="label">Tareas</div>
+            <div class="sub">mid-sprint</div>
+          </div>
+        </div>
+        <div class="key-points">
+          <div class="key-points-title">Reglas de integridad del sprint</div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>Todo requerimiento nuevo que llegue durante el sprint — independientemente de quién lo solicite — pasa por el proceso completo: casos de uso con IA, valuación de gerencia, y entrada al <strong>próximo sprint</strong></div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>La presión del cliente no define la urgencia real. El criterio de urgencia real es uno solo: <strong>¿hay una función crítica que dejó de funcionar hoy?</strong></div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>Si surge un error grave de versión en producción, la respuesta es <strong>rollback a la versión anterior estable</strong>, no un arreglo de emergencia mid-sprint que puede introducir nuevos problemas</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>El fix de la falla que requirió rollback entra al siguiente sprint como <strong>tarea de alta prioridad</strong>, ya correctamente definida con casos de uso y criterios de aceptación</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>Esta regla requiere <strong>respaldo explícito y visible de la dirección</strong> para sostenerse ante los clientes — sin ese aval, el equipo no tiene autoridad para mantener el límite</div>
+          </div>
+        </div>
+        <div class="instructivos-grid">
+          <div class="instr-card">
+            <div class="instr-card-header">
+              <span class="instr-code-badge">INT_001</span>
+              <div class="instr-title">Gestionar un pedido urgente de cliente mid-sprint</div>
+            </div>
+            <div class="instr-card-body">
+              <div class="instr-trigger">
+                <i data-lucide="zap"></i>
+                <div><strong>Trigger:</strong> "El cliente dice que esto no puede esperar hasta el próximo sprint"</div>
+              </div>
+              <div class="instr-steps-title">Pasos clave</div>
+              <ol class="instr-steps">
+                <li><span class="step-num">1</span>Escuchar el pedido y registrarlo en Nexus de inmediato, sin comprometer fechas en la conversación</li>
+                <li><span class="step-num">2</span>Evaluar el criterio de urgencia real: ¿hay una función crítica que impide operar al cliente hoy?</li>
+                <li><span class="step-num">3</span>Si <strong>no aplica</strong>: explicar al cliente con claridad que el pedido ingresa al próximo sprint e informar la fecha estimada de la versión siguiente</li>
+                <li><span class="step-num">4</span>Si <strong>aplica urgencia real</strong> (falla crítica): activar el protocolo de rollback a la versión anterior — no modificar el sprint en curso</li>
+              </ol>
+              <div class="instr-warn">
+                <i data-lucide="alert-circle"></i>
+                <div><strong>Atención:</strong> "Lo necesito ya" no es lo mismo que "el sistema dejó de funcionar". Esta distinción debe ser sostenida por todo el equipo, incluida la dirección, frente a cualquier cliente.</div>
+              </div>
+            </div>
+            <div class="instr-card-footer">
+              <span class="instr-priority alta">Prioridad Alta</span>
+              <span class="instr-proc-ref"><i data-lucide="link"></i> Criterios de urgencia operativa</span>
+            </div>
+          </div>
+          <div class="instr-card">
+            <div class="instr-card-header">
+              <span class="instr-code-badge">INT_002</span>
+              <div class="instr-title">Aplicar rollback ante falla crítica en producción</div>
+            </div>
+            <div class="instr-card-body">
+              <div class="instr-trigger">
+                <i data-lucide="zap"></i>
+                <div><strong>Trigger:</strong> "La versión nueva rompió algo urgente en el cliente"</div>
+              </div>
+              <div class="instr-steps-title">Pasos clave</div>
+              <ol class="instr-steps">
+                <li><span class="step-num">1</span>Identificar la versión estable anterior e iniciar rollback de la aplicación de inmediato</li>
+                <li><span class="step-num">2</span>Evaluar si hubo cambios de estructura de BDD: si los hubo, ejecutar rollback de BDD coordinadamente</li>
+                <li><span class="step-num">3</span>Confirmar con el cliente que la operación fue restaurada y el sistema funciona correctamente</li>
+                <li><span class="step-num">4</span>Documentar el incidente en Nexus, identificar la causa raíz y crear una tarea de fix para el siguiente sprint con prioridad alta</li>
+              </ol>
+              <div class="instr-escalate">
+                <i data-lucide="arrow-up-right"></i>
+                <div><strong>Escalar si:</strong> El rollback de BDD no es posible por cambios estructurales irreversibles — requiere intervención manual coordinada entre Desarrollo, Soporte y el cliente.</div>
+              </div>
+            </div>
+            <div class="instr-card-footer">
+              <span class="instr-priority alta">Prioridad Alta</span>
+              <span class="instr-proc-ref"><i data-lucide="link"></i> Protocolo de rollback de versión</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── TAB 5: Versión Estable Base ── -->
+      <div id="t5" class="tab-panel">
+        <div class="theme-header">
+          <div class="theme-header-left">
+            <div class="theme-number">#5</div>
+            <div>
+              <div class="theme-title">Versión Estable Base</div>
+              <div class="theme-desc">Antes de arrancar el nuevo ciclo, necesitamos identificar la versión más confiable para usarla como punto de partida y como referencia de rollback.</div>
+            </div>
+          </div>
+          <div class="theme-stat-box">
+            <div class="big">2 sem</div>
+            <div class="label">Auditoría</div>
+            <div class="sub">1h/día por persona</div>
+          </div>
+        </div>
+        <div class="key-points">
+          <div class="key-points-title">Proceso de auditoría y definición de versión base</div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>Cada miembro del equipo dedica <strong>1 hora diaria</strong> a auditar una función específica asignada — el resto del día de trabajo no se interrumpe</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>El foco de la auditoría es <strong>documentar comportamiento observado vs. esperado</strong>, no arreglar nada en el momento; cada hallazgo se registra en Nexus con evidencia</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>Al final de cada semana, el equipo revisa los hallazgos en conjunto y los clasifica por criticidad — este proceso genera el <strong>backlog más completo y honesto que hayan tenido</strong></div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>La versión base se elige por consenso técnico: menor cantidad de issues críticos y mayor cobertura de funcionalidades estables operando correctamente</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>Una vez definida, la versión base se documenta en Nexus como el <strong>"piso oficial"</strong> del sistema — es el punto de rollback de referencia para todos los deploys futuros</div>
+          </div>
+        </div>
+        <div class="instructivos-grid">
+          <div class="instr-card">
+            <div class="instr-card-header">
+              <span class="instr-code-badge">EST_001</span>
+              <div class="instr-title">Ejecutar la auditoría funcional diaria</div>
+            </div>
+            <div class="instr-card-body">
+              <div class="instr-trigger">
+                <i data-lucide="zap"></i>
+                <div><strong>Trigger:</strong> "¿Cómo auditamos el sistema sin frenar el trabajo diario?"</div>
+              </div>
+              <div class="instr-steps-title">Pasos clave</div>
+              <ol class="instr-steps">
+                <li><span class="step-num">1</span>Asignar al inicio de la semana qué función audita cada persona cada día — distribuir para cubrir todos los módulos en las 2 semanas</li>
+                <li><span class="step-num">2</span>Documentar el comportamiento observado vs. el comportamiento esperado según el caso de uso de esa función</li>
+                <li><span class="step-num">3</span>Registrar cada hallazgo (bug, desvío, comportamiento inesperado) en Nexus con evidencia — screenshot, descripción, condición que lo reproduce</li>
+                <li><span class="step-num">4</span>Al final de la semana, revisar los hallazgos en conjunto y clasificar por criticidad: bloqueante, importante, menor</li>
+              </ol>
+              <div class="instr-warn">
+                <i data-lucide="alert-circle"></i>
+                <div><strong>Atención:</strong> La auditoría no es testing ni debugging. El objetivo es mapear el estado real del sistema, no arreglarlo. Cada arreglo que surja va al backlog, no al momento.</div>
+              </div>
+            </div>
+            <div class="instr-card-footer">
+              <span class="instr-priority alta">Prioridad Alta</span>
+              <span class="instr-proc-ref"><i data-lucide="link"></i> Plantilla de auditoría funcional</span>
+            </div>
+          </div>
+          <div class="instr-card">
+            <div class="instr-card-header">
+              <span class="instr-code-badge">EST_002</span>
+              <div class="instr-title">Definir y documentar la versión base estable</div>
+            </div>
+            <div class="instr-card-body">
+              <div class="instr-trigger">
+                <i data-lucide="zap"></i>
+                <div><strong>Trigger:</strong> "¿Cuál es la versión más confiable para usar como punto de partida?"</div>
+              </div>
+              <div class="instr-steps-title">Pasos clave</div>
+              <ol class="instr-steps">
+                <li><span class="step-num">1</span>Revisar los hallazgos consolidados de las 2 semanas de auditoría junto con todo el equipo técnico</li>
+                <li><span class="step-num">2</span>Identificar la versión con menor cantidad de issues críticos y mayor cobertura funcional estable verificada</li>
+                <li><span class="step-num">3</span>Validar la decisión por consenso del equipo; si hay desacuerdo, el criterio de desempate es la cantidad de issues bloqueantes</li>
+                <li><span class="step-num">4</span>Documentar la versión base en Nexus y comunicarla formalmente como el "piso oficial" del sistema</li>
+              </ol>
+              <div class="instr-escalate">
+                <i data-lucide="arrow-up-right"></i>
+                <div><strong>Escalar si:</strong> Ninguna versión cumple los criterios mínimos — en ese caso el primer sprint del nuevo ciclo debe ser de estabilización, no de nuevas funcionalidades.</div>
+              </div>
+            </div>
+            <div class="instr-card-footer">
+              <span class="instr-priority alta">Prioridad Alta</span>
+              <span class="instr-proc-ref"><i data-lucide="link"></i> Registro de versión base en Nexus</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── TAB 6: Comunicación con Clientes ── -->
+      <div id="t6" class="tab-panel">
+        <div class="theme-header">
+          <div class="theme-header-left">
+            <div class="theme-number">#6</div>
+            <div>
+              <div class="theme-title">Comunicación con Clientes</div>
+              <div class="theme-desc">Las release notes se generan con Claude y se publican en ZafiroDocs. El cliente recibe el pre-aviso 2 días antes; Soporte despliega martes o miércoles.</div>
+            </div>
+          </div>
+          <div class="theme-stat-box">
+            <div class="big">2 días</div>
+            <div class="label">Pre-aviso</div>
+            <div class="sub">antes del deploy</div>
+          </div>
+        </div>
+        <div class="key-points">
+          <div class="key-points-title">Flujo de comunicación por cada versión</div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>Las release notes se generan automáticamente con Claude usando la skill desarrollada por el equipo — <strong>sin redacción manual</strong></div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>Las notas se publican directamente en <strong>ZafiroDocs</strong>, la plataforma de documentación del producto, donde el cliente puede consultarlas en cualquier momento</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>Con <strong>2 días hábiles de anticipación</strong> al deploy, Soporte envía el pre-aviso al cliente con el enlace a ZafiroDocs y los módulos afectados</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>El deploy se coordina para <strong>martes o miércoles</strong> — nunca más tarde en la semana — para que cualquier problema que surja no coincida con el fin de semana</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>En el <strong>primer sprint bajo el nuevo proceso</strong>, se envía a cada cliente un documento explicativo del nuevo ciclo de versiones: qué cambia, por qué y qué beneficios les trae</div>
+          </div>
+        </div>
+        <div class="instructivos-grid">
+          <div class="instr-card">
+            <div class="instr-card-header">
+              <span class="instr-code-badge">COM_001</span>
+              <div class="instr-title">Generar y publicar las release notes de versión</div>
+            </div>
+            <div class="instr-card-body">
+              <div class="instr-trigger">
+                <i data-lucide="zap"></i>
+                <div><strong>Trigger:</strong> "La versión fue aprobada — ¿cómo generamos las notas para el cliente?"</div>
+              </div>
+              <div class="instr-steps-title">Pasos clave</div>
+              <ol class="instr-steps">
+                <li><span class="step-num">1</span>Exportar desde Nexus la lista de tareas completadas en el sprint cerrado</li>
+                <li><span class="step-num">2</span>Ejecutar la skill de Claude desarrollada por el equipo para generar las notas de versión en el formato de ZafiroDocs</li>
+                <li><span class="step-num">3</span>Revisar el resultado: verificar que los cambios estén descritos en lenguaje de usuario (no técnico) y que no falte ninguna tarea</li>
+                <li><span class="step-num">4</span>Publicar en ZafiroDocs y copiar el enlace para incluirlo en el pre-aviso al cliente</li>
+              </ol>
+              <div class="instr-escalate">
+                <i data-lucide="arrow-up-right"></i>
+                <div><strong>Escalar si:</strong> La skill genera notas que no reflejan correctamente algún cambio — ajustar el prompt o el input antes de publicar; no publicar notas incorrectas.</div>
+              </div>
+            </div>
+            <div class="instr-card-footer">
+              <span class="instr-priority alta">Prioridad Alta</span>
+              <span class="instr-proc-ref"><i data-lucide="link"></i> Skill de release notes · ZafiroDocs</span>
+            </div>
+          </div>
+          <div class="instr-card">
+            <div class="instr-card-header">
+              <span class="instr-code-badge">COM_002</span>
+              <div class="instr-title">Responder a un pedido urgente del cliente</div>
+            </div>
+            <div class="instr-card-body">
+              <div class="instr-trigger">
+                <i data-lucide="zap"></i>
+                <div><strong>Trigger:</strong> "El cliente dice que necesita esto ya, que no puede esperar"</div>
+              </div>
+              <div class="instr-steps-title">Pasos clave</div>
+              <ol class="instr-steps">
+                <li><span class="step-num">1</span>Escuchar el pedido y registrarlo en Nexus de inmediato, sin comprometer fechas en la conversación</li>
+                <li><span class="step-num">2</span>Evaluar con el equipo si aplica el criterio de urgencia real: ¿hay una función crítica que dejó de funcionar hoy?</li>
+                <li><span class="step-num">3</span>Si no aplica: comunicar con empatía que el pedido entra al próximo sprint e informar la fecha estimada de la versión siguiente</li>
+                <li><span class="step-num">4</span>Explicar brevemente al cliente por qué este proceso protege la estabilidad del sistema — y, por ende, al propio cliente</li>
+              </ol>
+              <div class="instr-escalate">
+                <i data-lucide="arrow-up-right"></i>
+                <div><strong>Escalar si:</strong> El cliente lleva la presión a nivel directivo — resolverlo en conjunto con dirección aplicando el criterio de urgencia acordado, no haciendo excepciones al proceso.</div>
+              </div>
+            </div>
+            <div class="instr-card-footer">
+              <span class="instr-priority alta">Prioridad Alta</span>
+              <span class="instr-proc-ref"><i data-lucide="link"></i> Guía de comunicación con clientes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tabs-container -->
+
+    <!-- RECOMENDACIONES -->
+    <section class="recs-section">
+      <h2 class="section-title"><i data-lucide="lightbulb"></i> Recomendaciones</h2>
+      <div class="recs-grid">
+
+        <div class="rec-card c2">
+          <div class="rec-card-icon"><i data-lucide="search"></i></div>
+          <h4>Auditar antes de iterar</h4>
+          <p>Antes de arrancar el nuevo ciclo, dedicar 2 semanas a la auditoría funcional para identificar la versión base estable. Sin una base sólida, el resto del proceso es frágil — arrancar desde un estado desconocido invalida cualquier estimación de velocidad o capacidad.</p>
+        </div>
+
+        <div class="rec-card c1">
+          <div class="rec-card-icon"><i data-lucide="shield-off"></i></div>
+          <h4>Congelar el mid-sprint hoy</h4>
+          <p>Esta regla debe implementarse de inmediato, con respaldo explícito y visible de la dirección. Es el cambio de mayor impacto a corto plazo y el que más resistencia va a generar. Sin el aval directivo, el equipo no tiene autoridad para sostener el límite ante los clientes.</p>
+        </div>
+
+        <div class="rec-card c3">
+          <div class="rec-card-icon"><i data-lucide="layers"></i></div>
+          <h4>Implementar en 3 fases graduales</h4>
+          <p><strong>Fase 1</strong> (mes 1–2): ciclo de versiones + reglas de sprint. <strong>Fase 2</strong> (mes 2–3): análisis de requerimientos con IA y sistema de estimación. <strong>Fase 3</strong> (mes 4+): agente de actualización automática de clientes. La gradualidad reduce el riesgo de rechazo organizacional.</p>
+        </div>
+
+        <div class="rec-card c4">
+          <div class="rec-card-icon"><i data-lucide="webhook"></i></div>
+          <h4>Agente de actualización automática vía webhook</h4>
+          <p>Instalar un agente liviano en cada cliente que se conecte a una API central. Ante cada release aprobado, el servidor envía un webhook que dispara la secuencia de actualización en orden: estructura BDD → contenido BDD → ejecutables. Elimina el acceso máquina por máquina vía Anydesk y reduce el riesgo operativo de ~80 BDDs a un proceso centralizado y auditable.</p>
+        </div>
+
+        <div class="rec-card c5">
+          <div class="rec-card-icon"><i data-lucide="file-text"></i></div>
+          <h4>Comunicar el cambio al cliente formalmente</h4>
+          <p>Redactar un documento formal explicando el nuevo ciclo de versiones, por qué se implementa y qué beneficios concretos trae al cliente. Enviarlo antes del primer sprint bajo la nueva metodología establece expectativas claras y reduce la fricción futura por pedidos no atendidos de inmediato.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="page-footer">
+    <span>VS Ingeniería en Sistemas</span>
+    <span class="footer-sep">·</span>
+    <span>Propuesta Estratégica — Gestión de Versiones</span>
+    <span class="footer-sep">·</span>
+    <span>Abril 2026</span>
+    <span class="footer-sep">·</span>
+    <span>Uso Interno</span>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>
+    const USERS = { pablo: 'Vs999*', adrian: 'Vs999*', santiago: 'Vs999*' };
+
+    function doLogin() {
+      const user = document.getElementById('login-user').value.trim().toLowerCase();
+      const pass = document.getElementById('login-pass').value;
+      const err  = document.getElementById('login-error');
+      if (USERS[user] && USERS[user] === pass) {
+        const screen = document.getElementById('login-screen');
+        screen.classList.add('hidden');
+        setTimeout(() => screen.remove(), 400);
+      } else {
+        err.classList.add('show');
+        document.getElementById('login-pass').value = '';
+        document.getElementById('login-pass').focus();
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      ['login-user', 'login-pass'].forEach(id => {
+        document.getElementById(id).addEventListener('keydown', e => {
+          if (e.key === 'Enter') doLogin();
+        });
+      });
+      document.querySelectorAll('.subcat-bar[data-w]').forEach(b => {
+        b.style.width = b.dataset.w;
+      });
+    });
+
+    function switchTab(e, id) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+      document.getElementById(id).classList.add('active');
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.subcat-bar').forEach(bar => {
+            const w = bar.dataset.w;
+            bar.style.width = '0%';
+            setTimeout(() => { bar.style.width = w; }, 80);
+          });
+        }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.subcats').forEach(s => observer.observe(s));
+
+    lucide.createIcons();
+  </script>
+</body>
+</html>
