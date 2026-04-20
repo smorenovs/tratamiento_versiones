@@ -317,6 +317,228 @@
       .subcat-label { width: 140px; font-size: 11.5px; }
       .recs-grid { grid-template-columns: 1fr; }
     }
+
+    /* === 15. PAGE SWITCHER & PAGE WRAP === */
+    .page-switcher {
+      display: flex; align-items: center;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-full);
+      padding: 3px; gap: 2px;
+    }
+    .ps-btn {
+      background: none; border: none; cursor: pointer;
+      padding: 5px 16px; border-radius: var(--radius-full);
+      font-family: var(--font-body); font-size: 13px; font-weight: 500;
+      color: var(--vs-gray-mid);
+      transition: background 0.2s, color 0.2s;
+    }
+    .ps-btn:hover { color: var(--vs-white); }
+    .ps-btn.active { background: var(--vs-cyan); color: #0B1E27; font-weight: 700; }
+
+    .page-wrap { overflow: hidden; width: 100%; }
+    .pages-row {
+      display: flex; width: 100%;
+      transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    #page-informe, #page-ejemplos { min-width: 100%; flex-shrink: 0; }
+
+    /* === 16. MODAL === */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+    }
+    .modal-overlay[hidden] { display: none; }
+    .modal-box {
+      background: var(--layer-2);
+      border: 1px solid rgba(77,200,232,0.15);
+      border-radius: var(--radius-xl);
+      width: 100%; max-width: 700px;
+      box-shadow: var(--shadow-lg);
+      animation: fadeIn 0.18s ease;
+    }
+    .modal-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 28px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .modal-header h3 {
+      font-family: var(--font-heading); font-size: 1rem; font-weight: 700;
+      color: var(--vs-white); display: flex; align-items: center; gap: 10px;
+    }
+    .modal-header h3 i { color: var(--c-warn); width: 18px; height: 18px; }
+    .modal-close {
+      background: none; border: none; cursor: pointer;
+      color: var(--vs-gray-dark); font-size: 1.1rem; line-height: 1;
+      padding: 4px 8px; border-radius: var(--radius-sm);
+      transition: color 0.15s, background 0.15s;
+    }
+    .modal-close:hover { color: var(--vs-white); background: rgba(255,255,255,0.08); }
+    .modal-body { padding: 24px 28px; }
+    .modal-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    .modal-table th {
+      text-align: left; padding: 8px 12px;
+      font-family: var(--font-heading); font-size: 11px;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--vs-gray-dark);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .modal-table td {
+      padding: 10px 12px; color: var(--vs-gray-mid);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      vertical-align: top; line-height: 1.5;
+    }
+    .modal-table tr:last-child td { border-bottom: none; }
+    .modal-table tr:hover td { background: rgba(77,200,232,0.04); }
+    .modal-table td:first-child { width: 28px; color: var(--vs-cyan); font-weight: 700; font-family: var(--font-heading); }
+    .modal-table td:nth-child(2) { font-weight: 600; color: var(--vs-white); width: 44%; }
+    .kpi-card.clickable { cursor: pointer; }
+    .kpi-card.clickable:hover { border-color: rgba(251,191,36,0.3); }
+    .kpi-card.clickable .kpi-hint {
+      font-size: 11px; color: var(--c-warn); margin-top: 6px;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .kpi-card.clickable .kpi-hint i { width: 12px; height: 12px; }
+
+    /* === 17. PÁGINA EJEMPLOS === */
+    .ejemplos-hero {
+      background: var(--layer-3);
+      border-radius: var(--radius-xl);
+      padding: 40px 56px;
+      margin-bottom: 32px;
+      border: 1px solid rgba(77,200,232,0.10);
+    }
+    .ejemplos-hero .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(77,200,232,0.12); color: var(--vs-cyan);
+      padding: 6px 14px; border-radius: var(--radius-full);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .ejemplos-hero .eyebrow i { width: 14px; height: 14px; }
+    .ejemplos-hero h2 {
+      font-family: var(--font-heading); font-size: 2rem; font-weight: 800;
+      color: var(--vs-white); margin-bottom: 10px;
+    }
+    .ejemplos-hero p { color: var(--vs-gray-mid); font-size: 14.5px; max-width: 560px; }
+
+    .ejemplo-bloque-title {
+      font-family: var(--font-heading); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--vs-cyan);
+      display: flex; align-items: center; gap: 8px; margin-bottom: 18px;
+    }
+    .ejemplo-bloque-title i { width: 15px; height: 15px; }
+    .ejemplo-bloque { margin-bottom: 44px; }
+
+    /* Split card */
+    .ejemplo-split {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+    @media (max-width: 768px) { .ejemplo-split { grid-template-columns: 1fr; } }
+    .split-card { border-radius: 10px; padding: 20px; border: 1px solid; }
+    .split-card.raw { background: rgba(251,140,0,0.06); border-color: rgba(251,140,0,0.25); }
+    .split-card.proc { background: rgba(74,222,128,0.06); border-color: rgba(74,222,128,0.22); }
+    .split-card-header {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.09em;
+      text-transform: uppercase; margin-bottom: 16px; padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .split-card.raw .split-card-header { color: #FFAD60; }
+    .split-card.proc .split-card-header { color: var(--c-success); }
+    .nexus-field { display: flex; gap: 8px; margin-bottom: 7px; font-size: 13px; }
+    .nexus-field-key {
+      color: var(--vs-gray-dark); min-width: 96px; flex-shrink: 0;
+      font-family: var(--font-code); font-size: 11.5px; padding-top: 1px;
+    }
+    .nexus-field-val { color: var(--vs-gray-mid); line-height: 1.5; }
+    .nexus-field-val strong { color: var(--vs-white); }
+    .hu-quote {
+      font-style: italic; color: var(--vs-gray-mid); font-size: 13.5px;
+      border-left: 3px solid var(--vs-cyan); padding: 10px 14px;
+      background: rgba(77,200,232,0.05); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      line-height: 1.65; margin: 12px 0;
+    }
+    .hu-quote strong { color: var(--vs-white); font-style: normal; }
+    .split-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+    .split-tag {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      padding: 3px 9px; border-radius: var(--radius-sm);
+    }
+    .tag-modulo  { background: rgba(77,200,232,0.12); color: var(--vs-cyan); }
+    .tag-epica   { background: rgba(176,190,197,0.12); color: var(--vs-gray-mid); }
+    .tag-media   { background: rgba(251,191,36,0.12); color: var(--c-warn); }
+    .ca-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--vs-gray-dark); margin-bottom: 8px; }
+    .ca-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+    .ca-list li { display: flex; gap: 9px; font-size: 13px; color: var(--vs-gray-mid); line-height: 1.5; align-items: flex-start; }
+    .ca-list li::before { content: '□'; color: var(--vs-cyan); flex-shrink: 0; font-size: 14px; line-height: 1.25; }
+
+    /* Backlog table */
+    .backlog-table-wrap { overflow-x: auto; }
+    .backlog-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    .backlog-table th {
+      text-align: right; padding: 9px 14px;
+      font-family: var(--font-heading); font-size: 11px; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--vs-gray-dark);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .backlog-table th:first-child { text-align: left; }
+    .backlog-table td { padding: 8px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--vs-gray-mid); text-align: right; }
+    .backlog-table td:first-child { text-align: left; font-weight: 600; color: var(--vs-white); }
+    .backlog-table tr:hover td { background: rgba(77,200,232,0.04); }
+    .backlog-table .total-row td { border-top: 1px solid rgba(255,255,255,0.10); font-weight: 700; color: var(--vs-white); padding-top: 12px; }
+    .bt-total-badge {
+      display: inline-block; background: var(--vs-cyan); color: #0B1E27;
+      font-weight: 800; font-size: 13px; padding: 2px 10px; border-radius: var(--radius-sm);
+    }
+    .bt-curso { color: var(--vs-cyan); }
+    .bt-blocked { color: var(--c-danger); }
+
+    /* Task table */
+    .task-table-wrap { overflow-x: auto; }
+    .task-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .task-table th {
+      text-align: left; padding: 8px 11px;
+      font-family: var(--font-heading); font-size: 11px; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--vs-gray-dark);
+      border-bottom: 1px solid rgba(255,255,255,0.08); white-space: nowrap;
+    }
+    .task-table td { padding: 7px 11px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--vs-gray-mid); vertical-align: top; }
+    .task-table tr:hover td { background: rgba(77,200,232,0.03); }
+    .task-id { font-family: var(--font-code); font-size: 11.5px; color: var(--vs-gray-dark); white-space: nowrap; }
+    .task-tema { color: var(--vs-gray-mid); font-size: 13px; }
+    .dep-note { font-size: 11.5px; font-style: italic; color: var(--vs-gray-dark); display: block; margin-top: 2px; }
+    .tipo-badge, .estado-badge {
+      display: inline-block; font-size: 10.5px; font-weight: 700;
+      padding: 2px 8px; border-radius: 3px; white-space: nowrap;
+    }
+    .tipo-mejora  { background: rgba(77,200,232,0.12); color: var(--vs-cyan); }
+    .tipo-ajuste  { background: rgba(248,113,113,0.12); color: var(--c-danger); }
+    .tipo-nuevo   { background: rgba(74,222,128,0.12); color: var(--c-success); }
+    .tipo-revisar { background: rgba(251,191,36,0.12); color: var(--c-warn); }
+    .est-pendiente { background: rgba(176,190,197,0.10); color: var(--vs-gray-mid); }
+    .est-backlog   { background: rgba(255,255,255,0.05); color: var(--vs-gray-dark); }
+    .est-bloqueado { background: rgba(248,113,113,0.12); color: var(--c-danger); }
+    .est-pausado   { background: rgba(251,191,36,0.10); color: var(--c-warn); }
+    .est-curso     { background: rgba(77,200,232,0.12); color: var(--vs-cyan); }
+
+    /* === 18. MODAL TAREA (CASO DE USO) === */
+    .modal-tarea-box { max-width: 760px; }
+    .modal-box { max-height: 90vh; overflow-y: auto; }
+    .modal-header { position: sticky; top: 0; background: var(--layer-2); z-index: 1; }
+    .mt-caso-table td:first-child { width: 130px; color: var(--vs-gray-dark); font-family: var(--font-code); font-size: 11.5px; font-weight: 500; }
+    .mt-caso-table td:nth-child(2) { font-weight: normal; color: var(--vs-gray-mid); width: auto; }
+    .mt-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .mt-section    { margin-top: 8px; }
+    .mt-section-lg { margin-top: 16px; }
+    .mt-section-sm { margin-top: 8px; }
+    /* === 19. TASK TABLE — FILAS CLICKEABLES Y SEPARADORES === */
+    .task-table tr[data-task-id] { cursor: pointer; }
+    .task-table tr[data-task-id]:hover td { background: rgba(77,200,232,0.07); }
+    .task-group-sep td { padding: 5px 11px 3px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--vs-gray-dark); background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.06); }
   </style>
 </head>
 <body>
@@ -356,8 +578,15 @@
       <span>Abril 2026</span>
       <span class="topbar-badge">Propuesta Estratégica</span>
     </div>
+    <div class="page-switcher">
+      <button type="button" class="ps-btn active" data-page="informe">Informe</button>
+      <button type="button" class="ps-btn" data-page="ejemplos">Ejemplos</button>
+    </div>
   </header>
 
+  <div class="page-wrap">
+  <div class="pages-row">
+  <div id="page-informe">
   <main class="page-wrapper">
 
     <!-- HERO -->
@@ -390,11 +619,12 @@
         <div class="kpi-value">~80</div>
         <div class="kpi-sub">Solo entre los 5 clientes grandes <span class="kpi-badge negative">Riesgo Alto</span></div>
       </div>
-      <div class="kpi-card">
+      <div class="kpi-card clickable" id="kpi-problemas">
         <div class="kpi-icon"><i data-lucide="alert-triangle"></i></div>
         <div class="kpi-label">Problemas Críticos</div>
         <div class="kpi-value">6</div>
         <div class="kpi-sub">Identificados en el relevamiento inicial <span class="kpi-badge warn">Estructurales</span></div>
+        <div class="kpi-hint"><i data-lucide="mouse-pointer-click"></i> Ver detalle</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-icon"><i data-lucide="users"></i></div>
@@ -1073,58 +1303,272 @@
     <span class="footer-sep">·</span>
     <span>Uso Interno</span>
   </footer>
+  </div><!-- /page-informe -->
+
+  <!-- ══════════════════════════════════════ PAGE EJEMPLOS ══════════════════════════════════════ -->
+  <div id="page-ejemplos">
+    <main class="page-wrapper">
+
+      <!-- HERO EJEMPLOS -->
+      <div class="ejemplos-hero">
+        <div class="eyebrow"><i data-lucide="flask-conical"></i> En la Práctica</div>
+        <h2>Ejemplos del Proceso</h2>
+        <p>Transformación de requerimientos en casos de uso, agrupamiento del backlog activo y detalle de tareas por módulo.</p>
+      </div>
+
+      <!-- TABS EJEMPLOS -->
+      <div class="tabs-container">
+        <div class="tabs-nav">
+          <button type="button" class="tab-btn active" onclick="switchTab(event,'e1')">
+            <i data-lucide="git-commit-horizontal"></i> Casos de Uso
+          </button>
+          <button type="button" class="tab-btn" onclick="switchTab(event,'e2')">
+            <i data-lucide="layers"></i> Módulos y Sprints
+          </button>
+          <button type="button" class="tab-btn" onclick="switchTab(event,'e3')">
+            <i data-lucide="shopping-cart"></i> Sprint — Compras
+          </button>
+        </div>
+
+        <!-- ── TAB E1: Casos de Uso ── -->
+        <div id="e1" class="tab-panel active">
+          <div class="theme-header">
+            <div class="theme-header-left">
+              <div class="theme-number">#1</div>
+              <div>
+                <div class="theme-title">De requerimiento a caso de uso</div>
+                <div class="theme-desc">Así se transforma una tarea cargada en Nexus en una historia de usuario estructurada con criterios de aceptación listos para desarrollo.</div>
+              </div>
+            </div>
+            <div class="theme-stat-box">
+              <div class="big">515</div>
+              <div class="label">Tarea ejemplo</div>
+              <div class="sub">Módulo Reportes</div>
+            </div>
+          </div>
+
+          <div class="ejemplo-bloque-title">
+            <i data-lucide="arrow-left-right"></i> Transformación — TAREA 515
+          </div>
+          <div class="ejemplo-split">
+
+            <!-- Lado izquierdo: raw Nexus -->
+            <div class="split-card raw">
+              <div class="split-card-header">📋 Tal como está en Nexus</div>
+              <div class="nexus-field"><span class="nexus-field-key">IDENTIFICADOR</span><span class="nexus-field-val"><strong>TAREA 515</strong></span></div>
+              <div class="nexus-field"><span class="nexus-field-key">TEMA</span><span class="nexus-field-val">Agregar columnas en 'Resumen de Ventas por Artículo'</span></div>
+              <div class="nexus-field"><span class="nexus-field-key">DETALLE</span><span class="nexus-field-val">En el reporte de 'Resumen de Ventas por Artículo' se requiere agregar dos columnas en la exportacion tipo Datos Archivo (xls y xlsx). 1: Código de barras por artículos. 2: Descripción del laboratorio seleccionado.</span></div>
+              <div class="nexus-field"><span class="nexus-field-key">CLIENTE</span><span class="nexus-field-val">Constitución</span></div>
+              <div class="nexus-field"><span class="nexus-field-key">TIPO</span><span class="nexus-field-val">Mejora</span></div>
+              <div class="nexus-field"><span class="nexus-field-key">ESTADO</span><span class="nexus-field-val">2_PENDIENTE</span></div>
+              <div class="nexus-field"><span class="nexus-field-key">RESPONSABLE</span><span class="nexus-field-val">Agustín Hussein Díaz</span></div>
+            </div>
+
+            <!-- Lado derecho: post-procesamiento -->
+            <div class="split-card proc">
+              <div class="split-card-header">✅ Post-procesamiento</div>
+              <div class="ca-title" style="margin-bottom:10px;">Historia de Usuario</div>
+              <div class="hu-quote">Como <strong>administrativo que exporta el reporte "Resumen de Ventas por Artículo" a Excel</strong>, quiero <strong>que la exportación incluya las columnas "Código de barras" y "Descripción del laboratorio"</strong>, para <strong>poder cruzar la información con otros sistemas sin completar esos datos manualmente</strong>.</div>
+              <div class="split-tags">
+                <span class="split-tag tag-modulo">Ventas — Reportes</span>
+                <span class="split-tag tag-epica">Exportaciones y reportes de ventas</span>
+                <span class="split-tag tag-media">🟡 Complejidad Media</span>
+              </div>
+              <div class="ca-title">Criterios de Aceptación</div>
+              <ul class="ca-list">
+                <li>Las columnas se agregan <strong>únicamente</strong> en la exportación Datos Archivo (.xls y .xlsx); la vista en pantalla no cambia</li>
+                <li>"Código de barras" muestra el código del artículo registrado en la BDD</li>
+                <li>"Descripción del laboratorio" muestra el laboratorio seleccionado en el contexto del reporte</li>
+                <li>Artículos sin laboratorio o sin código exportan celda vacía, sin error ni corte del archivo</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── TAB E2: Módulos y Sprints ── -->
+        <div id="e2" class="tab-panel">
+          <div class="theme-header">
+            <div class="theme-header-left">
+              <div class="theme-number">#2</div>
+              <div>
+                <div class="theme-title">Backlog activo agrupado por módulo</div>
+                <div class="theme-desc">206 tareas activas distribuidas en 12 módulos funcionales. Base para planificar los próximos sprints con el equipo.</div>
+              </div>
+            </div>
+            <div class="theme-stat-box">
+              <div class="big">206</div>
+              <div class="label">Tareas activas</div>
+              <div class="sub">12 módulos</div>
+            </div>
+          </div>
+          <div class="backlog-table-wrap">
+            <table class="backlog-table">
+              <thead>
+                <tr>
+                  <th>Módulo</th>
+                  <th>Total</th>
+                  <th>Backlog</th>
+                  <th>Pendiente</th>
+                  <th>En curso</th>
+                  <th>Bloq/Pausado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Ventas</td><td>29</td><td>6</td><td>21</td><td class="bt-curso">1</td><td>1</td></tr>
+                <tr><td>Compras</td><td>28</td><td>3</td><td>22</td><td>0</td><td class="bt-blocked">3</td></tr>
+                <tr><td>Reportes / Exportaciones</td><td>28</td><td>11</td><td>16</td><td>0</td><td>1</td></tr>
+                <tr><td>Contabilidad / Presentaciones</td><td>26</td><td>3</td><td>23</td><td>0</td><td>0</td></tr>
+                <tr><td>Obras Sociales / Validación</td><td>23</td><td>5</td><td>15</td><td class="bt-curso">2</td><td>1</td></tr>
+                <tr><td>Stock</td><td>21</td><td>1</td><td>18</td><td>0</td><td class="bt-blocked">2</td></tr>
+                <tr><td>Sistema / Infraestructura</td><td>15</td><td>2</td><td>11</td><td class="bt-curso">1</td><td>1</td></tr>
+                <tr><td>Cajas y Fondos</td><td>14</td><td>5</td><td>9</td><td>0</td><td>0</td></tr>
+                <tr><td>Sin clasificar</td><td>10</td><td>3</td><td>3</td><td class="bt-curso">2</td><td class="bt-blocked">2</td></tr>
+                <tr><td>Integraciones</td><td>10</td><td>1</td><td>6</td><td class="bt-curso">3</td><td>0</td></tr>
+                <tr><td>Zafiro BI</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+                <tr><td>Pedidos / Distribución</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+                <tr class="total-row">
+                  <td>TOTAL</td>
+                  <td><span class="bt-total-badge">206</span></td>
+                  <td>40</td>
+                  <td>147</td>
+                  <td class="bt-curso">9</td>
+                  <td class="bt-blocked">10</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ── TAB E3: Sprint Compras (orden de prioridad) ── -->
+        <div id="e3" class="tab-panel">
+          <div class="theme-header">
+            <div class="theme-header-left">
+              <div class="theme-number">#3</div>
+              <div>
+                <div class="theme-title">Detalle de módulo: Compras</div>
+                <div class="theme-desc">28 tareas activas ordenadas por prioridad. Hacé clic en cualquier fila para ver el Caso de Uso completo.</div>
+              </div>
+            </div>
+            <div class="theme-stat-box">
+              <div class="big">28</div>
+              <div class="label">Tareas Compras</div>
+              <div class="sub">8 Ajustes · 15 Mejoras · 4 Nuevos · 1 Revisar</div>
+            </div>
+          </div>
+          <div class="task-table-wrap">
+            <table class="task-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Tarea</th>
+                  <th>Tema</th>
+                  <th>Tipo</th>
+                  <th>Estado</th>
+                  <th>Responsable</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="task-group-sep"><td colspan="6">— AJUSTES —</td></tr>
+                <tr data-task-id="519"><td class="task-id">1</td><td class="task-id">519</td><td class="task-tema">No permitir SNC a Proveedores para ingresos en TE</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Exequiel C.</td></tr>
+                <tr data-task-id="295"><td class="task-id">2</td><td class="task-id">295</td><td class="task-tema">IVA Simplificado</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Pablo V.</td></tr>
+                <tr data-task-id="329"><td class="task-id">3</td><td class="task-id">329</td><td class="task-tema">No se desactivan Proveedor y Organización desde Ingr. de Comprobantes</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Pablo V.</td></tr>
+                <tr data-task-id="332"><td class="task-id">4</td><td class="task-id">332</td><td class="task-tema">Guardar 'total' (previo) de un comprobante de compra cuando se modifique</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Pablo V.</td></tr>
+                <tr data-task-id="512"><td class="task-id">5</td><td class="task-id">512</td><td class="task-tema">Al ingresar una compra y guardarla, cuando se la quiere recuperar, salta error</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Mariano B.</td></tr>
+                <tr data-task-id="457"><td class="task-id">6</td><td class="task-id">457</td><td class="task-tema">Error referencia comprobantes de compras</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Mariano B.</td></tr>
+                <tr data-task-id="157"><td class="task-id">7</td><td class="task-id">157</td><td class="task-tema">Saldo de Reportes se muestra incompleto</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Pablo V.</td></tr>
+                <tr data-task-id="67"><td class="task-id">8</td><td class="task-id">67</td><td class="task-tema">Z566 - Resumen de Compras por Proveedor</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-bloqueado">Bloqueado</span></td><td>Mariano B.</td></tr>
+                <tr class="task-group-sep"><td colspan="6">— MEJORAS —</td></tr>
+                <tr data-task-id="484"><td class="task-id">9</td><td class="task-id">484</td><td class="task-tema">[ADM-0426_2] - Solicitud de NC (Vinculación con NC)</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Adrián S.</td></tr>
+                <tr data-task-id="487"><td class="task-id">10</td><td class="task-id">487</td><td class="task-tema">[ADM-0426_3] - Poder determinar el crédito fiscal de medicamentos</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Adrián S.</td></tr>
+                <tr data-task-id="476"><td class="task-id">11</td><td class="task-id">476</td><td class="task-tema">[ADM-0426_1] - Resumen de Comprobantes por Proveedor</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Adrián S.</td></tr>
+                <tr data-task-id="518"><td class="task-id">12</td><td class="task-id">518</td><td class="task-tema">Desvincular NCP asociada a una presentación para aplicarla a otra</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Exequiel C.</td></tr>
+                <tr data-task-id="468"><td class="task-id">13</td><td class="task-id">468</td><td class="task-tema">No se puede realizar SNC de varias líneas con un mismo artículo</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Exequiel C.</td></tr>
+                <tr data-task-id="200"><td class="task-id">14</td><td class="task-id">200</td><td class="task-tema">Z654 - Reporte Inc. Cpras vs Facturas</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Exequiel C.</td></tr>
+                <tr data-task-id="226"><td class="task-id">15</td><td class="task-id">226</td><td class="task-tema">Z674 - Devolución de Producto por Sobrante</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Exequiel C.</td></tr>
+                <tr data-task-id="219"><td class="task-id">16</td><td class="task-id">219</td><td class="task-tema">Z668 - Actualiz. de Precios en base a Ingresos</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Mariano B.</td></tr>
+                <tr data-task-id="348"><td class="task-id">17</td><td class="task-id">348</td><td class="task-tema">Redondeo de Cuenta Corriente de Compras</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Adrián S.</td></tr>
+                <tr data-task-id="223"><td class="task-id">18</td><td class="task-id">223</td><td class="task-tema">Z362 - Pedidos Sud - WS</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Mariano B.</td></tr>
+                <tr data-task-id="289"><td class="task-id">19</td><td class="task-id">289</td><td class="task-tema">Carrito de pedidos</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Mariano B.</td></tr>
+                <tr data-task-id="213"><td class="task-id">20</td><td class="task-id">213</td><td class="task-tema">Z609 - Bloqueo para Pedido - Gestión<span class="dep-note">↳ depende de T.211</span></td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Mariano B.</td></tr>
+                <tr data-task-id="211"><td class="task-id">21</td><td class="task-id">211</td><td class="task-tema">Z568 - Bloqueo para Pedido - Repo Diaria x Suc.</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-bloqueado">Bloqueado</span></td><td>Mariano B.</td></tr>
+                <tr data-task-id="224"><td class="task-id">22</td><td class="task-id">224</td><td class="task-tema">Z671 - Encargos de Productos</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-backlog">Backlog</span></td><td>—</td></tr>
+                <tr data-task-id="225"><td class="task-id">23</td><td class="task-id">225</td><td class="task-tema">Z672 - Solicitud de Productos en Falta</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-backlog">Backlog</span></td><td>—</td></tr>
+                <tr class="task-group-sep"><td colspan="6">— NUEVOS —</td></tr>
+                <tr data-task-id="307"><td class="task-id">24</td><td class="task-id">307</td><td class="task-tema">Aplicación de NC Proveedor a Bonos Dto.</td><td><span class="tipo-badge tipo-nuevo">Nuevo</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Pablo V.</td></tr>
+                <tr data-task-id="222"><td class="task-id">25</td><td class="task-id">222</td><td class="task-tema">Z199 - Pedidos Monroe</td><td><span class="tipo-badge tipo-nuevo">Nuevo</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Mariano B.</td></tr>
+                <tr data-task-id="163"><td class="task-id">26</td><td class="task-id">163</td><td class="task-tema">Agregar la posibilidad de información para un reporte</td><td><span class="tipo-badge tipo-nuevo">Nuevo</span></td><td><span class="estado-badge est-backlog">Backlog</span></td><td>—</td></tr>
+                <tr data-task-id="64"><td class="task-id">27</td><td class="task-id">64</td><td class="task-tema">Z487 - Compra Inteligente Multiproveedor Etapa 1</td><td><span class="tipo-badge tipo-nuevo">Nuevo</span></td><td><span class="estado-badge est-pausado">Pausado</span></td><td>Mariano B.</td></tr>
+                <tr class="task-group-sep"><td colspan="6">— REVISAR —</td></tr>
+                <tr data-task-id="380"><td class="task-id">28</td><td class="task-id">380</td><td class="task-tema">No se muestran NC en Reporte de Saldos de Compr. por Prov. por Vto.</td><td><span class="tipo-badge tipo-revisar">Revisar</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Mariano B.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div><!-- /tabs-container ejemplos -->
+    </main>
+    <footer class="page-footer">
+      <span>VS Ingeniería en Sistemas</span>
+      <span class="footer-sep">·</span>
+      <span>Ejemplos del Proceso</span>
+      <span class="footer-sep">·</span>
+      <span>Abril 2026</span>
+    </footer>
+  </div><!-- /page-ejemplos -->
+  </div><!-- /pages-row -->
+  </div><!-- /page-wrap -->
+
+  <!-- MODAL: Caso de Uso de Tarea -->
+  <div id="modal-tarea" class="modal-overlay" hidden>
+    <div class="modal-box modal-tarea-box">
+      <div class="modal-header">
+        <h3 id="mt-titulo"></h3>
+        <button type="button" class="modal-close" id="modal-close-tarea">✕</button>
+      </div>
+      <div class="modal-body">
+        <div id="mt-badges" class="mt-badges"></div>
+        <div class="ca-title mt-section">Historia de Usuario</div>
+        <div id="mt-hu" class="hu-quote"></div>
+        <div class="ca-title mt-section-lg">Caso de Uso</div>
+        <table id="mt-caso" class="modal-table mt-caso-table mt-section-sm"></table>
+        <div class="ca-title mt-section-lg">Criterios de Aceptación</div>
+        <ul id="mt-criterios" class="ca-list mt-section-sm"></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Problemas Críticos -->
+  <div id="modal-problemas" class="modal-overlay" hidden>
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3><i data-lucide="alert-triangle"></i> 6 Problemas Estructurales Críticos</h3>
+        <button type="button" class="modal-close" id="modal-close-problemas">✕</button>
+      </div>
+      <div class="modal-body">
+        <table class="modal-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Problema</th>
+              <th>Impacto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Sin ciclo de versión definido</td><td>Releases impredecibles, sin tiempo para documentar ni comunicar</td></tr>
+            <tr><td>2</td><td>Tareas mal definidas (sin casos de uso ni complejidad)</td><td>Sub/sobre estimación crónica; el equipo no sabe exactamente qué construir</td></tr>
+            <tr><td>3</td><td>Sin estadísticas para planificar sprints</td><td>Planificación por intuición; sin datos de velocidad ni capacidad real</td></tr>
+            <tr><td>4</td><td>Tareas nuevas mid-sprint por presión directiva</td><td>Rompe la calidad y la predictibilidad; nunca se sabe cuándo termina un sprint</td></tr>
+            <tr><td>5</td><td>Sin versión estable base</td><td>Imposible hacer rollback ante fallas; cada cliente puede estar en una versión distinta</td></tr>
+            <tr><td>6</td><td>~80 BDDs a actualizar manualmente por release</td><td>Riesgo operativo crítico: 3 personas, proceso manual, sin automatización ni verificación</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-  <script>
-    const USERS = { pablo: 'Vs999*', adrian: 'Vs999*', santiago: 'Vs999*' };
-
-    function doLogin() {
-      const user = document.getElementById('login-user').value.trim().toLowerCase();
-      const pass = document.getElementById('login-pass').value;
-      const err  = document.getElementById('login-error');
-      if (USERS[user] && USERS[user] === pass) {
-        const screen = document.getElementById('login-screen');
-        screen.classList.add('hidden');
-        setTimeout(() => screen.remove(), 400);
-      } else {
-        err.classList.add('show');
-        document.getElementById('login-pass').value = '';
-        document.getElementById('login-pass').focus();
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      ['login-user', 'login-pass'].forEach(id => {
-        document.getElementById(id).addEventListener('keydown', e => {
-          if (e.key === 'Enter') doLogin();
-        });
-      });
-      document.querySelectorAll('.subcat-bar[data-w]').forEach(b => {
-        b.style.width = b.dataset.w;
-      });
-    });
-
-    function switchTab(e, id) {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-      e.currentTarget.classList.add('active');
-      document.getElementById(id).classList.add('active');
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.subcat-bar').forEach(bar => {
-            const w = bar.dataset.w;
-            bar.style.width = '0%';
-            setTimeout(() => { bar.style.width = w; }, 80);
-          });
-        }
-      });
-    }, { threshold: 0.2 });
-    document.querySelectorAll('.subcats').forEach(s => observer.observe(s));
-
-    lucide.createIcons();
-  </script>
+  <script src="js/data-compras.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
