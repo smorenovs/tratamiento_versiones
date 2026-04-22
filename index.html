@@ -341,7 +341,7 @@
       display: flex; width: 100%;
       transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    #page-informe, #page-ejemplos, #page-priorizacion { min-width: 100%; flex-shrink: 0; }
+    #page-informe, #page-gitlab, #page-ejemplos, #page-priorizacion { min-width: 100%; flex-shrink: 0; }
 
     /* === 16. MODAL === */
     .modal-overlay {
@@ -656,6 +656,7 @@
     </div>
     <div class="page-switcher">
       <button type="button" class="ps-btn active" data-page="informe">Informe</button>
+      <button type="button" class="ps-btn" data-page="gitlab">GitLab</button>
       <button type="button" class="ps-btn" data-page="ejemplos">Ejemplos</button>
       <button type="button" class="ps-btn" data-page="priorizacion">Priorización</button>
     </div>
@@ -732,6 +733,9 @@
         <button type="button" class="tab-btn" onclick="switchTab(event,'t6')">
           <i data-lucide="message-circle"></i> Comunicación con Clientes <span class="tab-count">2</span>
         </button>
+        <button type="button" class="tab-btn" onclick="switchTab(event,'t7')">
+          <i data-lucide="shield-check"></i> Calidad y Review <span class="tab-count">2</span>
+        </button>
       </div>
 
       <!-- ── TAB 1: Ciclo de Versiones ── -->
@@ -786,8 +790,8 @@
               <ol class="instr-steps">
                 <li><span class="step-num">1</span><strong>Día 1 — Sprint Planning:</strong> revisar el backlog priorizado, seleccionar tareas según velocidad del equipo y registrar el sprint cerrado en Nexus</li>
                 <li><span class="step-num">2</span><strong>Días 2–9 — Desarrollo:</strong> ejecutar las tareas del sprint sin incorporar nuevas; cualquier pedido entrante se registra en el backlog y espera el próximo ciclo</li>
-                <li><span class="step-num">3</span><strong>Día 10 — Testing y revisión:</strong> validar que cada tarea cumple sus criterios de aceptación; si alguna no los cumple, se mueve al siguiente sprint</li>
-                <li><span class="step-num">4</span>Si la versión es aprobada, pasarla a Soporte con las release notes generadas; Soporte coordina el deploy con el cliente</li>
+                <li><span class="step-num">3</span><strong>Día 10 — Testing y revisión:</strong> validar que cada tarea cumple sus criterios de aceptación sobre la rama <code>testing</code>; si alguna no los cumple, se mueve al siguiente sprint. El merge a <code>master</code> requiere PR aprobado por otra persona del equipo</li>
+                <li><span class="step-num">4</span>Si la versión es aprobada (PR mergeado a <code>master</code>), pasarla a Soporte con las release notes generadas; Soporte coordina el deploy con el cliente</li>
               </ol>
               <div class="instr-warn">
                 <i data-lucide="alert-circle"></i>
@@ -1056,6 +1060,10 @@
         </div>
         <div class="key-points">
           <div class="key-points-title">Reglas de integridad del sprint</div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div><strong>El cliente no es tester.</strong> El sistema no puede llegar roto a producción — esa responsabilidad es del equipo. Si llega una falla al cliente, fallamos antes del deploy, no después</div>
+          </div>
           <div class="key-point">
             <div class="key-point-dot"></div>
             <div>Todo requerimiento nuevo que llegue durante el sprint — independientemente de quién lo solicite — pasa por el proceso completo: casos de uso con IA, valuación de gerencia, y entrada al <strong>próximo sprint</strong></div>
@@ -1329,6 +1337,103 @@
         </div>
       </div>
 
+      <!-- ── TAB 7: Calidad y Review ── -->
+      <div id="t7" class="tab-panel">
+        <div class="theme-header">
+          <div class="theme-header-left">
+            <div class="theme-number">#7</div>
+            <div>
+              <div class="theme-title">Calidad y Code Review</div>
+              <div class="theme-desc">El cliente no es el tester del sistema. Todo cambio pasa por revisión de pares, prueba de caja negra del ejecutable y una base de datos de testing antes de llegar a producción.</div>
+            </div>
+          </div>
+          <div class="theme-stat-box">
+            <div class="big">0</div>
+            <div class="label">Pushes directos</div>
+            <div class="sub">a master</div>
+          </div>
+        </div>
+        <div class="key-points">
+          <div class="key-points-title">Principios del proceso de calidad</div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div><strong>Cero pushes directos a master.</strong> Todo cambio — sin excepción — pasa por un Pull Request a la rama <code>testing</code>. El merge a <code>master</code> requiere aprobación de otra persona del equipo</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>La revisión del PR no es cosmética: quien revisa verifica <strong>qué rompe, qué cumple y qué no</strong> de los criterios de aceptación definidos en Nexus</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>Antes de aprobar el merge a <code>master</code>, se ejecuta una <strong>prueba de caja negra</strong> sobre el ejecutable compilado — no alcanza con que el código compile sin errores</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>Las pruebas se realizan sobre una <strong>BDD de testing exclusiva</strong>: estructura siempre actualizada, datos mínimos e indispensables, sin los registros de producción. Sin esta base de datos, las pruebas pierden validez</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>Si una tarea no pasa la revisión o la prueba de caja negra, <strong>se mueve al siguiente sprint correctamente</strong> — no se sube con deuda técnica ni se documenta como "en observación"</div>
+          </div>
+        </div>
+        <div class="instructivos-grid">
+          <div class="instr-card">
+            <div class="instr-card-header">
+              <span class="instr-code-badge">REV_001</span>
+              <div class="instr-title">Revisar y aprobar un Pull Request</div>
+            </div>
+            <div class="instr-card-body">
+              <div class="instr-trigger">
+                <i data-lucide="zap"></i>
+                <div><strong>Trigger:</strong> "Un desarrollador terminó una tarea y abrió un PR a testing"</div>
+              </div>
+              <div class="instr-steps-title">Pasos clave</div>
+              <ol class="instr-steps">
+                <li><span class="step-num">1</span>Leer el diff del PR: verificar que los cambios corresponden a lo que describe la tarea en Nexus y no tocan código fuera del alcance definido</li>
+                <li><span class="step-num">2</span>Identificar qué funcionalidades existentes podrían haber sido afectadas por los cambios y agregarlas a la lista de pruebas de caja negra</li>
+                <li><span class="step-num">3</span>Verificar que los criterios de aceptación definidos en Nexus se pueden contrastar con el código — si alguno no tiene contraparte en el código, rechazar el PR con comentario</li>
+                <li><span class="step-num">4</span>Aprobar el PR solo si el código es correcto, el alcance es el esperado y los criterios de aceptación tienen cobertura</li>
+              </ol>
+              <div class="instr-warn">
+                <i data-lucide="alert-circle"></i>
+                <div><strong>Atención:</strong> Aprobar un PR "porque parece bien" sin revisar el diff ni contrastar criterios no es una revisión — es una formalidad vacía. La revisión es la primera línea de defensa.</div>
+              </div>
+            </div>
+            <div class="instr-card-footer">
+              <span class="instr-priority alta">Prioridad Alta</span>
+              <span class="instr-proc-ref"><i data-lucide="link"></i> Checklist de revisión de PR</span>
+            </div>
+          </div>
+          <div class="instr-card">
+            <div class="instr-card-header">
+              <span class="instr-code-badge">REV_002</span>
+              <div class="instr-title">Ejecutar prueba de caja negra sobre el ejecutable</div>
+            </div>
+            <div class="instr-card-body">
+              <div class="instr-trigger">
+                <i data-lucide="zap"></i>
+                <div><strong>Trigger:</strong> "El PR fue aprobado — ¿cómo validamos que el ejecutable funciona antes de mergear a master?"</div>
+              </div>
+              <div class="instr-steps-title">Pasos clave</div>
+              <ol class="instr-steps">
+                <li><span class="step-num">1</span>Compilar el ejecutable desde la rama <code>testing</code> en un entorno limpio, conectado a la BDD de testing exclusiva</li>
+                <li><span class="step-num">2</span>Ejecutar los flujos de la tarea que se está probando siguiendo exactamente los criterios de aceptación definidos en Nexus</li>
+                <li><span class="step-num">3</span>Ejecutar también los flujos de las funcionalidades identificadas como potencialmente afectadas (regresión básica)</li>
+                <li><span class="step-num">4</span>Si todo pasa: merge de <code>testing</code> a <code>master</code> y documentar el resultado en el PR. Si falla: rechazar el PR, registrar el hallazgo y el desarrollador abre una nueva rama para el fix</li>
+              </ol>
+              <div class="instr-escalate">
+                <i data-lucide="arrow-up-right"></i>
+                <div><strong>Escalar si:</strong> La BDD de testing no tiene la estructura actualizada — cualquier prueba sobre una estructura desactualizada genera falsos positivos. Actualizar la BDD antes de continuar.</div>
+              </div>
+            </div>
+            <div class="instr-card-footer">
+              <span class="instr-priority alta">Prioridad Alta</span>
+              <span class="instr-proc-ref"><i data-lucide="link"></i> BDD de testing · Rama testing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div><!-- /tabs-container -->
 
     <!-- RECOMENDACIONES -->
@@ -1350,8 +1455,8 @@
 
         <div class="rec-card c3">
           <div class="rec-card-icon"><i data-lucide="layers"></i></div>
-          <h4>Implementar en 3 fases graduales</h4>
-          <p><strong>Fase 1</strong> (mes 1–2): ciclo de versiones + reglas de sprint. <strong>Fase 2</strong> (mes 2–3): análisis de requerimientos con IA y sistema de estimación. <strong>Fase 3</strong> (mes 4+): agente de actualización automática de clientes. La gradualidad reduce el riesgo de rechazo organizacional.</p>
+          <h4>Implementar en fases graduales</h4>
+          <p><strong>Fase 0 (inmediata):</strong> migración a GitLab + configuración de ramas + reestructuración del DPR en entorno aislado. <strong>Fase 1</strong> (mes 1–2): ciclo de versiones + reglas de sprint + proceso de PR y code review. <strong>Fase 2</strong> (mes 2–3): análisis de requerimientos con IA y sistema de estimación. <strong>Fase 3</strong> (mes 4+): agente de actualización automática de clientes.</p>
         </div>
 
         <div class="rec-card c4">
@@ -1381,6 +1486,295 @@
     <span>Uso Interno</span>
   </footer>
   </div><!-- /page-informe -->
+
+  <!-- ══════════════════════════════════════ PAGE GITLAB ══════════════════════════════════════ -->
+  <div id="page-gitlab">
+  <main class="page-wrapper">
+
+    <!-- HERO GitLab -->
+    <div class="hero">
+      <div class="hero-eyebrow">
+        <i data-lucide="git-branch"></i>
+        <span>Control de Versiones</span>
+      </div>
+      <h1 class="hero-title">Código bajo control desde <em>el primer día</em></h1>
+      <p class="hero-desc">Migración inmediata del código estable a GitLab, estrategia de ramas clara, revisión obligatoria de código y reestructuración del proyecto Delphi para que cualquier desarrollador pueda compilar y correr el sistema en un solo paso.</p>
+      <div class="hero-chips">
+        <span class="hero-chip"><i data-lucide="zap"></i> Migración inmediata</span>
+        <span class="hero-chip"><i data-lucide="git-branch"></i> 4 ramas definidas</span>
+        <span class="hero-chip"><i data-lucide="shield-check"></i> PR obligatorio</span>
+        <span class="hero-chip"><i data-lucide="mouse-pointer-click"></i> Objetivo: un clic para compilar</span>
+      </div>
+    </div>
+
+    <!-- KPI GRID GitLab -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-icon"><i data-lucide="git-branch"></i></div>
+        <div class="kpi-label">Ramas del flujo</div>
+        <div class="kpi-value">4</div>
+        <div class="kpi-sub">dev · testing · master · stable-anterior <span class="kpi-badge neutral">Estructura fija</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon"><i data-lucide="shield-off"></i></div>
+        <div class="kpi-label">Pushes directos a master</div>
+        <div class="kpi-value">0</div>
+        <div class="kpi-sub">Todo pasa por PR revisado <span class="kpi-badge positive">Obligatorio</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon"><i data-lucide="rotate-ccw"></i></div>
+        <div class="kpi-label">Rollback ante falla</div>
+        <div class="kpi-value">1 rama</div>
+        <div class="kpi-sub">stable-anterior siempre disponible <span class="kpi-badge neutral">Garantizado</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon"><i data-lucide="mouse-pointer-click"></i></div>
+        <div class="kpi-label">Objetivo Delphi</div>
+        <div class="kpi-value">1 clic</div>
+        <div class="kpi-sub">Clonar → compilar → correr <span class="kpi-badge warn">En proceso</span></div>
+      </div>
+    </div>
+
+    <!-- TABS GitLab -->
+    <div class="tabs-container">
+      <div class="tabs-nav">
+        <button type="button" class="tab-btn active" onclick="switchTab(event,'g1')">
+          <i data-lucide="git-branch"></i> Estrategia de Ramas <span class="tab-count">2</span>
+        </button>
+        <button type="button" class="tab-btn" onclick="switchTab(event,'g2')">
+          <i data-lucide="folder-open"></i> Reestructuración Delphi <span class="tab-count">2</span>
+        </button>
+      </div>
+
+      <!-- ── TAB G1: Estrategia de Ramas ── -->
+      <div id="g1" class="tab-panel active">
+        <div class="theme-header">
+          <div class="theme-header-left">
+            <div class="theme-number">#1</div>
+            <div>
+              <div class="theme-title">Estrategia de Ramas</div>
+              <div class="theme-desc">Cuatro ramas con roles fijos. El código fluye en un solo sentido: rama de desarrollador → testing → master. La rama de versión estable anterior nunca se borra — es el punto de rollback.</div>
+            </div>
+          </div>
+          <div class="theme-stat-box">
+            <div class="big">4</div>
+            <div class="label">Ramas</div>
+            <div class="sub">roles fijos</div>
+          </div>
+        </div>
+        <div class="key-points">
+          <div class="key-points-title">Cómo funciona el flujo de ramas</div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div><strong>Rama de desarrollador</strong> (ej. <code>dev/exequiel</code> o <code>feature/tarea-519</code>): cada desarrollador trabaja en su propia rama. Nadie toca el código de otro sin coordinación</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>Para integrar cambios, el desarrollador abre un <strong>Pull Request a <code>testing</code></strong>. Otra persona del equipo revisa el código, verifica criterios de aceptación y aprueba — o rechaza con comentario</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>La rama <strong><code>testing</code></strong> es el entorno de validación: se compila el ejecutable y se ejecuta la prueba de caja negra sobre la BDD de testing exclusiva. Solo si pasa, el PR avanza</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>La rama <strong><code>master</code></strong> es la versión teóricamente estable para producción. Solo recibe merges aprobados desde <code>testing</code>. Nunca recibe pushes directos</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>La rama <strong><code>stable-anterior</code></strong> conserva la versión anterior a cada release. Ante cualquier falla crítica en producción, es el punto de rollback inmediato — sin buscar backups ni reconstruir estados</div>
+          </div>
+        </div>
+        <div class="instructivos-grid">
+          <div class="instr-card">
+            <div class="instr-card-header">
+              <span class="instr-code-badge">GIT_001</span>
+              <div class="instr-title">Migrar a GitLab y configurar las 4 ramas</div>
+            </div>
+            <div class="instr-card-body">
+              <div class="instr-trigger">
+                <i data-lucide="zap"></i>
+                <div><strong>Trigger:</strong> "¿Cómo arrancamos con GitLab desde cero?"</div>
+              </div>
+              <div class="instr-steps-title">Pasos clave</div>
+              <ol class="instr-steps">
+                <li><span class="step-num">1</span>Identificar la versión más estable del código actual (resultado de la auditoría funcional del Tab 5 del Informe) y usarla como punto de partida del repositorio</li>
+                <li><span class="step-num">2</span>Crear el repositorio en GitLab y hacer el primer push del código estable a <code>master</code></li>
+                <li><span class="step-num">3</span>Crear las ramas <code>testing</code> y <code>stable-anterior</code> a partir de <code>master</code>. Proteger <code>master</code> en GitLab para que rechace pushes directos y requiera PR aprobado</li>
+                <li><span class="step-num">4</span>Cada desarrollador crea su rama personal desde <code>testing</code> y confirma que puede clonar, compilar y correr el proyecto sin pasos extras</li>
+              </ol>
+              <div class="instr-warn">
+                <i data-lucide="alert-circle"></i>
+                <div><strong>Atención:</strong> No subir a GitLab código que no compila o que tiene dependencias hardcodeadas sin documentar. El primer commit debe ser el mejor punto de partida disponible, no el último estado del repositorio local.</div>
+              </div>
+            </div>
+            <div class="instr-card-footer">
+              <span class="instr-priority alta">Prioridad Alta</span>
+              <span class="instr-proc-ref"><i data-lucide="link"></i> Paso a paso: setup inicial GitLab</span>
+            </div>
+          </div>
+          <div class="instr-card">
+            <div class="instr-card-header">
+              <span class="instr-code-badge">GIT_002</span>
+              <div class="instr-title">Flujo diario de trabajo con ramas</div>
+            </div>
+            <div class="instr-card-body">
+              <div class="instr-trigger">
+                <i data-lucide="zap"></i>
+                <div><strong>Trigger:</strong> "Voy a empezar a trabajar en la tarea X — ¿cómo lo hago con GitLab?"</div>
+              </div>
+              <div class="instr-steps-title">Pasos clave</div>
+              <ol class="instr-steps">
+                <li><span class="step-num">1</span>Crear una rama desde <code>testing</code> con un nombre descriptivo (<code>dev/nombre</code> o <code>feature/id-tarea</code>) y trabajar localmente sobre esa rama</li>
+                <li><span class="step-num">2</span>Al terminar la tarea, abrir un Pull Request hacia <code>testing</code> en GitLab con descripción del cambio y referencia a la tarea en Nexus</li>
+                <li><span class="step-num">3</span>Otra persona del equipo revisa el PR (ver REV_001). Si hay cambios pedidos, se incorporan en la misma rama antes de pedir una nueva revisión</li>
+                <li><span class="step-num">4</span>Con el PR aprobado, se ejecuta la prueba de caja negra (REV_002). Si pasa, el PR se mergea a <code>testing</code>. Al cierre del sprint, el responsable mergea <code>testing</code> a <code>master</code> y actualiza <code>stable-anterior</code></li>
+              </ol>
+              <div class="instr-escalate">
+                <i data-lucide="arrow-up-right"></i>
+                <div><strong>Escalar si:</strong> Un merge genera conflictos entre ramas de distintos desarrolladores — resolver en conjunto antes de mergear, nunca forzar un merge con conflictos sin resolver.</div>
+              </div>
+            </div>
+            <div class="instr-card-footer">
+              <span class="instr-priority alta">Prioridad Alta</span>
+              <span class="instr-proc-ref"><i data-lucide="link"></i> Flujo de Git para el equipo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── TAB G2: Reestructuración Delphi ── -->
+      <div id="g2" class="tab-panel">
+        <div class="theme-header">
+          <div class="theme-header-left">
+            <div class="theme-number">#2</div>
+            <div>
+              <div class="theme-title">Reestructuración del Proyecto Delphi</div>
+              <div class="theme-desc">El entorno actual requiere configuración manual de rutas, dependencias y variables para poder compilar. El objetivo es que clonar el repositorio sea suficiente para empezar a trabajar.</div>
+            </div>
+          </div>
+          <div class="theme-stat-box">
+            <div class="big">1 clic</div>
+            <div class="label">Objetivo</div>
+            <div class="sub">Clonar y compilar</div>
+          </div>
+        </div>
+        <div class="key-points">
+          <div class="key-points-title">Qué hay que resolver y por qué</div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>El estado actual: configurar el entorno de Delphi requiere pasos manuales con dependencias, rutas absolutas y assets dispersos. La curva de aprendizaje es <strong>innecesariamente larga</strong> y genera fricción en cada incorporación o reinstalación</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>El objetivo: que cualquier desarrollador pueda hacer <code>git clone</code>, abrir el proyecto en Delphi y compilar el módulo de entrada <strong>sin ningún paso de configuración adicional</strong></div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>La reestructuración incluye reorganizar la <strong>estructura de carpetas</strong>, centralizar los assets, corregir rutas relativas en el archivo DPR y documentar las únicas dependencias externas que no se pueden incluir en el repo</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>El trabajo se hace en un <strong>entorno aislado</strong> — sin afectar el trabajo diario del equipo. Se opera en paralelo hasta que el entorno reestructurado pasa las mismas pruebas que el entorno original</div>
+          </div>
+          <div class="key-point">
+            <div class="key-point-dot"></div>
+            <div>Una vez validado, el entorno reestructurado reemplaza al original y se convierte en el <strong>estado inicial del repositorio GitLab</strong>. Lo que no funciona en este entorno no se sube</div>
+          </div>
+        </div>
+        <div class="instructivos-grid">
+          <div class="instr-card">
+            <div class="instr-card-header">
+              <span class="instr-code-badge">GIT_003</span>
+              <div class="instr-title">Auditar y reorganizar la estructura del proyecto</div>
+            </div>
+            <div class="instr-card-body">
+              <div class="instr-trigger">
+                <i data-lucide="zap"></i>
+                <div><strong>Trigger:</strong> "¿Por dónde empezamos para lograr que el proyecto compile desde cero?"</div>
+              </div>
+              <div class="instr-steps-title">Pasos clave</div>
+              <ol class="instr-steps">
+                <li><span class="step-num">1</span>En una máquina limpia (sin el entorno configurado), intentar compilar el proyecto tal como está. Documentar cada error, dependencia faltante y ruta hardcodeada</li>
+                <li><span class="step-num">2</span>Reorganizar la estructura de carpetas: agrupar assets por módulo, mover dependencias locales a una carpeta <code>/lib</code> dentro del repo, corregir todas las rutas relativas en el DPR</li>
+                <li><span class="step-num">3</span>Para cada dependencia externa que no puede ir en el repo (instaladores, librerías de terceros), documentar exactamente qué es, de dónde se obtiene y cómo se instala</li>
+                <li><span class="step-num">4</span>Repetir la compilación en la máquina limpia con la nueva estructura hasta que compile sin errores</li>
+              </ol>
+              <div class="instr-warn">
+                <i data-lucide="alert-circle"></i>
+                <div><strong>Atención:</strong> No hacer este trabajo sobre el entorno de producción. Todo el proceso ocurre en una copia del repositorio en un entorno aislado — el equipo sigue trabajando sobre el entorno original sin interrupciones.</div>
+              </div>
+            </div>
+            <div class="instr-card-footer">
+              <span class="instr-priority alta">Prioridad Alta</span>
+              <span class="instr-proc-ref"><i data-lucide="link"></i> Registro de dependencias del proyecto</span>
+            </div>
+          </div>
+          <div class="instr-card">
+            <div class="instr-card-header">
+              <span class="instr-code-badge">GIT_004</span>
+              <div class="instr-title">Verificar el "objetivo de un clic" en entorno limpio</div>
+            </div>
+            <div class="instr-card-body">
+              <div class="instr-trigger">
+                <i data-lucide="zap"></i>
+                <div><strong>Trigger:</strong> "¿Cómo confirmamos que la reestructuración alcanzó el objetivo?"</div>
+              </div>
+              <div class="instr-steps-title">Pasos clave</div>
+              <ol class="instr-steps">
+                <li><span class="step-num">1</span>Asignar a alguien que no participó de la reestructuración para que haga el proceso completo desde cero: clonar el repo, instalar dependencias documentadas y compilar</li>
+                <li><span class="step-num">2</span>Esa persona documenta exactamente cuántos pasos extras necesitó hacer que no estaban documentados — cada paso extra es un defecto a corregir</li>
+                <li><span class="step-num">3</span>Corregir los defectos encontrados y repetir el proceso hasta que no haya pasos extras</li>
+                <li><span class="step-num">4</span>Una vez validado, usar este estado del repositorio como base del primer commit en GitLab y actualizar la documentación del onboarding del equipo</li>
+              </ol>
+              <div class="instr-escalate">
+                <i data-lucide="arrow-up-right"></i>
+                <div><strong>Escalar si:</strong> Hay dependencias que no pueden resolverse sin acceso a sistemas externos del cliente o del proveedor — identificar cuáles son y definir un workaround documentado antes de subir al repo.</div>
+              </div>
+            </div>
+            <div class="instr-card-footer">
+              <span class="instr-priority media">Prioridad Media</span>
+              <span class="instr-proc-ref"><i data-lucide="link"></i> Checklist de validación del entorno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tabs-container gitlab -->
+
+    <!-- RECOMENDACIONES GitLab -->
+    <section class="recs-section">
+      <h2 class="section-title"><i data-lucide="lightbulb"></i> Pasos concretos para arrancar</h2>
+      <div class="recs-grid">
+        <div class="rec-card c1">
+          <div class="rec-card-icon"><i data-lucide="git-branch"></i></div>
+          <h4>Identificar la versión estable hoy</h4>
+          <p>Antes de migrar a GitLab, auditar el código actual e identificar el punto de partida más sólido disponible (ver Tab 5 — Versión Estable Base en el Informe). Subir a GitLab una versión que no compila o que nadie sabe en qué estado está invalida el proceso desde el día uno.</p>
+        </div>
+        <div class="rec-card c2">
+          <div class="rec-card-icon"><i data-lucide="folder-open"></i></div>
+          <h4>Reestructurar antes de migrar</h4>
+          <p>La reestructuración del DPR y las dependencias debería ocurrir antes o en paralelo a la migración, en un entorno aislado. El primer commit en GitLab debería ser ya el proyecto con el "objetivo de un clic" alcanzado — no el proyecto tal como está hoy.</p>
+        </div>
+        <div class="rec-card c4">
+          <div class="rec-card-icon"><i data-lucide="users"></i></div>
+          <h4>Presentar GitLab a la dirección</h4>
+          <p>Plantear a Pablo y Adrián tres cosas concretas: la implementación de GitLab, el permiso para reordenar las dependencias en un entorno de pruebas sin afectar el trabajo diario, y la auditoría de la versión estable como nuevo punto de partida. No es una propuesta abstracta — es un pedido específico con alcance acotado.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <footer class="page-footer">
+    <span>VS Ingeniería en Sistemas</span>
+    <span class="footer-sep">·</span>
+    <span>Control de Versiones con GitLab</span>
+    <span class="footer-sep">·</span>
+    <span>Abril 2026</span>
+    <span class="footer-sep">·</span>
+    <span>Uso Interno</span>
+  </footer>
+  </div><!-- /page-gitlab -->
 
   <!-- ══════════════════════════════════════ PAGE EJEMPLOS ══════════════════════════════════════ -->
   <div id="page-ejemplos">

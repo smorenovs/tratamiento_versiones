@@ -28,7 +28,7 @@ function switchTab(e, id) {
 }
 
 /* ── Page switcher ──────────────────────────────────────────── */
-const PAGE_MAP = { informe: 'translateX(0)', ejemplos: 'translateX(-100%)', priorizacion: 'translateX(-200%)' };
+const PAGE_MAP = { informe: 'translateX(0)', gitlab: 'translateX(-100%)', ejemplos: 'translateX(-200%)', priorizacion: 'translateX(-300%)' };
 document.querySelectorAll('.ps-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelector('.pages-row').style.transform =
