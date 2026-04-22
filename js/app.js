@@ -28,11 +28,11 @@ function switchTab(e, id) {
 }
 
 /* ── Page switcher ──────────────────────────────────────────── */
+const PAGE_MAP = { informe: 'translateX(0)', ejemplos: 'translateX(-100%)', priorizacion: 'translateX(-200%)' };
 document.querySelectorAll('.ps-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    const isEjemplos = btn.dataset.page === 'ejemplos';
     document.querySelector('.pages-row').style.transform =
-      isEjemplos ? 'translateX(-100%)' : 'translateX(0)';
+      PAGE_MAP[btn.dataset.page] || 'translateX(0)';
     document.querySelectorAll('.ps-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
   });

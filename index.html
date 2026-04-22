@@ -341,7 +341,7 @@
       display: flex; width: 100%;
       transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    #page-informe, #page-ejemplos { min-width: 100%; flex-shrink: 0; }
+    #page-informe, #page-ejemplos, #page-priorizacion { min-width: 100%; flex-shrink: 0; }
 
     /* === 16. MODAL === */
     .modal-overlay {
@@ -539,6 +539,82 @@
     .task-table tr[data-task-id] { cursor: pointer; }
     .task-table tr[data-task-id]:hover td { background: rgba(77,200,232,0.07); }
     .task-group-sep td { padding: 5px 11px 3px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--vs-gray-dark); background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.06); }
+    /* === 20. PÁGINA PRIORIZACIÓN === */
+    .criterio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 24px 0; }
+    @media (max-width: 768px) { .criterio-grid { grid-template-columns: 1fr; } }
+    .criterio-card { background: var(--layer-2); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 20px; }
+    .criterio-card.c-impacto  { border-color: rgba(232,100,77,0.3); }
+    .criterio-card.c-estado   { border-color: rgba(77,200,232,0.2); }
+    .criterio-card.c-esfuerzo { border-color: rgba(39,174,96,0.2); }
+    .criterio-card.c-presion  { border-color: rgba(255,200,80,0.22); }
+    .criterio-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .criterio-num { width: 24px; height: 24px; border-radius: 50%; background: rgba(255,255,255,0.07); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; color: var(--vs-cyan); font-family: var(--font-code); flex-shrink: 0; }
+    .criterio-name { font-weight: 700; font-size: 14px; color: var(--vs-gray-light); flex: 1; }
+    .criterio-range { font-size: 11px; font-family: var(--font-code); font-weight: 700; color: var(--vs-gray-dark); background: rgba(255,255,255,0.05); padding: 2px 7px; border-radius: 4px; }
+    .criterio-question { font-size: 12px; color: var(--vs-gray-dark); margin-bottom: 8px; font-style: italic; line-height: 1.5; }
+    .criterio-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 8px; }
+    .criterio-table tr { border-top: 1px solid rgba(255,255,255,0.04); }
+    .criterio-table td { padding: 6px 8px; vertical-align: top; color: var(--vs-gray-mid); line-height: 1.45; }
+    .criterio-table .cv { font-family: var(--font-code); font-weight: 800; color: var(--vs-cyan); width: 18px; text-align: center; }
+    .criterio-table .cl { font-weight: 600; width: 95px; color: var(--vs-gray-mid); white-space: nowrap; }
+    .criterio-note { font-size: 11px; color: var(--vs-gray-dark); margin-top: 10px; padding: 7px 10px; background: rgba(255,255,255,0.03); border-radius: 6px; line-height: 1.45; }
+    .score-ref-wrap { margin: 20px 0; }
+    .score-ref-title { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--vs-gray-dark); margin-bottom: 8px; }
+    .score-ref-grid { display: flex; flex-direction: column; gap: 4px; }
+    .sref-row { display: flex; align-items: center; gap: 12px; padding: 8px 14px; border-radius: 7px; }
+    .sref-range { font-family: var(--font-code); font-weight: 800; font-size: 13px; color: var(--vs-gray-light); min-width: 36px; }
+    .sref-label { font-size: 12.5px; color: var(--vs-gray-mid); }
+    .sref-max  { background: rgba(77,200,232,0.10); }
+    .sref-high { background: rgba(39,174,96,0.09); }
+    .sref-med  { background: rgba(255,200,80,0.07); }
+    .sref-low  { background: rgba(255,140,0,0.07); }
+    .sref-min  { background: rgba(200,80,80,0.07); }
+    .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 20px 0; }
+    @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } }
+    .comp-col { background: var(--layer-2); border-radius: 12px; padding: 20px; border: 1px solid rgba(255,255,255,0.07); }
+    .comp-a { border-color: rgba(255,200,80,0.18); }
+    .comp-b { border-color: rgba(77,200,232,0.18); }
+    .comp-col-title { font-weight: 700; font-size: 13.5px; color: var(--vs-gray-light); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .comp-section { margin-top: 14px; }
+    .comp-section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(39,174,96,0.7); margin-bottom: 7px; }
+    .comp-section-label.comp-warn { color: rgba(255,140,0,0.65); }
+    .comp-list { padding-left: 14px; margin: 0; }
+    .comp-list li { font-size: 12px; color: var(--vs-gray-mid); margin-bottom: 6px; line-height: 1.5; }
+    .comp-diagnosis { background: rgba(77,200,232,0.05); border: 1px solid rgba(77,200,232,0.14); border-radius: 10px; padding: 16px 20px; margin-top: 20px; }
+    .comp-diagnosis-title { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 13px; color: var(--vs-cyan); margin-bottom: 10px; }
+    .comp-diagnosis p { font-size: 12.5px; color: var(--vs-gray-mid); margin: 0 0 8px; line-height: 1.6; }
+    .comp-diagnosis p:last-child { margin-bottom: 0; }
+    .poc-summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 20px 0; }
+    @media (max-width: 700px) { .poc-summary-grid { grid-template-columns: repeat(2, 1fr); } }
+    .poc-summary-card { background: var(--layer-2); border-radius: 10px; padding: 14px 10px; text-align: center; border: 1px solid rgba(255,255,255,0.07); }
+    .poc-summary-card.pscard-ok   { border-color: rgba(39,174,96,0.25); }
+    .poc-summary-card.pscard-warn { border-color: rgba(255,140,0,0.25); }
+    .pscard-icon { margin-bottom: 4px; }
+    .pscard-icon svg { width: 15px; height: 15px; }
+    .poc-summary-card.pscard-ok   .pscard-icon { color: rgba(39,174,96,0.7); }
+    .poc-summary-card.pscard-warn .pscard-icon { color: rgba(255,140,0,0.7); }
+    .pscard-val { font-size: 22px; font-weight: 800; font-family: var(--font-display); color: var(--vs-gray-light); }
+    .poc-summary-card.pscard-ok   .pscard-val { color: rgba(39,174,96,0.9); }
+    .poc-summary-card.pscard-warn .pscard-val { color: rgba(255,140,0,0.9); }
+    .pscard-label { font-size: 11px; color: var(--vs-gray-dark); margin-top: 3px; }
+    .poc-table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 8px; border: 1px solid rgba(255,255,255,0.07); }
+    .poc-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+    .poc-table th { text-align: left; padding: 9px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--vs-gray-dark); background: rgba(255,255,255,0.025); border-bottom: 1px solid rgba(255,255,255,0.07); white-space: nowrap; }
+    .poc-table td { padding: 7px 12px; color: var(--vs-gray-mid); border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: middle; }
+    .poc-table tr:last-child td { border-bottom: none; }
+    .poc-table td:nth-child(2), .poc-table td:nth-child(3), .poc-table td:nth-child(4), .poc-table td:nth-child(5) { text-align: center; font-family: var(--font-code); font-size: 12px; }
+    .poc-table td:nth-child(6) { text-align: center; font-family: var(--font-code); font-weight: 700; }
+    .pd-zero       { color: var(--vs-gray-dark) !important; }
+    .pd-neg-mild   { color: rgba(77,200,232,0.55) !important; }
+    .pd-neg        { color: rgba(77,200,232,0.85) !important; }
+    .pd-neg-strong { color: var(--vs-cyan) !important; }
+    .pd-pos-mild   { color: rgba(255,180,80,0.65) !important; }
+    .pd-pos        { color: rgba(255,140,0,0.9) !important; }
+    .pd-pos-strong { color: #FF9F43 !important; }
+    .poc-conclusion { background: var(--layer-2); border: 1px solid rgba(77,200,232,0.12); border-radius: 10px; padding: 16px 20px; margin-top: 8px; }
+    .poc-conc-title { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 13px; color: var(--vs-cyan); margin-bottom: 10px; }
+    .poc-conclusion p { font-size: 12.5px; color: var(--vs-gray-mid); margin: 0 0 8px; line-height: 1.6; }
+    .poc-conclusion p:last-child { margin-bottom: 0; }
   </style>
 </head>
 <body>
@@ -581,6 +657,7 @@
     <div class="page-switcher">
       <button type="button" class="ps-btn active" data-page="informe">Informe</button>
       <button type="button" class="ps-btn" data-page="ejemplos">Ejemplos</button>
+      <button type="button" class="ps-btn" data-page="priorizacion">Priorización</button>
     </div>
   </header>
 
@@ -1516,6 +1593,336 @@
       <span>Abril 2026</span>
     </footer>
   </div><!-- /page-ejemplos -->
+
+  <!-- ══════════════════════════════════════ PAGE PRIORIZACIÓN ══════════════════════════════════════ -->
+  <div id="page-priorizacion">
+    <main class="page-wrapper">
+
+      <!-- HERO PRIORIZACIÓN -->
+      <div class="ejemplos-hero">
+        <div class="eyebrow"><i data-lucide="bar-chart-2"></i> Modelo de Priorización</div>
+        <h2>Backlog ordenado con <em>criterios transparentes</em></h2>
+        <p>Modelo de cuatro criterios para priorizar el backlog de Zafiro de forma auditable, reproducible y transferible. Desarrollado y validado sobre las 28 tareas activas del módulo Compras.</p>
+        <div class="hero-chips">
+          <span class="hero-chip"><i data-lucide="sliders-horizontal"></i> 4 Criterios</span>
+          <span class="hero-chip"><i data-lucide="hash"></i> Score máximo: 10</span>
+          <span class="hero-chip"><i data-lucide="clock"></i> 45 min de calibración</span>
+          <span class="hero-chip"><i data-lucide="check-circle-2"></i> Validado con 28 tareas</span>
+        </div>
+      </div>
+
+      <!-- KPI GRID PRIORIZACIÓN -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-icon"><i data-lucide="sliders-horizontal"></i></div>
+          <div class="kpi-label">Criterios del Modelo</div>
+          <div class="kpi-value">4</div>
+          <div class="kpi-sub">Impacto · Estado · Esfuerzo · Presión <span class="kpi-badge neutral">Suma simple</span></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon"><i data-lucide="calculator"></i></div>
+          <div class="kpi-label">Score Máximo</div>
+          <div class="kpi-value">10</div>
+          <div class="kpi-sub">Mínimo posible: 2 <span class="kpi-badge neutral">Sin ponderación</span></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon"><i data-lucide="clock"></i></div>
+          <div class="kpi-label">Calibración Inicial</div>
+          <div class="kpi-value">45 min</div>
+          <div class="kpi-sub">Una sola vez, con todo el equipo <span class="kpi-badge warn">Costo único</span></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon"><i data-lucide="repeat"></i></div>
+          <div class="kpi-label">Revisión por Sprint</div>
+          <div class="kpi-value">15 min</div>
+          <div class="kpi-sub">Solo las tareas del tope del backlog <span class="kpi-badge neutral">Mantenimiento</span></div>
+        </div>
+      </div>
+
+      <!-- TABS PRIORIZACIÓN -->
+      <div class="tabs-container">
+        <div class="tabs-nav">
+          <button type="button" class="tab-btn active" onclick="switchTab(event,'p1')">
+            <i data-lucide="sliders-horizontal"></i> El Modelo
+          </button>
+          <button type="button" class="tab-btn" onclick="switchTab(event,'p2')">
+            <i data-lucide="git-compare-arrows"></i> Por qué documentarlo
+          </button>
+          <button type="button" class="tab-btn" onclick="switchTab(event,'p3')">
+            <i data-lucide="clipboard-check"></i> Prueba de Concepto
+          </button>
+        </div>
+
+        <!-- ── TAB P1: El Modelo ── -->
+        <div id="p1" class="tab-panel active">
+          <div class="theme-header">
+            <div class="theme-header-left">
+              <div class="theme-number">#1</div>
+              <div>
+                <div class="theme-title">Cuatro criterios para un ordenamiento auditable</div>
+                <div class="theme-desc">Cada tarea recibe un número en cuatro dimensiones. La suma define el orden del backlog. Mayor score = mayor prioridad.</div>
+              </div>
+            </div>
+            <div class="theme-stat-box">
+              <div class="big" style="font-size:16px;letter-spacing:-0.5px">I + Es + Ef + P</div>
+              <div class="label">Fórmula del Score</div>
+              <div class="sub">Rango: 2 – 10</div>
+            </div>
+          </div>
+
+          <div class="criterio-grid">
+
+            <div class="criterio-card c-impacto">
+              <div class="criterio-header">
+                <span class="criterio-num">1</span>
+                <span class="criterio-name">Impacto</span>
+                <span class="criterio-range">1 – 3</span>
+              </div>
+              <div class="criterio-question">¿Qué consecuencia real tiene para el negocio si esta tarea no se resuelve en el próximo sprint?</div>
+              <table class="criterio-table">
+                <tr><td class="cv">3</td><td class="cl">Alto</td><td>Impide cerrar la contabilidad, genera riesgo AFIP, detiene un flujo diario, o implica dinero mal registrado que alguien tiene que corregir manualmente</td></tr>
+                <tr><td class="cv">2</td><td class="cl">Medio</td><td>Genera workaround frecuente, reporte incompleto consultado regularmente, o incomoda a usuarios recurrentes — sin detener operaciones</td></tr>
+                <tr><td class="cv">1</td><td class="cl">Bajo</td><td>Mejora nueva, ajuste cosmético, o funcionalidad que nadie reclamó en los últimos 30 días</td></tr>
+              </table>
+              <div class="criterio-note">⚠ El único criterio que requiere juicio. Lo define el PO o quien tenga visión de negocio. Los otros tres son mecánicos.</div>
+            </div>
+
+            <div class="criterio-card c-estado">
+              <div class="criterio-header">
+                <span class="criterio-num">2</span>
+                <span class="criterio-name">Estado de ejecución</span>
+                <span class="criterio-range">0 – 3</span>
+              </div>
+              <div class="criterio-question">¿Puede avanzar en el próximo sprint, o tiene un impedimento?</div>
+              <table class="criterio-table">
+                <tr><td class="cv">3</td><td class="cl">Activo</td><td>Pendiente, En curso o Backlog sin impedimento. Se puede tomar y trabajar hoy.</td></tr>
+                <tr><td class="cv">2</td><td class="cl">Desbloqueable</td><td>Bloqueada, pero el equipo sabe qué acción la desbloquea y puede hacerla en este sprint.</td></tr>
+                <tr><td class="cv">1</td><td class="cl">Bloq. pasivo</td><td>Bloqueada por algo externo al equipo: respuesta de proveedor, decisión pendiente, dependencia sin fecha.</td></tr>
+                <tr><td class="cv">0</td><td class="cl">Pausado</td><td>Pausada por decisión. No hay plan de retomar en el corto plazo.</td></tr>
+              </table>
+            </div>
+
+            <div class="criterio-card c-esfuerzo">
+              <div class="criterio-header">
+                <span class="criterio-num">3</span>
+                <span class="criterio-name">Esfuerzo</span>
+                <span class="criterio-range">1 – 3</span>
+              </div>
+              <div class="criterio-question">¿Cuánto cuesta hacer la tarea? (inverso de complejidad — los quick wins suben)</div>
+              <table class="criterio-table">
+                <tr><td class="cv">3</td><td class="cl">Baja</td><td>Cambio acotado, bien delimitado, estimación &lt; 1 día. Quick win.</td></tr>
+                <tr><td class="cv">2</td><td class="cl">Media</td><td>Requiere análisis, puede involucrar más de un componente o módulo.</td></tr>
+                <tr><td class="cv">1</td><td class="cl">Alta</td><td>Feature amplia, integración compleja, estimación de varios días o semanas.</td></tr>
+              </table>
+              <div class="criterio-note">✓ Traducción directa del campo Complejidad en Nexus. Ningún juicio adicional requerido.</div>
+            </div>
+
+            <div class="criterio-card c-presion">
+              <div class="criterio-header">
+                <span class="criterio-num">4</span>
+                <span class="criterio-name">Presión cliente</span>
+                <span class="criterio-range">0 – 1</span>
+              </div>
+              <div class="criterio-question">¿Algún cliente mencionó esta tarea en los últimos 30 días?</div>
+              <table class="criterio-table">
+                <tr><td class="cv">1</td><td class="cl">Sí</td><td>Correo, llamada, ticket de soporte o mención en reunión registrada en los últimos 30 días.</td></tr>
+                <tr><td class="cv">0</td><td class="cl">No</td><td>Nadie la reclamó recientemente. Ante la duda → 0.</td></tr>
+              </table>
+              <div class="criterio-note">Peso mínimo: 1 punto máximo. Función: desempatar. El modelo no puede depender de los reclamos — hay tareas críticas que nadie reclama porque el problema todavía no apareció.</div>
+            </div>
+
+          </div><!-- /criterio-grid -->
+
+          <div class="score-ref-wrap">
+            <div class="score-ref-title">Referencia de scores</div>
+            <div class="score-ref-grid">
+              <div class="sref-row sref-max"><span class="sref-range">9 – 10</span><span class="sref-label">Prioridad máxima — impacto alto, rápida de resolver, sin impedimentos</span></div>
+              <div class="sref-row sref-high"><span class="sref-range">7 – 8</span><span class="sref-label">Alta prioridad — candidata al sprint actual</span></div>
+              <div class="sref-row sref-med"><span class="sref-range">5 – 6</span><span class="sref-label">Prioridad media — entra si hay capacidad o si se desbloquea</span></div>
+              <div class="sref-row sref-low"><span class="sref-range">3 – 4</span><span class="sref-label">Baja prioridad — próximos sprints o requiere revisión de estado</span></div>
+              <div class="sref-row sref-min"><span class="sref-range">2</span><span class="sref-label">No entra hasta que cambie el estado o el impacto</span></div>
+            </div>
+          </div>
+
+        </div><!-- /tab p1 -->
+
+        <!-- ── TAB P2: Por qué documentarlo ── -->
+        <div id="p2" class="tab-panel">
+          <div class="theme-header">
+            <div class="theme-header-left">
+              <div class="theme-number">#2</div>
+              <div>
+                <div class="theme-title">El equipo ya prioriza bien — pero solo él puede explicarlo</div>
+                <div class="theme-desc">Comparación entre el modelo implícito del equipo y un modelo basado en criterios formales. Ninguno es suficiente por sí solo.</div>
+              </div>
+            </div>
+            <div class="theme-stat-box">
+              <div class="big">A vs B</div>
+              <div class="label">Dos modelos</div>
+              <div class="sub">Equipo · Criterios</div>
+            </div>
+          </div>
+
+          <div class="comp-grid">
+            <div class="comp-col comp-a">
+              <div class="comp-col-title">Modelo A — Ordenamiento del equipo</div>
+              <div class="comp-section">
+                <div class="comp-section-label">Ventajas</div>
+                <ul class="comp-list">
+                  <li>Refleja conocimiento real del producto: severidad, urgencia de clientes y capacidad de ejecución son evaluadas por quienes conocen el sistema</li>
+                  <li>Incorpora clustering por afinidad funcional de forma natural, reduciendo el costo de arranque en el sprint</li>
+                  <li>Más adaptable: puede cambiar ante una llamada del cliente sin necesidad de recalcular un score</li>
+                  <li>Históricamente válido: el producto funciona con este criterio hoy</li>
+                </ul>
+              </div>
+              <div class="comp-section">
+                <div class="comp-section-label comp-warn">Desventajas</div>
+                <ul class="comp-list">
+                  <li>No reproducible: dos personas del equipo pueden ordenar el mismo backlog de forma completamente distinta</li>
+                  <li>No auditable: no hay respuesta documentada a "¿por qué esta tarea fue postergada dos sprints?"</li>
+                  <li>Propenso a sesgos no detectados: tareas urgentes pueden quedar rezagadas porque nadie se quejó todavía</li>
+                  <li>No escala: con una incorporación o cambio de rol, el conocimiento implícito se degrada</li>
+                </ul>
+              </div>
+            </div>
+            <div class="comp-col comp-b">
+              <div class="comp-col-title">Modelo B — Criterios formales (propuesto)</div>
+              <div class="comp-section">
+                <div class="comp-section-label">Ventajas</div>
+                <ul class="comp-list">
+                  <li>Reproducible y auditable: dado el mismo backlog y los mismos criterios, cualquier miembro del equipo llega al mismo resultado</li>
+                  <li>Explicable hacia arriba: permite justificar a dirección o clientes por qué una tarea tiene la prioridad que tiene</li>
+                  <li>Detecta sesgos: fuerza a evaluar tareas que podrían postergarse por inercia o por falta de reclamante</li>
+                  <li>Transferible: un integrante nuevo puede aplicar el modelo desde el día uno</li>
+                </ul>
+              </div>
+              <div class="comp-section">
+                <div class="comp-section-label comp-warn">Desventajas</div>
+                <ul class="comp-list">
+                  <li>Requiere calibración del criterio Impacto con el equipo — sin ella, los scores no reflejan la realidad del producto</li>
+                  <li>No contempla clustering por defecto — puede intercalar tareas de contextos distintos aumentando el costo de cambio en el sprint</li>
+                  <li>Riesgo de falsa precisión si el Impacto se asigna mecánicamente sin conocimiento del negocio</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="comp-diagnosis">
+            <div class="comp-diagnosis-title"><i data-lucide="lightbulb"></i> Diagnóstico</div>
+            <p>Ninguno de los dos modelos es suficiente por sí solo. El Modelo A tiene el <strong>contenido correcto pero sin forma</strong> — sabe lo que importa pero no puede explicarlo ni transferirlo. El Modelo B tiene la <strong>forma correcta pero con criterios débiles</strong> si no se calibran con el equipo.</p>
+            <p>El modelo propuesto conserva la estructura explícita del B, pero reemplaza los criterios por los que realmente usa el A: impacto operativo real, estado de ejecución diferenciado entre bloqueado activo y pasivo, y clustering como regla de desempate en lugar de criterio de ordenamiento.</p>
+            <p>El riesgo del Modelo A no es que esté equivocado hoy. Es que deja de funcionar en el momento en que el equipo crece, cambia, o tiene que rendirle cuentas a alguien externo.</p>
+          </div>
+
+        </div><!-- /tab p2 -->
+
+        <!-- ── TAB P3: Prueba de Concepto ── -->
+        <div id="p3" class="tab-panel">
+          <div class="theme-header">
+            <div class="theme-header-left">
+              <div class="theme-number">#3</div>
+              <div>
+                <div class="theme-title">Calibración sobre las 28 tareas del módulo Compras</div>
+                <div class="theme-desc">El equipo aplicó el modelo de forma independiente y comparó los resultados con un scoring de referencia. Toda la divergencia proviene de un solo criterio.</div>
+              </div>
+            </div>
+            <div class="theme-stat-box">
+              <div class="big">39%</div>
+              <div class="label">Convergencia inicial</div>
+              <div class="sub">Solo en Impacto</div>
+            </div>
+          </div>
+
+          <div class="poc-summary-grid">
+            <div class="poc-summary-card pscard-ok">
+              <div class="pscard-icon"><i data-lucide="check-circle-2"></i></div>
+              <div class="pscard-val">100%</div>
+              <div class="pscard-label">Esfuerzo convergió</div>
+            </div>
+            <div class="poc-summary-card pscard-ok">
+              <div class="pscard-icon"><i data-lucide="check-circle-2"></i></div>
+              <div class="pscard-val">93%</div>
+              <div class="pscard-label">Estado convergió</div>
+            </div>
+            <div class="poc-summary-card pscard-warn">
+              <div class="pscard-icon"><i data-lucide="alert-circle"></i></div>
+              <div class="pscard-val">39%</div>
+              <div class="pscard-label">Impacto convergió</div>
+            </div>
+            <div class="poc-summary-card pscard-ok">
+              <div class="pscard-icon"><i data-lucide="check-circle-2"></i></div>
+              <div class="pscard-val">96%</div>
+              <div class="pscard-label">Presión convergió</div>
+            </div>
+          </div>
+
+          <div class="poc-table-wrap">
+            <table class="poc-table">
+              <thead>
+                <tr>
+                  <th>Tarea</th>
+                  <th>Pos Equipo</th>
+                  <th>Score Equipo</th>
+                  <th>Pos Ref.</th>
+                  <th>Score Ref.</th>
+                  <th>Equipo − Ref.</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>T.348 Redondeo CC</td><td>1</td><td>10</td><td>1</td><td>9</td><td class="pd-zero">0</td></tr>
+                <tr><td>T.457 Error referencia comprobantes</td><td>2</td><td>9</td><td>10</td><td>7</td><td class="pd-neg">−8</td></tr>
+                <tr><td>T.468 SNC varias líneas mismo art.</td><td>3</td><td>9</td><td>13</td><td>7</td><td class="pd-neg">−10</td></tr>
+                <tr><td>T.476 ADM-0426_1 Resumen Comprob.</td><td>4</td><td>9</td><td>4</td><td>8</td><td class="pd-zero">0</td></tr>
+                <tr><td>T.380 NC en Reporte Saldos</td><td>5</td><td>9</td><td>16</td><td>7</td><td class="pd-neg-strong">−11</td></tr>
+                <tr><td>T.512 Bug al recuperar compra</td><td>6</td><td>9</td><td>7</td><td>8</td><td class="pd-neg-mild">−1</td></tr>
+                <tr><td>T.295 IVA Simplificado</td><td>7</td><td>8</td><td>6</td><td>8</td><td class="pd-pos-mild">+1</td></tr>
+                <tr><td>T.307 NC Proveedor a Bonos Dto.</td><td>8</td><td>8</td><td>9</td><td>8</td><td class="pd-neg-mild">−1</td></tr>
+                <tr><td>T.157 Saldo de Reportes incompleto</td><td>9</td><td>8</td><td>14</td><td>7</td><td class="pd-neg-mild">−5</td></tr>
+                <tr><td>T.484 ADM-0426_2 Solicitud NC</td><td>10</td><td>8</td><td>11</td><td>7</td><td class="pd-neg-mild">−1</td></tr>
+                <tr><td>T.518 Desvincular NCP presentación</td><td>11</td><td>8</td><td>12</td><td>7</td><td class="pd-neg-mild">−1</td></tr>
+                <tr><td>T.519 No permitir SNC en TE</td><td>12</td><td>8</td><td>5</td><td>8</td><td class="pd-pos">+7</td></tr>
+                <tr><td>T.67 Resumen Compras por Proveedor</td><td>13</td><td>7</td><td>18</td><td>6</td><td class="pd-neg-mild">−5</td></tr>
+                <tr><td>T.332 Guardar total previo comprob.</td><td>14</td><td>7</td><td>3</td><td>8</td><td class="pd-pos-strong">+11</td></tr>
+                <tr><td>T.329 No desactivan Proveedor/Org.</td><td>15</td><td>7</td><td>2</td><td>8</td><td class="pd-pos-strong">+13</td></tr>
+                <tr><td>T.219 Actualiz. Precios en Ingresos</td><td>16</td><td>6</td><td>22</td><td>6</td><td class="pd-neg">−6</td></tr>
+                <tr><td>T.224 Encargos de Productos</td><td>17</td><td>6</td><td>24</td><td>5</td><td class="pd-neg">−7</td></tr>
+                <tr><td>T.223 Pedidos Sud — WS</td><td>18</td><td>5</td><td>25</td><td>5</td><td class="pd-neg">−7</td></tr>
+                <tr><td>T.211 Bloqueo Pedido Repo Diaria</td><td>19</td><td>5</td><td>23</td><td>5</td><td class="pd-neg-mild">−4</td></tr>
+                <tr><td>T.213 Bloqueo Pedido — Gestión</td><td>20</td><td>5</td><td>19</td><td>6</td><td class="pd-pos-mild">+1</td></tr>
+                <tr><td>T.487 ADM-0426_3 Crédito fiscal med.</td><td>21</td><td>4</td><td>8</td><td>8</td><td class="pd-pos-strong">+13</td></tr>
+                <tr><td>T.200 Reporte Compras vs Facturas</td><td>22</td><td>4</td><td>15</td><td>7</td><td class="pd-pos">+7</td></tr>
+                <tr><td>T.225 Solicitud Productos en Falta</td><td>23</td><td>4</td><td>20</td><td>6</td><td class="pd-pos-mild">+3</td></tr>
+                <tr><td>T.226 Devolución por Sobrante</td><td>24</td><td>4</td><td>17</td><td>7</td><td class="pd-pos">+7</td></tr>
+                <tr><td>T.163 Agregar info para reporte</td><td>25</td><td>4</td><td>21</td><td>6</td><td class="pd-pos-mild">+4</td></tr>
+                <tr><td>T.289 Carrito de pedidos</td><td>26</td><td>4</td><td>27</td><td>5</td><td class="pd-neg-mild">−1</td></tr>
+                <tr><td>T.64 Compra Inteligente Multiproveedor</td><td>27</td><td>3</td><td>28</td><td>2</td><td class="pd-neg-mild">−1</td></tr>
+                <tr><td>T.222 Pedidos Monroe</td><td>28</td><td>3</td><td>26</td><td>5</td><td class="pd-pos-mild">+2</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="poc-conclusion">
+            <div class="poc-conc-title"><i data-lucide="bar-chart-2"></i> El modelo es replicable — con una condición</div>
+            <p>En los extremos del backlog los resultados son prácticamente idénticos: T.348 al tope en ambos ordenamientos, T.64 al fondo en ambos. Las diferencias de posición reflejan únicamente distintas asignaciones de <strong>Impacto</strong> — los criterios Esfuerzo y Presión convergieron al 100% y 96% respectivamente sin ninguna coordinación previa.</p>
+            <p>La sesión de calibración de 45 minutos tiene sentido exactamente porque Impacto es el único criterio que no se puede mecanizar. Una vez que el equipo acuerda qué nivel de consecuencia merece cada categoría, los scores se vuelven predecibles y reproducibles por cualquier miembro. <strong>La columna "Equipo − Ref." negativa</strong> (azul) indica tareas que el equipo valoró más alto que la referencia — generalmente por conocimiento del producto que la historia de usuario no documenta. <strong>Positiva</strong> (naranja) indica tareas que la referencia sobrestimó al no conocer el contexto real.</p>
+          </div>
+
+        </div><!-- /tab p3 -->
+
+      </div><!-- /tabs-container -->
+
+    </main>
+    <footer class="page-footer">
+      <span>VS Ingeniería en Sistemas</span>
+      <span>·</span>
+      <span>Modelo de Priorización</span>
+      <span>·</span>
+      <span>Abril 2026</span>
+      <span>·</span>
+      <span>Uso Interno</span>
+    </footer>
+  </div><!-- /page-priorizacion -->
+
   </div><!-- /pages-row -->
   </div><!-- /page-wrap -->
 
