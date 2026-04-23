@@ -223,8 +223,8 @@
     .instr-escalate i { color: var(--c-info); flex-shrink: 0; margin-top: 2px; width: 16px; height: 16px; }
     .instr-steps-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--vs-gray-dark); }
     .instr-steps { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .instr-steps li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--vs-gray-mid); line-height: 1.5; }
-    .step-num { width: 20px; height: 20px; background: var(--vs-teal); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; flex-shrink: 0; margin-top: 1px; }
+    .instr-steps li { display: block; position: relative; padding-left: 30px; font-size: 13px; color: var(--vs-gray-mid); line-height: 1.5; }
+    .step-num { position: absolute; left: 0; top: 1px; width: 20px; height: 20px; background: var(--vs-teal); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; }
     .instr-card-footer { padding: 12px 20px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; gap: 8px; }
     .instr-priority { font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: var(--radius-full); text-transform: uppercase; letter-spacing: 0.06em; }
     .instr-priority.alta   { background: var(--c-danger-bg);  color: var(--c-danger); }
@@ -790,8 +790,8 @@
               <ol class="instr-steps">
                 <li><span class="step-num">1</span><strong>Día 1 — Sprint Planning:</strong> revisar el backlog priorizado, seleccionar tareas según velocidad del equipo y registrar el sprint cerrado en Nexus</li>
                 <li><span class="step-num">2</span><strong>Días 2–9 — Desarrollo:</strong> ejecutar las tareas del sprint sin incorporar nuevas; cualquier pedido entrante se registra en el backlog y espera el próximo ciclo</li>
-                <li><span class="step-num">3</span><strong>Día 10 — Testing y revisión:</strong> validar que cada tarea cumple sus criterios de aceptación sobre la rama <code>testing</code>; si alguna no los cumple, se mueve al siguiente sprint. El merge a <code>master</code> requiere PR aprobado por otra persona del equipo</li>
-                <li><span class="step-num">4</span>Si la versión es aprobada (PR mergeado a <code>master</code>), pasarla a Soporte con las release notes generadas; Soporte coordina el deploy con el cliente</li>
+                <li><span class="step-num">3</span><strong>Día 10 — Testing y revisión:</strong> validar que cada tarea cumple sus criterios de aceptación sobre la rama <strong>testing</strong>; si alguna no los cumple, se mueve al siguiente sprint. El merge a master requiere PR aprobado por otra persona del equipo</li>
+                <li><span class="step-num">4</span>Si la versión es aprobada (PR mergeado a <strong>master</strong>), pasarla a Soporte con las release notes generadas; Soporte coordina el deploy con el cliente</li>
               </ol>
               <div class="instr-warn">
                 <i data-lucide="alert-circle"></i>
@@ -819,7 +819,7 @@
                 <li><span class="step-num">2</span>Publicar las notas en ZafiroDocs y enviar el pre-aviso al cliente con 2 días hábiles de anticipación</li>
                 <li><span class="step-num">3</span>Confirmar con el cliente la ventana de actualización; planificar el deploy para martes o miércoles como máximo</li>
                 <li><span class="step-num">4</span>Ejecutar el deploy (estructura BDD → contenido BDD → ejecutables) y validar funcionamiento con el cliente</li>
-                <li><span class="step-num">5</span>Mantener soporte activo las primeras 4 horas post-deploy; ante cualquier falla crítica, ejecutar rollback de inmediato</li>
+                <li><span class="step-num">5</span><strong>Mantener soporte activo las primeras 4 horas post-deploy; ante cualquier falla crítica, ejecutar rollback de inmediato</strong></li>
               </ol>
               <div class="instr-escalate">
                 <i data-lucide="arrow-up-right"></i>
@@ -1784,7 +1784,7 @@
       <div class="ejemplos-hero">
         <div class="eyebrow"><i data-lucide="flask-conical"></i> En la Práctica</div>
         <h2>Ejemplos del Proceso</h2>
-        <p>Transformación de requerimientos en casos de uso, agrupamiento del backlog activo y detalle de tareas por módulo.</p>
+        <p>Transformación de requerimientos en casos de uso, épicas que agrupan esos casos de uso, backlog activo por módulo y detalle de tareas por sprint.</p>
       </div>
 
       <!-- TABS EJEMPLOS -->
@@ -1794,9 +1794,12 @@
             <i data-lucide="git-commit-horizontal"></i> Casos de Uso
           </button>
           <button type="button" class="tab-btn" onclick="switchTab(event,'e2')">
-            <i data-lucide="layers"></i> Módulos y Sprints
+            <i data-lucide="folder-open"></i> Épica asociada
           </button>
           <button type="button" class="tab-btn" onclick="switchTab(event,'e3')">
+            <i data-lucide="layers"></i> Módulos y Sprints
+          </button>
+          <button type="button" class="tab-btn" onclick="switchTab(event,'e4')">
             <i data-lucide="shopping-cart"></i> Sprint — Compras
           </button>
         </div>
@@ -1812,53 +1815,154 @@
               </div>
             </div>
             <div class="theme-stat-box">
-              <div class="big">515</div>
+              <div class="big">518</div>
               <div class="label">Tarea ejemplo</div>
-              <div class="sub">Módulo Reportes</div>
+              <div class="sub">Módulo Compras</div>
             </div>
           </div>
 
           <div class="ejemplo-bloque-title">
-            <i data-lucide="arrow-left-right"></i> Transformación — TAREA 515
+            <i data-lucide="arrow-left-right"></i> Transformación — TAREA 518
           </div>
           <div class="ejemplo-split">
 
             <!-- Lado izquierdo: raw Nexus -->
             <div class="split-card raw">
               <div class="split-card-header">📋 Tal como está en Nexus</div>
-              <div class="nexus-field"><span class="nexus-field-key">IDENTIFICADOR</span><span class="nexus-field-val"><strong>TAREA 515</strong></span></div>
-              <div class="nexus-field"><span class="nexus-field-key">TEMA</span><span class="nexus-field-val">Agregar columnas en 'Resumen de Ventas por Artículo'</span></div>
-              <div class="nexus-field"><span class="nexus-field-key">DETALLE</span><span class="nexus-field-val">En el reporte de 'Resumen de Ventas por Artículo' se requiere agregar dos columnas en la exportacion tipo Datos Archivo (xls y xlsx). 1: Código de barras por artículos. 2: Descripción del laboratorio seleccionado.</span></div>
-              <div class="nexus-field"><span class="nexus-field-key">CLIENTE</span><span class="nexus-field-val">Constitución</span></div>
+              <div class="nexus-field"><span class="nexus-field-key">IDENTIFICADOR</span><span class="nexus-field-val"><strong>TAREA 518</strong></span></div>
+              <div class="nexus-field"><span class="nexus-field-key">TEMA</span><span class="nexus-field-val">Desvincular NCP asociada a una presentación para aplicarla a otra</span></div>
+              <div class="nexus-field"><span class="nexus-field-key">DETALLE</span><span class="nexus-field-val">Se requiere la posibilidad de que el cliente pueda cambiar o desvincular una 'nota de crédito a proveedor' que está asociada a una presentación y aplicarla a otra.</span></div>
+              <div class="nexus-field"><span class="nexus-field-key">CLIENTE</span><span class="nexus-field-val">V&amp;S (interno)</span></div>
               <div class="nexus-field"><span class="nexus-field-key">TIPO</span><span class="nexus-field-val">Mejora</span></div>
               <div class="nexus-field"><span class="nexus-field-key">ESTADO</span><span class="nexus-field-val">2_PENDIENTE</span></div>
-              <div class="nexus-field"><span class="nexus-field-key">RESPONSABLE</span><span class="nexus-field-val">Agustín Hussein Díaz</span></div>
+              <div class="nexus-field"><span class="nexus-field-key">RESPONSABLE</span><span class="nexus-field-val">Exequiel Cisternas</span></div>
             </div>
 
             <!-- Lado derecho: post-procesamiento -->
             <div class="split-card proc">
               <div class="split-card-header">✅ Post-procesamiento</div>
               <div class="ca-title" style="margin-bottom:10px;">Historia de Usuario</div>
-              <div class="hu-quote">Como <strong>administrativo que exporta el reporte "Resumen de Ventas por Artículo" a Excel</strong>, quiero <strong>que la exportación incluya las columnas "Código de barras" y "Descripción del laboratorio"</strong>, para <strong>poder cruzar la información con otros sistemas sin completar esos datos manualmente</strong>.</div>
+              <div class="hu-quote">Como <strong>administrativo de compras que gestiona notas de crédito a proveedores</strong>, quiero <strong>poder desvincular una NCP ya asociada a una presentación y reasignarla a otra</strong>, para <strong>corregir asociaciones incorrectas sin necesidad de anular y recrear documentos</strong>.</div>
               <div class="split-tags">
-                <span class="split-tag tag-modulo">Ventas — Reportes</span>
-                <span class="split-tag tag-epica">Exportaciones y reportes de ventas</span>
+                <span class="split-tag tag-modulo">Compras — NC a Proveedor</span>
+                <span class="split-tag tag-epica">Gestión de notas de crédito a proveedores</span>
                 <span class="split-tag tag-media">🟡 Complejidad Media</span>
               </div>
               <div class="ca-title">Criterios de Aceptación</div>
               <ul class="ca-list">
-                <li>Las columnas se agregan <strong>únicamente</strong> en la exportación Datos Archivo (.xls y .xlsx); la vista en pantalla no cambia</li>
-                <li>"Código de barras" muestra el código del artículo registrado en la BDD</li>
-                <li>"Descripción del laboratorio" muestra el laboratorio seleccionado en el contexto del reporte</li>
-                <li>Artículos sin laboratorio o sin código exportan celda vacía, sin error ni corte del archivo</li>
+                <li>Solo es posible desvincular NCPs de presentaciones que <strong>no estén cerradas contablemente</strong></li>
+                <li>Al desvincular, los saldos de la presentación origen se recalculan automáticamente</li>
+                <li>Al vincular a la nueva presentación, los saldos del destino se actualizan automáticamente</li>
+                <li>La operación queda registrada en el historial de auditoría de la NCP</li>
+                <li>El flujo original de vinculación no se modifica; solo se agrega la opción de desvincular</li>
               </ul>
             </div>
 
           </div>
         </div>
 
-        <!-- ── TAB E2: Módulos y Sprints ── -->
+        <!-- ── TAB E2: Épica asociada ── -->
         <div id="e2" class="tab-panel">
+          <div class="theme-header">
+            <div class="theme-header-left">
+              <div class="theme-number">#2</div>
+              <div>
+                <div class="theme-title">Épica asociada al caso de uso</div>
+                <div class="theme-desc">Cada tarea debe pertenecer a una épica que agrupa casos de uso del mismo dominio funcional. Esto es <strong>obligatorio</strong> según el proceso: permite planificar entregas coherentes y medir progreso por área del sistema.</div>
+              </div>
+            </div>
+            <div class="theme-stat-box">
+              <div class="big">518</div>
+              <div class="label">Tarea ejemplo</div>
+              <div class="sub">Épica: NC Proveedores</div>
+            </div>
+          </div>
+
+          <div class="ejemplo-bloque-title">
+            <i data-lucide="folder-open"></i> Épica — Gestión de notas de crédito a proveedores
+          </div>
+
+          <div class="split-card proc" style="margin-bottom: 24px;">
+            <div class="split-card-header">📂 Definición de la épica</div>
+            <div class="nexus-field">
+              <span class="nexus-field-key">NOMBRE</span>
+              <span class="nexus-field-val"><strong>Gestión de notas de crédito a proveedores</strong></span>
+            </div>
+            <div class="nexus-field">
+              <span class="nexus-field-key">MÓDULO</span>
+              <span class="nexus-field-val">Compras — NC a Proveedor</span>
+            </div>
+            <div class="nexus-field">
+              <span class="nexus-field-key">OBJETIVO</span>
+              <span class="nexus-field-val">Agrupar todas las mejoras y correcciones relacionadas con la emisión, vinculación y aplicación de notas de crédito a proveedores, de forma que el circuito completo pueda entregarse en un bloque funcional coherente.</span>
+            </div>
+            <div class="nexus-field">
+              <span class="nexus-field-key">CRITERIO</span>
+              <span class="nexus-field-val">Una tarea pertenece a esta épica si afecta la creación, vinculación, desvinculación o aplicación de una NCP o SNC a proveedores dentro del módulo de Compras.</span>
+            </div>
+          </div>
+
+          <div class="ejemplo-bloque-title" style="margin-top: 8px;">
+            <i data-lucide="list"></i> Tareas incluidas en esta épica
+          </div>
+          <div style="overflow-x: auto; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.07);">
+            <table class="task-table" style="width: 100%; border-collapse: collapse;">
+              <thead>
+                <tr>
+                  <th style="padding: 9px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--vs-gray-dark); background: rgba(255,255,255,0.025); border-bottom: 1px solid rgba(255,255,255,0.07); text-align: left;">ID</th>
+                  <th style="padding: 9px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--vs-gray-dark); background: rgba(255,255,255,0.025); border-bottom: 1px solid rgba(255,255,255,0.07); text-align: left;">Historia de usuario (resumen)</th>
+                  <th style="padding: 9px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--vs-gray-dark); background: rgba(255,255,255,0.025); border-bottom: 1px solid rgba(255,255,255,0.07); text-align: center;">Complejidad</th>
+                  <th style="padding: 9px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--vs-gray-dark); background: rgba(255,255,255,0.025); border-bottom: 1px solid rgba(255,255,255,0.07); text-align: center;">Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-task-id="468">
+                  <td class="task-id" style="padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.04);">TAREA 468</td>
+                  <td class="task-tema" style="padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.04);">No se puede realizar SNC de varias líneas con un mismo artículo</td>
+                  <td style="padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); text-align: center; color: var(--vs-gray-dark); font-family: var(--font-code); font-size: 11.5px;">—</td>
+                  <td style="padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); text-align: center; color: var(--vs-gray-dark); font-family: var(--font-code); font-size: 11.5px;">Pendiente</td>
+                </tr>
+                <tr data-task-id="307">
+                  <td class="task-id" style="padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.04);">TAREA 307</td>
+                  <td class="task-tema" style="padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.04);">Aplicación de NC Proveedor a Bonos Dto.</td>
+                  <td style="padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); text-align: center; color: var(--vs-gray-dark); font-family: var(--font-code); font-size: 11.5px;">—</td>
+                  <td style="padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); text-align: center; color: var(--vs-gray-dark); font-family: var(--font-code); font-size: 11.5px;">Pendiente</td>
+                </tr>
+                <tr data-task-id="484">
+                  <td class="task-id" style="padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.04);">TAREA 484</td>
+                  <td class="task-tema" style="padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.04);">[ADM-0426_2] - Solicitud de NC (Vinculación con NC)</td>
+                  <td style="padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); text-align: center; color: var(--vs-gray-dark); font-family: var(--font-code); font-size: 11.5px;">—</td>
+                  <td style="padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); text-align: center; color: var(--vs-gray-dark); font-family: var(--font-code); font-size: 11.5px;">Pendiente</td>
+                </tr>
+                <tr style="background: rgba(77,200,232,0.06);">
+                  <td class="task-id" style="padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.04);">TAREA 518</td>
+                  <td class="task-tema" style="padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.04);">
+                    Desvincular NCP asociada a una presentación para aplicarla a otra
+                    <span style="display: inline-block; margin-left: 6px; font-size: 10px; font-weight: 700; color: var(--vs-cyan); background: rgba(77,200,232,0.15); padding: 1px 7px; border-radius: var(--radius-full);">Tab anterior</span>
+                  </td>
+                  <td style="padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); text-align: center;"><span class="split-tag tag-media" style="margin: 0;">🟡 Media</span></td>
+                  <td style="padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); text-align: center; color: var(--vs-gray-dark); font-family: var(--font-code); font-size: 11.5px;">Pendiente</td>
+                </tr>
+                <tr data-task-id="519">
+                  <td class="task-id" style="padding: 9px 12px;">TAREA 519</td>
+                  <td class="task-tema" style="padding: 9px 12px;">No permitir SNC a Proveedores para ingresos en TE</td>
+                  <td style="padding: 9px 12px; text-align: center; color: var(--vs-gray-dark); font-family: var(--font-code); font-size: 11.5px;">—</td>
+                  <td style="padding: 9px 12px; text-align: center; color: var(--vs-gray-dark); font-family: var(--font-code); font-size: 11.5px;">Pendiente</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="key-point" style="margin-top: 24px; padding: 14px 18px; background: rgba(77,200,232,0.06); border-radius: var(--radius-md); border: 1px solid rgba(77,200,232,0.15); display: flex; gap: 12px; align-items: flex-start;">
+            <div class="key-point-dot" style="margin-top: 6px;"></div>
+            <div style="font-size: 13px; color: var(--vs-gray-mid); line-height: 1.6;">
+              La épica <strong>"Gestión de notas de crédito a proveedores"</strong> agrupa todas las tareas relacionadas con este circuito. Al planificar un sprint, el equipo puede optar por avanzar sobre esta épica entera en lugar de tomar tareas sueltas de distintos módulos, lo que genera versiones más coherentes y reduce el contexto que el desarrollador debe cambiar entre tareas.
+            </div>
+          </div>
+        </div>
+
+        <!-- ── TAB E3: Módulos y Sprints ── -->
+        <div id="e3" class="tab-panel">
           <div class="theme-header">
             <div class="theme-header-left">
               <div class="theme-number">#2</div>
@@ -1911,8 +2015,8 @@
           </div>
         </div>
 
-        <!-- ── TAB E3: Sprint Compras (orden de prioridad) ── -->
-        <div id="e3" class="tab-panel">
+        <!-- ── TAB E4: Sprint Compras (orden de prioridad) ── -->
+        <div id="e4" class="tab-panel">
           <div class="theme-header">
             <div class="theme-header-left">
               <div class="theme-number">#3</div>
@@ -1924,7 +2028,7 @@
             <div class="theme-stat-box">
               <div class="big">28</div>
               <div class="label">Tareas Compras</div>
-              <div class="sub">8 Ajustes · 15 Mejoras · 4 Nuevos · 1 Revisar</div>
+              <div class="sub">Ordenadas por prioridad del equipo</div>
             </div>
           </div>
           <div class="task-table-wrap">
@@ -1940,38 +2044,34 @@
                 </tr>
               </thead>
               <tbody>
-                <tr class="task-group-sep"><td colspan="6">— AJUSTES —</td></tr>
-                <tr data-task-id="519"><td class="task-id">1</td><td class="task-id">519</td><td class="task-tema">No permitir SNC a Proveedores para ingresos en TE</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Exequiel C.</td></tr>
-                <tr data-task-id="295"><td class="task-id">2</td><td class="task-id">295</td><td class="task-tema">IVA Simplificado</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Pablo V.</td></tr>
-                <tr data-task-id="329"><td class="task-id">3</td><td class="task-id">329</td><td class="task-tema">No se desactivan Proveedor y Organización desde Ingr. de Comprobantes</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Pablo V.</td></tr>
-                <tr data-task-id="332"><td class="task-id">4</td><td class="task-id">332</td><td class="task-tema">Guardar 'total' (previo) de un comprobante de compra cuando se modifique</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Pablo V.</td></tr>
-                <tr data-task-id="512"><td class="task-id">5</td><td class="task-id">512</td><td class="task-tema">Al ingresar una compra y guardarla, cuando se la quiere recuperar, salta error</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Mariano B.</td></tr>
-                <tr data-task-id="457"><td class="task-id">6</td><td class="task-id">457</td><td class="task-tema">Error referencia comprobantes de compras</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Mariano B.</td></tr>
-                <tr data-task-id="157"><td class="task-id">7</td><td class="task-id">157</td><td class="task-tema">Saldo de Reportes se muestra incompleto</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Pablo V.</td></tr>
-                <tr data-task-id="67"><td class="task-id">8</td><td class="task-id">67</td><td class="task-tema">Z566 - Resumen de Compras por Proveedor</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-bloqueado">Bloqueado</span></td><td>Mariano B.</td></tr>
-                <tr class="task-group-sep"><td colspan="6">— MEJORAS —</td></tr>
-                <tr data-task-id="484"><td class="task-id">9</td><td class="task-id">484</td><td class="task-tema">[ADM-0426_2] - Solicitud de NC (Vinculación con NC)</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Adrián S.</td></tr>
-                <tr data-task-id="487"><td class="task-id">10</td><td class="task-id">487</td><td class="task-tema">[ADM-0426_3] - Poder determinar el crédito fiscal de medicamentos</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Adrián S.</td></tr>
-                <tr data-task-id="476"><td class="task-id">11</td><td class="task-id">476</td><td class="task-tema">[ADM-0426_1] - Resumen de Comprobantes por Proveedor</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Adrián S.</td></tr>
-                <tr data-task-id="518"><td class="task-id">12</td><td class="task-id">518</td><td class="task-tema">Desvincular NCP asociada a una presentación para aplicarla a otra</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Exequiel C.</td></tr>
-                <tr data-task-id="468"><td class="task-id">13</td><td class="task-id">468</td><td class="task-tema">No se puede realizar SNC de varias líneas con un mismo artículo</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Exequiel C.</td></tr>
-                <tr data-task-id="200"><td class="task-id">14</td><td class="task-id">200</td><td class="task-tema">Z654 - Reporte Inc. Cpras vs Facturas</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Exequiel C.</td></tr>
-                <tr data-task-id="226"><td class="task-id">15</td><td class="task-id">226</td><td class="task-tema">Z674 - Devolución de Producto por Sobrante</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Exequiel C.</td></tr>
+                <tr data-task-id="348"><td class="task-id">1</td><td class="task-id">348</td><td class="task-tema">Redondeo de Cuenta Corriente de Compras</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Adrián S.</td></tr>
+                <tr data-task-id="457"><td class="task-id">2</td><td class="task-id">457</td><td class="task-tema">Error referencia comprobantes de compras</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Mariano B.</td></tr>
+                <tr data-task-id="468"><td class="task-id">3</td><td class="task-id">468</td><td class="task-tema">No se puede realizar SNC de varias líneas con un mismo artículo</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Exequiel C.</td></tr>
+                <tr data-task-id="476"><td class="task-id">4</td><td class="task-id">476</td><td class="task-tema">[ADM-0426_1] - Resumen de Comprobantes por Proveedor</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Adrián S.</td></tr>
+                <tr data-task-id="380"><td class="task-id">5</td><td class="task-id">380</td><td class="task-tema">No se muestran NC en Reporte de Saldos de Compr. por Prov. por Vto.</td><td><span class="tipo-badge tipo-revisar">Revisar</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Mariano B.</td></tr>
+                <tr data-task-id="512"><td class="task-id">6</td><td class="task-id">512</td><td class="task-tema">Al ingresar una compra y guardarla, cuando se la quiere recuperar, salta error</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Mariano B.</td></tr>
+                <tr data-task-id="295"><td class="task-id">7</td><td class="task-id">295</td><td class="task-tema">IVA Simplificado</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Pablo V.</td></tr>
+                <tr data-task-id="307"><td class="task-id">8</td><td class="task-id">307</td><td class="task-tema">Aplicación de NC Proveedor a Bonos Dto.</td><td><span class="tipo-badge tipo-nuevo">Nuevo</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Pablo V.</td></tr>
+                <tr data-task-id="157"><td class="task-id">9</td><td class="task-id">157</td><td class="task-tema">Saldo de Reportes se muestra incompleto</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Pablo V.</td></tr>
+                <tr data-task-id="484"><td class="task-id">10</td><td class="task-id">484</td><td class="task-tema">[ADM-0426_2] - Solicitud de NC (Vinculación con NC)</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Adrián S.</td></tr>
+                <tr data-task-id="518"><td class="task-id">11</td><td class="task-id">518</td><td class="task-tema">Desvincular NCP asociada a una presentación para aplicarla a otra</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Exequiel C.</td></tr>
+                <tr data-task-id="519"><td class="task-id">12</td><td class="task-id">519</td><td class="task-tema">No permitir SNC a Proveedores para ingresos en TE</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Exequiel C.</td></tr>
+                <tr data-task-id="67"><td class="task-id">13</td><td class="task-id">67</td><td class="task-tema">Z566 - Resumen de Compras por Proveedor</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-bloqueado">Bloqueado</span></td><td>Mariano B.</td></tr>
+                <tr data-task-id="332"><td class="task-id">14</td><td class="task-id">332</td><td class="task-tema">Guardar 'total' (previo) de un comprobante de compra cuando se modifique</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Pablo V.</td></tr>
+                <tr data-task-id="329"><td class="task-id">15</td><td class="task-id">329</td><td class="task-tema">No se desactivan Proveedor y Organización desde Ingr. de Comprobantes</td><td><span class="tipo-badge tipo-ajuste">Ajuste</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Pablo V.</td></tr>
                 <tr data-task-id="219"><td class="task-id">16</td><td class="task-id">219</td><td class="task-tema">Z668 - Actualiz. de Precios en base a Ingresos</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Mariano B.</td></tr>
-                <tr data-task-id="348"><td class="task-id">17</td><td class="task-id">348</td><td class="task-tema">Redondeo de Cuenta Corriente de Compras</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Adrián S.</td></tr>
+                <tr data-task-id="224"><td class="task-id">17</td><td class="task-id">224</td><td class="task-tema">Z671 - Encargos de Productos</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-backlog">Backlog</span></td><td>—</td></tr>
                 <tr data-task-id="223"><td class="task-id">18</td><td class="task-id">223</td><td class="task-tema">Z362 - Pedidos Sud - WS</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Mariano B.</td></tr>
-                <tr data-task-id="289"><td class="task-id">19</td><td class="task-id">289</td><td class="task-tema">Carrito de pedidos</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Mariano B.</td></tr>
+                <tr data-task-id="211"><td class="task-id">19</td><td class="task-id">211</td><td class="task-tema">Z568 - Bloqueo para Pedido - Repo Diaria x Suc.</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-bloqueado">Bloqueado</span></td><td>Mariano B.</td></tr>
                 <tr data-task-id="213"><td class="task-id">20</td><td class="task-id">213</td><td class="task-tema">Z609 - Bloqueo para Pedido - Gestión<span class="dep-note">↳ depende de T.211</span></td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Mariano B.</td></tr>
-                <tr data-task-id="211"><td class="task-id">21</td><td class="task-id">211</td><td class="task-tema">Z568 - Bloqueo para Pedido - Repo Diaria x Suc.</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-bloqueado">Bloqueado</span></td><td>Mariano B.</td></tr>
-                <tr data-task-id="224"><td class="task-id">22</td><td class="task-id">224</td><td class="task-tema">Z671 - Encargos de Productos</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-backlog">Backlog</span></td><td>—</td></tr>
+                <tr data-task-id="487"><td class="task-id">21</td><td class="task-id">487</td><td class="task-tema">[ADM-0426_3] - Poder determinar el crédito fiscal de medicamentos</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Adrián S.</td></tr>
+                <tr data-task-id="200"><td class="task-id">22</td><td class="task-id">200</td><td class="task-tema">Z654 - Reporte Inc. Cpras vs Facturas</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Exequiel C.</td></tr>
                 <tr data-task-id="225"><td class="task-id">23</td><td class="task-id">225</td><td class="task-tema">Z672 - Solicitud de Productos en Falta</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-backlog">Backlog</span></td><td>—</td></tr>
-                <tr class="task-group-sep"><td colspan="6">— NUEVOS —</td></tr>
-                <tr data-task-id="307"><td class="task-id">24</td><td class="task-id">307</td><td class="task-tema">Aplicación de NC Proveedor a Bonos Dto.</td><td><span class="tipo-badge tipo-nuevo">Nuevo</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Pablo V.</td></tr>
-                <tr data-task-id="222"><td class="task-id">25</td><td class="task-id">222</td><td class="task-tema">Z199 - Pedidos Monroe</td><td><span class="tipo-badge tipo-nuevo">Nuevo</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Mariano B.</td></tr>
-                <tr data-task-id="163"><td class="task-id">26</td><td class="task-id">163</td><td class="task-tema">Agregar la posibilidad de información para un reporte</td><td><span class="tipo-badge tipo-nuevo">Nuevo</span></td><td><span class="estado-badge est-backlog">Backlog</span></td><td>—</td></tr>
+                <tr data-task-id="226"><td class="task-id">24</td><td class="task-id">226</td><td class="task-tema">Z674 - Devolución de Producto por Sobrante</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Exequiel C.</td></tr>
+                <tr data-task-id="163"><td class="task-id">25</td><td class="task-id">163</td><td class="task-tema">Agregar la posibilidad de información para un reporte</td><td><span class="tipo-badge tipo-nuevo">Nuevo</span></td><td><span class="estado-badge est-backlog">Backlog</span></td><td>—</td></tr>
+                <tr data-task-id="289"><td class="task-id">26</td><td class="task-id">289</td><td class="task-tema">Carrito de pedidos</td><td><span class="tipo-badge tipo-mejora">Mejora</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Mariano B.</td></tr>
                 <tr data-task-id="64"><td class="task-id">27</td><td class="task-id">64</td><td class="task-tema">Z487 - Compra Inteligente Multiproveedor Etapa 1</td><td><span class="tipo-badge tipo-nuevo">Nuevo</span></td><td><span class="estado-badge est-pausado">Pausado</span></td><td>Mariano B.</td></tr>
-                <tr class="task-group-sep"><td colspan="6">— REVISAR —</td></tr>
-                <tr data-task-id="380"><td class="task-id">28</td><td class="task-id">380</td><td class="task-tema">No se muestran NC en Reporte de Saldos de Compr. por Prov. por Vto.</td><td><span class="tipo-badge tipo-revisar">Revisar</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Mariano B.</td></tr>
+                <tr data-task-id="222"><td class="task-id">28</td><td class="task-id">222</td><td class="task-tema">Z199 - Pedidos Monroe</td><td><span class="tipo-badge tipo-nuevo">Nuevo</span></td><td><span class="estado-badge est-pendiente">Pendiente</span></td><td>Mariano B.</td></tr>
               </tbody>
             </table>
           </div>
