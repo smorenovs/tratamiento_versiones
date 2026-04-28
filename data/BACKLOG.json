@@ -2380,11 +2380,11 @@
         "Los reportes de stock muestran Lote y Vencimiento.",
         "El FEFO puede basarse en los vencimientos registrados."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 117"
     },
     {
@@ -2405,11 +2405,11 @@
         "La cantidad total es la suma de todos los escaneos.",
         "El operador puede corregir cantidades antes de confirmar."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 8,
       "identificador": "TAREA 130"
     },
     {
@@ -2937,11 +2937,11 @@
         "La conciliación detecta y alerta sobre posibles duplicaciones.",
         "El ingreso parcial puede completarse en una segunda operación."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 165"
     },
     {
@@ -4014,11 +4014,11 @@
         "El reporte es filtrable por ese estado.",
         "El indicador se actualiza al completar el ingreso."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 3,
+      "presion": 0,
+      "score": 8,
       "identificador": "TAREA 290"
     },
     {
@@ -4039,11 +4039,11 @@
         "El dato es el nombre o identificador del cliente.",
         "La columna es exportable a Excel."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 292"
     },
     {
@@ -4727,11 +4727,11 @@
         "Se agrega el formato 120mm x 240mm.",
         "El precio con descuento y el precio sin descuento se distinguen visualmente."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 8,
       "identificador": "TAREA 355"
     },
     {
@@ -4802,11 +4802,11 @@
         "Cada movimiento real aparece una sola vez.",
         "La causa raíz en lin_comprobantes_mov_stock es corregida."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 365"
     },
     {
@@ -5641,11 +5641,11 @@
         "El stock teórico se ajusta en cada etapa.",
         "El ingreso completo cierra la nota de envío."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 439"
     },
     {
@@ -6281,11 +6281,11 @@
         "La navegación es directa sin pasos intermedios.",
         "Al cerrar la pre-nota, el operador vuelve al reporte."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 473"
     },
     {
@@ -6943,11 +6943,11 @@
         "El mensaje de validación es claro e indica qué campo debe completarse.",
         "El flujo normal de emisión de nota de envío no se ve afectado."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 8,
       "identificador": "TAREA 502"
     },
     {
@@ -7172,11 +7172,11 @@
         "La modificación queda en auditoría.",
         "No se pueden ingresar cantidades negativas."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 1,
+      "score": 9,
       "identificador": "TAREA 513"
     },
     {
@@ -7273,11 +7273,11 @@
         "El reporte muestra un solo movimiento por artículo.",
         "La diferencia de stock pre y post coincide con la cantidad del vale."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 1,
+      "score": 9,
       "identificador": "TAREA 517"
     },
     {
