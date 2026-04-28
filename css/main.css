@@ -326,6 +326,8 @@ a:hover { text-decoration: underline; }
 }
 .ps-btn:hover { color: var(--vs-white); }
 .ps-btn.active { background: var(--vs-cyan); color: #0B1E27; font-weight: 700; }
+.ps-btn-backlog { text-decoration: none; border-left: 1px solid rgba(255,255,255,.1); margin-left: 4px; padding-left: 20px; }
+.ps-btn-backlog::after { content: ' ↗'; font-size: 10px; opacity: .6; }
 
 .page-wrap { overflow: hidden; width: 100%; }
 .pages-row {

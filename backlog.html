@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BACKLOG Editor — VS Ingeniería</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --bg2: #1a1d27;
+    --bg3: #22263a;
+    --border: #2e3350;
+    --accent: #4f8ef7;
+    --accent2: #7c5cbf;
+    --text: #e2e6f0;
+    --text2: #8b92ab;
+    --green: #3ecf8e;
+    --yellow: #f5a623;
+    --red: #e05a5a;
+    --cyan: #3bc7d6;
+    --radius: 8px;
+    --sidebar-w: 340px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+  /* ── TOPBAR ── */
+  #topbar {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 18px; background: var(--bg2); border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  #topbar h1 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: .3px; }
+  #topbar .sep { flex: 1; }
+  #sync-status { font-size: 12px; color: var(--text2); font-style: italic; }
+  #dirty-badge { display: none; background: var(--yellow); color: #000; font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 10px; }
+  button { cursor: pointer; border: none; border-radius: 6px; font-size: 13px; font-weight: 600; padding: 7px 14px; transition: opacity .15s; }
+  button:hover { opacity: .85; }
+  .btn-secondary { background: var(--bg3); color: var(--text); border: 1px solid var(--border); }
+  .btn-save  { background: var(--accent); color: #fff; }
+  .btn-save:disabled { opacity: .4; cursor: default; }
+  .btn-danger { background: var(--red); color: #fff; }
+  a.btn-back { text-decoration: none; background: var(--bg3); color: var(--text); border: 1px solid var(--border); border-radius: 6px; font-size: 13px; font-weight: 600; padding: 7px 14px; }
+  a.btn-back:hover { opacity: .85; }
+
+  /* ── BODY ── */
+  #body { display: flex; flex: 1; overflow: hidden; }
+
+  /* ── SIDEBAR ── */
+  #sidebar {
+    width: var(--sidebar-w); min-width: var(--sidebar-w);
+    background: var(--bg2); border-right: 1px solid var(--border);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  #filters { padding: 12px; display: flex; flex-direction: column; gap: 8px; border-bottom: 1px solid var(--border); }
+  #search {
+    background: var(--bg3); border: 1px solid var(--border); color: var(--text);
+    border-radius: 6px; padding: 7px 10px; font-size: 13px; width: 100%;
+  }
+  #search:focus { outline: none; border-color: var(--accent); }
+  .filter-row { display: flex; gap: 6px; }
+  select {
+    flex: 1; background: var(--bg3); border: 1px solid var(--border);
+    color: var(--text); border-radius: 6px; padding: 6px 8px; font-size: 12px;
+  }
+  select:focus { outline: none; border-color: var(--accent); }
+  #list-header {
+    padding: 8px 12px; font-size: 11px; color: var(--text2); font-weight: 600;
+    text-transform: uppercase; letter-spacing: .5px; border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between;
+  }
+  #task-list { flex: 1; overflow-y: auto; }
+  .task-item {
+    padding: 10px 12px; border-bottom: 1px solid var(--border);
+    cursor: pointer; transition: background .1s;
+  }
+  .task-item:hover { background: var(--bg3); }
+  .task-item.active { background: rgba(79,142,247,.12); border-left: 3px solid var(--accent); }
+  .task-item .ti-top { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+  .task-item .ti-id { font-size: 11px; font-weight: 700; color: var(--accent); }
+  .task-item .ti-score {
+    margin-left: auto; font-size: 11px; font-weight: 700;
+    background: var(--bg3); border: 1px solid var(--border);
+    padding: 1px 6px; border-radius: 10px; color: var(--yellow);
+  }
+  .task-item .ti-score.has-score { border-color: var(--yellow); }
+  .task-item .ti-tema { font-size: 12px; color: var(--text); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .task-item .ti-meta { display: flex; gap: 6px; margin-top: 4px; flex-wrap: wrap; }
+  .badge { font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 10px; }
+  .badge-estado-1 { background: #1a2a1a; color: var(--green); }
+  .badge-estado-2 { background: #1a1f2a; color: #6aa8ff; }
+  .badge-estado-3 { background: #2a2010; color: var(--yellow); }
+  .badge-estado-6 { background: #2a1e1e; color: #d4a0a0; }
+  .badge-estado-7 { background: #2a1a1a; color: var(--red); }
+  .badge-epica { background: rgba(124,92,191,.2); color: #a886f7; }
+
+  /* ── MAIN ── */
+  #main { flex: 1; overflow-y: auto; padding: 24px; display: flex; flex-direction: column; }
+  #empty-state { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text2); gap: 10px; }
+  #empty-state .big { font-size: 40px; }
+  #loading-state { flex: 1; display: none; flex-direction: column; align-items: center; justify-content: center; color: var(--text2); gap: 10px; }
+  .spinner { width: 32px; height: 32px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin .8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  #editor { display: none; }
+  .section { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 16px; overflow: hidden; }
+  .section-header {
+    padding: 12px 16px; background: var(--bg3); cursor: pointer;
+    display: flex; align-items: center; gap: 8px; user-select: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-header h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+  .section-header .chevron { margin-left: auto; font-size: 12px; color: var(--text2); transition: transform .2s; }
+  .section-header.collapsed .chevron { transform: rotate(-90deg); }
+  .section-body { padding: 16px; display: grid; gap: 12px; }
+  .section-body.hidden { display: none; }
+
+  .field { display: flex; flex-direction: column; gap: 4px; }
+  .field label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--text2); }
+  .field input, .field textarea, .field select {
+    background: var(--bg3); border: 1px solid var(--border);
+    color: var(--text); border-radius: 6px; padding: 8px 10px; font-size: 13px;
+    font-family: inherit; transition: border-color .15s;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--accent); }
+  .field textarea { resize: vertical; min-height: 70px; line-height: 1.5; }
+  .field .readonly { opacity: .55; cursor: default; }
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+  .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .col-span-2 { grid-column: span 2; }
+  .col-span-3 { grid-column: span 3; }
+
+  .criterio-list { display: flex; flex-direction: column; gap: 6px; }
+  .criterio-row { display: flex; gap: 6px; align-items: flex-start; }
+  .criterio-row span { color: var(--text2); font-size: 13px; line-height: 34px; }
+  .criterio-row input { flex: 1; }
+  .btn-icon { background: none; border: 1px solid var(--border); color: var(--text2); padding: 4px 8px; font-size: 14px; border-radius: 4px; }
+  .btn-icon:hover { background: var(--bg3); color: var(--text); }
+  .btn-add-ca { background: none; border: 1px dashed var(--border); color: var(--text2); font-size: 12px; padding: 6px; width: 100%; border-radius: 6px; margin-top: 4px; }
+  .btn-add-ca:hover { border-color: var(--accent); color: var(--accent); }
+
+  .scoring-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 12px; }
+  .score-field { display: flex; flex-direction: column; gap: 6px; align-items: center; text-align: center; }
+  .score-field label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--text2); }
+  .score-field input {
+    width: 100%; text-align: center; font-size: 20px; font-weight: 700;
+    background: var(--bg3); border: 1px solid var(--border);
+    color: var(--text); border-radius: 8px; padding: 12px 8px;
+  }
+  .score-field input:focus { outline: none; border-color: var(--accent); }
+  .score-field.total input {
+    background: rgba(245,166,35,.08); border-color: var(--yellow);
+    color: var(--yellow); cursor: default; font-size: 24px; pointer-events: none;
+  }
+  .score-hint { font-size: 10px; color: var(--text2); }
+
+  /* ── MODAL PAT ── */
+  #pat-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,.7);
+    z-index: 100; align-items: center; justify-content: center;
+  }
+  #pat-overlay.open { display: flex; }
+  #pat-modal {
+    background: var(--bg2); border: 1px solid var(--border); border-radius: 12px;
+    padding: 28px 32px; width: 480px; max-width: 95vw; display: flex; flex-direction: column; gap: 16px;
+  }
+  #pat-modal h2 { font-size: 16px; font-weight: 700; color: var(--accent); }
+  #pat-modal p { font-size: 13px; color: var(--text2); line-height: 1.6; }
+  #pat-modal code { background: var(--bg3); padding: 2px 6px; border-radius: 4px; font-size: 12px; color: var(--cyan); }
+  #pat-modal .pat-input-row { display: flex; gap: 8px; }
+  #pat-input {
+    flex: 1; background: var(--bg3); border: 1px solid var(--border); color: var(--text);
+    border-radius: 6px; padding: 9px 12px; font-size: 13px; font-family: monospace;
+  }
+  #pat-input:focus { outline: none; border-color: var(--accent); }
+  #pat-modal .pat-actions { display: flex; gap: 8px; justify-content: flex-end; }
+  #pat-error { font-size: 12px; color: var(--red); display: none; }
+
+  /* ── TOAST ── */
+  #toast {
+    position: fixed; bottom: 24px; right: 24px; z-index: 200;
+    background: var(--bg2); border: 1px solid var(--border); border-radius: 8px;
+    padding: 12px 18px; font-size: 13px; font-weight: 600;
+    transform: translateY(80px); opacity: 0; transition: all .3s;
+    pointer-events: none;
+  }
+  #toast.show { transform: translateY(0); opacity: 1; }
+  #toast.success { border-color: var(--green); color: var(--green); }
+  #toast.error   { border-color: var(--red);   color: var(--red);   }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #4a5070; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div id="topbar">
+  <h1>BACKLOG Editor</h1>
+  <span id="sync-status">Cargando…</span>
+  <span id="dirty-badge">● Sin guardar</span>
+  <span class="sep"></span>
+  <a href="index.html" class="btn-back">← Volver</a>
+  <button class="btn-secondary" onclick="openPatModal()">🔑 Token GitHub</button>
+  <button class="btn-save" id="btn-save" onclick="saveToGitHub()" disabled>☁ Guardar en GitHub</button>
+</div>
+
+<!-- BODY -->
+<div id="body">
+
+  <!-- SIDEBAR -->
+  <div id="sidebar">
+    <div id="filters">
+      <input id="search" type="text" placeholder="🔍  Buscar por ID, tema, cliente…" oninput="renderList()">
+      <div class="filter-row">
+        <select id="f-epica" onchange="renderList()">
+          <option value="">Todas las épicas</option>
+        </select>
+        <select id="f-estado" onchange="renderList()">
+          <option value="">Todos los estados</option>
+          <option value="1_BACKLOG">Backlog</option>
+          <option value="2_PENDIENTE">Pendiente</option>
+          <option value="3_EN CURSO">En Curso</option>
+          <option value="6_PAUSADO">Pausado</option>
+          <option value="7_BLOQUEADO">Bloqueado</option>
+        </select>
+      </div>
+      <div class="filter-row">
+        <select id="f-score-filter" onchange="renderList()">
+          <option value="">Cualquier score</option>
+          <option value="scored">Con score</option>
+          <option value="unscored">Sin score</option>
+        </select>
+        <select id="f-sort" onchange="renderList()">
+          <option value="id">Orden: ID</option>
+          <option value="score-desc">Score ↓</option>
+          <option value="score-asc">Score ↑</option>
+          <option value="epica">Épica</option>
+        </select>
+      </div>
+    </div>
+    <div id="list-header">
+      <span id="list-count">0 tareas</span>
+    </div>
+    <div id="task-list"></div>
+  </div>
+
+  <!-- MAIN -->
+  <div id="main">
+    <div id="loading-state" style="display:flex">
+      <div class="spinner"></div>
+      <div>Cargando BACKLOG…</div>
+    </div>
+
+    <div id="empty-state" style="display:none">
+      <div class="big">⚠️</div>
+      <div id="empty-msg">No se pudo cargar el BACKLOG.</div>
+    </div>
+
+    <div id="editor">
+      <!-- HEADER DE TAREA -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <h3 id="editor-title">Tarea</h3>
+          <span class="badge badge-estado-2" id="badge-estado"></span>
+          <span class="badge badge-epica" id="badge-epica"></span>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="section-body grid-2">
+          <div class="field col-span-2">
+            <label>Tema</label>
+            <input type="text" id="f-tema" oninput="markDirty()">
+          </div>
+          <div class="field">
+            <label>Identificador</label>
+            <input type="text" id="f-ident" class="readonly" readonly>
+          </div>
+          <div class="field">
+            <label>Cliente</label>
+            <input type="text" id="f-cliente" oninput="markDirty()">
+          </div>
+          <div class="field">
+            <label>Tipo</label>
+            <select id="f-tipo" onchange="markDirty()">
+              <option>Nuevo</option><option>Mejora</option><option>Ajuste</option>
+              <option>Revisar</option><option>Investigación</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Estado</label>
+            <select id="f-estado-t" onchange="markDirty(); updateBadges()">
+              <option value="1_BACKLOG">1_BACKLOG</option>
+              <option value="2_PENDIENTE">2_PENDIENTE</option>
+              <option value="3_EN CURSO">3_EN CURSO</option>
+              <option value="4_FINALIZADO">4_FINALIZADO</option>
+              <option value="5_NO APLICA">5_NO APLICA</option>
+              <option value="6_PAUSADO">6_PAUSADO</option>
+              <option value="7_BLOQUEADO">7_BLOQUEADO</option>
+              <option value="8_TESTING">8_TESTING</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Responsable</label>
+            <input type="text" id="f-responsable" oninput="markDirty()">
+          </div>
+          <div class="field col-span-2">
+            <label>Detalle</label>
+            <textarea id="f-detalle" rows="3" oninput="markDirty()"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- CASO DE USO -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <h3>Historia de Usuario &amp; Caso de Uso</h3>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="section-body">
+          <div class="field">
+            <label>Historia de Usuario</label>
+            <textarea id="f-hu" rows="2" oninput="markDirty()"></textarea>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+            <div class="field">
+              <label>Módulo</label>
+              <input type="text" id="f-modulo" oninput="markDirty()">
+            </div>
+            <div class="field">
+              <label>Épica</label>
+              <select id="f-epica-t" onchange="markDirty(); updateBadges()"></select>
+            </div>
+            <div class="field">
+              <label>Complejidad</label>
+              <select id="f-complejidad" onchange="markDirty()">
+                <option>Baja</option><option>Media</option><option>Alta</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label>Actor</label>
+            <input type="text" id="f-actor" oninput="markDirty()">
+          </div>
+          <div class="field">
+            <label>Precondición</label>
+            <textarea id="f-pre" rows="2" oninput="markDirty()"></textarea>
+          </div>
+          <div class="field">
+            <label>Flujo Normal</label>
+            <textarea id="f-flujo-n" rows="4" oninput="markDirty()"></textarea>
+          </div>
+          <div class="field">
+            <label>Flujo Alternativo</label>
+            <textarea id="f-flujo-a" rows="2" oninput="markDirty()"></textarea>
+          </div>
+          <div class="field">
+            <label>Postcondición</label>
+            <textarea id="f-post" rows="2" oninput="markDirty()"></textarea>
+          </div>
+          <div class="field">
+            <label>Excepción</label>
+            <textarea id="f-excep" rows="2" oninput="markDirty()"></textarea>
+          </div>
+          <div class="field">
+            <label>Criterios de Aceptación</label>
+            <div class="criterio-list" id="ca-list"></div>
+            <button class="btn-add-ca" onclick="addCriterio()">+ Agregar criterio</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCORING -->
+      <div class="section">
+        <div class="section-header" onclick="toggleSection(this)">
+          <h3>Scoring &amp; Priorización</h3>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="section-body">
+          <div class="scoring-grid">
+            <div class="score-field">
+              <label>Impacto</label>
+              <input type="number" id="f-impacto" min="0" max="100" placeholder="—">
+              <span class="score-hint">¿Qué consecuencia real tiene para el negocio si esta tarea no se resuelve en el próximo sprint?</span>
+              <span class="score-hint">Valores posibles: 1 (Bajo), 2 (Medio), 3 (Alto)</span>
+            </div>
+            <div class="score-field">
+              <label>Estado Ejec.</label>
+              <input type="number" id="f-estado-ejec" min="0" max="100" placeholder="—">
+              <span class="score-hint">¿Puede avanzar en el próximo sprint, o tiene un impedimento?</span>
+              <span class="score-hint">Valores posibles: 0 (Pausado), 1 (Bloqueo externo), 2 (Desbloqueable), 3 (Activo)</span>
+            </div>
+            <div class="score-field">
+              <label>Esfuerzo</label>
+              <input type="number" id="f-esfuerzo" min="0" max="100" placeholder="—">
+              <span class="score-hint">¿Cuánto cuesta hacer la tarea? (inverso de complejidad — los quick wins suben)</span>
+              <span class="score-hint">Valores posibles: 1 (Alto), 2 (Medio), 3 (Bajo)</span>
+            </div>
+            <div class="score-field">
+              <label>Presión</label>
+              <input type="number" id="f-presion" min="0" max="100" placeholder="—">
+              <span class="score-hint">¿Algún cliente preguntó por esta tarea en los últimos 30 días?</span>
+              <span class="score-hint">Valores posibles: 0 (No), 1 (Si)</span>
+            </div>
+            <div class="score-field total">
+              <label>Score Total</label>
+              <input type="number" id="f-score-total" placeholder="—" tabindex="-1">
+              <span class="score-hint">Suma automática</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /editor -->
+  </div><!-- /main -->
+</div><!-- /body -->
+
+<!-- MODAL: GitHub PAT -->
+<div id="pat-overlay">
+  <div id="pat-modal">
+    <h2>🔑 Token de GitHub (PAT)</h2>
+    <p>
+      Necesitás un <strong>Personal Access Token</strong> de GitHub con permiso
+      <code>contents:write</code> sobre el repositorio <code>smorenovs/tratamiento_versiones</code>.<br><br>
+      Generalo en: <strong>GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens</strong>.<br>
+      El token se guarda solo en tu navegador (localStorage) y nunca sale del dispositivo excepto para llamar a la API de GitHub.
+    </p>
+    <div class="pat-input-row">
+      <input id="pat-input" type="password" placeholder="github_pat_…" autocomplete="off">
+      <button class="btn-secondary" onclick="togglePatVisibility()">👁</button>
+    </div>
+    <div id="pat-error">Token inválido o sin permisos suficientes.</div>
+    <div class="pat-actions">
+      <button class="btn-danger" onclick="clearPat()">Borrar token</button>
+      <button class="btn-secondary" onclick="closePatModal()">Cancelar</button>
+      <button class="btn-save" onclick="savePat()">Guardar token</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<script>
+// ── Config GitHub ──────────────────────────────────────────────────────────
+const GH_OWNER  = 'smorenovs';
+const GH_REPO   = 'tratamiento_versiones';
+const GH_PATH   = 'data/BACKLOG.json';
+const GH_BRANCH = 'master';
+const PAT_KEY   = 'vs_gh_pat';
+
+// ── Estado global ──────────────────────────────────────────────────────────
+let backlog    = null;
+let fileSha    = null;   // SHA del archivo en GitHub (necesario para hacer PUT)
+let isDirty    = false;
+let currentId  = null;
+let cuMap      = {};
+let tarMap     = {};
+
+// ── PAT helpers ────────────────────────────────────────────────────────────
+function getPat()       { return localStorage.getItem(PAT_KEY) || ''; }
+function hasPat()       { return !!getPat(); }
+
+function openPatModal() {
+  document.getElementById('pat-input').value = getPat();
+  document.getElementById('pat-error').style.display = 'none';
+  document.getElementById('pat-overlay').classList.add('open');
+}
+function closePatModal() {
+  document.getElementById('pat-overlay').classList.remove('open');
+}
+function togglePatVisibility() {
+  const inp = document.getElementById('pat-input');
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+}
+function savePat() {
+  const val = document.getElementById('pat-input').value.trim();
+  if (!val) return;
+  localStorage.setItem(PAT_KEY, val);
+  closePatModal();
+  toast('Token guardado', 'success');
+  document.getElementById('btn-save').disabled = false;
+}
+function clearPat() {
+  localStorage.removeItem(PAT_KEY);
+  document.getElementById('pat-input').value = '';
+  toast('Token eliminado', 'success');
+  closePatModal();
+  document.getElementById('btn-save').disabled = true;
+}
+
+// ── Carga inicial desde GitHub ─────────────────────────────────────────────
+async function loadFromGitHub() {
+  const url = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_PATH}?ref=${GH_BRANCH}`;
+  const headers = { 'Accept': 'application/vnd.github.v3+json' };
+  if (hasPat()) headers['Authorization'] = `Bearer ${getPat()}`;
+
+  try {
+    const res = await fetch(url, { headers });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const meta = await res.json();
+    fileSha  = meta.sha;
+    const text = atob(meta.content.replace(/\n/g, ''));
+    backlog  = JSON.parse(text);
+    initData();
+    document.getElementById('sync-status').textContent = 'Sincronizado con GitHub';
+    document.getElementById('btn-save').disabled = !hasPat();
+  } catch (e) {
+    // Fallback: intentar fetch directo (funciona en GitHub Pages sin PAT para repos públicos)
+    try {
+      const raw = await fetch(`./data/BACKLOG.json?_=${Date.now()}`);
+      if (!raw.ok) throw new Error('fallback failed');
+      backlog = await raw.json();
+      fileSha = null;
+      initData();
+      document.getElementById('sync-status').textContent = 'Cargado localmente (guardado requiere token)';
+      document.getElementById('btn-save').disabled = !hasPat();
+    } catch (e2) {
+      document.getElementById('loading-state').style.display = 'none';
+      document.getElementById('empty-state').style.display = 'flex';
+      document.getElementById('empty-msg').textContent = 'No se pudo cargar el BACKLOG. Verificá la conexión o el token.';
+    }
+  }
+}
+
+// ── Guardar en GitHub via API ──────────────────────────────────────────────
+async function saveToGitHub() {
+  if (!backlog || !hasPat()) {
+    openPatModal();
+    return;
+  }
+  if (currentId) saveCurrentToMemory();
+
+  const btn = document.getElementById('btn-save');
+  btn.disabled = true;
+  btn.textContent = '⏳ Guardando…';
+
+  try {
+    // Si no tenemos SHA, obtenerlo primero
+    if (!fileSha) {
+      const metaRes = await fetch(
+        `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_PATH}?ref=${GH_BRANCH}`,
+        { headers: { 'Authorization': `Bearer ${getPat()}`, 'Accept': 'application/vnd.github.v3+json' } }
+      );
+      if (metaRes.ok) fileSha = (await metaRes.json()).sha;
+    }
+
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(backlog, null, 2))));
+    const body = {
+      message: `backlog: actualización desde editor web — ${new Date().toLocaleString('es-AR')}`,
+      content,
+      branch: GH_BRANCH,
+      ...(fileSha ? { sha: fileSha } : {})
+    };
+
+    const res = await fetch(
+      `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_PATH}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${getPat()}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      }
+    );
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.message || `HTTP ${res.status}`);
+    }
+
+    const data = await res.json();
+    fileSha = data.content.sha;
+    isDirty = false;
+    updateDirtyBadge();
+    document.getElementById('sync-status').textContent = 'Guardado en GitHub ✓';
+    toast('Cambios guardados en GitHub', 'success');
+    renderList();
+  } catch (e) {
+    console.error(e);
+    toast('Error al guardar: ' + e.message, 'error');
+    if (e.message.includes('401') || e.message.includes('403') || e.message.includes('Bad credentials')) {
+      document.getElementById('pat-error').style.display = 'block';
+      openPatModal();
+    }
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '☁ Guardar en GitHub';
+  }
+}
+
+// ── Inicialización ─────────────────────────────────────────────────────────
+function initData() {
+  cuMap = {}; tarMap = {};
+  for (const cu of backlog.CASOS_USO) cuMap[cu.identificador] = cu;
+  for (const t  of backlog.TAREAS)    tarMap[t.identificador]  = t;
+
+  const sel = document.getElementById('f-epica');
+  sel.innerHTML = '<option value="">Todas las épicas</option>';
+  for (const ep of backlog.EPICAS) {
+    const o = document.createElement('option');
+    o.value = ep.id_epica;
+    o.textContent = ep.id_epica + ' — ' + ep.epica;
+    sel.appendChild(o);
+  }
+
+  const selEp = document.getElementById('f-epica-t');
+  selEp.innerHTML = '';
+  for (const ep of backlog.EPICAS) {
+    const o = document.createElement('option');
+    o.value = ep.id_epica;
+    o.textContent = ep.id_epica + ' — ' + ep.epica;
+    selEp.appendChild(o);
+  }
+
+  document.getElementById('loading-state').style.display = 'none';
+  renderList();
+}
+
+// ── Lista de tareas ────────────────────────────────────────────────────────
+function renderList() {
+  if (!backlog) return;
+  const q     = document.getElementById('search').value.toLowerCase();
+  const fEp   = document.getElementById('f-epica').value;
+  const fEst  = document.getElementById('f-estado').value;
+  const fSc   = document.getElementById('f-score-filter').value;
+  const fSort = document.getElementById('f-sort').value;
+
+  let items = backlog.TAREAS.map(t => ({ t, cu: cuMap[t.identificador] }));
+
+  if (q) items = items.filter(({ t }) =>
+    t.identificador.toLowerCase().includes(q) ||
+    t.tema.toLowerCase().includes(q) ||
+    (t.cliente || '').toLowerCase().includes(q)
+  );
+  if (fEp)  items = items.filter(({ cu }) => cu?.tags?.epica_id === fEp);
+  if (fEst) items = items.filter(({ t })  => t.estado === fEst);
+  if (fSc === 'scored')   items = items.filter(({ cu }) => cu?.score != null);
+  if (fSc === 'unscored') items = items.filter(({ cu }) => cu?.score == null);
+
+  const numId = id => parseInt(id.replace(/\D/g,'')) || 0;
+  if (fSort === 'id')         items.sort((a,b) => numId(a.t.identificador) - numId(b.t.identificador));
+  if (fSort === 'score-desc') items.sort((a,b) => (b.cu?.score ?? -1) - (a.cu?.score ?? -1));
+  if (fSort === 'score-asc')  items.sort((a,b) => (a.cu?.score ?? 999) - (b.cu?.score ?? 999));
+  if (fSort === 'epica')      items.sort((a,b) => (a.cu?.tags?.epica_id || '').localeCompare(b.cu?.tags?.epica_id || ''));
+
+  document.getElementById('list-count').textContent = items.length + ' tareas';
+
+  const container = document.getElementById('task-list');
+  container.innerHTML = '';
+  for (const { t, cu } of items) {
+    const score = cu?.score;
+    const div = document.createElement('div');
+    div.className = 'task-item' + (t.identificador === currentId ? ' active' : '');
+    div.dataset.id = t.identificador;
+    div.onclick = () => selectTask(t.identificador);
+    div.innerHTML = `
+      <div class="ti-top">
+        <span class="ti-id">${t.identificador}</span>
+        <span class="ti-score ${score != null ? 'has-score' : ''}">${score != null ? score : '—'}</span>
+      </div>
+      <div class="ti-tema">${escHtml(t.tema)}</div>
+      <div class="ti-meta">
+        <span class="badge ${badgeEstadoClass(t.estado)}">${estadoLabel(t.estado)}</span>
+        ${cu?.tags?.epica_id ? `<span class="badge badge-epica">${cu.tags.epica_id}</span>` : ''}
+      </div>`;
+    container.appendChild(div);
+  }
+}
+
+function badgeEstadoClass(e) {
+  const m = { '1_BACKLOG':'badge-estado-1','2_PENDIENTE':'badge-estado-2',
+              '3_EN CURSO':'badge-estado-3','6_PAUSADO':'badge-estado-6','7_BLOQUEADO':'badge-estado-7' };
+  return m[e] || 'badge-estado-2';
+}
+function estadoLabel(e) { return e.replace(/^\d_/,''); }
+
+// ── Selección de tarea ─────────────────────────────────────────────────────
+function selectTask(id) {
+  if (currentId && isDirty) saveCurrentToMemory();
+  currentId = id;
+
+  document.querySelectorAll('.task-item').forEach(el => {
+    el.classList.toggle('active', el.dataset.id === id);
+  });
+
+  const t  = tarMap[id];
+  const cu = cuMap[id] || {};
+
+  document.getElementById('f-ident').value       = t.identificador;
+  document.getElementById('f-tema').value        = t.tema;
+  document.getElementById('f-cliente').value     = t.cliente;
+  document.getElementById('f-tipo').value        = t.tipo;
+  document.getElementById('f-estado-t').value    = t.estado;
+  document.getElementById('f-responsable').value = t.responsable;
+  document.getElementById('f-detalle').value     = t.detalle;
+
+  document.getElementById('f-hu').value          = cu.historia_usuario || '';
+  document.getElementById('f-modulo').value      = cu.tags?.modulo || '';
+  document.getElementById('f-epica-t').value     = cu.tags?.epica_id || '';
+  document.getElementById('f-complejidad').value = cu.complejidad_estimada || 'Media';
+  document.getElementById('f-actor').value       = cu.actor || '';
+  document.getElementById('f-pre').value         = cu.precondicion || '';
+  document.getElementById('f-flujo-n').value     = cu.flujo_normal || '';
+  document.getElementById('f-flujo-a').value     = cu.flujo_alternativo || '';
+  document.getElementById('f-post').value        = cu.postcondicion || '';
+  document.getElementById('f-excep').value       = cu.excepcion || '';
+
+  renderCriterios(cu.criterios_aceptacion || []);
+
+  document.getElementById('f-impacto').value     = cu.impacto     ?? '';
+  document.getElementById('f-esfuerzo').value    = cu.esfuerzo    ?? '';
+  document.getElementById('f-presion').value     = cu.presion     ?? '';
+  document.getElementById('f-estado-ejec').value = cu.estado_ejec ?? '';
+
+  updateBadges();
+  recalcScore();
+  document.getElementById('editor').style.display = 'block';
+  document.getElementById('editor-title').textContent = t.identificador;
+  document.getElementById('main').scrollTop = 0;
+}
+
+function renderCriterios(list) {
+  const container = document.getElementById('ca-list');
+  container.innerHTML = '';
+  list.forEach((c, i) => addCriterioRow(c, i));
+}
+
+function addCriterioRow(text) {
+  const container = document.getElementById('ca-list');
+  const row = document.createElement('div');
+  row.className = 'criterio-row';
+  const n = container.children.length + 1;
+  row.innerHTML = `
+    <span>${n}.</span>
+    <input type="text" value="${escHtml(text)}" oninput="markDirty()">
+    <button class="btn-icon" onclick="removeCriterio(this)" title="Eliminar">✕</button>`;
+  container.appendChild(row);
+}
+
+function addCriterio() {
+  addCriterioRow('');
+  markDirty();
+  const inputs = document.querySelectorAll('#ca-list input');
+  inputs[inputs.length - 1].focus();
+}
+
+function removeCriterio(btn) {
+  btn.parentElement.remove();
+  document.querySelectorAll('#ca-list .criterio-row').forEach((row, i) => {
+    row.querySelector('span').textContent = (i + 1) + '.';
+  });
+  markDirty();
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+}
+
+// ── Guardar en memoria ─────────────────────────────────────────────────────
+function saveCurrentToMemory() {
+  if (!currentId) return;
+  const t  = tarMap[currentId];
+  const cu = cuMap[currentId];
+  if (!t || !cu) return;
+
+  t.tema        = document.getElementById('f-tema').value;
+  t.cliente     = document.getElementById('f-cliente').value;
+  t.tipo        = document.getElementById('f-tipo').value;
+  t.estado      = document.getElementById('f-estado-t').value;
+  t.responsable = document.getElementById('f-responsable').value;
+  t.detalle     = document.getElementById('f-detalle').value;
+
+  cu.historia_usuario     = document.getElementById('f-hu').value;
+  cu.tags.modulo          = document.getElementById('f-modulo').value;
+  cu.tags.epica_id        = document.getElementById('f-epica-t').value;
+  cu.complejidad_estimada = document.getElementById('f-complejidad').value;
+  cu.actor                = document.getElementById('f-actor').value;
+  cu.precondicion         = document.getElementById('f-pre').value;
+  cu.flujo_normal         = document.getElementById('f-flujo-n').value;
+  cu.flujo_alternativo    = document.getElementById('f-flujo-a').value;
+  cu.postcondicion        = document.getElementById('f-post').value;
+  cu.excepcion            = document.getElementById('f-excep').value;
+
+  cu.criterios_aceptacion = [...document.querySelectorAll('#ca-list input')].map(i => i.value).filter(v => v.trim());
+
+  cu.impacto     = parseScore(document.getElementById('f-impacto').value);
+  cu.esfuerzo    = parseScore(document.getElementById('f-esfuerzo').value);
+  cu.presion     = parseScore(document.getElementById('f-presion').value);
+  cu.estado_ejec = parseScore(document.getElementById('f-estado-ejec').value);
+  cu.score       = parseScore(document.getElementById('f-score-total').value);
+
+  const vinc = backlog.VINCULACIONES.find(v => v.identificador === currentId);
+  if (vinc) vinc.id_epica = cu.tags.epica_id;
+}
+
+function parseScore(val) {
+  const n = parseFloat(val);
+  return isNaN(n) ? null : n;
+}
+
+// ── Score automático ───────────────────────────────────────────────────────
+const SCORE_FIELDS = ['f-impacto','f-esfuerzo','f-presion','f-estado-ejec'];
+
+function recalcScore() {
+  const vals = SCORE_FIELDS
+    .map(id => parseFloat(document.getElementById(id).value))
+    .filter(n => !isNaN(n));
+  const total = vals.length ? vals.reduce((a, b) => a + b, 0) : null;
+  document.getElementById('f-score-total').value = total !== null ? total : '';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  SCORE_FIELDS.forEach(id => {
+    document.getElementById(id).addEventListener('input', () => {
+      recalcScore();
+      markDirty();
+    });
+  });
+
+  // Cargar datos al arrancar
+  loadFromGitHub();
+  if (!hasPat()) {
+    setTimeout(openPatModal, 800);
+  }
+});
+
+// ── Badges y estados visuales ─────────────────────────────────────────────
+function updateBadges() {
+  const est = document.getElementById('f-estado-t').value;
+  const ep  = document.getElementById('f-epica-t').value;
+  const badgeEst = document.getElementById('badge-estado');
+  badgeEst.textContent = estadoLabel(est);
+  badgeEst.className = 'badge ' + badgeEstadoClass(est);
+  document.getElementById('badge-epica').textContent = ep;
+}
+
+// ── Dirty flag ─────────────────────────────────────────────────────────────
+function markDirty() { isDirty = true; updateDirtyBadge(); }
+function updateDirtyBadge() {
+  document.getElementById('dirty-badge').style.display = isDirty ? 'inline' : 'none';
+}
+
+// ── Colapsar secciones ────────────────────────────────────────────────────
+function toggleSection(header) {
+  const body = header.nextElementSibling;
+  body.classList.toggle('hidden');
+  header.classList.toggle('collapsed');
+}
+
+// ── Toast ─────────────────────────────────────────────────────────────────
+function toast(msg, type = 'success') {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'show ' + type;
+  clearTimeout(el._t);
+  el._t = setTimeout(() => { el.className = ''; }, 3000);
+}
+
+// ── Atajos de teclado ─────────────────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+    e.preventDefault();
+    saveToGitHub();
+  }
+  if (e.key === 'Escape') closePatModal();
+});
+
+window.addEventListener('beforeunload', e => {
+  if (isDirty) { e.preventDefault(); e.returnValue = ''; }
+});
+</script>
+</body>
+</html>
