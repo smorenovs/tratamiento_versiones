@@ -2149,11 +2149,11 @@
         "El comportamiento es consistente con el proceso de facturación existente.",
         "Si no hay caja configurada, se muestra un mensaje claro al cajero."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 5,
       "identificador": "TAREA 23"
     },
     {
@@ -4575,11 +4575,11 @@
         "El monto extraído se registra correctamente en los movimientos de caja.",
         "El error previo relacionado con el ejercicio contable queda resuelto."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 8,
       "identificador": "TAREA 340"
     },
     {
