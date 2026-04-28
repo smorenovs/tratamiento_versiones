@@ -6536,11 +6536,11 @@
         "El balance puede exportarse a Excel.",
         "Los totales consolidados coinciden con la suma de las sucursales."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 1,
+      "score": 8,
       "identificador": "TAREA 485"
     },
     {
@@ -6562,11 +6562,11 @@
         "El reporte puede exportarse a Excel.",
         "Los datos son consistentes con los comprobantes del período."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 1,
+      "score": 9,
       "identificador": "TAREA 486"
     },
     {
@@ -6587,11 +6587,11 @@
         "El cálculo es correcto y consistente con las compras del período.",
         "El resultado puede exportarse o usarse directamente para la declaración."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 1,
+      "score": 7,
       "identificador": "TAREA 487"
     },
     {
@@ -6613,11 +6613,11 @@
         "Los asientos importados son correctos y auditables.",
         "Se genera un log del resultado de la importación."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 1,
+      "score": 9,
       "identificador": "TAREA 488"
     },
     {
@@ -6740,11 +6740,11 @@
         "La diferencia previa queda eliminada.",
         "La corrección aplica para todos los períodos futuros."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 8,
       "identificador": "TAREA 493"
     },
     {
@@ -6765,11 +6765,11 @@
         "El nombre de la sociedad es correcto y legible.",
         "El cambio no afecta el funcionamiento del reporte."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 3,
+      "presion": 0,
+      "score": 8,
       "identificador": "TAREA 494"
     },
     {
@@ -6791,11 +6791,11 @@
         "El reporte puede exportarse a Excel.",
         "Los totales por cuenta son correctos."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 495"
     },
     {
@@ -7019,11 +7019,11 @@
         "Los registros son consistentes y auditables.",
         "El problema previo reportado en el evento de soporte queda resuelto."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 505"
     },
     {
