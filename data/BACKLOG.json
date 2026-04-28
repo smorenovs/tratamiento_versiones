@@ -2124,11 +2124,11 @@
         "El eCheq se registra correctamente con código alfanumérico.",
         "No se produce error al ingresar códigos que contienen letras."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 8,
       "identificador": "TAREA 16"
     },
     {
@@ -3249,11 +3249,11 @@
         "Sin filtro de sucursal, el título no incluye información de sucursal.",
         "El dato de sucursal en el título es correcto y legible."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 3,
+      "presion": 0,
+      "score": 8,
       "identificador": "TAREA 204"
     },
     {
@@ -3275,11 +3275,11 @@
         "Los errores de transacción se muestran de forma descriptiva al cajero.",
         "La integración funciona para los tipos de tarjeta soportados por Fiserv."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 206"
     },
     {
@@ -3301,11 +3301,11 @@
         "La conciliación genera el movimiento contable correspondiente.",
         "Los registros contables son correctos y auditables."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 8,
       "identificador": "TAREA 207"
     },
     {
@@ -5185,11 +5185,11 @@
         "El proceso funciona desde la pantalla de Recuperar Preventas (Ctrl+R).",
         "Los comprobantes individuales reflejan correctamente el pago realizado."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 405"
     },
     {
@@ -5792,11 +5792,11 @@
         "El importe se guarda y muestra correctamente sin truncamiento.",
         "No se produce error al ingresar cheques de alto valor."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 3,
+      "presion": 0,
+      "score": 9,
       "identificador": "TAREA 448"
     },
     {
@@ -5869,11 +5869,11 @@
         "No es necesario ampliar la fecha límite para ver cupones del día de corte.",
         "La liquidación es completa y no deja cupones pendientes sin motivo."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 8,
       "identificador": "TAREA 454"
     },
     {
@@ -5894,11 +5894,11 @@
         "El recibo de pago está correctamente vinculado a la presentación de tarjeta.",
         "No es necesario ajustar el saldo manualmente después del pago."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 1,
+      "score": 9,
       "identificador": "TAREA 455"
     },
     {
@@ -6356,11 +6356,11 @@
         "Se muestra un mensaje claro indicando el motivo del bloqueo.",
         "Las demás formas de pago para Gift Card siguen funcionando correctamente."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 1,
+      "score": 9,
       "identificador": "TAREA 478"
     },
     {
@@ -6434,11 +6434,11 @@
         "La transferencia a Mercado Pago se confirma antes de registrar el movimiento.",
         "Los errores de transferencia revierten el movimiento de caja."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 1,
+      "score": 9,
       "identificador": "TAREA 481"
     },
     {
@@ -6715,11 +6715,11 @@
         "Los registros contables resultantes son correctos.",
         "El proceso es auditable y reversible."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 492"
     },
     {
@@ -6842,11 +6842,11 @@
         "El dato de sucursal es correcto y legible.",
         "La visualización no afecta el funcionamiento del módulo de cobranzas."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 497"
     },
     {
@@ -6867,11 +6867,11 @@
         "La anulación de una liquidación duplicada no suma nuevamente el cupón como pendiente.",
         "El saldo de la cuenta refleja correctamente los pagos realizados."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 1,
+      "score": 9,
       "identificador": "TAREA 498"
     },
     {
@@ -7096,11 +7096,11 @@
         "No quedan cupones válidos sin incluir en la liquidación.",
         "El caso reportado en soporte queda resuelto y verificado."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 1,
+      "score": 9,
       "identificador": "TAREA 510"
     },
     {
