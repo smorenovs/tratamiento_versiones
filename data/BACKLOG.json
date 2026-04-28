@@ -196,7 +196,7 @@
       "detalle": "Error al confirmar Ajuste de Stock por Motivo con demasiados caracteres",
       "cliente": "Red Colon",
       "tipo": "Mejora",
-      "estado": "1_BACKLOG",
+      "estado": "5_NO APLICA",
       "responsable": "#N/A"
     },
     {
@@ -543,7 +543,7 @@
       "id_ev_des": "DES-32",
       "identificador": "TAREA 213",
       "tema": "Z609 - Bloqueo para Pedido - Gestión",
-      "detalle": "Pantalla para Administrar los Bloqueos y Desbloqueos de Productos para Pedidos por Sucursal.\nConsiderando Pedidos x Repo Diaria y Pedidos Centralizados\n\n\n\nCompras Per",
+      "detalle": "Pantalla para Administrar los Bloqueos y Desbloqueos de Productos para Pedidos por Sucursal.\nConsiderando Pedidos x Repo Diaria y Pedidos Centralizados\n\nCompras Per\n\nDependiente de TAREA 211",
       "cliente": "V&S",
       "tipo": "Mejora",
       "estado": "2_PENDIENTE",
@@ -1993,7 +1993,7 @@
       "id_ev_des": "9c9cefe3",
       "identificador": "TAREA 511",
       "tema": "Importes de pago mal impresos en recetas de Pami",
-      "detalle": "Ver comentarios en evento de Soporte",
+      "detalle": "Ver comentarios en evento de Soporte:\n\nUna receta se pasó por control y se retornó a la sucursal, adjunta con una validación de IMED. Al reimprimirla, los datos guardados son los correctos (Total comprobante: $103.694,76; Total Afiliado: $15.115,54, Total Cobertura $88.579,22), pero en la impresión original habían salido mal los datos de cobertura (Total comprobante: $103.694,76; Total Afiliado: $15.115,54, Total Cobertura $42.986,08)",
       "cliente": "Constitución",
       "tipo": "Ajuste",
       "estado": "2_PENDIENTE",
@@ -2183,13 +2183,13 @@
       "identificador": "TAREA 29"
     },
     {
-      "historia_usuario": "Como farmacéutica de La Pirgua, quiero poder configurar el orden de las columnas en la grilla de productos, para visualizar la información en el orden que me resulta más cómodo para trabajar.",
+      "historia_usuario": "Como vendedor, quiero poder configurar el orden de las columnas en la grilla de productos, para visualizar la información en el orden que me resulta más cómodo para trabajar.",
       "tags": {
         "modulo": "Artículos — Grilla de Productos",
         "epica_id": "EP-001"
       },
       "complejidad_estimada": "Media",
-      "actor": "Usuario operativo (farmacéutica / encargado)",
+      "actor": "Usuario vendedor",
       "precondicion": "El usuario tiene acceso a la grilla de productos en el sistema.",
       "flujo_normal": "1. El usuario accede a la pantalla de grilla de productos. 2. Selecciona la opción de configurar columnas. 3. Reordena las columnas según su preferencia. 4. Guarda la configuración. 5. La grilla se muestra con el orden personalizado.",
       "flujo_alternativo": "El usuario restaura el orden predeterminado de columnas.",
@@ -2200,11 +2200,11 @@
         "La configuración personalizada se persiste entre sesiones.",
         "La configuración es por usuario o por estación de trabajo."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 5,
       "identificador": "TAREA 33"
     },
     {
@@ -2226,11 +2226,11 @@
         "El pedido generado se registra con la droguería seleccionada.",
         "Etapa 1: Suizo y Disval. Etapa 2: Sud y Monroe."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 2,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 5,
       "identificador": "TAREA 64"
     },
     {
@@ -2277,11 +2277,11 @@
         "Muestra ID, droguería, fecha y monto.",
         "Es exportable a Excel."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 73"
     },
     {
@@ -2589,7 +2589,7 @@
       "identificador": "TAREA 140"
     },
     {
-      "historia_usuario": "Como encargado de La Pirgua, quiero que el formato de las cenefas ajuste el tamaño del nombre del artículo para que sea proporcional al espacio disponible, para que las cenefas impresas sean legibles y bien presentadas.",
+      "historia_usuario": "Como encargado, quiero que el formato de las cenefas ajuste el tamaño del nombre del artículo para que sea proporcional al espacio disponible, para que las cenefas impresas sean legibles y bien presentadas.",
       "tags": {
         "modulo": "Artículos — Cenefas",
         "epica_id": "EP-001"
@@ -2606,11 +2606,11 @@
         "No se generan nombres desproporcionados en las cenefas impresas.",
         "El ajuste es automático para todos los formatos de cenefa afectados."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 3,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 141"
     },
     {
@@ -2760,11 +2760,11 @@
         "Los artículos activos se muestran correctamente.",
         "Existe opción de filtro para incluir bajas si el usuario lo requiere."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 155"
     },
     {
@@ -3404,11 +3404,11 @@
         "El bloqueo por Proveedor/Laboratorio también está disponible.",
         "La gestión de bloqueos tiene su propia pantalla de ABM."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 211"
     },
     {
@@ -3430,11 +3430,11 @@
         "Se pueden agregar, editar y eliminar bloqueos.",
         "Los cambios se reflejan inmediatamente en los módulos de pedidos."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 2,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 5,
       "identificador": "TAREA 213"
     },
     {
@@ -3456,11 +3456,11 @@
         "El desbloqueo aplica a Repo Diaria y Pedidos Centralizados.",
         "Se registra en auditoría cada desbloqueo automático."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 2,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 4,
       "identificador": "TAREA 214"
     },
     {
@@ -3481,11 +3481,11 @@
         "La consulta es en tiempo real.",
         "Se ve el stock por sucursal de forma comparativa."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 217"
     },
     {
@@ -3506,11 +3506,11 @@
         "Los bonificados al 100% pueden excluirse del recálculo.",
         "La configuración aplica al proceso manual y WS."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 219"
     },
     {
@@ -3532,11 +3532,11 @@
         "El pedido se vincula con la validación del bono.",
         "Se puede excluir artículos con stock suficiente del pedido automático."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 220"
     },
     {
@@ -3557,11 +3557,11 @@
         "El estado del pedido se sincroniza con la respuesta del WS.",
         "Los errores se registran y notifican."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 222"
     },
     {
@@ -3582,11 +3582,11 @@
         "El estado de pedidos se sincroniza.",
         "Los errores son manejados y notificados."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 223"
     },
     {
@@ -3608,11 +3608,11 @@
         "Los encargos pueden vincularse a pedidos existentes.",
         "El historial de encargos es consultable."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 224"
     },
     {
@@ -3659,11 +3659,11 @@
         "El operador puede incrementarla manualmente.",
         "El flujo de devolución con remito es accesible desde el ingreso."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 5,
       "identificador": "TAREA 226"
     },
     {
@@ -3835,11 +3835,11 @@
         "La ponderación entre ventas y stock es configurable.",
         "La distribución puede ajustarse manualmente."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 8,
       "identificador": "TAREA 261"
     },
     {
@@ -3868,7 +3868,7 @@
       "identificador": "TAREA 266"
     },
     {
-      "historia_usuario": "Como responsable de artículos de Moreno, quiero poder filtrar el tratamiento masivo de características de artículos por monodroga y potencia, para aplicar cambios masivos de forma más precisa a subconjuntos específicos del catálogo.",
+      "historia_usuario": "Como responsable de artículos, quiero poder filtrar el tratamiento masivo de características de artículos por monodroga y potencia, para aplicar cambios masivos de forma más precisa a subconjuntos específicos del catálogo.",
       "tags": {
         "modulo": "Artículos — Características Masivas",
         "epica_id": "EP-001"
@@ -3886,11 +3886,11 @@
         "Los filtros reducen correctamente la selección de artículos a los que cumplen el criterio.",
         "Los filtros son combinables entre sí y con los existentes."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 5,
       "identificador": "TAREA 269"
     },
     {
@@ -3946,7 +3946,7 @@
       "identificador": "TAREA 285"
     },
     {
-      "historia_usuario": "Como responsable de artículos de Moreno, quiero poder filtrar por 'artículos equivalentes' en la pantalla de modificación masiva de características, para gestionar de forma conjunta los artículos que son equivalentes entre sí.",
+      "historia_usuario": "Como responsable de artículos, quiero poder filtrar por 'artículos equivalentes' en la pantalla de modificación masiva de características, para gestionar de forma conjunta los artículos que son equivalentes entre sí.",
       "tags": {
         "modulo": "Artículos — Características Masivas",
         "epica_id": "EP-001"
@@ -3963,11 +3963,11 @@
         "Al activar el filtro, se muestran solo artículos equivalentes.",
         "Las modificaciones se aplican correctamente al subconjunto filtrado."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 5,
       "identificador": "TAREA 288"
     },
     {
@@ -3988,11 +3988,11 @@
         "Los precios de las 4 droguerías se muestran comparativamente.",
         "El carrito permite generar el pedido al proveedor seleccionado."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 289"
     },
     {
@@ -4321,11 +4321,11 @@
         "Los pedidos enviados incluyen el DUN 14 cuando corresponde.",
         "La conversión entre unidades de venta y empaque es correcta."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 321"
     },
     {
@@ -4371,11 +4371,11 @@
         "El mensaje indica que el proveedor está desactivado.",
         "El bloqueo aplica tanto al proveedor como a la organización."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 3,
+      "presion": 0,
+      "score": 8,
       "identificador": "TAREA 329"
     },
     {
@@ -4448,11 +4448,11 @@
         "La auditoría es visible desde la consulta del comprobante.",
         "El dato previo no puede modificarse retroactivamente."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 332"
     },
     {
@@ -4676,11 +4676,11 @@
         "No hay diferencias de centavos por redondeo.",
         "El criterio de redondeo es uniforme en todo el módulo de compras."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 1,
+      "score": 8,
       "identificador": "TAREA 348"
     },
     {
@@ -5338,11 +5338,11 @@
         "La presentación no desaparece cuando el artículo tiene descripción abreviada.",
         "El error previo queda resuelto para todos los formatos de cenefa afectados."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 420"
     },
     {
@@ -5413,11 +5413,11 @@
         "El texto apaisado es legible y correcto.",
         "El comportamiento para artículos con presentación no se altera."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 3,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 423"
     },
     {
@@ -5438,11 +5438,11 @@
         "No hay diferencias inexplicables entre versiones del reporte.",
         "La corrección aplica a todos los clientes EC."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 424"
     },
     {
@@ -5463,11 +5463,11 @@
         "El cupón permanece en Excluido hasta que el auditor lo cambie explícitamente.",
         "Para Anular solo ocurre si el auditor lo selecciona deliberadamente."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 426"
     },
     {
@@ -5488,11 +5488,11 @@
         "Los datos del historial son correctos y corresponden al artículo seleccionado.",
         "El error previo de no traer información queda resuelto."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 427"
     },
     {
@@ -5767,11 +5767,11 @@
         "La de Maglione también.",
         "El adaptador es mantenible para futuros cambios."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 8,
       "identificador": "TAREA 447"
     },
     {
@@ -5920,11 +5920,11 @@
         "Las etiquetas generadas contienen el precio actualizado del artículo.",
         "La integración soporta el modelo de impresora de referencia provisto por el cliente."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 5,
       "identificador": "TAREA 456"
     },
     {
@@ -5946,11 +5946,11 @@
         "La anulación procede correctamente cuando no hay órdenes de pago asociadas.",
         "El error histórico reportado por Farmanor queda resuelto."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 1,
+      "score": 8,
       "identificador": "TAREA 457"
     },
     {
@@ -5972,11 +5972,11 @@
         "Si no hay margen por laboratorio, usa el general.",
         "La lógica aplica al proceso manual y al WS automático."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 459"
     },
     {
@@ -6255,11 +6255,11 @@
         "Las cantidades del mismo artículo se acumulan.",
         "El pedido puede revisarse antes de enviarse."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 472"
     },
     {
@@ -6306,11 +6306,11 @@
         "Solo aparecen proveedores con saldo neto positivo.",
         "El reporte exportado refleja la misma lógica."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 1,
+      "score": 8,
       "identificador": "TAREA 476"
     },
     {
@@ -6510,11 +6510,11 @@
         "Los filtros reducen la lista correctamente.",
         "La vinculación funciona después del filtrado."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 1,
+      "score": 8,
       "identificador": "TAREA 484"
     },
     {
@@ -6690,11 +6690,11 @@
         "Las diferencias se muestran de forma clara y exportable.",
         "Filtrable por período, sucursal y tipo de comprobante."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 491"
     },
     {
@@ -6892,11 +6892,11 @@
         "El dato del laboratorio es el mismo que se muestra en el formato 1.",
         "Artículos sin laboratorio asignado no generan errores de impresión."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 3,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 499"
     },
     {
@@ -6917,11 +6917,11 @@
         "La validación se imprime correctamente.",
         "Funciona para preventas recientes y recuperadas."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 501"
     },
     {
@@ -6968,11 +6968,11 @@
         "Todas se validan en la misma operación.",
         "El comprobante refleja todas las recetas procesadas."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 3,
+      "presion": 0,
+      "score": 9,
       "identificador": "TAREA 503"
     },
     {
@@ -6993,11 +6993,11 @@
         "El nombre corresponde al afiliado seleccionado.",
         "El comportamiento es consistente en todas las sucursales."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 8,
       "identificador": "TAREA 504"
     },
     {
@@ -7121,11 +7121,11 @@
         "El monto del paciente, la cobertura PAMI y el total coinciden.",
         "La corrección aplica a todos los formatos de impresión."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 1,
+      "score": 9,
       "identificador": "TAREA 511"
     },
     {
@@ -7146,11 +7146,11 @@
         "La compra se recupera con todos los datos previos.",
         "El comportamiento es consistente para todos los tipos de comprobantes."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 1,
+      "score": 9,
       "identificador": "TAREA 512"
     },
     {
@@ -7248,11 +7248,11 @@
         "La validación funciona para tokens con 0 inicial.",
         "El campo es de tipo texto, no numérico."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 3,
+      "presion": 0,
+      "score": 9,
       "identificador": "TAREA 516"
     },
     {
