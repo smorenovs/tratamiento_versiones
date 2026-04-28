@@ -14,7 +14,9 @@
     "total_tareas": 206,
     "total_casos_uso": 206,
     "total_epicas": 12,
-    "total_vinculaciones": 206
+    "total_vinculaciones": 206,
+    "epicas_version": "2.0",
+    "updated_at": "2026-04-28"
   },
   "TAREAS": [
     {
@@ -2083,7 +2085,7 @@
       "historia_usuario": "Como usuario del sistema, quiero que el Lanzador de Zafiro no se plante después de un tiempo prolongado de uso activo, para no perder el trabajo en curso por un error del lanzador.",
       "tags": {
         "modulo": "Interno — Lanzador",
-        "epica_id": "EP-012"
+        "epica_id": "EP-014"
       },
       "complejidad_estimada": "Media",
       "actor": "Cualquier usuario del sistema",
@@ -2108,7 +2110,7 @@
       "historia_usuario": "Como operador de V&S, quiero poder ingresar un código alfanumérico para el eCheq, para registrar correctamente los cheques electrónicos cuyo código no es solo numérico.",
       "tags": {
         "modulo": "Fondos — eCheq",
-        "epica_id": "EP-009"
+        "epica_id": "EP-004"
       },
       "complejidad_estimada": "Baja",
       "actor": "Operador de fondos / Tesorero",
@@ -2133,7 +2135,7 @@
       "historia_usuario": "Como cajero de Farmacia La Esquina, quiero que el cierre de caja tome automáticamente la configuración de la caja registrada para la PC en uso, para no tener que seleccionarla manualmente cada vez.",
       "tags": {
         "modulo": "Fondos — Cajas",
-        "epica_id": "EP-009"
+        "epica_id": "EP-005"
       },
       "complejidad_estimada": "Baja",
       "actor": "Cajero",
@@ -2184,7 +2186,7 @@
       "historia_usuario": "Como farmacéutica de La Pirgua, quiero poder configurar el orden de las columnas en la grilla de productos, para visualizar la información en el orden que me resulta más cómodo para trabajar.",
       "tags": {
         "modulo": "Artículos — Grilla de Productos",
-        "epica_id": "EP-008"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Media",
       "actor": "Usuario operativo (farmacéutica / encargado)",
@@ -2209,7 +2211,7 @@
       "historia_usuario": "Como jefe de compras, quiero realizar pedidos a múltiples droguerías (Suizo, Disval, Sud, Monroe) desde una sola interfaz, para optimizar la compra inteligente sin acceder a cada droguería por separado.",
       "tags": {
         "modulo": "Compras — Compra Inteligente Multiproveedor",
-        "epica_id": "EP-004"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Alta",
       "actor": "Jefe de compras",
@@ -2235,7 +2237,7 @@
       "historia_usuario": "Como responsable de compras, quiero que el reporte 'Resumen de Compras por Proveedor' muestre valores correctos, para poder analizar y conciliar las compras realizadas por proveedor.",
       "tags": {
         "modulo": "Reportes — Compras",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Media",
       "actor": "Responsable de compras / Administración",
@@ -2260,7 +2262,7 @@
       "historia_usuario": "Como jefe de compras, quiero un reporte de Pedidos No Conciliados con filtro por tipo, para detectar y gestionar rápidamente los pedidos pendientes de conciliación.",
       "tags": {
         "modulo": "Compras — Pedidos",
-        "epica_id": "EP-005"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Media",
       "actor": "Jefe de compras",
@@ -2286,7 +2288,7 @@
       "historia_usuario": "Como gerente de sucursal, quiero que el reporte de 'Cantidad de Comprobantes por Día y Hora' muestre información correcta, para poder analizar la carga operativa real de cada momento del día.",
       "tags": {
         "modulo": "Reportes — Ventas",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Media",
       "actor": "Gerente de sucursal / Analista operativo",
@@ -2363,7 +2365,7 @@
       "historia_usuario": "Como operador de stock en Entorno Gestión, quiero registrar Lote y Vencimiento al ingresar stock, para tener trazabilidad de vencimientos igual que en Entorno Droguería.",
       "tags": {
         "modulo": "Stock — Lote y Vencimiento",
-        "epica_id": "EP-004"
+        "epica_id": "EP-003"
       },
       "complejidad_estimada": "Alta",
       "actor": "Operador de stock",
@@ -2389,7 +2391,7 @@
       "historia_usuario": "Como operador de stock que usa colector, quiero que el ingreso soporte escaneos múltiples del mismo artículo, para no tener que ingresar línea por línea.",
       "tags": {
         "modulo": "Stock — Ingreso por Colector",
-        "epica_id": "EP-004"
+        "epica_id": "EP-003"
       },
       "complejidad_estimada": "Media",
       "actor": "Operador de stock",
@@ -2440,7 +2442,7 @@
       "historia_usuario": "Como administrativo de Red Colon, quiero contar con planillas de muestreo de campos para ATSA, para poder preparar las presentaciones de obra social con la información correcta.",
       "tags": {
         "modulo": "Reportes — Obras Sociales",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Alta",
       "actor": "Administrativo de presentaciones OS",
@@ -2465,7 +2467,7 @@
       "historia_usuario": "Como cajero o auditor, quiero que al consultar un Comprobante Interno en el reporte 'Resumen de Caja por Comprobantes' se muestre el comprobante correcto, para no confundir Ingresos de Caja con Comprobantes Internos del mismo número.",
       "tags": {
         "modulo": "Reportes — Caja",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Baja",
       "actor": "Cajero / Auditor",
@@ -2490,7 +2492,7 @@
       "historia_usuario": "Como administrador de Farmanor, quiero que el mensaje global en las facturas quede contenido dentro del espacio delimitado en el comprobante, para que el diseño del ticket sea correcto y profesional.",
       "tags": {
         "modulo": "Artículos — Comprobantes / Impresión",
-        "epica_id": "EP-008"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Administrador",
@@ -2515,7 +2517,7 @@
       "historia_usuario": "Como operador de stock de Red Colon, quiero que el campo 'Motivo' en Ajuste de Stock tenga un límite de caracteres, para que no ocurra un error al confirmar el ajuste con un motivo demasiado largo.",
       "tags": {
         "modulo": "Artículos — Stock / Ajuste",
-        "epica_id": "EP-008"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Operador de stock",
@@ -2540,7 +2542,7 @@
       "historia_usuario": "Como cajero de Farmacia La Esquina, quiero que el sistema no permita emitir una Factura A en un punto de venta CAEA sin haber ingresado el CUIT del cliente, para cumplir con los requisitos fiscales de AFIP.",
       "tags": {
         "modulo": "Fiscal — Facturación CAEA",
-        "epica_id": "EP-010"
+        "epica_id": "EP-007"
       },
       "complejidad_estimada": "Baja",
       "actor": "Cajero",
@@ -2565,7 +2567,7 @@
       "historia_usuario": "Como administrador de La Pirgua, quiero que el reporte 'Informe de Ventas por Forma de Pago Diario - Global' muestre los importes correctos, para poder analizar los ingresos reales sin que aparezcan valores de miles de millones.",
       "tags": {
         "modulo": "Reportes — Ventas",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Media",
       "actor": "Administrador / Gerente de sucursal",
@@ -2590,7 +2592,7 @@
       "historia_usuario": "Como encargado de La Pirgua, quiero que el formato de las cenefas ajuste el tamaño del nombre del artículo para que sea proporcional al espacio disponible, para que las cenefas impresas sean legibles y bien presentadas.",
       "tags": {
         "modulo": "Artículos — Cenefas",
-        "epica_id": "EP-008"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Encargado / Responsable de precios",
@@ -2615,7 +2617,7 @@
       "historia_usuario": "Como cajero que emite notas de crédito, quiero poder cancelar la validación de un bono de descuento (Andrómaco) desde la pantalla de emisión de NC, para corregir errores en el proceso, sin necesidad de anular todo el comprobante.",
       "tags": {
         "modulo": "Ventas — Notas de Crédito",
-        "epica_id": "EP-002"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Cajero",
@@ -2641,7 +2643,7 @@
       "historia_usuario": "Como administrador del sistema de Farmacia La Esquina, quiero que al modificar el campo 'url_wsrobot' en Administración del Sistema no se produzca un error, para poder actualizar la configuración correctamente.",
       "tags": {
         "modulo": "Interno — Administración del Sistema",
-        "epica_id": "EP-012"
+        "epica_id": "EP-014"
       },
       "complejidad_estimada": "Baja",
       "actor": "Administrador del sistema",
@@ -2719,7 +2721,7 @@
       "historia_usuario": "Como administrativo de Farmacia La Esquina, quiero que el reporte de comprobantes por fecha de vencimiento sea modificado para mostrar la información que necesito, para gestionar mejor los vencimientos de mis comprobantes.",
       "tags": {
         "modulo": "Reportes — Comprobantes",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Baja",
       "actor": "Administrativo",
@@ -2744,7 +2746,7 @@
       "historia_usuario": "Como responsable de compras de Constitución, quiero que los productos dados de baja no aparezcan en la pantalla de 'Informe de Lista de Precios de Compra > Selección Múltiple de Artículos', para no confundirlos con artículos activos al analizar precios.",
       "tags": {
         "modulo": "Artículos — Lista de Precios",
-        "epica_id": "EP-008"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Responsable de compras",
@@ -2795,7 +2797,7 @@
       "historia_usuario": "Como contador de Farmacia La Esquina, quiero que los reportes de IVA Compras, IVA Ventas y Mayor de Cuentas muestren el saldo completo, para poder realizar correctamente la conciliación contable.",
       "tags": {
         "modulo": "Reportes — Contabilidad / IVA",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Media",
       "actor": "Contador / Administrador",
@@ -2820,7 +2822,7 @@
       "historia_usuario": "Como operador de compras de Moreno, quiero que la pantalla 'Consulta / Reimpresión de Pedidos' tenga un botón para exportar a XLSX, para poder analizar los pedidos en una planilla de cálculo.",
       "tags": {
         "modulo": "Reportes — Pedidos",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Baja",
       "actor": "Operador de compras",
@@ -2845,7 +2847,7 @@
       "historia_usuario": "Como gerente de V&S, quiero que el título del reporte de ventas detallado por clientes sea claro y no redundante, para identificar rápidamente el reporte que estoy consultando.",
       "tags": {
         "modulo": "Reportes — Ventas",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Baja",
       "actor": "Gerente / Analista de ventas",
@@ -2870,7 +2872,7 @@
       "historia_usuario": "Como analista de V&S, quiero poder filtrar por cliente fidelizado en los reportes del sistema, para obtener estadísticas segmentadas por este tipo de cliente.",
       "tags": {
         "modulo": "Reportes — Ventas / Fidelización",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Media",
       "actor": "Analista de ventas / Gerente",
@@ -2895,7 +2897,7 @@
       "historia_usuario": "Como gerente de Constitución, quiero un reporte que, dado un cliente fidelizado, liste los productos que compró en un período determinado con opción de detalle, para analizar los hábitos de compra de mis clientes.",
       "tags": {
         "modulo": "Reportes — Ventas / Fidelización",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Media",
       "actor": "Gerente / Analista comercial",
@@ -2921,7 +2923,7 @@
       "historia_usuario": "Como operador de stock, quiero que el ingreso soporte múltiples líneas del mismo artículo con conciliación mejorada, para manejar ingresos parciales y duplicados sin inconsistencias.",
       "tags": {
         "modulo": "Stock — Conciliación de Ingresos",
-        "epica_id": "EP-004"
+        "epica_id": "EP-003"
       },
       "complejidad_estimada": "Alta",
       "actor": "Operador de stock",
@@ -2946,7 +2948,7 @@
       "historia_usuario": "Como responsable de e-commerce de V&S, quiero que Zafiro cuente con un web service completo para Tiendastic que permita la subida de información del catálogo y stock, para sincronizar automáticamente los datos entre Zafiro y la tienda online.",
       "tags": {
         "modulo": "E-Commerce — Tiendastic",
-        "epica_id": "EP-007"
+        "epica_id": "EP-014"
       },
       "complejidad_estimada": "Alta",
       "actor": "Responsable de e-commerce / Equipo técnico",
@@ -2972,7 +2974,7 @@
       "historia_usuario": "Como administrativo de cobranzas, quiero que el ordenamiento Sucursal+FechaComp+Hora en Presentación OS/EC funcione correctamente, para analizar comprobantes en el orden esperado.",
       "tags": {
         "modulo": "Ventas — Presentaciones OS/EC",
-        "epica_id": "EP-003"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Administrativo de cobranzas",
@@ -3023,7 +3025,7 @@
       "historia_usuario": "Como responsable de e-commerce de V&S, quiero que la bajada de pedidos de Tiendastic por intercambio de archivos contemple los datos de sucursal, punto de venta y punto de retiro, para procesar correctamente cada pedido recibido.",
       "tags": {
         "modulo": "E-Commerce — Tiendastic",
-        "epica_id": "EP-007"
+        "epica_id": "EP-014"
       },
       "complejidad_estimada": "Alta",
       "actor": "Responsable de e-commerce / Operador logístico",
@@ -3076,7 +3078,7 @@
       "historia_usuario": "Como administrativo de ventas, quiero que el sistema bloquee la emisión de Notas de Crédito sobre facturas que están en estado Auditada o Presentada ante la OS/EC, para evitar modificar comprobantes ya cerrados contablemente (excepto tarjetas).",
       "tags": {
         "modulo": "Ventas — Notas de Crédito",
-        "epica_id": "EP-002"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Media",
       "actor": "Administrativo de ventas",
@@ -3103,7 +3105,7 @@
       "historia_usuario": "Como administrativo de ventas, quiero configurar un límite de tiempo tras la emisión de una factura pasado el cual no se pueden emitir Notas de Crédito, para cumplir con políticas internas de cierre.",
       "tags": {
         "modulo": "Ventas — Notas de Crédito",
-        "epica_id": "EP-002"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Media",
       "actor": "Administrativo de ventas / configurador",
@@ -3129,7 +3131,7 @@
       "historia_usuario": "Como administrativo de cobranzas, quiero poder aplicar una Nota de Recupero a más de una presentación de OS/EC, para distribuir el recupero entre varias presentaciones sin tener que crear notas separadas.",
       "tags": {
         "modulo": "Ventas — Notas de Recupero",
-        "epica_id": "EP-002"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Media",
       "actor": "Administrativo de cobranzas",
@@ -3155,7 +3157,7 @@
       "historia_usuario": "Como responsable de compras de Farmacia La Esquina, quiero un reporte que cruce ingresos de compras con facturas e identifique la familia de productos, para tener una visión completa del gasto por categoría.",
       "tags": {
         "modulo": "Reportes — Compras / Stock",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Alta",
       "actor": "Responsable de compras",
@@ -3181,7 +3183,7 @@
       "historia_usuario": "Como contador de Farmacia La Esquina, quiero un reporte que identifique comprobantes que figuran en ARCA y no en Zafiro, para detectar discrepancias entre el registro fiscal y el sistema.",
       "tags": {
         "modulo": "Reportes — Fiscal / ARCA",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Alta",
       "actor": "Contador / Administrador fiscal",
@@ -3207,7 +3209,7 @@
       "historia_usuario": "Como administrador de fondos de Farmacia La Esquina, quiero un reporte unificado de movimientos de fondos que muestre todas las cuentas simultáneamente, para no tener que consultar de a una por vez.",
       "tags": {
         "modulo": "Reportes — Fondos",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Media",
       "actor": "Administrador de fondos / Tesorero",
@@ -3233,7 +3235,7 @@
       "historia_usuario": "Como responsable de cobranzas de Farmacia La Esquina, quiero que al filtrar cobranzas por sucursal aparezca el nombre de la sucursal en el título del resultado, para saber claramente sobre qué sucursal estoy trabajando.",
       "tags": {
         "modulo": "Fondos — Cobranzas EC",
-        "epica_id": "EP-009"
+        "epica_id": "EP-004"
       },
       "complejidad_estimada": "Baja",
       "actor": "Responsable de cobranzas",
@@ -3258,7 +3260,7 @@
       "historia_usuario": "Como responsable de fondos de V&S, quiero que Zafiro esté integrado con Fiserv (Clover) para el procesamiento de tarjetas en la facturación, para operar los cobros con tarjeta de forma integrada y sin doble ingreso de datos.",
       "tags": {
         "modulo": "Fondos — Tarjetas / Integración",
-        "epica_id": "EP-009"
+        "epica_id": "EP-004"
       },
       "complejidad_estimada": "Alta",
       "actor": "Cajero / Responsable de fondos",
@@ -3284,7 +3286,7 @@
       "historia_usuario": "Como tesorero de Farmacia La Esquina, quiero que los cheques propios emitidos impacten directamente en la cuenta banco sin pasar por la cuenta puente, y que la conciliación genere el movimiento contable correspondiente, para simplificar el circuito contable.",
       "tags": {
         "modulo": "Fondos — Cheques",
-        "epica_id": "EP-009"
+        "epica_id": "EP-004"
       },
       "complejidad_estimada": "Alta",
       "actor": "Tesorero / Contador",
@@ -3310,7 +3312,7 @@
       "historia_usuario": "Como contador de Farmacia La Esquina, quiero un reporte de sumas y saldos discriminado por sucursal (sin modificar el actual), para poder analizar la situación contable de cada sucursal individualmente.",
       "tags": {
         "modulo": "Reportes — Contabilidad",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Alta",
       "actor": "Contador",
@@ -3336,7 +3338,7 @@
       "historia_usuario": "Como analista de compras de Farmacia La Esquina, quiero que el reporte BI de Ventas Pareto recalcule los valores al aplicar el filtro de laboratorio, para obtener un análisis Pareto correcto del segmento filtrado.",
       "tags": {
         "modulo": "Reportes — BI / Pareto",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Media",
       "actor": "Analista de compras / Gerente",
@@ -3361,7 +3363,7 @@
       "historia_usuario": "Como analista de compras de Farmacia La Esquina, quiero que el reporte BI Pareto incluya el cálculo de días de stock valorizado, para poder tomar decisiones de compra más informadas.",
       "tags": {
         "modulo": "Reportes — BI / Pareto",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Alta",
       "actor": "Analista de compras / Gerente",
@@ -3387,7 +3389,7 @@
       "historia_usuario": "Como jefe de compras, quiero bloquear por producto y sucursal en Reposición Diaria, para evitar pedidos de artículos que no deben reponerse en una sucursal específica.",
       "tags": {
         "modulo": "Compras — Reposición Diaria",
-        "epica_id": "EP-005"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Media",
       "actor": "Jefe de compras",
@@ -3413,7 +3415,7 @@
       "historia_usuario": "Como jefe de compras, quiero una pantalla para administrar bloqueos y desbloqueos de productos para pedidos (Repo Diaria y Centralizados por sucursal), para gestionar centralizadamente qué se puede pedir.",
       "tags": {
         "modulo": "Compras — Gestión de Bloqueos de Pedidos",
-        "epica_id": "EP-005"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Media",
       "actor": "Jefe de compras",
@@ -3439,7 +3441,7 @@
       "historia_usuario": "Como jefe de compras, quiero que los bloqueos de pedidos se desbloqueen automáticamente cuando el stock llega a cero o al mínimo configurado, para no desbloquear manualmente cada artículo.",
       "tags": {
         "modulo": "Compras — Desbloqueo Automático de Pedidos",
-        "epica_id": "EP-005"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Alta",
       "actor": "Jefe de compras",
@@ -3465,7 +3467,7 @@
       "historia_usuario": "Como operador de reposición, quiero ver el stock de un artículo en otras sucursales desde Repo Diaria, para evitar pedir al proveedor cuando hay excedente en otra sucursal.",
       "tags": {
         "modulo": "Compras — Reposición Diaria",
-        "epica_id": "EP-005"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Media",
       "actor": "Operador de reposición",
@@ -3490,7 +3492,7 @@
       "historia_usuario": "Como jefe de compras, quiero que la actualización de precios use el PPP como base del costo de reposición y excluya productos bonificados al 100%, para que los costos reflejen la realidad del negocio.",
       "tags": {
         "modulo": "Compras — Actualización de Precios",
-        "epica_id": "EP-005"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Alta",
       "actor": "Jefe de compras",
@@ -3515,7 +3517,7 @@
       "historia_usuario": "Como jefe de compras, quiero que el sistema genere automáticamente un pedido de reposición cuando se valida un bono PAP o Tarmed, para asegurar que el medicamento correspondiente esté disponible.",
       "tags": {
         "modulo": "Compras — Bonos PAP/Tarmed",
-        "epica_id": "EP-005"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Alta",
       "actor": "Jefe de compras",
@@ -3541,7 +3543,7 @@
       "historia_usuario": "Como jefe de compras, quiero integrar la generación de pedidos con Monroe mediante WS, para agilizar el proceso sin ingresar pedidos manualmente en su portal.",
       "tags": {
         "modulo": "Compras — Integración Monroe",
-        "epica_id": "EP-005"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Alta",
       "actor": "Jefe de compras",
@@ -3566,7 +3568,7 @@
       "historia_usuario": "Como jefe de compras, quiero mejorar la integración WS con SUD para pedidos, para que la comunicación sea más confiable y el proceso más eficiente.",
       "tags": {
         "modulo": "Compras — Integración Sud",
-        "epica_id": "EP-005"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Media",
       "actor": "Jefe de compras",
@@ -3591,7 +3593,7 @@
       "historia_usuario": "Como responsable de sucursal, quiero poder registrar encargos de productos a través del sistema, para que el área de compras reciba la solicitud de forma organizada sin comunicaciones fuera del sistema.",
       "tags": {
         "modulo": "Compras — Encargos de Productos",
-        "epica_id": "EP-005"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Media",
       "actor": "Responsable de sucursal",
@@ -3617,7 +3619,7 @@
       "historia_usuario": "Como responsable de sucursal, quiero poder registrar solicitudes de productos en falta por sistema, para notificar al área de compras de forma organizada y trazable.",
       "tags": {
         "modulo": "Compras — Solicitud de Productos en Falta",
-        "epica_id": "EP-005"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Media",
       "actor": "Responsable de sucursal",
@@ -3643,7 +3645,7 @@
       "historia_usuario": "Como operador de depósito, quiero que al ingresar un sobrante no solicitado la cantidad inicial del comprobante sea 0 (no la recibida), para evitar registrar stock que luego hay que devolver manualmente.",
       "tags": {
         "modulo": "Compras — Devolución por Sobrante",
-        "epica_id": "EP-004"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Baja",
       "actor": "Operador de depósito",
@@ -3668,7 +3670,7 @@
       "historia_usuario": "Como desarrollador del módulo CMC, quiero que el formulario principal del Círculo Médico Catamarca funcione sin errores, para que los usuarios puedan operar el sistema correctamente.",
       "tags": {
         "modulo": "Interno — CMC",
-        "epica_id": "EP-012"
+        "epica_id": "EP-013"
       },
       "complejidad_estimada": "Media",
       "actor": "Desarrollador / Usuario de CMC",
@@ -3693,7 +3695,7 @@
       "historia_usuario": "Como desarrollador del módulo CMC, quiero implementar el ABM de Entidades Prestadoras (centros de salud, sanatorios, equipos médicos) heredando de Organizaciones, para gestionar correctamente las instituciones prestadoras de servicios médicos.",
       "tags": {
         "modulo": "Interno — CMC",
-        "epica_id": "EP-012"
+        "epica_id": "EP-013"
       },
       "complejidad_estimada": "Alta",
       "actor": "Desarrollador / Administrador CMC",
@@ -3719,7 +3721,7 @@
       "historia_usuario": "Como desarrollador del módulo CMC, quiero implementar el ABM de Obras Sociales con su formulario para clientes, para gestionar las obras sociales vinculadas al Círculo Médico Catamarca.",
       "tags": {
         "modulo": "Interno — CMC",
-        "epica_id": "EP-012"
+        "epica_id": "EP-013"
       },
       "complejidad_estimada": "Alta",
       "actor": "Desarrollador / Administrador CMC",
@@ -3744,7 +3746,7 @@
       "historia_usuario": "Como encargado de stock de Red Colon, quiero ver los saldos de stock de todas las empresas y sucursales en un solo reporte exportable a Excel, para poder gestionar el inventario consolidado.",
       "tags": {
         "modulo": "Reportes — Stock",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Media",
       "actor": "Encargado de stock / Responsable de compras",
@@ -3769,7 +3771,7 @@
       "historia_usuario": "Como analista de ventas de Red Colon, quiero que el reporte 'Resumen de Ventas por Artículo y Sucursal' no genere errores de 'Duplicate Name', para poder consultar las ventas sin interrupciones.",
       "tags": {
         "modulo": "Reportes — Ventas",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Baja",
       "actor": "Analista de ventas",
@@ -3794,7 +3796,7 @@
       "historia_usuario": "Como jefe de compras, quiero asignar masivamente la prioridad de EAN a los artículos importados en la actualización de precios, para que el sistema sepa qué código usar como prioritario.",
       "tags": {
         "modulo": "Compras — Gestión de EAN",
-        "epica_id": "EP-005"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Media",
       "actor": "Jefe de compras",
@@ -3819,7 +3821,7 @@
       "historia_usuario": "Como jefe de compras, quiero que el cálculo de distribución de stock considere además de las ventas el stock actual de cada sucursal, para no enviar stock a sucursales que ya tienen suficiente.",
       "tags": {
         "modulo": "Compras — Distribución de Stock",
-        "epica_id": "EP-005"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Alta",
       "actor": "Jefe de compras",
@@ -3844,7 +3846,7 @@
       "historia_usuario": "Como administrativo de recetas, quiero exportar el reporte Datos de Receta por Profesional con nombres en mayúscula o minúscula según prefiera, para estandarizar los datos exportados.",
       "tags": {
         "modulo": "Ventas — Recetas",
-        "epica_id": "EP-003"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Administrativo de recetas",
@@ -3869,7 +3871,7 @@
       "historia_usuario": "Como responsable de artículos de Moreno, quiero poder filtrar el tratamiento masivo de características de artículos por monodroga y potencia, para aplicar cambios masivos de forma más precisa a subconjuntos específicos del catálogo.",
       "tags": {
         "modulo": "Artículos — Características Masivas",
-        "epica_id": "EP-008"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Responsable de artículos / Farmacéutico",
@@ -3895,7 +3897,7 @@
       "historia_usuario": "Como gerente de Red Colon, quiero un reporte BI que compare ventas y stock de dos períodos diferentes por sucursal, para identificar tendencias y tomar decisiones comerciales.",
       "tags": {
         "modulo": "Reportes — BI / Stock",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Alta",
       "actor": "Gerente / Analista comercial",
@@ -3921,7 +3923,7 @@
       "historia_usuario": "Como analista BI de Farmacia La Esquina, quiero recibir una notificación automática cuando la recarga de datos de Zafiro BI sea exitosa, para saber en tiempo real que los datos están actualizados.",
       "tags": {
         "modulo": "Reportes — BI / Notificaciones",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Baja",
       "actor": "Analista BI",
@@ -3947,7 +3949,7 @@
       "historia_usuario": "Como responsable de artículos de Moreno, quiero poder filtrar por 'artículos equivalentes' en la pantalla de modificación masiva de características, para gestionar de forma conjunta los artículos que son equivalentes entre sí.",
       "tags": {
         "modulo": "Artículos — Características Masivas",
-        "epica_id": "EP-008"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Responsable de artículos",
@@ -3972,7 +3974,7 @@
       "historia_usuario": "Como jefe de compras, quiero que el carrito de comparación de precios incluya también SUD y Monroe, para comparar precios entre todos los proveedores antes de generar el pedido.",
       "tags": {
         "modulo": "Compras — Carrito de Pedidos",
-        "epica_id": "EP-005"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Media",
       "actor": "Jefe de compras",
@@ -3997,7 +3999,7 @@
       "historia_usuario": "Como supervisor de stock, quiero que el Reporte de Vales de Entrega indique si el ingreso de stock asociado está pendiente, para hacer seguimiento de vales no completados.",
       "tags": {
         "modulo": "Stock — Vales de Entrega",
-        "epica_id": "EP-004"
+        "epica_id": "EP-003"
       },
       "complejidad_estimada": "Media",
       "actor": "Supervisor de stock",
@@ -4023,7 +4025,7 @@
       "historia_usuario": "Como supervisor de stock, quiero que el Reporte de Vales de Entrega incluya el Cliente Fidelizado asociado al vale, para relacionar los vales con los clientes específicos.",
       "tags": {
         "modulo": "Stock — Vales de Entrega",
-        "epica_id": "EP-004"
+        "epica_id": "EP-003"
       },
       "complejidad_estimada": "Baja",
       "actor": "Supervisor de stock",
@@ -4048,7 +4050,7 @@
       "historia_usuario": "Como contador de CAMYEN, quiero que el módulo de IVA Simplificado contemple el nuevo formato con soporte para Bienes, Bienes de Uso y Servicios en comprobantes de compra, para procesar correctamente las facturas de proveedores con distintos tipos de artículo.",
       "tags": {
         "modulo": "Fiscal — IVA Simplificado",
-        "epica_id": "EP-010"
+        "epica_id": "EP-007"
       },
       "complejidad_estimada": "Alta",
       "actor": "Contador",
@@ -4074,7 +4076,7 @@
       "historia_usuario": "Como responsable de administración de CAMYEN, quiero que Zafiro soporte facturación electrónica de exportación integrada con AFIP para bienes, para poder emitir comprobantes de exportación sin procesos manuales.",
       "tags": {
         "modulo": "Fiscal — Facturación Electrónica",
-        "epica_id": "EP-010"
+        "epica_id": "EP-007"
       },
       "complejidad_estimada": "Alta",
       "actor": "Responsable de administración / Contador",
@@ -4100,7 +4102,7 @@
       "historia_usuario": "Como contador de CAMYEN, quiero que Zafiro incluya la opción de ajuste por inflación como asiento configurable, y que el reporte de Sumas y Saldos permita excluir saldos iniciales de forma parametrizable, para cumplir con la normativa contable vigente.",
       "tags": {
         "modulo": "Fiscal — Contabilidad / Inflación",
-        "epica_id": "EP-010"
+        "epica_id": "EP-007"
       },
       "complejidad_estimada": "Alta",
       "actor": "Contador",
@@ -4126,7 +4128,7 @@
       "historia_usuario": "Como contador de CAMYEN, quiero que el módulo de retención de ganancias e IVA no presente errores de formato, para poder generar los archivos de retención correctamente.",
       "tags": {
         "modulo": "Fiscal — Retenciones",
-        "epica_id": "EP-010"
+        "epica_id": "EP-007"
       },
       "complejidad_estimada": "Media",
       "actor": "Contador",
@@ -4151,7 +4153,7 @@
       "historia_usuario": "Como desarrollador de la Gerenciadora CMC, quiero poder manejar los diferentes entornos del sistema (desarrollo, testing, producción) desde la herramienta, para facilitar el despliegue y configuración del módulo.",
       "tags": {
         "modulo": "Interno — CMC / Gerenciadora",
-        "epica_id": "EP-012"
+        "epica_id": "EP-013"
       },
       "complejidad_estimada": "Alta",
       "actor": "Desarrollador / Administrador técnico",
@@ -4176,7 +4178,7 @@
       "historia_usuario": "Como desarrollador de VS Ingeniería, quiero completar el proceso de Licitaciones en la herramienta de droguería, para que el módulo de licitaciones esté completamente funcional.",
       "tags": {
         "modulo": "Interno — Herramientas VS",
-        "epica_id": "EP-012"
+        "epica_id": "EP-014"
       },
       "complejidad_estimada": "Alta",
       "actor": "Desarrollador / Administrador interno",
@@ -4201,7 +4203,7 @@
       "historia_usuario": "Como desarrollador del módulo CMC, quiero rediseñar la estructura de profesionales para que sea más robusta y mantenible, para facilitar el desarrollo de funcionalidades futuras sobre esta entidad.",
       "tags": {
         "modulo": "Interno — CMC",
-        "epica_id": "EP-012"
+        "epica_id": "EP-013"
       },
       "complejidad_estimada": "Alta",
       "actor": "Desarrollador",
@@ -4253,7 +4255,7 @@
       "historia_usuario": "Como administrativo de ventas, quiero poder emitir notas de crédito sobre facturas del coseguro SSSP sin errores, para gestionar correctamente las devoluciones de esa obra social.",
       "tags": {
         "modulo": "Ventas — Notas de Crédito",
-        "epica_id": "EP-002"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Administrativo de ventas",
@@ -4279,7 +4281,7 @@
       "historia_usuario": "Como administrativo de ventas, quiero que el sistema impida emitir dos NC completas con CAE diferente sobre la misma factura, para evitar duplicaciones en el proceso de devolución.",
       "tags": {
         "modulo": "Ventas — Notas de Crédito",
-        "epica_id": "EP-002"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Administrativo de ventas",
@@ -4305,7 +4307,7 @@
       "historia_usuario": "Como operador de pedidos centralizados, quiero que el módulo soporte productos con código DUN 14, para generar pedidos correctamente de artículos que se venden en unidades de empaque.",
       "tags": {
         "modulo": "Compras — Pedidos Centralizados",
-        "epica_id": "EP-005"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Media",
       "actor": "Operador de pedidos centralizados",
@@ -4330,7 +4332,7 @@
       "historia_usuario": "Como responsable técnico de VS Ingeniería, quiero documentar el proyecto ZIA para que el equipo pueda mantenerlo y ampliarlo sin depender del conocimiento tácito de una sola persona.",
       "tags": {
         "modulo": "Interno — ZIA",
-        "epica_id": "EP-012"
+        "epica_id": "EP-010"
       },
       "complejidad_estimada": "Media",
       "actor": "Desarrollador / Responsable técnico",
@@ -4355,7 +4357,7 @@
       "historia_usuario": "Como administrativo de compras, quiero que Zafiro impida ingresar comprobantes de proveedores desactivados, para mantener la integridad de los datos de compras.",
       "tags": {
         "modulo": "Compras — Control de Proveedores",
-        "epica_id": "EP-004"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Baja",
       "actor": "Administrativo de compras",
@@ -4406,7 +4408,7 @@
       "historia_usuario": "Como auditor de Constitución, quiero que la pantalla de 'Auditoría General' indique qué tipos de comprobantes se pueden buscar, para no perder tiempo intentando buscar comprobantes que no están disponibles.",
       "tags": {
         "modulo": "Reportes — Auditoría",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Baja",
       "actor": "Auditor / Administrador",
@@ -4431,7 +4433,7 @@
       "historia_usuario": "Como auditor de compras, quiero que cada modificación de un comprobante registre en auditoría el importe total anterior, para tener trazabilidad de los cambios realizados.",
       "tags": {
         "modulo": "Compras — Auditoría de Comprobantes",
-        "epica_id": "EP-004"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Baja",
       "actor": "Auditor de compras",
@@ -4509,7 +4511,7 @@
       "historia_usuario": "Como cajero que valida recetas con cobertura 0%, quiero que el sistema procese correctamente esa validación e imprima los datos, para no manejar manualmente los comprobantes de esa OS.",
       "tags": {
         "modulo": "Ventas — Validación de Recetas OS",
-        "epica_id": "EP-003"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Cajero / farmacéutico",
@@ -4534,7 +4536,7 @@
       "historia_usuario": "Como administrativo de recetas psicotrópicas, quiero que el reporte Detalle de Receta muestre la columna descripción en formato apaisado, para visualizar correctamente las descripciones largas.",
       "tags": {
         "modulo": "Ventas — Reportes de Recetas",
-        "epica_id": "EP-003"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Administrativo de recetas",
@@ -4559,7 +4561,7 @@
       "historia_usuario": "Como tesorero de Farmacia La Esquina, quiero que la extracción de cajas no tome en cuenta el ejercicio contable para determinar los movimientos, para que el proceso de extracción sea correcto en todos los escenarios.",
       "tags": {
         "modulo": "Fondos — Cajas",
-        "epica_id": "EP-009"
+        "epica_id": "EP-005"
       },
       "complejidad_estimada": "Media",
       "actor": "Tesorero / Cajero",
@@ -4584,7 +4586,7 @@
       "historia_usuario": "Como responsable técnico de Red Colon, quiero que el servicio de comunicaciones no genere errores, para que la sincronización de datos entre sucursales y sistemas externos funcione de forma continua.",
       "tags": {
         "modulo": "Interno — Infraestructura",
-        "epica_id": "EP-012"
+        "epica_id": "EP-014"
       },
       "complejidad_estimada": "Alta",
       "actor": "Responsable técnico / Equipo de soporte",
@@ -4609,7 +4611,7 @@
       "historia_usuario": "Como administrativo de cobranzas OS, quiero que el Reporte Resumen de Ventas con Convenio/OS incluya el campo Nro. de Autorización, para comparar datos con la OS sin buscar número por número.",
       "tags": {
         "modulo": "Ventas — Reportes OS/EC",
-        "epica_id": "EP-003"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Administrativo de cobranzas",
@@ -4634,7 +4636,7 @@
       "historia_usuario": "Como administrativo de ventas, quiero poder aplicar notas de crédito a Bonos de Descuento sobre presentaciones de entidad convenio, para regularizar saldos cuando la OS aplica descuentos retroactivos.",
       "tags": {
         "modulo": "Ventas — Notas de Crédito",
-        "epica_id": "EP-002"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Media",
       "actor": "Administrativo de ventas / auditoría",
@@ -4660,7 +4662,7 @@
       "historia_usuario": "Como administrativo de compras, quiero que los saldos de la Cta Cte de compras muestren redondeos consistentes, para evitar diferencias de centavos que dificultan la conciliación.",
       "tags": {
         "modulo": "Compras — Cuenta Corriente",
-        "epica_id": "EP-004"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Media",
       "actor": "Administrativo de compras",
@@ -4685,7 +4687,7 @@
       "historia_usuario": "Como farmacéutico que valida recetas, quiero recibir mensajes de error claros cuando la consulta no devuelve ítems, para saber si el problema es de la OS, la receta o el sistema.",
       "tags": {
         "modulo": "Ventas — Validación de Recetas",
-        "epica_id": "EP-003"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Farmacéutico / cajero",
@@ -4711,7 +4713,7 @@
       "historia_usuario": "Como responsable de etiquetas, quiero que las etiquetas muestren correctamente precios con y sin descuento, y contar con un nuevo formato 120mm x 240mm, para mejorar la presentación en góndola.",
       "tags": {
         "modulo": "Stock — Etiquetas de Precios",
-        "epica_id": "EP-004"
+        "epica_id": "EP-003"
       },
       "complejidad_estimada": "Media",
       "actor": "Responsable de etiquetas",
@@ -4736,7 +4738,7 @@
       "historia_usuario": "Como operador de stock, quiero poder descargar la plantilla Excel desde Zafiro, para completarla e importar stock masivamente sin buscar el archivo externamente.",
       "tags": {
         "modulo": "Stock — Importación Masiva",
-        "epica_id": "EP-004"
+        "epica_id": "EP-003"
       },
       "complejidad_estimada": "Baja",
       "actor": "Operador de stock",
@@ -4761,7 +4763,7 @@
       "historia_usuario": "Como desarrollador de ZIA, quiero que el sistema guarde el ID de sesión para cada comprobante descargado mediante ZIA, para poder auditar y rastrear qué sesión generó cada descarga.",
       "tags": {
         "modulo": "Interno — ZIA",
-        "epica_id": "EP-012"
+        "epica_id": "EP-010"
       },
       "complejidad_estimada": "Baja",
       "actor": "Desarrollador / Auditor técnico",
@@ -4786,7 +4788,7 @@
       "historia_usuario": "Como supervisor de stock, quiero que el Reporte de Movimiento de Stock no muestre duplicados cuando un mismo artículo aparece en dos facturas de un mismo ingreso, para confiar en los datos al verificar inconsistencias.",
       "tags": {
         "modulo": "Stock — Reportes de Movimiento",
-        "epica_id": "EP-004"
+        "epica_id": "EP-003"
       },
       "complejidad_estimada": "Media",
       "actor": "Supervisor de stock",
@@ -4811,7 +4813,7 @@
       "historia_usuario": "Como cajero que procesa recetas PAMI con pago en Cta Cte, quiero que a partir de la segunda receta no tenga que cancelar y recargar la forma de pago, para agilizar la validación múltiple.",
       "tags": {
         "modulo": "Ventas — Recetas Electrónicas PAMI",
-        "epica_id": "EP-003"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Media",
       "actor": "Cajero / farmacéutico",
@@ -4836,7 +4838,7 @@
       "historia_usuario": "Como usuario del sistema, quiero que el Lanzador de Zafiro no genere el error 'DNI is not an integer value', para poder trabajar sin interrupciones por errores de inicialización.",
       "tags": {
         "modulo": "Interno — Lanzador",
-        "epica_id": "EP-012"
+        "epica_id": "EP-014"
       },
       "complejidad_estimada": "Baja",
       "actor": "Cualquier usuario del sistema",
@@ -4861,7 +4863,7 @@
       "historia_usuario": "Como administrador de planes de OS, quiero poder desactivar la carga obligatoria del ID de afiliado y DNI en un plan, para aquellas OS que no requieren esos datos.",
       "tags": {
         "modulo": "Ventas — Configuración de Planes OS",
-        "epica_id": "EP-003"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Administrador del sistema",
@@ -4886,7 +4888,7 @@
       "historia_usuario": "Como analista BI de Farmacia La Esquina, quiero que la subida de datos de bi_stock_por_mes sea por lotes y con validación de sucursales, para reducir los tiempos de carga y asegurar la calidad de la información de stock en el BI.",
       "tags": {
         "modulo": "Reportes — BI / Infraestructura",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Alta",
       "actor": "Analista BI / Equipo técnico",
@@ -4938,7 +4940,7 @@
       "historia_usuario": "Como analista de Constitución, quiero que el reporte 'Resumen de Ventas por Vendedor/Artículos' muestre datos consistentes independientemente del ordenamiento seleccionado, para poder confiar en la información presentada.",
       "tags": {
         "modulo": "Reportes — Ventas",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Media",
       "actor": "Analista de ventas",
@@ -4963,7 +4965,7 @@
       "historia_usuario": "Como administrador de La Pirgua, quiero que el reporte 'Resumen de Ventas por Forma de Pago Mensual - Global' muestre un total que coincida con la suma de los subtotales, para poder confiar en los datos financieros.",
       "tags": {
         "modulo": "Reportes — Ventas",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Baja",
       "actor": "Administrador",
@@ -4988,7 +4990,7 @@
       "historia_usuario": "Como analista de Red Colon, quiero poder filtrar el reporte de Clientes por clasificación de clientes, para obtener listados segmentados según el tipo o categoría de cliente.",
       "tags": {
         "modulo": "Reportes — Clientes",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Baja",
       "actor": "Analista de ventas / Administrador",
@@ -5013,7 +5015,7 @@
       "historia_usuario": "Como gerente comercial de Red Colon, quiero un reporte que muestre el monto de descuento generado por cada regla de promoción en un período, para medir el impacto económico de cada promoción.",
       "tags": {
         "modulo": "Reportes — Promociones",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Media",
       "actor": "Gerente comercial / Analista de marketing",
@@ -5039,7 +5041,7 @@
       "historia_usuario": "Como analista de Constitución, quiero que el reporte de 'Ventas por Cliente Fidelizado' muestre la fecha de cada comprobante, para poder analizar la distribución temporal de las compras por cliente.",
       "tags": {
         "modulo": "Reportes — Ventas / Fidelización",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Baja",
       "actor": "Analista de ventas",
@@ -5064,7 +5066,7 @@
       "historia_usuario": "Como cajero de Farmacia La Esquina, quiero que las facturas CAEA tengan asignado correctamente el orden y período del mes en curso, para evitar discrepancias fiscales por asignación de período incorrecto.",
       "tags": {
         "modulo": "Fiscal — Facturación CAEA",
-        "epica_id": "EP-010"
+        "epica_id": "EP-007"
       },
       "complejidad_estimada": "Media",
       "actor": "Cajero / Sistema de facturación",
@@ -5089,7 +5091,7 @@
       "historia_usuario": "Como gerente de Farmacia La Esquina, quiero que Zafiro esté integrado con WIBI (CRM) para el envío de información de ventas, para que el CRM tenga datos actualizados de las transacciones de los clientes.",
       "tags": {
         "modulo": "E-Commerce — CRM / WIBI",
-        "epica_id": "EP-007"
+        "epica_id": "EP-014"
       },
       "complejidad_estimada": "Alta",
       "actor": "Gerente / Responsable CRM",
@@ -5115,7 +5117,7 @@
       "historia_usuario": "Como responsable de soporte de VS Ingeniería, quiero la versión 1.0 del bot Zafi implementada con flujos de identificación, registro, validación de sesión, captación de datos, generación de tickets y cierre, para automatizar la atención inicial de consultas de clientes.",
       "tags": {
         "modulo": "Interno — Bot Zafi",
-        "epica_id": "EP-012"
+        "epica_id": "EP-011"
       },
       "complejidad_estimada": "Alta",
       "actor": "Responsable de soporte / Desarrollador",
@@ -5142,7 +5144,7 @@
       "historia_usuario": "Como responsable técnico de Red Colon, quiero que Zafiro esté integrado con AKERON, para sincronizar los datos necesarios entre ambos sistemas.",
       "tags": {
         "modulo": "E-Commerce — Integraciones",
-        "epica_id": "EP-007"
+        "epica_id": "EP-014"
       },
       "complejidad_estimada": "Alta",
       "actor": "Responsable técnico / Equipo de desarrollo",
@@ -5168,7 +5170,7 @@
       "historia_usuario": "Como cajero de V&S, quiero poder recibir el pago de varias preventas simultáneas con una única operación de tarjeta de débito de entidad, para agilizar el proceso de cobro cuando el cliente paga varias preventas juntas.",
       "tags": {
         "modulo": "Fondos — Tarjetas / Preventas",
-        "epica_id": "EP-009"
+        "epica_id": "EP-004"
       },
       "complejidad_estimada": "Alta",
       "actor": "Cajero",
@@ -5194,7 +5196,7 @@
       "historia_usuario": "Como auditor de cupones EC y como vendedor que emite facturación con Entidad Convenio, quiero poder cambiar la matrícula a una eventual (+1234) aunque no exista en el listado, para corregir datos en auditoría sin crear profesionales ficticios.",
       "tags": {
         "modulo": "Ventas — Auditoría EC",
-        "epica_id": "EP-003"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Auditor de cupones",
@@ -5220,7 +5222,7 @@
       "historia_usuario": "Como cajero, quiero que las preventas redireccionadas validadas por OS se procesen sin errores, para que los clientes con cobertura no tengan problemas al recuperar sus preventas.",
       "tags": {
         "modulo": "Ventas — Preventas y Validación OS",
-        "epica_id": "EP-003"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Media",
       "actor": "Cajero",
@@ -5297,7 +5299,7 @@
       "historia_usuario": "Como administrativo de recetas, quiero que el reporte Detalle Recetas no incluya comprobantes duplicados, para conciliar correctamente los datos con las OS.",
       "tags": {
         "modulo": "Ventas — Reportes de Recetas",
-        "epica_id": "EP-003"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Administrativo de recetas",
@@ -5322,7 +5324,7 @@
       "historia_usuario": "Como encargado de Red Colon, quiero que al imprimir cenefas de artículos con descripción abreviada y presentación asignada aparezca correctamente la presentación, para que las cenefas tengan toda la información necesaria del artículo.",
       "tags": {
         "modulo": "Artículos — Cenefas",
-        "epica_id": "EP-008"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Encargado / Responsable de precios",
@@ -5347,7 +5349,7 @@
       "historia_usuario": "Como gerente de Nueva Vicente, quiero que al exportar a Excel el reporte 'Resumen de Ventas por Laboratorio' se descargue el archivo correctamente, para poder analizar las ventas por laboratorio fuera del sistema.",
       "tags": {
         "modulo": "Reportes — Ventas",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Baja",
       "actor": "Gerente / Analista de ventas",
@@ -5372,7 +5374,7 @@
       "historia_usuario": "Como operador de VS Ingeniería, quiero que el aviso de CAI vencido en la emisión de remitos no genere una alerta incorrecta, para poder emitir remitos sin interrupciones innecesarias.",
       "tags": {
         "modulo": "Fiscal — Remitos",
-        "epica_id": "EP-010"
+        "epica_id": "EP-007"
       },
       "complejidad_estimada": "Baja",
       "actor": "Operador de sistemas",
@@ -5397,7 +5399,7 @@
       "historia_usuario": "Como encargado de Red Colon, quiero que el formato 8 de cenefas muestre el texto de la descripción en forma apaisada cuando el artículo no tiene presentación asignada, para aprovechar el espacio disponible en la cenefa.",
       "tags": {
         "modulo": "Artículos — Cenefas",
-        "epica_id": "EP-008"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Encargado / Responsable de precios",
@@ -5422,7 +5424,7 @@
       "historia_usuario": "Como administrativo de cobranzas EC, quiero que el reporte de resumen de cuentas EC sin cancelados muestre el mismo total que con cancelados (neteando los cancelados), para confiar en los totales del reporte filtrado.",
       "tags": {
         "modulo": "Ventas — Reportes EC",
-        "epica_id": "EP-003"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Administrativo de cobranzas",
@@ -5447,7 +5449,7 @@
       "historia_usuario": "Como auditor de cupones, quiero que al cerrar el popup de motivo de exclusión sin seleccionar motivo el cupón permanezca en Excluido (no cambie a Para Anular), para evitar cambios de estado no intencionados.",
       "tags": {
         "modulo": "Ventas — Auditoría de Cupones EC",
-        "epica_id": "EP-003"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Auditor de cupones",
@@ -5472,7 +5474,7 @@
       "historia_usuario": "Como responsable de artículos de Constitución, quiero que el botón 'Historial Cambios de Precios' en el ABM de Artículos muestre los registros históricos existentes, para poder auditar los cambios de precio de cada artículo.",
       "tags": {
         "modulo": "Artículos — ABM / Historial",
-        "epica_id": "EP-008"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Responsable de artículos / Auditor",
@@ -5497,7 +5499,7 @@
       "historia_usuario": "Como responsable de e-commerce de Farmacia La Esquina, quiero que Zafiro esté integrado con Drubbit para reemplazar a Tiendastic, enviando SKU, EAN, precios, stock y descuentos, y recibiendo pedidos que afecten el stock teórico, para operar el e-commerce de forma automatizada.",
       "tags": {
         "modulo": "E-Commerce — Drubbit",
-        "epica_id": "EP-007"
+        "epica_id": "EP-014"
       },
       "complejidad_estimada": "Alta",
       "actor": "Responsable de e-commerce",
@@ -5523,7 +5525,7 @@
       "historia_usuario": "Como operador de recepción, quiero un botón para ver artículos y cantidades pendientes de escaneo en una pre-nota, para controlar el avance sin buscar manualmente en el documento.",
       "tags": {
         "modulo": "Stock — Escaneo Auxiliar",
-        "epica_id": "EP-004"
+        "epica_id": "EP-009"
       },
       "complejidad_estimada": "Media",
       "actor": "Operador de recepción",
@@ -5548,7 +5550,7 @@
       "historia_usuario": "Como arquitecto de datos de VS Ingeniería, quiero analizar si se necesita un diagrama ERWin de las tablas de Historial de Inventario y Escaneo Auxiliar y documentar los cambios de BD, para asegurar la mantenibilidad del sistema a largo plazo.",
       "tags": {
         "modulo": "Interno — Documentación BD",
-        "epica_id": "EP-012"
+        "epica_id": "EP-014"
       },
       "complejidad_estimada": "Media",
       "actor": "Arquitecto de datos / Desarrollador senior",
@@ -5573,7 +5575,7 @@
       "historia_usuario": "Como analista BI de Farmacia La Esquina, quiero que los reportes global y detallado de Zafiro BI Ventas muestren la numeración de hojas y la cantidad total de sucursales, para orientarme mejor al navegar entre páginas del reporte.",
       "tags": {
         "modulo": "Reportes — BI / Ventas",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Baja",
       "actor": "Analista BI",
@@ -5598,7 +5600,7 @@
       "historia_usuario": "Como analista BI de Farmacia La Esquina, quiero que el servicio de comunicaciones suba la información a AWS en lotes y con restricción horaria, para garantizar la disponibilidad de datos en el BI sin afectar la operatoria nocturna.",
       "tags": {
         "modulo": "Reportes — BI / Infraestructura",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Alta",
       "actor": "Equipo técnico / Analista BI",
@@ -5624,7 +5626,7 @@
       "historia_usuario": "Como operador de stock, quiero continuar un ingreso parcial basado en una nota de envío, para completarlo en otro momento sin perder el progreso.",
       "tags": {
         "modulo": "Stock — Ingresos Parciales",
-        "epica_id": "EP-004"
+        "epica_id": "EP-003"
       },
       "complejidad_estimada": "Media",
       "actor": "Operador de stock",
@@ -5650,7 +5652,7 @@
       "historia_usuario": "Como cajero, quiero que Zafiro muestre un mensaje claro cuando ARCA/AFIP no está disponible para facturar y me indique que debo usar cajas CAEA, para no quedarme sin poder facturar sin saber qué hacer.",
       "tags": {
         "modulo": "Fiscal — Facturación / AFIP",
-        "epica_id": "EP-010"
+        "epica_id": "EP-007"
       },
       "complejidad_estimada": "Baja",
       "actor": "Cajero",
@@ -5675,7 +5677,7 @@
       "historia_usuario": "Como responsable de operaciones de VS Ingeniería, quiero un dashboard operativo para Nexus Web, para tener visibilidad en tiempo real del estado operativo del sistema y los clientes.",
       "tags": {
         "modulo": "Interno — Nexus Web",
-        "epica_id": "EP-012"
+        "epica_id": "EP-014"
       },
       "complejidad_estimada": "Alta",
       "actor": "Responsable de operaciones / Gerente",
@@ -5701,7 +5703,7 @@
       "historia_usuario": "Como analista de Red Colon, quiero que el reporte de ventas por cliente fidelizado aplique la misma validación de DNI y mail que WoowUp, para asegurar la calidad de los datos de clientes fidelizados en los reportes.",
       "tags": {
         "modulo": "Reportes — Ventas / Fidelización",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Baja",
       "actor": "Analista de ventas / CRM",
@@ -5726,7 +5728,7 @@
       "historia_usuario": "Como responsable de VS Ingeniería, quiero completar la herramienta Nexus 2.0 con todas sus funcionalidades, para que el equipo tenga una herramienta de gestión interna completamente operativa.",
       "tags": {
         "modulo": "Interno — Nexus Web",
-        "epica_id": "EP-012"
+        "epica_id": "EP-014"
       },
       "complejidad_estimada": "Alta",
       "actor": "Responsable de VS Ingeniería / Desarrollador",
@@ -5751,7 +5753,7 @@
       "historia_usuario": "Como administrativo de compras, quiero que la importación masiva de comprobantes de Suizo y Maglione vuelva a funcionar, para no ingresar manualmente los comprobantes de esas droguerías.",
       "tags": {
         "modulo": "Compras — Importación Masiva",
-        "epica_id": "EP-004"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Media",
       "actor": "Administrativo de compras",
@@ -5776,7 +5778,7 @@
       "historia_usuario": "Como cajero de Red Colon, quiero que el campo de importe de cheques en las formas de pago de recibos soporte montos mayores, para poder registrar cheques de alto valor sin que el sistema los rechace.",
       "tags": {
         "modulo": "Fondos — Cheques / Recibos",
-        "epica_id": "EP-009"
+        "epica_id": "EP-004"
       },
       "complejidad_estimada": "Baja",
       "actor": "Cajero / Tesorero",
@@ -5801,7 +5803,7 @@
       "historia_usuario": "Como administrador del sistema, quiero poder habilitar o deshabilitar escaneo auxiliar y ZIA en ingresos de stock, para configurarlos según las necesidades de cada sucursal.",
       "tags": {
         "modulo": "Stock — Configuración de Ingresos",
-        "epica_id": "EP-004"
+        "epica_id": "EP-003"
       },
       "complejidad_estimada": "Baja",
       "actor": "Administrador del sistema",
@@ -5827,7 +5829,7 @@
       "historia_usuario": "Como cajero de Farmanor, quiero que las ventas con pago por cuenta corriente se procesen sin que el sistema se trabe ni pierda conexión con la base de datos, para garantizar la operación continua en caja.",
       "tags": {
         "modulo": "Fondos — Cuenta Corriente",
-        "epica_id": "EP-009"
+        "epica_id": "EP-004"
       },
       "complejidad_estimada": "Alta",
       "actor": "Cajero",
@@ -5853,7 +5855,7 @@
       "historia_usuario": "Como administrador de Farmanor, quiero que la liquidación de tarjeta empresa incluya todos los cupones del período aunque la fecha límite sea el mismo día de la liquidación, para no tener que ampliar la fecha manualmente.",
       "tags": {
         "modulo": "Fondos — Tarjeta Empresa",
-        "epica_id": "EP-009"
+        "epica_id": "EP-004"
       },
       "complejidad_estimada": "Media",
       "actor": "Administrador / Tesorero",
@@ -5878,7 +5880,7 @@
       "historia_usuario": "Como administrador de Farmanor, quiero que el pago de una cuenta de tarjeta empresa realizado desde una sucursal quede reflejado correctamente en el saldo de la presentación, para no tener que ajustar el saldo manualmente.",
       "tags": {
         "modulo": "Fondos — Tarjeta Empresa",
-        "epica_id": "EP-009"
+        "epica_id": "EP-004"
       },
       "complejidad_estimada": "Alta",
       "actor": "Administrador / Tesorero",
@@ -5903,7 +5905,7 @@
       "historia_usuario": "Como encargado de Farmanor, quiero que Zafiro permita conectar una impresora de etiquetas de precios para imprimir etiquetas de productos directamente desde el sistema, para agilizar la actualización de precios en góndola.",
       "tags": {
         "modulo": "Artículos — Etiquetas / Impresión",
-        "epica_id": "EP-008"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Alta",
       "actor": "Encargado / Responsable de precios",
@@ -5929,7 +5931,7 @@
       "historia_usuario": "Como encargado de Farmanor, quiero que el sistema resuelva correctamente la referencia entre ingresos de stock y facturas de compra, para poder anular ingresos sin que interfieran facturas de otras sucursales con el mismo número.",
       "tags": {
         "modulo": "Compras — Ingresos de Stock",
-        "epica_id": "EP-004"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Alta",
       "actor": "Encargado de stock / Administrador",
@@ -5955,7 +5957,7 @@
       "historia_usuario": "Como jefe de compras, quiero que la actualización de Alfabeta soporte un margen diferenciado por laboratorio, para que el costo de reposición refleje las condiciones comerciales específicas de cada laboratorio.",
       "tags": {
         "modulo": "Compras — Actualización Alfabeta",
-        "epica_id": "EP-005"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Media",
       "actor": "Jefe de compras",
@@ -5981,7 +5983,7 @@
       "historia_usuario": "Como gerente comercial de Red Colon, quiero poder marcar las reglas de promoción como aplicables a tienda física, e-commerce o ambas, para diferenciar los descuentos según el canal de venta.",
       "tags": {
         "modulo": "E-Commerce — Reglas de Promoción",
-        "epica_id": "EP-007"
+        "epica_id": "EP-014"
       },
       "complejidad_estimada": "Media",
       "actor": "Gerente comercial / Administrador",
@@ -6007,7 +6009,7 @@
       "historia_usuario": "Como responsable de e-commerce de Constitución, quiero que la subida de información a Tiendastic por intercambio de archivos incluya los descuentos, para que la tienda online muestre los precios con descuento correctamente.",
       "tags": {
         "modulo": "E-Commerce — Tiendastic",
-        "epica_id": "EP-007"
+        "epica_id": "EP-014"
       },
       "complejidad_estimada": "Baja",
       "actor": "Responsable de e-commerce",
@@ -6032,7 +6034,7 @@
       "historia_usuario": "Como cajero de Red Colon, quiero que al facturar en tienda física no se apliquen las reglas de promoción marcadas exclusivamente para e-commerce, para que los precios en tienda sean correctos e independientes del canal online.",
       "tags": {
         "modulo": "E-Commerce — Reglas de Promoción",
-        "epica_id": "EP-007"
+        "epica_id": "EP-014"
       },
       "complejidad_estimada": "Media",
       "actor": "Cajero / Sistema de facturación",
@@ -6057,7 +6059,7 @@
       "historia_usuario": "Como responsable de e-commerce de Farmacia La Esquina, quiero que al caer un pedido del e-commerce a Zafiro se descuente inmediatamente del stock teórico, para evitar sobreventa de artículos con stock limitado.",
       "tags": {
         "modulo": "E-Commerce — Stock",
-        "epica_id": "EP-007"
+        "epica_id": "EP-014"
       },
       "complejidad_estimada": "Alta",
       "actor": "Sistema de e-commerce / Responsable de stock",
@@ -6109,7 +6111,7 @@
       "historia_usuario": "Como contador de Constitución, quiero que los archivos de exportación de percepciones y retenciones de IIBB tengan el formato actualizado, para poder presentarlos correctamente a la autoridad fiscal provincial.",
       "tags": {
         "modulo": "Fiscal — IIBB / Retenciones",
-        "epica_id": "EP-010"
+        "epica_id": "EP-007"
       },
       "complejidad_estimada": "Media",
       "actor": "Contador",
@@ -6134,7 +6136,7 @@
       "historia_usuario": "Como operador de compras, quiero poder aplicar una Solicitud de NC (SNC) a múltiples líneas del mismo artículo dentro de un mismo ingreso, para corregir errores de cantidad en cada línea de forma independiente.",
       "tags": {
         "modulo": "Compras — Solicitud de NC a Proveedor",
-        "epica_id": "EP-001"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Media",
       "actor": "Operador de compras",
@@ -6160,7 +6162,7 @@
       "historia_usuario": "Como gerente de Constitución, quiero un indicador global que muestre la cantidad de unidades y tickets vendidos por descuento/regla aplicada en un período, para evaluar el desempeño de cada promoción de manera consolidada.",
       "tags": {
         "modulo": "Reportes — BI / Promociones",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Alta",
       "actor": "Gerente comercial / Analista de marketing",
@@ -6238,7 +6240,7 @@
       "historia_usuario": "Como jefe de compras, quiero generar pedidos manuales centralizados que consoliden los pedidos de múltiples sucursales, para optimizar el proceso sin procesarlas una por una.",
       "tags": {
         "modulo": "Compras — Pedidos Manuales Centralizados",
-        "epica_id": "EP-005"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Alta",
       "actor": "Jefe de compras",
@@ -6264,7 +6266,7 @@
       "historia_usuario": "Como operador logístico, quiero consultar una pre-nota haciendo clic en su ID dentro del reporte de Comprobantes de Envíos, para ver el detalle sin salir del reporte.",
       "tags": {
         "modulo": "Stock — Comprobantes de Envíos",
-        "epica_id": "EP-005"
+        "epica_id": "EP-003"
       },
       "complejidad_estimada": "Baja",
       "actor": "Operador logístico",
@@ -6290,7 +6292,7 @@
       "historia_usuario": "Como administrativo de compras, quiero que el Resumen de Comprobantes por Proveedor incluya las NC en el saldo total con filtro Con Saldo, para ver correctamente cuánto se le debe a cada proveedor.",
       "tags": {
         "modulo": "Compras — Reportes de Proveedores",
-        "epica_id": "EP-004"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Media",
       "actor": "Administrativo de compras",
@@ -6315,7 +6317,7 @@
       "historia_usuario": "Como operador de stock, quiero generar remitos fiscales de la droguería SUD según sus requerimientos, para cumplir con la documentación de recepción exigida.",
       "tags": {
         "modulo": "Stock — Remitos Fiscales",
-        "epica_id": "EP-004"
+        "epica_id": "EP-003"
       },
       "complejidad_estimada": "Media",
       "actor": "Operador de stock",
@@ -6340,7 +6342,7 @@
       "historia_usuario": "Como cajero de Farmacia La Esquina, quiero que las ventas con Gift Card no puedan realizarse con forma de pago Cuenta Corriente, para evitar que esos comprobantes queden sin presentación posible.",
       "tags": {
         "modulo": "Fondos — Gift Card",
-        "epica_id": "EP-009"
+        "epica_id": "EP-004"
       },
       "complejidad_estimada": "Baja",
       "actor": "Cajero / Sistema de ventas",
@@ -6365,7 +6367,7 @@
       "historia_usuario": "Como administrativo de cobranzas, quiero poder aplicar una NC de obra social a más de una presentación, para distribuir el crédito de forma flexible entre las presentaciones pendientes.",
       "tags": {
         "modulo": "Ventas — Notas de Crédito OS",
-        "epica_id": "EP-002"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Media",
       "actor": "Administrativo de cobranzas",
@@ -6391,7 +6393,7 @@
       "historia_usuario": "Como administrativo de cobranzas, quiero poder modificar la fecha de cierre de una presentación de entidad convenio, para corregir errores de fecha sin tener que recrear toda la presentación.",
       "tags": {
         "modulo": "Ventas — Presentaciones EC",
-        "epica_id": "EP-002"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Administrativo de cobranzas",
@@ -6417,7 +6419,7 @@
       "historia_usuario": "Como cajero de Farmacia La Esquina, quiero poder realizar extracciones de efectivo desde caja a través de Mercado Pago, para gestionar el movimiento de fondos de forma integrada con la billetera digital.",
       "tags": {
         "modulo": "Fondos — Mercado Pago",
-        "epica_id": "EP-009"
+        "epica_id": "EP-004"
       },
       "complejidad_estimada": "Alta",
       "actor": "Cajero / Tesorero",
@@ -6443,7 +6445,7 @@
       "historia_usuario": "Como administrativo, quiero que el sistema impida emitir NC sobre facturas que ya están cobradas en presentación EC o con más de 120 días, para evitar generar inconsistencias en los saldos.",
       "tags": {
         "modulo": "Ventas — Notas de Crédito",
-        "epica_id": "EP-002"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Media",
       "actor": "Administrativo de ventas",
@@ -6469,7 +6471,7 @@
       "historia_usuario": "Como administrativo de compras, quiero que las fechas de vencimiento registradas por ZIA aparezcan correctamente en los reportes de Zafiro, para no corregir manualmente los datos.",
       "tags": {
         "modulo": "Compras — ZIA",
-        "epica_id": "EP-004"
+        "epica_id": "EP-010"
       },
       "complejidad_estimada": "Baja",
       "actor": "Administrativo de compras",
@@ -6494,7 +6496,7 @@
       "historia_usuario": "Como operador de compras, quiero filtrar por sociedad y sucursal al vincular SNC con NC, para encontrar rápidamente las SNC entre muchos comprobantes.",
       "tags": {
         "modulo": "Compras — Solicitud de NC",
-        "epica_id": "EP-004"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Baja",
       "actor": "Operador de compras",
@@ -6519,7 +6521,7 @@
       "historia_usuario": "Como contador de Farmacia La Esquina, quiero un balance de sumas y saldos discriminado por sucursal con valores netos, para analizar la situación financiera de cada sucursal de forma independiente.",
       "tags": {
         "modulo": "Contabilidad — Sumas y Saldos",
-        "epica_id": "EP-011"
+        "epica_id": "EP-006"
       },
       "complejidad_estimada": "Alta",
       "actor": "Contador",
@@ -6545,7 +6547,7 @@
       "historia_usuario": "Como contador de Farmacia La Esquina, quiero que el reporte de IVA Ventas discrimine la base exenta, gravada por alícuota y no gravada, para preparar correctamente las declaraciones fiscales.",
       "tags": {
         "modulo": "Contabilidad — IVA Ventas",
-        "epica_id": "EP-011"
+        "epica_id": "EP-006"
       },
       "complejidad_estimada": "Media",
       "actor": "Contador",
@@ -6571,7 +6573,7 @@
       "historia_usuario": "Como contador de Farmacia La Esquina, quiero poder determinar el crédito fiscal correspondiente a los medicamentos, para aplicarlo correctamente en la declaración de IVA.",
       "tags": {
         "modulo": "Contabilidad — Crédito Fiscal",
-        "epica_id": "EP-011"
+        "epica_id": "EP-006"
       },
       "complejidad_estimada": "Alta",
       "actor": "Contador",
@@ -6596,7 +6598,7 @@
       "historia_usuario": "Como contador de Farmacia La Esquina, quiero poder importar asientos contables desde un archivo externo, para cargar masivamente registros contables sin ingresarlos uno por uno.",
       "tags": {
         "modulo": "Contabilidad — Asientos",
-        "epica_id": "EP-011"
+        "epica_id": "EP-006"
       },
       "complejidad_estimada": "Media",
       "actor": "Contador",
@@ -6622,7 +6624,7 @@
       "historia_usuario": "Como contador de Farmacia La Esquina, quiero un reporte que identifique los períodos CAEA que no fueron informados a AFIP, para poder regularizar la situación fiscal antes de que genere problemas.",
       "tags": {
         "modulo": "Fiscal — CAEA / Reportes",
-        "epica_id": "EP-010"
+        "epica_id": "EP-007"
       },
       "complejidad_estimada": "Media",
       "actor": "Contador / Administrador fiscal",
@@ -6647,7 +6649,7 @@
       "historia_usuario": "Como contador de Farmacia La Esquina, quiero un reporte que identifique tickets presentes en ARCA pero no en Zafiro para todos los puntos de venta, para detectar y corregir discrepancias fiscales.",
       "tags": {
         "modulo": "Fiscal — ARCA / Reportes",
-        "epica_id": "EP-010"
+        "epica_id": "EP-007"
       },
       "complejidad_estimada": "Alta",
       "actor": "Contador / Administrador fiscal",
@@ -6673,7 +6675,7 @@
       "historia_usuario": "Como administrativo de PAMI, quiero poder auditar comprobantes de PAMI desde Zafiro comparando lo facturado con lo de PAMI, para detectar inconsistencias sin salir del sistema.",
       "tags": {
         "modulo": "Ventas — Auditoría PAMI",
-        "epica_id": "EP-003"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Alta",
       "actor": "Administrativo de PAMI",
@@ -6699,7 +6701,7 @@
       "historia_usuario": "Como tesorero de Farmacia La Esquina, quiero que los cheques propios tengan un circuito completo de forma de pago configurado, para poder usarlos correctamente en el proceso de pago a proveedores.",
       "tags": {
         "modulo": "Fondos — Cheques Propios",
-        "epica_id": "EP-009"
+        "epica_id": "EP-004"
       },
       "complejidad_estimada": "Alta",
       "actor": "Tesorero / Contador",
@@ -6724,7 +6726,7 @@
       "historia_usuario": "Como contador de Farmacia La Esquina, quiero que el monto de ventas en contabilidad coincida con los comprobantes registrados, para eliminar la diferencia existente que complica la conciliación.",
       "tags": {
         "modulo": "Contabilidad — Ventas",
-        "epica_id": "EP-011"
+        "epica_id": "EP-006"
       },
       "complejidad_estimada": "Alta",
       "actor": "Contador",
@@ -6749,7 +6751,7 @@
       "historia_usuario": "Como contador de Farmacia La Esquina, quiero que el reporte de Sumas y Saldos incluya la sociedad en el título, para identificar claramente a qué entidad corresponde el reporte cuando hay múltiples sociedades.",
       "tags": {
         "modulo": "Contabilidad — Sumas y Saldos",
-        "epica_id": "EP-011"
+        "epica_id": "EP-006"
       },
       "complejidad_estimada": "Baja",
       "actor": "Contador",
@@ -6774,7 +6776,7 @@
       "historia_usuario": "Como tesorero de Farmacia La Esquina, quiero un reporte de movimientos bancarios que muestre todas las cuentas en una sola vista, para tener la posición bancaria global sin consultar cada cuenta individualmente.",
       "tags": {
         "modulo": "Contabilidad — Fondos Bancarios",
-        "epica_id": "EP-011"
+        "epica_id": "EP-006"
       },
       "complejidad_estimada": "Media",
       "actor": "Tesorero / Contador",
@@ -6800,7 +6802,7 @@
       "historia_usuario": "Como contador de Farmacia La Esquina, quiero que el reporte de retenciones en Excel incluya la fecha, detalle del cliente y datos del recibo, para poder conciliar las retenciones con los comprobantes emitidos.",
       "tags": {
         "modulo": "Reportes — Fiscal / Retenciones",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Baja",
       "actor": "Contador / Administrador",
@@ -6826,7 +6828,7 @@
       "historia_usuario": "Como responsable de cobranzas de Farmacia La Esquina, quiero que la pantalla de cobranza de Entidad Convenio (EC) muestre el dato de sucursal, para saber sobre qué sucursal estoy operando sin necesidad de consultar otro panel.",
       "tags": {
         "modulo": "Fondos — Cobranzas EC",
-        "epica_id": "EP-009"
+        "epica_id": "EP-004"
       },
       "complejidad_estimada": "Baja",
       "actor": "Responsable de cobranzas",
@@ -6851,7 +6853,7 @@
       "historia_usuario": "Como administrador de Farmanor, quiero que los cupones de tarjeta empresa que ya fueron liquidados no aparezcan como consumos pendientes, para tener una vista correcta de los saldos de cada cliente.",
       "tags": {
         "modulo": "Fondos — Tarjeta Empresa",
-        "epica_id": "EP-009"
+        "epica_id": "EP-004"
       },
       "complejidad_estimada": "Alta",
       "actor": "Administrador / Tesorero",
@@ -6876,7 +6878,7 @@
       "historia_usuario": "Como encargado de Red Colon, quiero que el formato 2 de impresión de lista de precios para cenefas muestre el nombre del laboratorio igual que el formato 1, para tener consistencia de información entre formatos.",
       "tags": {
         "modulo": "Artículos — Cenefas / Lista de Precios",
-        "epica_id": "EP-008"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Encargado / Responsable de precios",
@@ -6901,7 +6903,7 @@
       "historia_usuario": "Como cajero, quiero poder reimprimir la validación de una receta luego de emitir la preventa (Ctrl+Y), para entregársela al cliente si la necesita.",
       "tags": {
         "modulo": "Ventas — Recetas y Reimpresión",
-        "epica_id": "EP-003"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Cajero",
@@ -6926,7 +6928,7 @@
       "historia_usuario": "Como operador de Nueva Vicente, quiero que la pantalla de emisión de nota de envío no entre en un bucle de error cuando el campo 'Sucursal destino' está vacío, para poder salir de la pantalla sin necesidad de reiniciar el módulo.",
       "tags": {
         "modulo": "Stock — Notas de Envío",
-        "epica_id": "EP-004"
+        "epica_id": "EP-003"
       },
       "complejidad_estimada": "Baja",
       "actor": "Operador de stock",
@@ -6952,7 +6954,7 @@
       "historia_usuario": "Como cajero que valida recetas de PAMI, quiero poder seleccionar más de tres recetas en una misma operación, para agilizar el proceso cuando el afiliado tiene múltiples recetas.",
       "tags": {
         "modulo": "Ventas — Validación PAMI",
-        "epica_id": "EP-003"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Cajero",
@@ -6977,7 +6979,7 @@
       "historia_usuario": "Como cajero que valida Vale Salud, quiero que el nombre del afiliado no sea reemplazado al validar la OS, para que los datos del comprobante sean del cliente correcto.",
       "tags": {
         "modulo": "Ventas — Validación OS Vale Salud",
-        "epica_id": "EP-003"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Cajero",
@@ -7002,7 +7004,7 @@
       "historia_usuario": "Como contador de Farmacia La Esquina, quiero que la generación de partidas de asientos contables sea correcta al emitir o aplicar una Orden de Pago, para que la contabilidad refleje fielmente los movimientos financieros.",
       "tags": {
         "modulo": "Contabilidad — Asientos / Órdenes de Pago",
-        "epica_id": "EP-011"
+        "epica_id": "EP-006"
       },
       "complejidad_estimada": "Alta",
       "actor": "Contador / Tesorero",
@@ -7028,7 +7030,7 @@
       "historia_usuario": "Como administrativo que emite notas de crédito de reintegro, quiero que los artículos a devolver mostrados en pantalla coincidan exactamente con los artículos facturados, para no procesar devoluciones incorrectas.",
       "tags": {
         "modulo": "Ventas — Notas de Crédito de Reintegro",
-        "epica_id": "EP-002"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Administrativo de ventas",
@@ -7080,7 +7082,7 @@
       "historia_usuario": "Como administrador de Farmanor, quiero que todos los cupones del período aparezcan al momento de liquidar tarjeta, para que la liquidación sea completa y no queden cupones sin incluir.",
       "tags": {
         "modulo": "Fondos — Tarjeta Empresa",
-        "epica_id": "EP-009"
+        "epica_id": "EP-004"
       },
       "complejidad_estimada": "Media",
       "actor": "Administrador / Tesorero",
@@ -7105,7 +7107,7 @@
       "historia_usuario": "Como cajero que imprime recetas de PAMI, quiero que los importes de pago estén correctamente impresos, para que el cliente y la farmacia tengan documentación precisa.",
       "tags": {
         "modulo": "Ventas — Impresión de Recetas PAMI",
-        "epica_id": "EP-003"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Cajero",
@@ -7130,7 +7132,7 @@
       "historia_usuario": "Como operador de compras, quiero que al recuperar una compra guardada no salte el error EInvalidOperation, para continuar el proceso de ingreso sin interrupciones.",
       "tags": {
         "modulo": "Compras — Ingreso de Comprobantes",
-        "epica_id": "EP-004"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Baja",
       "actor": "Operador de compras",
@@ -7155,7 +7157,7 @@
       "historia_usuario": "Como operador de ingreso de compras con control de cantidades, quiero modificar el campo Cantidad comprada manualmente, para corregir datos incorrectos que trae el WS.",
       "tags": {
         "modulo": "Stock — Ingreso con Control de Cantidades",
-        "epica_id": "EP-004"
+        "epica_id": "EP-003"
       },
       "complejidad_estimada": "Baja",
       "actor": "Operador de stock",
@@ -7181,7 +7183,7 @@
       "historia_usuario": "Como gerente de Farmanor, quiero que el reporte 'Resumen de Ventas por Formas de Pago' responda correctamente sin congelarse, para poder consultar la información de ventas sin interrupciones.",
       "tags": {
         "modulo": "Reportes — Ventas",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Media",
       "actor": "Gerente / Administrador",
@@ -7206,7 +7208,7 @@
       "historia_usuario": "Como analista de Constitución, quiero que el reporte 'Resumen de Ventas por Artículo' exportado en formato de datos incluya el código de barras y la descripción del laboratorio, para facilitar el análisis en Excel.",
       "tags": {
         "modulo": "Reportes — Ventas",
-        "epica_id": "EP-006"
+        "epica_id": "EP-008"
       },
       "complejidad_estimada": "Baja",
       "actor": "Analista de ventas",
@@ -7232,7 +7234,7 @@
       "historia_usuario": "Como cajero que valida Swiss Medical, quiero que el campo Cod. Seg. no elimine los ceros al inicio del token, para que la validación sea correcta cuando el código empieza con 0.",
       "tags": {
         "modulo": "Ventas — Validación Swiss Medical",
-        "epica_id": "EP-003"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Cajero",
@@ -7257,7 +7259,7 @@
       "historia_usuario": "Como supervisor de stock, quiero que el ingreso de un Vale de Entrega no genere movimientos de stock duplicados, para que el reporte sea confiable.",
       "tags": {
         "modulo": "Stock — Vales de Entrega",
-        "epica_id": "EP-004"
+        "epica_id": "EP-003"
       },
       "complejidad_estimada": "Media",
       "actor": "Supervisor de stock",
@@ -7335,77 +7337,87 @@
   "EPICAS": [
     {
       "id_epica": "EP-001",
-      "epica": "Ventas y Facturación en PdV",
-      "descripcion": "Funcionalidades del módulo de ventas y facturación en el punto de venta: flujo de preventas, formas de pago, bonos, giftcards, refacturación y comportamiento del facturador."
+      "epica": "Ventas",
+      "descripcion": "Módulo de ventas y facturación en punto de venta: preventas, formas de pago, obras sociales, recetas, notas de crédito, fidelización y artículos/cenefas."
     },
     {
       "id_epica": "EP-002",
-      "epica": "Notas de Crédito — Emisión, Bloqueo y Aplicaciones",
-      "descripcion": "Gestión integral de notas de crédito: emisión, bloqueo por reglas de negocio, aplicación a presentaciones, vinculación con NC de proveedores y control de duplicados."
+      "epica": "Compras",
+      "descripcion": "Circuito completo de compras: ingreso de comprobantes, pedidos, reposición diaria, integración con droguerías, devoluciones y conciliación."
     },
     {
       "id_epica": "EP-003",
-      "epica": "Obras Sociales, Coberturas y Recetas",
-      "descripcion": "Validación y auditoría de recetas electrónicas, coberturas de obras sociales (PAMI, Swiss Medical, Vale Salud, etc.), presentaciones EC y gestión de cupones de entidad convenio."
+      "epica": "Stock",
+      "descripcion": "Gestión de inventario: ingresos, conciliación, vales de entrega, notas de envío, lote y vencimiento, importación masiva y reportes de movimiento."
     },
     {
       "id_epica": "EP-004",
-      "epica": "Compras e Ingresos de Stock",
-      "descripcion": "Circuito completo de compras: ingreso de stock, conciliación, escaneo auxiliar, ZIA, devoluciones, vales de entrega y gestión de notas de envío."
+      "epica": "Fondos",
+      "descripcion": "Gestión de fondos: cheques, tarjetas, Mercado Pago, eCheq, cuenta corriente, cobranzas de entidad convenio y liquidación de tarjeta empresa."
     },
     {
       "id_epica": "EP-005",
-      "epica": "Pedidos, Reposición y Gestión de Compras",
-      "descripcion": "Módulo de pedidos centralizados y por reposición diaria: bloqueos, desbloqueos automáticos, integración con droguerías (Monroe, Sud, Suizo), carrito de comparación y distribución de stock."
+      "epica": "Cajas",
+      "descripcion": "Operaciones de caja: apertura, cierre, movimientos, cuadre y reportes de caja."
     },
     {
       "id_epica": "EP-006",
-      "epica": "Reportes Operativos y Business Intelligence",
-      "descripcion": "Todos los reportes del sistema (ventas, compras, stock, fondos, recetas) y la plataforma Zafiro BI: corrección de datos incorrectos, nuevos reportes y mejoras de exportación."
+      "epica": "Contabilidad",
+      "descripcion": "Módulo contable: asientos automáticos, ajuste por inflación, sumas y saldos, crédito fiscal, IVA y fondos bancarios."
     },
     {
       "id_epica": "EP-007",
-      "epica": "E-Commerce e Integraciones Externas",
-      "descripcion": "Integración con plataformas de e-commerce (Tiendastic, Drubbit), procesadores de pago (Fiserv/Clover), CRM (WIBI/WoowUp) y sistema AKERON. Sincronización de stock, precios y pedidos."
+      "epica": "Fiscal",
+      "descripcion": "Cumplimiento fiscal: AFIP/ARCA, CAEA, CAI, IVA, IIBB, retenciones, facturación electrónica y control de comprobantes."
     },
     {
       "id_epica": "EP-008",
-      "epica": "Artículos, Precios, Etiquetas y Cenefas",
-      "descripcion": "ABM de artículos, gestión masiva de características, formatos de cenefas, impresión de etiquetas de precios y configuración de grillas."
+      "epica": "Zafiro BI",
+      "descripcion": "Plataforma de reportes y business intelligence: reportes de ventas, compras, stock, fondos, recetas, auditoría y notificaciones."
     },
     {
       "id_epica": "EP-009",
-      "epica": "Fondos, Cajas, Tarjetas y Cobros",
-      "descripcion": "Gestión de cajas, formas de pago (cheques, tarjetas, Mercado Pago, cuenta corriente), liquidación de tarjetas empresa (Farmanor) y cobranzas de entidad convenio."
+      "epica": "Escaneo Auxiliar",
+      "descripcion": "Herramienta de escaneo auxiliar para ingreso de stock por colector y control de cantidades."
     },
     {
       "id_epica": "EP-010",
-      "epica": "Facturación Fiscal — AFIP/ARCA y Cumplimiento",
-      "descripcion": "Cumplimiento fiscal: CAEA, CAI, IVA, IIBB, retenciones, facturación de exportación y control de comprobantes entre Zafiro y ARCA/AFIP."
+      "epica": "ZIA",
+      "descripcion": "Sistema ZIA: integración en compras, procesamiento automático de facturas y funcionalidades internas de la herramienta."
     },
     {
       "id_epica": "EP-011",
-      "epica": "Contabilidad y Gestión Financiera",
-      "descripcion": "Módulo contable: ajuste por inflación, asientos automáticos en órdenes de pago, balance de sumas y saldos, importación de asientos y crédito fiscal de medicamentos."
+      "epica": "Bot Zafi",
+      "descripcion": "Bot Zafi: automatizaciones, notificaciones y asistente interno de VS Ingeniería."
     },
     {
       "id_epica": "EP-012",
-      "epica": "Herramientas y Proyectos Internos VS Ingeniería",
-      "descripcion": "Proyectos y herramientas internas: Nexus 2.0, Dashboard Nexus, Proyecto Zafi (bot), Web de Capacitaciones, ZIA, Lanzador, sistema para Círculo Médico Catamarca (CMC) y licitaciones."
+      "epica": "Zafiro Docs",
+      "descripcion": "Web de capacitaciones y documentación para clientes y equipo interno."
+    },
+    {
+      "id_epica": "EP-013",
+      "epica": "Círculo Médico",
+      "descripcion": "Sistema para Círculo Médico Catamarca (CMC): gerenciadora, licitaciones y funcionalidades específicas."
+    },
+    {
+      "id_epica": "EP-014",
+      "epica": "Interno VS",
+      "descripcion": "Proyectos y herramientas internas: Nexus Web, Lanzador, e-commerce (Tiendastic, Drubbit, Fiserv, WIBI), infraestructura y administración del sistema."
     }
   ],
   "VINCULACIONES": [
     {
       "identificador": "TAREA 3",
-      "id_epica": "EP-012"
+      "id_epica": "EP-014"
     },
     {
       "identificador": "TAREA 16",
-      "id_epica": "EP-009"
+      "id_epica": "EP-004"
     },
     {
       "identificador": "TAREA 23",
-      "id_epica": "EP-009"
+      "id_epica": "EP-005"
     },
     {
       "identificador": "TAREA 29",
@@ -7413,23 +7425,23 @@
     },
     {
       "identificador": "TAREA 33",
-      "id_epica": "EP-008"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 64",
-      "id_epica": "EP-004"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 67",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 73",
-      "id_epica": "EP-005"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 75",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 76",
@@ -7441,11 +7453,11 @@
     },
     {
       "identificador": "TAREA 117",
-      "id_epica": "EP-004"
+      "id_epica": "EP-003"
     },
     {
       "identificador": "TAREA 130",
-      "id_epica": "EP-004"
+      "id_epica": "EP-003"
     },
     {
       "identificador": "TAREA 132",
@@ -7453,39 +7465,39 @@
     },
     {
       "identificador": "TAREA 134",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 135",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 136",
-      "id_epica": "EP-008"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 138",
-      "id_epica": "EP-008"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 139",
-      "id_epica": "EP-010"
+      "id_epica": "EP-007"
     },
     {
       "identificador": "TAREA 140",
-      "id_epica": "EP-006"
-    },
-    {
-      "identificador": "TAREA 141",
       "id_epica": "EP-008"
     },
     {
+      "identificador": "TAREA 141",
+      "id_epica": "EP-001"
+    },
+    {
       "identificador": "TAREA 144",
-      "id_epica": "EP-002"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 146",
-      "id_epica": "EP-012"
+      "id_epica": "EP-014"
     },
     {
       "identificador": "TAREA 147",
@@ -7497,11 +7509,11 @@
     },
     {
       "identificador": "TAREA 154",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 155",
-      "id_epica": "EP-008"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 156",
@@ -7509,35 +7521,35 @@
     },
     {
       "identificador": "TAREA 157",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 159",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 161",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 162",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 163",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 165",
-      "id_epica": "EP-004"
+      "id_epica": "EP-003"
     },
     {
       "identificador": "TAREA 169",
-      "id_epica": "EP-007"
+      "id_epica": "EP-014"
     },
     {
       "identificador": "TAREA 173",
-      "id_epica": "EP-003"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 177",
@@ -7545,7 +7557,7 @@
     },
     {
       "identificador": "TAREA 184",
-      "id_epica": "EP-007"
+      "id_epica": "EP-014"
     },
     {
       "identificador": "TAREA 192",
@@ -7553,183 +7565,183 @@
     },
     {
       "identificador": "TAREA 193",
-      "id_epica": "EP-002"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 194",
-      "id_epica": "EP-002"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 197",
-      "id_epica": "EP-002"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 200",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 202",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 203",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 204",
-      "id_epica": "EP-009"
+      "id_epica": "EP-004"
     },
     {
       "identificador": "TAREA 206",
-      "id_epica": "EP-009"
+      "id_epica": "EP-004"
     },
     {
       "identificador": "TAREA 207",
-      "id_epica": "EP-009"
+      "id_epica": "EP-004"
     },
     {
       "identificador": "TAREA 208",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 209",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 210",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 211",
-      "id_epica": "EP-005"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 213",
-      "id_epica": "EP-005"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 214",
-      "id_epica": "EP-005"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 217",
-      "id_epica": "EP-005"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 219",
-      "id_epica": "EP-005"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 220",
-      "id_epica": "EP-005"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 222",
-      "id_epica": "EP-005"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 223",
-      "id_epica": "EP-005"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 224",
-      "id_epica": "EP-005"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 225",
-      "id_epica": "EP-005"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 226",
-      "id_epica": "EP-004"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 235",
-      "id_epica": "EP-012"
+      "id_epica": "EP-013"
     },
     {
       "identificador": "TAREA 237",
-      "id_epica": "EP-012"
+      "id_epica": "EP-013"
     },
     {
       "identificador": "TAREA 240",
-      "id_epica": "EP-012"
+      "id_epica": "EP-013"
     },
     {
       "identificador": "TAREA 253",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 254",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 258",
-      "id_epica": "EP-005"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 261",
-      "id_epica": "EP-005"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 266",
-      "id_epica": "EP-003"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 269",
-      "id_epica": "EP-008"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 273",
-      "id_epica": "EP-006"
-    },
-    {
-      "identificador": "TAREA 285",
-      "id_epica": "EP-006"
-    },
-    {
-      "identificador": "TAREA 288",
       "id_epica": "EP-008"
     },
     {
+      "identificador": "TAREA 285",
+      "id_epica": "EP-008"
+    },
+    {
+      "identificador": "TAREA 288",
+      "id_epica": "EP-001"
+    },
+    {
       "identificador": "TAREA 289",
-      "id_epica": "EP-005"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 290",
-      "id_epica": "EP-004"
+      "id_epica": "EP-003"
     },
     {
       "identificador": "TAREA 292",
-      "id_epica": "EP-004"
+      "id_epica": "EP-003"
     },
     {
       "identificador": "TAREA 295",
-      "id_epica": "EP-010"
+      "id_epica": "EP-007"
     },
     {
       "identificador": "TAREA 296",
-      "id_epica": "EP-010"
+      "id_epica": "EP-007"
     },
     {
       "identificador": "TAREA 297",
-      "id_epica": "EP-010"
+      "id_epica": "EP-007"
     },
     {
       "identificador": "TAREA 298",
-      "id_epica": "EP-010"
+      "id_epica": "EP-007"
     },
     {
       "identificador": "TAREA 300",
-      "id_epica": "EP-012"
+      "id_epica": "EP-013"
     },
     {
       "identificador": "TAREA 302",
-      "id_epica": "EP-012"
+      "id_epica": "EP-014"
     },
     {
       "identificador": "TAREA 304",
-      "id_epica": "EP-012"
+      "id_epica": "EP-013"
     },
     {
       "identificador": "TAREA 307",
@@ -7737,23 +7749,23 @@
     },
     {
       "identificador": "TAREA 319",
-      "id_epica": "EP-002"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 320",
-      "id_epica": "EP-002"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 321",
-      "id_epica": "EP-005"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 328",
-      "id_epica": "EP-012"
+      "id_epica": "EP-010"
     },
     {
       "identificador": "TAREA 329",
-      "id_epica": "EP-004"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 330",
@@ -7761,11 +7773,11 @@
     },
     {
       "identificador": "TAREA 331",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 332",
-      "id_epica": "EP-004"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 335",
@@ -7777,67 +7789,67 @@
     },
     {
       "identificador": "TAREA 337",
-      "id_epica": "EP-003"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 339",
-      "id_epica": "EP-003"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 340",
-      "id_epica": "EP-009"
+      "id_epica": "EP-005"
     },
     {
       "identificador": "TAREA 341",
-      "id_epica": "EP-012"
+      "id_epica": "EP-014"
     },
     {
       "identificador": "TAREA 342",
-      "id_epica": "EP-003"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 343",
-      "id_epica": "EP-002"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 348",
-      "id_epica": "EP-004"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 353",
-      "id_epica": "EP-003"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 355",
-      "id_epica": "EP-004"
+      "id_epica": "EP-003"
     },
     {
       "identificador": "TAREA 358",
-      "id_epica": "EP-004"
+      "id_epica": "EP-003"
     },
     {
       "identificador": "TAREA 362",
-      "id_epica": "EP-012"
+      "id_epica": "EP-010"
     },
     {
       "identificador": "TAREA 365",
-      "id_epica": "EP-004"
+      "id_epica": "EP-003"
     },
     {
       "identificador": "TAREA 366",
-      "id_epica": "EP-003"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 374",
-      "id_epica": "EP-012"
+      "id_epica": "EP-014"
     },
     {
       "identificador": "TAREA 376",
-      "id_epica": "EP-003"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 379",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 380",
@@ -7845,51 +7857,51 @@
     },
     {
       "identificador": "TAREA 384",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 385",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 386",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 387",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 389",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 399",
-      "id_epica": "EP-010"
+      "id_epica": "EP-007"
     },
     {
       "identificador": "TAREA 402",
-      "id_epica": "EP-007"
+      "id_epica": "EP-014"
     },
     {
       "identificador": "TAREA 403",
-      "id_epica": "EP-012"
+      "id_epica": "EP-011"
     },
     {
       "identificador": "TAREA 406",
-      "id_epica": "EP-007"
+      "id_epica": "EP-014"
     },
     {
       "identificador": "TAREA 405",
-      "id_epica": "EP-009"
+      "id_epica": "EP-004"
     },
     {
       "identificador": "TAREA 412",
-      "id_epica": "EP-003"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 413",
-      "id_epica": "EP-003"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 415",
@@ -7901,127 +7913,127 @@
     },
     {
       "identificador": "TAREA 418",
-      "id_epica": "EP-003"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 420",
-      "id_epica": "EP-008"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 421",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 422",
-      "id_epica": "EP-010"
+      "id_epica": "EP-007"
     },
     {
       "identificador": "TAREA 423",
-      "id_epica": "EP-008"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 424",
-      "id_epica": "EP-003"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 426",
-      "id_epica": "EP-003"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 427",
-      "id_epica": "EP-008"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 429",
-      "id_epica": "EP-007"
+      "id_epica": "EP-014"
     },
     {
       "identificador": "TAREA 434",
-      "id_epica": "EP-004"
+      "id_epica": "EP-009"
     },
     {
       "identificador": "TAREA 436",
-      "id_epica": "EP-012"
+      "id_epica": "EP-014"
     },
     {
       "identificador": "TAREA 437",
-      "id_epica": "EP-006"
-    },
-    {
-      "identificador": "TAREA 438",
-      "id_epica": "EP-006"
-    },
-    {
-      "identificador": "TAREA 439",
-      "id_epica": "EP-004"
-    },
-    {
-      "identificador": "TAREA 442",
-      "id_epica": "EP-010"
-    },
-    {
-      "identificador": "TAREA 444",
-      "id_epica": "EP-012"
-    },
-    {
-      "identificador": "TAREA 445",
-      "id_epica": "EP-006"
-    },
-    {
-      "identificador": "TAREA 446",
-      "id_epica": "EP-012"
-    },
-    {
-      "identificador": "TAREA 447",
-      "id_epica": "EP-004"
-    },
-    {
-      "identificador": "TAREA 448",
-      "id_epica": "EP-009"
-    },
-    {
-      "identificador": "TAREA 449",
-      "id_epica": "EP-004"
-    },
-    {
-      "identificador": "TAREA 453",
-      "id_epica": "EP-009"
-    },
-    {
-      "identificador": "TAREA 454",
-      "id_epica": "EP-009"
-    },
-    {
-      "identificador": "TAREA 455",
-      "id_epica": "EP-009"
-    },
-    {
-      "identificador": "TAREA 456",
       "id_epica": "EP-008"
     },
     {
-      "identificador": "TAREA 457",
+      "identificador": "TAREA 438",
+      "id_epica": "EP-008"
+    },
+    {
+      "identificador": "TAREA 439",
+      "id_epica": "EP-003"
+    },
+    {
+      "identificador": "TAREA 442",
+      "id_epica": "EP-007"
+    },
+    {
+      "identificador": "TAREA 444",
+      "id_epica": "EP-014"
+    },
+    {
+      "identificador": "TAREA 445",
+      "id_epica": "EP-008"
+    },
+    {
+      "identificador": "TAREA 446",
+      "id_epica": "EP-014"
+    },
+    {
+      "identificador": "TAREA 447",
+      "id_epica": "EP-002"
+    },
+    {
+      "identificador": "TAREA 448",
       "id_epica": "EP-004"
     },
     {
+      "identificador": "TAREA 449",
+      "id_epica": "EP-003"
+    },
+    {
+      "identificador": "TAREA 453",
+      "id_epica": "EP-004"
+    },
+    {
+      "identificador": "TAREA 454",
+      "id_epica": "EP-004"
+    },
+    {
+      "identificador": "TAREA 455",
+      "id_epica": "EP-004"
+    },
+    {
+      "identificador": "TAREA 456",
+      "id_epica": "EP-001"
+    },
+    {
+      "identificador": "TAREA 457",
+      "id_epica": "EP-002"
+    },
+    {
       "identificador": "TAREA 459",
-      "id_epica": "EP-005"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 460",
-      "id_epica": "EP-007"
+      "id_epica": "EP-014"
     },
     {
       "identificador": "TAREA 461",
-      "id_epica": "EP-007"
+      "id_epica": "EP-014"
     },
     {
       "identificador": "TAREA 462",
-      "id_epica": "EP-007"
+      "id_epica": "EP-014"
     },
     {
       "identificador": "TAREA 463",
-      "id_epica": "EP-007"
+      "id_epica": "EP-014"
     },
     {
       "identificador": "TAREA 465",
@@ -8029,15 +8041,15 @@
     },
     {
       "identificador": "TAREA 466",
-      "id_epica": "EP-010"
+      "id_epica": "EP-007"
     },
     {
       "identificador": "TAREA 468",
-      "id_epica": "EP-001"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 469",
-      "id_epica": "EP-006"
+      "id_epica": "EP-008"
     },
     {
       "identificador": "TAREA 470",
@@ -8049,131 +8061,131 @@
     },
     {
       "identificador": "TAREA 472",
-      "id_epica": "EP-005"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 473",
-      "id_epica": "EP-005"
+      "id_epica": "EP-003"
     },
     {
       "identificador": "TAREA 476",
-      "id_epica": "EP-004"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 477",
-      "id_epica": "EP-004"
+      "id_epica": "EP-003"
     },
     {
       "identificador": "TAREA 478",
-      "id_epica": "EP-009"
+      "id_epica": "EP-004"
     },
     {
       "identificador": "TAREA 479",
-      "id_epica": "EP-002"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 480",
-      "id_epica": "EP-002"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 481",
-      "id_epica": "EP-009"
+      "id_epica": "EP-004"
     },
     {
       "identificador": "TAREA 482",
-      "id_epica": "EP-002"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 483",
-      "id_epica": "EP-004"
+      "id_epica": "EP-010"
     },
     {
       "identificador": "TAREA 484",
-      "id_epica": "EP-004"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 485",
-      "id_epica": "EP-011"
-    },
-    {
-      "identificador": "TAREA 486",
-      "id_epica": "EP-011"
-    },
-    {
-      "identificador": "TAREA 487",
-      "id_epica": "EP-011"
-    },
-    {
-      "identificador": "TAREA 488",
-      "id_epica": "EP-011"
-    },
-    {
-      "identificador": "TAREA 489",
-      "id_epica": "EP-010"
-    },
-    {
-      "identificador": "TAREA 490",
-      "id_epica": "EP-010"
-    },
-    {
-      "identificador": "TAREA 491",
-      "id_epica": "EP-003"
-    },
-    {
-      "identificador": "TAREA 492",
-      "id_epica": "EP-009"
-    },
-    {
-      "identificador": "TAREA 493",
-      "id_epica": "EP-011"
-    },
-    {
-      "identificador": "TAREA 494",
-      "id_epica": "EP-011"
-    },
-    {
-      "identificador": "TAREA 495",
-      "id_epica": "EP-011"
-    },
-    {
-      "identificador": "TAREA 496",
       "id_epica": "EP-006"
     },
     {
-      "identificador": "TAREA 497",
-      "id_epica": "EP-009"
+      "identificador": "TAREA 486",
+      "id_epica": "EP-006"
     },
     {
-      "identificador": "TAREA 498",
-      "id_epica": "EP-009"
+      "identificador": "TAREA 487",
+      "id_epica": "EP-006"
     },
     {
-      "identificador": "TAREA 499",
-      "id_epica": "EP-008"
+      "identificador": "TAREA 488",
+      "id_epica": "EP-006"
     },
     {
-      "identificador": "TAREA 501",
-      "id_epica": "EP-003"
+      "identificador": "TAREA 489",
+      "id_epica": "EP-007"
     },
     {
-      "identificador": "TAREA 502",
+      "identificador": "TAREA 490",
+      "id_epica": "EP-007"
+    },
+    {
+      "identificador": "TAREA 491",
+      "id_epica": "EP-001"
+    },
+    {
+      "identificador": "TAREA 492",
       "id_epica": "EP-004"
     },
     {
-      "identificador": "TAREA 503",
+      "identificador": "TAREA 493",
+      "id_epica": "EP-006"
+    },
+    {
+      "identificador": "TAREA 494",
+      "id_epica": "EP-006"
+    },
+    {
+      "identificador": "TAREA 495",
+      "id_epica": "EP-006"
+    },
+    {
+      "identificador": "TAREA 496",
+      "id_epica": "EP-008"
+    },
+    {
+      "identificador": "TAREA 497",
+      "id_epica": "EP-004"
+    },
+    {
+      "identificador": "TAREA 498",
+      "id_epica": "EP-004"
+    },
+    {
+      "identificador": "TAREA 499",
+      "id_epica": "EP-001"
+    },
+    {
+      "identificador": "TAREA 501",
+      "id_epica": "EP-001"
+    },
+    {
+      "identificador": "TAREA 502",
       "id_epica": "EP-003"
+    },
+    {
+      "identificador": "TAREA 503",
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 504",
-      "id_epica": "EP-003"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 505",
-      "id_epica": "EP-011"
+      "id_epica": "EP-006"
     },
     {
       "identificador": "TAREA 508",
-      "id_epica": "EP-002"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 509",
@@ -8181,35 +8193,35 @@
     },
     {
       "identificador": "TAREA 510",
-      "id_epica": "EP-009"
+      "id_epica": "EP-004"
     },
     {
       "identificador": "TAREA 511",
-      "id_epica": "EP-003"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 512",
-      "id_epica": "EP-004"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 513",
-      "id_epica": "EP-004"
-    },
-    {
-      "identificador": "TAREA 514",
-      "id_epica": "EP-006"
-    },
-    {
-      "identificador": "TAREA 515",
-      "id_epica": "EP-006"
-    },
-    {
-      "identificador": "TAREA 516",
       "id_epica": "EP-003"
     },
     {
+      "identificador": "TAREA 514",
+      "id_epica": "EP-008"
+    },
+    {
+      "identificador": "TAREA 515",
+      "id_epica": "EP-008"
+    },
+    {
+      "identificador": "TAREA 516",
+      "id_epica": "EP-001"
+    },
+    {
       "identificador": "TAREA 517",
-      "id_epica": "EP-004"
+      "id_epica": "EP-003"
     },
     {
       "identificador": "TAREA 518",
