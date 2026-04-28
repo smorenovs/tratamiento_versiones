@@ -2237,7 +2237,7 @@
       "historia_usuario": "Como responsable de compras, quiero que el reporte 'Resumen de Compras por Proveedor' muestre valores correctos, para poder analizar y conciliar las compras realizadas por proveedor.",
       "tags": {
         "modulo": "Reportes — Compras",
-        "epica_id": "EP-008"
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Media",
       "actor": "Responsable de compras / Administración",
@@ -2251,11 +2251,11 @@
         "El reporte aplica correctamente los filtros de período y proveedor seleccionados.",
         "Los valores no presentan duplicados ni omisiones respecto a los comprobantes registrados."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 67"
     },
     {
@@ -2288,7 +2288,7 @@
       "historia_usuario": "Como gerente de sucursal, quiero que el reporte de 'Cantidad de Comprobantes por Día y Hora' muestre información correcta, para poder analizar la carga operativa real de cada momento del día.",
       "tags": {
         "modulo": "Reportes — Ventas",
-        "epica_id": "EP-008"
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Media",
       "actor": "Gerente de sucursal / Analista operativo",
@@ -2456,18 +2456,18 @@
         "Los datos exportados coinciden con los registros de ventas del sistema.",
         "El formato de la planilla es compatible con los sistemas de ATSA."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 134"
     },
     {
       "historia_usuario": "Como cajero o auditor, quiero que al consultar un Comprobante Interno en el reporte 'Resumen de Caja por Comprobantes' se muestre el comprobante correcto, para no confundir Ingresos de Caja con Comprobantes Internos del mismo número.",
       "tags": {
         "modulo": "Reportes — Caja",
-        "epica_id": "EP-008"
+        "epica_id": "EP-005"
       },
       "complejidad_estimada": "Baja",
       "actor": "Cajero / Auditor",
@@ -2481,11 +2481,11 @@
         "La distinción entre tipos de comprobante es correcta incluso cuando comparten el mismo número.",
         "El reporte identifica visualmente el tipo de cada comprobante listado."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 135"
     },
     {
@@ -7433,7 +7433,7 @@
     },
     {
       "identificador": "TAREA 67",
-      "id_epica": "EP-008"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 73",
@@ -7441,7 +7441,7 @@
     },
     {
       "identificador": "TAREA 75",
-      "id_epica": "EP-008"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 76",
@@ -7469,7 +7469,7 @@
     },
     {
       "identificador": "TAREA 135",
-      "id_epica": "EP-008"
+      "id_epica": "EP-005"
     },
     {
       "identificador": "TAREA 136",
