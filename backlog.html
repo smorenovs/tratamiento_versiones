@@ -213,6 +213,10 @@
   .dep-track { flex: 1; height: 10px; background: var(--bg3); border-radius: 5px; overflow: hidden; display: flex; }
   .dep-seg { height: 100%; }
   .dep-total { width: 28px; text-align: right; color: var(--text2); font-size: 11px; flex-shrink: 0; }
+  .dep-score-wrap { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+  .dep-score-track { width: 40px; height: 6px; background: var(--bg3); border-radius: 3px; overflow: hidden; }
+  .dep-score-fill { height: 100%; background: var(--yellow); border-radius: 3px; }
+  .dep-score-lbl { font-size: 10px; color: var(--yellow); width: 32px; text-align: right; }
   .dep-seg-1 { background: var(--green); }
   .dep-seg-2 { background: #6aa8ff; }
   .dep-seg-3 { background: var(--yellow); }
@@ -1014,12 +1018,14 @@ function renderDashboard() {
 
   // agrupar CUs por épica, contando estados (usamos tarMap para el estado)
   const byEpica = {};
-  for (const ep of backlog.EPICAS) byEpica[ep.id_epica] = {};
+  const scoredByEpica = {};
+  for (const ep of backlog.EPICAS) { byEpica[ep.id_epica] = {}; scoredByEpica[ep.id_epica] = 0; }
   for (const cu of CUs) {
     const eid = cu.tags?.epica_id || 'SIN';
     const est = (backlog.TAREAS.find(t => t.identificador === cu.identificador) || {}).estado || '?';
     if (!byEpica[eid]) byEpica[eid] = {};
     byEpica[eid][est] = (byEpica[eid][est] || 0) + 1;
+    if (cu.score != null) scoredByEpica[eid] = (scoredByEpica[eid] || 0) + 1;
   }
 
   let card1 = `<div class="dash-card dash-full">
@@ -1041,10 +1047,16 @@ function renderDashboard() {
       const pct = (n / tot * 100).toFixed(1);
       segs += `<div class="dep-seg ${estadoSeg[est]}" style="width:${pct}%" title="${estadoLabel[est]}: ${n}"></div>`;
     }
+    const sc    = scoredByEpica[ep.id_epica] || 0;
+    const scPct = tot ? (sc / tot * 100).toFixed(0) : 0;
     card1 += `<div class="dep-row">
       <div class="dep-label" title="${ep.epica}">${ep.id_epica} ${ep.epica}</div>
       <div class="dep-track">${segs}</div>
       <div class="dep-total">${tot}</div>
+      <div class="dep-score-wrap" title="${sc} con score de ${tot}">
+        <div class="dep-score-track"><div class="dep-score-fill" style="width:${scPct}%"></div></div>
+        <div class="dep-score-lbl">${sc}/${tot}</div>
+      </div>
     </div>`;
   }
   card1 += `</div>`;
