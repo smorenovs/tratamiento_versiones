@@ -95,6 +95,27 @@
   .badge-epica { background: rgba(124,92,191,.2); color: #a886f7; }
   .badge-modulo { background: rgba(59,199,214,.1); color: var(--cyan); font-weight: 500; }
 
+  /* ── FILTRO ESTADOS (checkboxes) ── */
+  .estado-filter { border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+  .estado-filter-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 6px 10px; background: var(--bg3); cursor: pointer; user-select: none;
+    font-size: 12px; color: var(--text2);
+  }
+  .estado-filter-header:hover { color: var(--text); }
+  .estado-filter-header .ef-chevron { font-size: 10px; transition: transform .2s; }
+  .estado-filter-header.collapsed .ef-chevron { transform: rotate(-90deg); }
+  .estado-filter-body { display: flex; flex-direction: column; gap: 1px; }
+  .estado-filter-body.hidden { display: none; }
+  .estado-cb-row {
+    display: flex; align-items: center; gap: 8px;
+    padding: 5px 10px; cursor: pointer;
+    transition: background .1s;
+  }
+  .estado-cb-row:hover { background: var(--bg3); }
+  .estado-cb-row input[type=checkbox] { accent-color: var(--accent); width: 13px; height: 13px; cursor: pointer; flex-shrink: 0; }
+  .estado-cb-row .badge { pointer-events: none; }
+
   /* ── MAIN ── */
   #main { flex: 1; overflow-y: auto; padding: 24px; display: flex; flex-direction: column; }
   #empty-state { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text2); gap: 10px; }
@@ -177,6 +198,55 @@
   #pat-modal .pat-actions { display: flex; gap: 8px; justify-content: flex-end; }
   #pat-error { font-size: 12px; color: var(--red); display: none; }
 
+  /* ── DASHBOARD ── */
+  #dashboard { display: none; overflow-y: auto; padding: 24px; flex: 1; }
+  .dash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .dash-full { grid-column: span 2; }
+  .dash-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; }
+  .dash-card-title {
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px;
+    color: var(--text2); margin-bottom: 14px;
+  }
+  /* Epica × estado */
+  .dep-row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; font-size: 12px; }
+  .dep-label { width: 130px; flex-shrink: 0; color: var(--text2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .dep-track { flex: 1; height: 10px; background: var(--bg3); border-radius: 5px; overflow: hidden; display: flex; }
+  .dep-seg { height: 100%; }
+  .dep-total { width: 28px; text-align: right; color: var(--text2); font-size: 11px; flex-shrink: 0; }
+  .dep-seg-1 { background: var(--green); }
+  .dep-seg-2 { background: #6aa8ff; }
+  .dep-seg-3 { background: var(--yellow); }
+  .dep-seg-4 { background: #50c878; }
+  .dep-seg-5 { background: #888; }
+  .dep-seg-6 { background: #d4a0a0; }
+  .dep-seg-7 { background: var(--red); }
+  .dep-seg-8 { background: var(--cyan); }
+  /* Score vs Sin Score */
+  .dash-score-pair { display: flex; gap: 24px; margin-bottom: 14px; }
+  .dash-big-block { display: flex; flex-direction: column; align-items: center; gap: 2px; flex: 1; }
+  .dash-big { font-size: 36px; font-weight: 700; }
+  .dash-big.scored { color: var(--yellow); }
+  .dash-big.unscored { color: var(--text2); }
+  .dash-big-label { font-size: 11px; color: var(--text2); text-transform: uppercase; letter-spacing: .4px; }
+  .dash-prop-track { height: 8px; background: var(--bg3); border-radius: 4px; overflow: hidden; }
+  .dash-prop-fill { height: 100%; background: var(--yellow); border-radius: 4px; }
+  /* Distribución */
+  .dist-row { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; font-size: 12px; }
+  .dist-key { width: 28px; text-align: right; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+  .dist-track { flex: 1; height: 14px; background: var(--bg3); border-radius: 3px; overflow: hidden; }
+  .dist-fill { height: 100%; background: var(--accent); border-radius: 3px; opacity: .8; }
+  .dist-count { width: 28px; color: var(--text2); font-size: 11px; flex-shrink: 0; }
+  /* Criterios */
+  .crit-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 12px; }
+  .crit-label { width: 100px; flex-shrink: 0; color: var(--text); font-weight: 600; }
+  .crit-filled { width: 60px; flex-shrink: 0; font-size: 11px; color: var(--text2); }
+  .crit-track { flex: 1; height: 8px; background: var(--bg3); border-radius: 4px; overflow: hidden; }
+  .crit-fill { height: 100%; background: var(--accent2); border-radius: 4px; }
+  .crit-avg { width: 36px; text-align: right; font-weight: 700; color: var(--accent2); font-size: 13px; flex-shrink: 0; }
+  .dash-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .dash-legend-item { display: flex; align-items: center; gap: 4px; font-size: 10px; color: var(--text2); }
+  .dash-legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
   /* ── TOAST ── */
   #toast {
     position: fixed; bottom: 24px; right: 24px; z-index: 200;
@@ -205,6 +275,7 @@
   <span class="sep"></span>
   <a href="index.html" class="btn-back">← Volver</a>
   <button class="btn-secondary" onclick="openPatModal()">🔑 Token GitHub</button>
+  <button class="btn-secondary" id="btn-dash" onclick="toggleDashboard()" disabled>📊 Dashboard</button>
   <button class="btn-save" id="btn-save" onclick="saveToGitHub()" disabled>☁ Guardar en GitHub</button>
 </div>
 
@@ -219,14 +290,22 @@
         <select id="f-epica" onchange="renderList()">
           <option value="">Todas las épicas</option>
         </select>
-        <select id="f-estado" onchange="renderList()">
-          <option value="">Todos los estados</option>
-          <option value="1_BACKLOG">Backlog</option>
-          <option value="2_PENDIENTE">Pendiente</option>
-          <option value="3_EN CURSO">En Curso</option>
-          <option value="6_PAUSADO">Pausado</option>
-          <option value="7_BLOQUEADO">Bloqueado</option>
-        </select>
+      </div>
+      <div class="estado-filter">
+        <div class="estado-filter-header" onclick="toggleEstadoFilter(this)">
+          <span id="estado-filter-label">Estado — todos</span>
+          <span class="ef-chevron">▼</span>
+        </div>
+        <div class="estado-filter-body">
+          <label class="estado-cb-row"><input type="checkbox" value="1_BACKLOG"    onchange="renderList(); updateEstadoLabel()"><span class="badge badge-estado-1">Backlog</span></label>
+          <label class="estado-cb-row"><input type="checkbox" value="2_PENDIENTE"  onchange="renderList(); updateEstadoLabel()"><span class="badge badge-estado-2">Pendiente</span></label>
+          <label class="estado-cb-row"><input type="checkbox" value="3_EN CURSO"   onchange="renderList(); updateEstadoLabel()"><span class="badge badge-estado-3">En Curso</span></label>
+          <label class="estado-cb-row"><input type="checkbox" value="4_FINALIZADO" onchange="renderList(); updateEstadoLabel()"><span class="badge badge-estado-1">Finalizado</span></label>
+          <label class="estado-cb-row"><input type="checkbox" value="5_NO APLICA"  onchange="renderList(); updateEstadoLabel()"><span class="badge badge-estado-6">No Aplica</span></label>
+          <label class="estado-cb-row"><input type="checkbox" value="6_PAUSADO"    onchange="renderList(); updateEstadoLabel()"><span class="badge badge-estado-6">Pausado</span></label>
+          <label class="estado-cb-row"><input type="checkbox" value="7_BLOQUEADO"  onchange="renderList(); updateEstadoLabel()"><span class="badge badge-estado-7">Bloqueado</span></label>
+          <label class="estado-cb-row"><input type="checkbox" value="8_TESTING"    onchange="renderList(); updateEstadoLabel()"><span class="badge badge-estado-3">Testing</span></label>
+        </div>
       </div>
       <div class="filter-row">
         <select id="f-score-filter" onchange="renderList()">
@@ -259,6 +338,8 @@
       <div class="big">⚠️</div>
       <div id="empty-msg">No se pudo cargar el BACKLOG.</div>
     </div>
+
+    <div id="dashboard"></div>
 
     <div id="editor">
       <!-- HEADER DE TAREA -->
@@ -507,6 +588,7 @@ async function loadFromGitHub() {
     initData();
     document.getElementById('sync-status').textContent = 'Sincronizado con GitHub';
     document.getElementById('btn-save').disabled = !hasPat();
+    document.getElementById('btn-dash').disabled = false;
   } catch (e) {
     // Fallback: intentar fetch directo (funciona en GitHub Pages sin PAT para repos públicos)
     try {
@@ -517,6 +599,7 @@ async function loadFromGitHub() {
       initData();
       document.getElementById('sync-status').textContent = 'Cargado localmente (guardado requiere token)';
       document.getElementById('btn-save').disabled = !hasPat();
+      document.getElementById('btn-dash').disabled = false;
     } catch (e2) {
       document.getElementById('loading-state').style.display = 'none';
       document.getElementById('empty-state').style.display = 'flex';
@@ -622,11 +705,26 @@ function initData() {
 }
 
 // ── Lista de tareas ────────────────────────────────────────────────────────
+function getEstadosSeleccionados() {
+  return [...document.querySelectorAll('.estado-filter-body input:checked')].map(cb => cb.value);
+}
+
+function updateEstadoLabel() {
+  const sel = getEstadosSeleccionados();
+  document.getElementById('estado-filter-label').textContent =
+    sel.length === 0 ? 'Estado — todos' : `Estado — ${sel.length} seleccionado${sel.length > 1 ? 's' : ''}`;
+}
+
+function toggleEstadoFilter(header) {
+  header.classList.toggle('collapsed');
+  header.nextElementSibling.classList.toggle('hidden');
+}
+
 function renderList() {
   if (!backlog) return;
   const q     = document.getElementById('search').value.toLowerCase();
   const fEp   = document.getElementById('f-epica').value;
-  const fEst  = document.getElementById('f-estado').value;
+  const fEst  = getEstadosSeleccionados();
   const fSc   = document.getElementById('f-score-filter').value;
   const fSort = document.getElementById('f-sort').value;
 
@@ -638,7 +736,7 @@ function renderList() {
     (t.cliente || '').toLowerCase().includes(q)
   );
   if (fEp)  items = items.filter(({ cu }) => cu?.tags?.epica_id === fEp);
-  if (fEst) items = items.filter(({ t })  => t.estado === fEst);
+  if (fEst.length) items = items.filter(({ t }) => fEst.includes(t.estado));
   if (fSc === 'scored')   items = items.filter(({ cu }) => cu?.score != null);
   if (fSc === 'unscored') items = items.filter(({ cu }) => cu?.score == null);
 
@@ -870,6 +968,164 @@ document.addEventListener('keydown', e => {
   }
   if (e.key === 'Escape') closePatModal();
 });
+
+// ── Dashboard ─────────────────────────────────────────────────────────────
+let dashActive = false;
+
+function toggleDashboard() {
+  dashActive = !dashActive;
+  const btn = document.getElementById('btn-dash');
+  const dash = document.getElementById('dashboard');
+  const editor = document.getElementById('editor');
+  const empty  = document.getElementById('empty-state');
+
+  if (dashActive) {
+    editor.style.display = 'none';
+    empty.style.display  = 'none';
+    dash.style.display   = 'block';
+    btn.textContent = '✕ Cerrar';
+    renderDashboard();
+  } else {
+    dash.style.display = 'none';
+    btn.textContent = '📊 Dashboard';
+    if (currentId) editor.style.display = 'block';
+    else           empty.style.display  = 'flex';
+  }
+}
+
+function renderDashboard() {
+  if (!backlog) return;
+  const CUs    = backlog.CASOS_USO;
+  const total  = CUs.length;
+  const epMap  = {};
+  for (const e of backlog.EPICAS) epMap[e.id_epica] = e.epica;
+
+  // ── Card 1: por épica × estado ──────────────────────────────────────────
+  const estadoOrder = ['1_BACKLOG','2_PENDIENTE','3_EN CURSO','4_FINALIZADO','5_NO APLICA','6_PAUSADO','7_BLOQUEADO','8_TESTING'];
+  const estadoLabel = { '1_BACKLOG':'Backlog','2_PENDIENTE':'Pendiente','3_EN CURSO':'En Curso',
+                        '4_FINALIZADO':'Finalizado','5_NO APLICA':'No Aplica',
+                        '6_PAUSADO':'Pausado','7_BLOQUEADO':'Bloqueado','8_TESTING':'Testing' };
+  const estadoSeg   = { '1_BACKLOG':'dep-seg-1','2_PENDIENTE':'dep-seg-2','3_EN CURSO':'dep-seg-3',
+                        '4_FINALIZADO':'dep-seg-4','5_NO APLICA':'dep-seg-5',
+                        '6_PAUSADO':'dep-seg-6','7_BLOQUEADO':'dep-seg-7','8_TESTING':'dep-seg-8' };
+  const estadoColor = { '1_BACKLOG':'var(--green)','2_PENDIENTE':'#6aa8ff','3_EN CURSO':'var(--yellow)',
+                        '4_FINALIZADO':'#50c878','5_NO APLICA':'#888',
+                        '6_PAUSADO':'#d4a0a0','7_BLOQUEADO':'var(--red)','8_TESTING':'var(--cyan)' };
+
+  // agrupar CUs por épica, contando estados (usamos tarMap para el estado)
+  const byEpica = {};
+  for (const ep of backlog.EPICAS) byEpica[ep.id_epica] = {};
+  for (const cu of CUs) {
+    const eid = cu.tags?.epica_id || 'SIN';
+    const est = (backlog.TAREAS.find(t => t.identificador === cu.identificador) || {}).estado || '?';
+    if (!byEpica[eid]) byEpica[eid] = {};
+    byEpica[eid][est] = (byEpica[eid][est] || 0) + 1;
+  }
+
+  let card1 = `<div class="dash-card dash-full">
+    <div class="dash-card-title">Tareas por épica y estado</div>
+    <div class="dash-legend">`;
+  for (const est of estadoOrder) {
+    card1 += `<div class="dash-legend-item"><div class="dash-legend-dot" style="background:${estadoColor[est]}"></div>${estadoLabel[est]}</div>`;
+  }
+  card1 += `</div>`;
+
+  for (const ep of backlog.EPICAS) {
+    const counts = byEpica[ep.id_epica] || {};
+    const tot = Object.values(counts).reduce((a,b) => a+b, 0);
+    if (!tot) continue;
+    let segs = '';
+    for (const est of estadoOrder) {
+      const n = counts[est] || 0;
+      if (!n) continue;
+      const pct = (n / tot * 100).toFixed(1);
+      segs += `<div class="dep-seg ${estadoSeg[est]}" style="width:${pct}%" title="${estadoLabel[est]}: ${n}"></div>`;
+    }
+    card1 += `<div class="dep-row">
+      <div class="dep-label" title="${ep.epica}">${ep.id_epica} ${ep.epica}</div>
+      <div class="dep-track">${segs}</div>
+      <div class="dep-total">${tot}</div>
+    </div>`;
+  }
+  card1 += `</div>`;
+
+  // ── Card 2: Score vs Sin Score ───────────────────────────────────────────
+  const scored   = CUs.filter(cu => cu.score != null).length;
+  const unscored = total - scored;
+  const scorePct = total ? (scored / total * 100).toFixed(0) : 0;
+  const card2 = `<div class="dash-card">
+    <div class="dash-card-title">Score vs Sin Score</div>
+    <div class="dash-score-pair">
+      <div class="dash-big-block">
+        <div class="dash-big scored">${scored}</div>
+        <div class="dash-big-label">Con score</div>
+      </div>
+      <div class="dash-big-block">
+        <div class="dash-big unscored">${unscored}</div>
+        <div class="dash-big-label">Sin score</div>
+      </div>
+    </div>
+    <div class="dash-prop-track">
+      <div class="dash-prop-fill" style="width:${scorePct}%"></div>
+    </div>
+    <div style="font-size:11px;color:var(--text2);margin-top:6px;text-align:center">${scorePct}% del backlog scored</div>
+  </div>`;
+
+  // ── Card 3: Distribución de scores ──────────────────────────────────────
+  const scoreDist = {};
+  for (const cu of CUs) {
+    if (cu.score == null) continue;
+    const k = cu.score;
+    scoreDist[k] = (scoreDist[k] || 0) + 1;
+  }
+  const distKeys = Object.keys(scoreDist).map(Number).sort((a,b) => a - b);
+  const distMax  = Math.max(...Object.values(scoreDist), 1);
+
+  let card3 = `<div class="dash-card">
+    <div class="dash-card-title">Distribución de scores</div>`;
+  if (distKeys.length === 0) {
+    card3 += `<div style="color:var(--text2);font-size:13px">Sin tareas con score aún.</div>`;
+  } else {
+    for (const k of distKeys) {
+      const n = scoreDist[k];
+      const pct = (n / distMax * 100).toFixed(0);
+      card3 += `<div class="dist-row">
+        <div class="dist-key">${k}</div>
+        <div class="dist-track"><div class="dist-fill" style="width:${pct}%"></div></div>
+        <div class="dist-count">${n}</div>
+      </div>`;
+    }
+  }
+  card3 += `</div>`;
+
+  // ── Card 4: Por criterio ────────────────────────────────────────────────
+  const criterios = [
+    { key: 'impacto',     label: 'Impacto',     max: 3 },
+    { key: 'esfuerzo',    label: 'Esfuerzo',    max: 3 },
+    { key: 'estado_ejec', label: 'Estado Ejec.', max: 3 },
+    { key: 'presion',     label: 'Presión',      max: 1 },
+  ];
+
+  let card4 = `<div class="dash-card dash-full">
+    <div class="dash-card-title">Criterios de scoring — llenado y promedio</div>`;
+
+  for (const { key, label, max } of criterios) {
+    const vals = CUs.map(cu => cu[key]).filter(v => v != null);
+    const filled = vals.length;
+    const avg = filled ? (vals.reduce((a,b) => a+b, 0) / filled) : null;
+    const fillPct = avg != null ? Math.min(avg / max * 100, 100).toFixed(0) : 0;
+    card4 += `<div class="crit-row">
+      <div class="crit-label">${label}</div>
+      <div class="crit-filled">${filled}/${total}</div>
+      <div class="crit-track"><div class="crit-fill" style="width:${fillPct}%"></div></div>
+      <div class="crit-avg">${avg != null ? avg.toFixed(1) : '—'}</div>
+    </div>`;
+  }
+  card4 += `</div>`;
+
+  document.getElementById('dashboard').innerHTML =
+    `<div class="dash-grid">${card1}${card2}${card3}${card4}</div>`;
+}
 
 window.addEventListener('beforeunload', e => {
   if (isDirty) { e.preventDefault(); e.returnValue = ''; }
