@@ -93,6 +93,7 @@
   .badge-estado-6 { background: #2a1e1e; color: #d4a0a0; }
   .badge-estado-7 { background: #2a1a1a; color: var(--red); }
   .badge-epica { background: rgba(124,92,191,.2); color: #a886f7; }
+  .badge-modulo { background: rgba(59,199,214,.1); color: var(--cyan); font-weight: 500; }
 
   /* ── MAIN ── */
   #main { flex: 1; overflow-y: auto; padding: 24px; display: flex; flex-direction: column; }
@@ -666,6 +667,7 @@ function renderList() {
       <div class="ti-meta">
         <span class="badge ${badgeEstadoClass(t.estado)}">${estadoLabel(t.estado)}</span>
         ${cu?.tags?.epica_id ? `<span class="badge badge-epica">${cu.tags.epica_id}</span>` : ''}
+        ${cu?.tags?.modulo ? `<span class="badge badge-modulo">${escHtml(cu.tags.modulo)}</span>` : ''}
       </div>`;
     container.appendChild(div);
   }
