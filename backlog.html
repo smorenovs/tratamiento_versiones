@@ -235,11 +235,20 @@
   .dash-prop-track { height: 8px; background: var(--bg3); border-radius: 4px; overflow: hidden; }
   .dash-prop-fill { height: 100%; background: var(--yellow); border-radius: 4px; }
   /* Distribución */
-  .dist-row { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; font-size: 12px; }
+  .dist-row { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; font-size: 12px; cursor: pointer; padding: 2px 4px; border-radius: 4px; transition: background .1s; }
+  .dist-row:hover { background: rgba(79,142,247,.1); }
+  .dist-row.active-filter { background: rgba(79,142,247,.18); outline: 1px solid var(--accent); }
   .dist-key { width: 28px; text-align: right; color: var(--accent); font-weight: 700; flex-shrink: 0; }
   .dist-track { flex: 1; height: 14px; background: var(--bg3); border-radius: 3px; overflow: hidden; }
   .dist-fill { height: 100%; background: var(--accent); border-radius: 3px; opacity: .8; }
   .dist-count { width: 28px; color: var(--text2); font-size: 11px; flex-shrink: 0; }
+  /* Score exacto en sidebar */
+  .score-exact-row { display: flex; gap: 4px; }
+  .score-exact-row input { flex: 1; background: var(--bg3); border: 1px solid var(--border); color: var(--text); border-radius: 6px; padding: 6px 8px; font-size: 12px; }
+  .score-exact-row input:focus { outline: none; border-color: var(--accent); }
+  .score-exact-row input.active { border-color: var(--accent); background: rgba(79,142,247,.08); }
+  .btn-clear-score { background: var(--bg3); border: 1px solid var(--border); color: var(--text2); border-radius: 6px; padding: 0 8px; font-size: 14px; cursor: pointer; }
+  .btn-clear-score:hover { color: var(--text); border-color: var(--text2); }
   /* Criterios */
   .crit-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 12px; }
   .crit-label { width: 100px; flex-shrink: 0; color: var(--text); font-weight: 600; }
@@ -310,6 +319,10 @@
           <label class="estado-cb-row"><input type="checkbox" value="7_BLOQUEADO"  onchange="renderList(); updateEstadoLabel()"><span class="badge badge-estado-7">Bloqueado</span></label>
           <label class="estado-cb-row"><input type="checkbox" value="8_TESTING"    onchange="renderList(); updateEstadoLabel()"><span class="badge badge-estado-3">Testing</span></label>
         </div>
+      </div>
+      <div class="score-exact-row">
+        <input id="f-score-exact" type="number" placeholder="Score exacto…" min="0" oninput="renderList(); updateScoreExactStyle()">
+        <button class="btn-clear-score" onclick="clearScoreExact()" title="Limpiar filtro">×</button>
       </div>
       <div class="filter-row">
         <select id="f-score-filter" onchange="renderList()">
@@ -709,6 +722,26 @@ function initData() {
 }
 
 // ── Lista de tareas ────────────────────────────────────────────────────────
+function applyScoreFilter(score) {
+  document.getElementById('f-score-exact').value = score;
+  document.getElementById('f-score-filter').value = '';
+  updateScoreExactStyle();
+  renderList();
+  if (dashActive) toggleDashboard();
+  document.getElementById('task-list').scrollTop = 0;
+}
+
+function clearScoreExact() {
+  document.getElementById('f-score-exact').value = '';
+  updateScoreExactStyle();
+  renderList();
+}
+
+function updateScoreExactStyle() {
+  const inp = document.getElementById('f-score-exact');
+  inp.classList.toggle('active', inp.value !== '');
+}
+
 function getEstadosSeleccionados() {
   return [...document.querySelectorAll('.estado-filter-body input:checked')].map(cb => cb.value);
 }
@@ -729,8 +762,9 @@ function renderList() {
   const q     = document.getElementById('search').value.toLowerCase();
   const fEp   = document.getElementById('f-epica').value;
   const fEst  = getEstadosSeleccionados();
-  const fSc   = document.getElementById('f-score-filter').value;
-  const fSort = document.getElementById('f-sort').value;
+  const fSc      = document.getElementById('f-score-filter').value;
+  const fScExact = document.getElementById('f-score-exact').value;
+  const fSort    = document.getElementById('f-sort').value;
 
   let items = backlog.TAREAS.map(t => ({ t, cu: cuMap[t.identificador] }));
 
@@ -741,8 +775,13 @@ function renderList() {
   );
   if (fEp)  items = items.filter(({ cu }) => cu?.tags?.epica_id === fEp);
   if (fEst.length) items = items.filter(({ t }) => fEst.includes(t.estado));
-  if (fSc === 'scored')   items = items.filter(({ cu }) => cu?.score != null);
-  if (fSc === 'unscored') items = items.filter(({ cu }) => cu?.score == null);
+  if (fScExact !== '') {
+    const exact = Number(fScExact);
+    items = items.filter(({ cu }) => cu?.score === exact);
+  } else {
+    if (fSc === 'scored')   items = items.filter(({ cu }) => cu?.score != null);
+    if (fSc === 'unscored') items = items.filter(({ cu }) => cu?.score == null);
+  }
 
   const numId = id => parseInt(id.replace(/\D/g,'')) || 0;
   if (fSort === 'id')         items.sort((a,b) => numId(a.t.identificador) - numId(b.t.identificador));
@@ -1097,10 +1136,12 @@ function renderDashboard() {
   if (distKeys.length === 0) {
     card3 += `<div style="color:var(--text2);font-size:13px">Sin tareas con score aún.</div>`;
   } else {
+    const activeExact = document.getElementById('f-score-exact').value;
     for (const k of distKeys) {
       const n = scoreDist[k];
       const pct = (n / distMax * 100).toFixed(0);
-      card3 += `<div class="dist-row">
+      const isActive = activeExact !== '' && Number(activeExact) === k;
+      card3 += `<div class="dist-row${isActive ? ' active-filter' : ''}" onclick="applyScoreFilter(${k})" title="Filtrar por score ${k}">
         <div class="dist-key">${k}</div>
         <div class="dist-track"><div class="dist-fill" style="width:${pct}%"></div></div>
         <div class="dist-count">${n}</div>
