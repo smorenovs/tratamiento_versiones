@@ -4049,7 +4049,7 @@
     {
       "historia_usuario": "Como contador de CAMYEN, quiero que el módulo de IVA Simplificado contemple el nuevo formato con soporte para Bienes, Bienes de Uso y Servicios en comprobantes de compra, para procesar correctamente las facturas de proveedores con distintos tipos de artículo.",
       "tags": {
-        "modulo": "Fiscal — IVA Simplificado",
+        "modulo": "Fiscal",
         "epica_id": "EP-007"
       },
       "complejidad_estimada": "Alta",
@@ -4065,17 +4065,17 @@
         "El nuevo formato aplica a FA, NC y demás comprobantes de compra.",
         "Los reportes de IVA reflejan correctamente las categorías."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 5,
       "identificador": "TAREA 295"
     },
     {
       "historia_usuario": "Como responsable de administración de CAMYEN, quiero que Zafiro soporte facturación electrónica de exportación integrada con AFIP para bienes, para poder emitir comprobantes de exportación sin procesos manuales.",
       "tags": {
-        "modulo": "Fiscal — Facturación Electrónica",
+        "modulo": "Fiscal",
         "epica_id": "EP-007"
       },
       "complejidad_estimada": "Alta",
@@ -4091,18 +4091,18 @@
         "El CAE retornado por AFIP se registra en el comprobante.",
         "Los errores de AFIP se muestran de forma descriptiva."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 296"
     },
     {
       "historia_usuario": "Como contador de CAMYEN, quiero que Zafiro incluya la opción de ajuste por inflación como asiento configurable, y que el reporte de Sumas y Saldos permita excluir saldos iniciales de forma parametrizable, para cumplir con la normativa contable vigente.",
       "tags": {
-        "modulo": "Fiscal — Contabilidad / Inflación",
-        "epica_id": "EP-007"
+        "modulo": "Contabilidad",
+        "epica_id": "EP-006"
       },
       "complejidad_estimada": "Alta",
       "actor": "Contador",
@@ -4117,11 +4117,11 @@
         "La opción de saldos iniciales es parametrizable por el usuario.",
         "Los asientos generados son correctos y auditables."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 297"
     },
     {
@@ -4142,11 +4142,11 @@
         "El archivo cumple con el formato requerido por AFIP.",
         "El error previo reportado por el cliente queda resuelto."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 1,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 5,
       "identificador": "TAREA 298"
     },
     {
@@ -5065,8 +5065,8 @@
     {
       "historia_usuario": "Como cajero de Farmacia La Esquina, quiero que las facturas CAEA tengan asignado correctamente el orden y período del mes en curso, para evitar discrepancias fiscales por asignación de período incorrecto.",
       "tags": {
-        "modulo": "Fiscal — Facturación CAEA",
-        "epica_id": "EP-007"
+        "modulo": "Ventas - CAEA",
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Media",
       "actor": "Cajero / Sistema de facturación",
@@ -5080,11 +5080,11 @@
         "No se produce asignación de período anterior al mes de emisión.",
         "El caso reportado (asignación de enero en facturas de febrero) no puede repetirse."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 1,
+      "score": 8,
       "identificador": "TAREA 399"
     },
     {
@@ -5388,11 +5388,11 @@
         "El aviso sí aparece correctamente cuando el CAI está efectivamente vencido.",
         "El comportamiento es correcto para todos los tipos de remito."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 3,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 422"
     },
     {
@@ -5651,8 +5651,8 @@
     {
       "historia_usuario": "Como cajero, quiero que Zafiro muestre un mensaje claro cuando ARCA/AFIP no está disponible para facturar y me indique que debo usar cajas CAEA, para no quedarme sin poder facturar sin saber qué hacer.",
       "tags": {
-        "modulo": "Fiscal — Facturación / AFIP",
-        "epica_id": "EP-007"
+        "modulo": "Ventas - CAEA",
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Cajero",
@@ -5666,11 +5666,11 @@
         "El mensaje indica específicamente que debe usarse las cajas CAEA.",
         "El mensaje es más descriptivo que un error genérico de conexión."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 1,
+      "score": 9,
       "identificador": "TAREA 442"
     },
     {
@@ -6125,11 +6125,11 @@
         "El archivo de retenciones de IIBB se genera con el nuevo formato.",
         "Los archivos son aceptados por el sistema de la autoridad fiscal provincial."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 466"
     },
     {
@@ -6638,18 +6638,18 @@
         "Los datos son correctos y auditables.",
         "El reporte puede exportarse para seguimiento."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 3,
+      "presion": 1,
+      "score": 10,
       "identificador": "TAREA 489"
     },
     {
       "historia_usuario": "Como contador de Farmacia La Esquina, quiero un reporte que identifique tickets presentes en ARCA pero no en Zafiro para todos los puntos de venta, para detectar y corregir discrepancias fiscales.",
       "tags": {
-        "modulo": "Fiscal — ARCA / Reportes",
-        "epica_id": "EP-007"
+        "modulo": "Ventas - Reportes",
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Alta",
       "actor": "Contador / Administrador fiscal",
@@ -6664,11 +6664,11 @@
         "Los datos son correctos y pueden exportarse para análisis.",
         "El resultado puede filtrarse por PV."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 1,
+      "score": 9,
       "identificador": "TAREA 490"
     },
     {
@@ -7725,7 +7725,7 @@
     },
     {
       "identificador": "TAREA 297",
-      "id_epica": "EP-007"
+      "id_epica": "EP-006"
     },
     {
       "identificador": "TAREA 298",
@@ -7877,7 +7877,7 @@
     },
     {
       "identificador": "TAREA 399",
-      "id_epica": "EP-007"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 402",
@@ -7969,7 +7969,7 @@
     },
     {
       "identificador": "TAREA 442",
-      "id_epica": "EP-007"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 444",
@@ -8125,7 +8125,7 @@
     },
     {
       "identificador": "TAREA 490",
-      "id_epica": "EP-007"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 491",
