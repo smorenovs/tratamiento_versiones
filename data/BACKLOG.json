@@ -273,7 +273,7 @@
       "id_ev_des": "a8c7dfd6",
       "identificador": "TAREA 154",
       "tema": "Modificación en Reporte de Comprobantes por Fecha de Vencimiento",
-      "detalle": "Modificación en Reporte de Comprobantes por Fecha de Vencimiento",
+      "detalle": "Modificación en Reporte de Comprobantes por Fecha de Vencimiento. Solicita incluir un filtro para mostrar solo los comprobantes pendientes de pago, ordenados por fecha de vencimiento desde la más próxima a la más lejana. Ahora el reporte trae los comprobantes segmentados y ordenados por proveedor y por fecha de vencimiento en segunda instancia, y también muestra los comprobantes ya saldados (con saldo en 0,00)",
       "cliente": "Farmacia La Esquina",
       "tipo": "Mejora",
       "estado": "1_BACKLOG",
@@ -2441,8 +2441,8 @@
     {
       "historia_usuario": "Como administrativo de Red Colon, quiero contar con planillas de muestreo de campos para ATSA, para poder preparar las presentaciones de obra social con la información correcta.",
       "tags": {
-        "modulo": "Reportes — Obras Sociales",
-        "epica_id": "EP-008"
+        "modulo": "Ventas - Reportes — Obras Sociales",
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Alta",
       "actor": "Administrativo de presentaciones OS",
@@ -2566,8 +2566,8 @@
     {
       "historia_usuario": "Como administrador de La Pirgua, quiero que el reporte 'Informe de Ventas por Forma de Pago Diario - Global' muestre los importes correctos, para poder analizar los ingresos reales sin que aparezcan valores de miles de millones.",
       "tags": {
-        "modulo": "Reportes — Ventas",
-        "epica_id": "EP-008"
+        "modulo": "Ventas - Reportes",
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Media",
       "actor": "Administrador / Gerente de sucursal",
@@ -2581,11 +2581,11 @@
         "No se muestran valores anómalos (como miles de millones) en ninguna columna.",
         "El total general coincide con la suma de todos los subtotales por forma de pago."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 3,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 140"
     },
     {
@@ -2720,8 +2720,8 @@
     {
       "historia_usuario": "Como administrativo de Farmacia La Esquina, quiero que el reporte de comprobantes por fecha de vencimiento sea modificado para mostrar la información que necesito, para gestionar mejor los vencimientos de mis comprobantes.",
       "tags": {
-        "modulo": "Reportes — Comprobantes",
-        "epica_id": "EP-008"
+        "modulo": "Ventas - Reportes",
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Administrativo",
@@ -2735,11 +2735,11 @@
         "Los datos de vencimiento son correctos y están ordenados adecuadamente.",
         "El reporte puede exportarse a Excel sin errores."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 3,
+      "presion": 0,
+      "score": 8,
       "identificador": "TAREA 154"
     },
     {
@@ -2796,8 +2796,8 @@
     {
       "historia_usuario": "Como contador de Farmacia La Esquina, quiero que los reportes de IVA Compras, IVA Ventas y Mayor de Cuentas muestren el saldo completo, para poder realizar correctamente la conciliación contable.",
       "tags": {
-        "modulo": "Reportes — Contabilidad / IVA",
-        "epica_id": "EP-008"
+        "modulo": "Contabilidad - Reportes",
+        "epica_id": "EP-006"
       },
       "complejidad_estimada": "Media",
       "actor": "Contador / Administrador",
@@ -2811,18 +2811,18 @@
         "Los reportes de IVA Compras, IVA Ventas y Mayor de Cuentas funcionan correctamente.",
         "Los totales son consistentes con los comprobantes del período."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 3,
+      "presion": 0,
+      "score": 8,
       "identificador": "TAREA 157"
     },
     {
       "historia_usuario": "Como operador de compras de Moreno, quiero que la pantalla 'Consulta / Reimpresión de Pedidos' tenga un botón para exportar a XLSX, para poder analizar los pedidos en una planilla de cálculo.",
       "tags": {
-        "modulo": "Reportes — Pedidos",
-        "epica_id": "EP-008"
+        "modulo": "Compras",
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Baja",
       "actor": "Operador de compras",
@@ -2836,18 +2836,18 @@
         "El archivo generado contiene todos los campos visibles en la pantalla.",
         "El archivo XLSX se descarga correctamente sin errores."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 159"
     },
     {
       "historia_usuario": "Como gerente de V&S, quiero que el título del reporte de ventas detallado por clientes sea claro y no redundante, para identificar rápidamente el reporte que estoy consultando.",
       "tags": {
-        "modulo": "Reportes — Ventas",
-        "epica_id": "EP-008"
+        "modulo": "Ventas - Reportes",
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Gerente / Analista de ventas",
@@ -2861,11 +2861,11 @@
         "El título identifica correctamente el contenido del reporte.",
         "El cambio de título no afecta la funcionalidad del reporte."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 3,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 161"
     },
     {
@@ -7465,7 +7465,7 @@
     },
     {
       "identificador": "TAREA 134",
-      "id_epica": "EP-008"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 135",
@@ -7485,7 +7485,7 @@
     },
     {
       "identificador": "TAREA 140",
-      "id_epica": "EP-008"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 141",
@@ -7509,7 +7509,7 @@
     },
     {
       "identificador": "TAREA 154",
-      "id_epica": "EP-008"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 155",
@@ -7521,15 +7521,15 @@
     },
     {
       "identificador": "TAREA 157",
-      "id_epica": "EP-008"
+      "id_epica": "EP-006"
     },
     {
       "identificador": "TAREA 159",
-      "id_epica": "EP-008"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 161",
-      "id_epica": "EP-008"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 162",
