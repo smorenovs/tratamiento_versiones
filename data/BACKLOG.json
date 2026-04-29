@@ -206,7 +206,7 @@
       "detalle": "No permitir la emision de Fac A en PV CAEA cuando no se ingresa CUIT",
       "cliente": "Farmacia La Esquina",
       "tipo": "Mejora",
-      "estado": "1_BACKLOG",
+      "estado": "4_FINALIZADO",
       "responsable": "#N/A"
     },
     {
