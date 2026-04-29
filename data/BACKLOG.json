@@ -2084,7 +2084,7 @@
     {
       "historia_usuario": "Como usuario del sistema, quiero que el Lanzador de Zafiro no se plante después de un tiempo prolongado de uso activo, para no perder el trabajo en curso por un error del lanzador.",
       "tags": {
-        "modulo": "Interno — Lanzador",
+        "modulo": "Interno",
         "epica_id": "EP-014"
       },
       "complejidad_estimada": "Media",
@@ -2099,11 +2099,11 @@
         "El problema de plantarse con tiempo de uso extendido queda resuelto.",
         "La resolución es consistente con lo relevado en TAREA 374."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 5,
       "identificador": "TAREA 3"
     },
     {
@@ -2657,11 +2657,11 @@
         "El nuevo valor se guarda correctamente.",
         "El error previo reportado en la imagen anexa queda resuelto."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 146"
     },
     {
@@ -2963,11 +2963,11 @@
         "Los datos sincronizados son correctos y completos.",
         "El WS maneja errores de conexión de forma robusta."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 169"
     },
     {
@@ -3024,8 +3024,8 @@
     {
       "historia_usuario": "Como responsable de e-commerce de V&S, quiero que la bajada de pedidos de Tiendastic por intercambio de archivos contemple los datos de sucursal, punto de venta y punto de retiro, para procesar correctamente cada pedido recibido.",
       "tags": {
-        "modulo": "E-Commerce — Tiendastic",
-        "epica_id": "EP-014"
+        "modulo": "Ventas",
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Alta",
       "actor": "Responsable de e-commerce / Operador logístico",
@@ -3040,11 +3040,11 @@
         "Los pedidos quedan registrados en Zafiro con todos los datos necesarios.",
         "Los errores de procesamiento se reportan claramente."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 184"
     },
     {
@@ -4177,8 +4177,8 @@
     {
       "historia_usuario": "Como desarrollador de VS Ingeniería, quiero completar el proceso de Licitaciones en la herramienta de droguería, para que el módulo de licitaciones esté completamente funcional.",
       "tags": {
-        "modulo": "Interno — Herramientas VS",
-        "epica_id": "EP-014"
+        "modulo": "Compras",
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Alta",
       "actor": "Desarrollador / Administrador interno",
@@ -4192,11 +4192,11 @@
         "Los resultados del proceso son correctos.",
         "El proceso es auditable."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 302"
     },
     {
@@ -4585,7 +4585,7 @@
     {
       "historia_usuario": "Como responsable técnico de Red Colon, quiero que el servicio de comunicaciones no genere errores, para que la sincronización de datos entre sucursales y sistemas externos funcione de forma continua.",
       "tags": {
-        "modulo": "Interno — Infraestructura",
+        "modulo": "Interno — SVC",
         "epica_id": "EP-014"
       },
       "complejidad_estimada": "Alta",
@@ -4600,11 +4600,11 @@
         "La causa del error identificada en el caso de soporte queda resuelta.",
         "El servicio opera de forma continua sin intervención manual."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 1,
+      "score": 8,
       "identificador": "TAREA 341"
     },
     {
@@ -4852,11 +4852,11 @@
         "Los valores de DNI no numéricos son manejados correctamente.",
         "La resolución es consistente con lo relevado en TAREA 3."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 374"
     },
     {
@@ -5106,11 +5106,11 @@
         "Los errores de envío se registran y reintentan automáticamente.",
         "El CRM recibe datos correctos y en tiempo útil."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 1,
+      "score": 8,
       "identificador": "TAREA 402"
     },
     {
@@ -5159,11 +5159,11 @@
         "Los errores de sincronización se registran y notifican.",
         "La integración no afecta el rendimiento de Zafiro."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 1,
+      "score": 8,
       "identificador": "TAREA 406"
     },
     {
@@ -5514,11 +5514,11 @@
         "Los descuentos enviados son solo los habilitados para e-commerce.",
         "La integración está operativa antes del 15/05/2026."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 1,
+      "score": 8,
       "identificador": "TAREA 429"
     },
     {
@@ -5549,7 +5549,7 @@
     {
       "historia_usuario": "Como arquitecto de datos de VS Ingeniería, quiero analizar si se necesita un diagrama ERWin de las tablas de Historial de Inventario y Escaneo Auxiliar y documentar los cambios de BD, para asegurar la mantenibilidad del sistema a largo plazo.",
       "tags": {
-        "modulo": "Interno — Documentación BD",
+        "modulo": "Interno — Herramienta de Inventarios",
         "epica_id": "EP-014"
       },
       "complejidad_estimada": "Media",
@@ -5564,11 +5564,11 @@
         "Se define si se implementa un registro de cambios de tablas.",
         "La decisión tomada queda documentada con su fundamento."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 1,
+      "score": 7,
       "identificador": "TAREA 436"
     },
     {
@@ -5692,11 +5692,11 @@
         "El dashboard es accesible desde Nexus Web.",
         "Los indicadores son relevantes para la operación del equipo."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 2,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 444"
     },
     {
@@ -5742,11 +5742,11 @@
         "El sistema opera sin errores críticos.",
         "El equipo puede usar Nexus como herramienta de gestión principal."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 1,
+      "score": 9,
       "identificador": "TAREA 446"
     },
     {
@@ -5982,8 +5982,8 @@
     {
       "historia_usuario": "Como gerente comercial de Red Colon, quiero poder marcar las reglas de promoción como aplicables a tienda física, e-commerce o ambas, para diferenciar los descuentos según el canal de venta.",
       "tags": {
-        "modulo": "E-Commerce — Reglas de Promoción",
-        "epica_id": "EP-014"
+        "modulo": "Ventas - Tiendastic",
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Media",
       "actor": "Gerente comercial / Administrador",
@@ -5998,18 +5998,18 @@
         "La sincronización con e-commerce solo envía reglas marcadas para E-Commerce o Ambos.",
         "El cambio de canal en reglas existentes funciona correctamente."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 460"
     },
     {
       "historia_usuario": "Como responsable de e-commerce de Constitución, quiero que la subida de información a Tiendastic por intercambio de archivos incluya los descuentos, para que la tienda online muestre los precios con descuento correctamente.",
       "tags": {
-        "modulo": "E-Commerce — Tiendastic",
-        "epica_id": "EP-014"
+        "modulo": "Ventas - Tiendastic",
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Responsable de e-commerce",
@@ -6023,18 +6023,18 @@
         "Tiendastic muestra correctamente los precios con descuento.",
         "Los artículos sin descuento no generan errores en el proceso."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 5,
       "identificador": "TAREA 461"
     },
     {
       "historia_usuario": "Como cajero de Red Colon, quiero que al facturar en tienda física no se apliquen las reglas de promoción marcadas exclusivamente para e-commerce, para que los precios en tienda sean correctos e independientes del canal online.",
       "tags": {
-        "modulo": "E-Commerce — Reglas de Promoción",
-        "epica_id": "EP-014"
+        "modulo": "Ventas - Tiendastic",
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Media",
       "actor": "Cajero / Sistema de facturación",
@@ -6048,18 +6048,18 @@
         "Las reglas marcadas para Tienda Física o Ambos sí se aplican.",
         "El comportamiento es correcto para todos los tipos de comprobante de tienda física."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 1,
+      "score": 9,
       "identificador": "TAREA 462"
     },
     {
       "historia_usuario": "Como responsable de e-commerce de Farmacia La Esquina, quiero que al caer un pedido del e-commerce a Zafiro se descuente inmediatamente del stock teórico, para evitar sobreventa de artículos con stock limitado.",
       "tags": {
-        "modulo": "E-Commerce — Stock",
-        "epica_id": "EP-014"
+        "modulo": "Ventas - Tiendastic",
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Alta",
       "actor": "Sistema de e-commerce / Responsable de stock",
@@ -6074,11 +6074,11 @@
         "La cancelación del pedido repone el stock teórico.",
         "El proceso es automático y no requiere intervención manual."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 1,
+      "score": 9,
       "identificador": "TAREA 463"
     },
     {
@@ -7557,7 +7557,7 @@
     },
     {
       "identificador": "TAREA 184",
-      "id_epica": "EP-014"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 192",
@@ -7737,7 +7737,7 @@
     },
     {
       "identificador": "TAREA 302",
-      "id_epica": "EP-014"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 304",
@@ -8021,19 +8021,19 @@
     },
     {
       "identificador": "TAREA 460",
-      "id_epica": "EP-014"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 461",
-      "id_epica": "EP-014"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 462",
-      "id_epica": "EP-014"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 463",
-      "id_epica": "EP-014"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 465",
