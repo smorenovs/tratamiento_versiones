@@ -6801,8 +6801,8 @@
     {
       "historia_usuario": "Como contador de Farmacia La Esquina, quiero que el reporte de retenciones en Excel incluya la fecha, detalle del cliente y datos del recibo, para poder conciliar las retenciones con los comprobantes emitidos.",
       "tags": {
-        "modulo": "Reportes — Fiscal / Retenciones",
-        "epica_id": "EP-008"
+        "modulo": "Ventas - Reportes",
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Contador / Administrador",
@@ -6817,11 +6817,11 @@
         "Incluye los datos del recibo asociado a cada retención.",
         "Los datos son correctos y auditables."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 496"
     },
     {
@@ -7182,8 +7182,8 @@
     {
       "historia_usuario": "Como gerente de Farmanor, quiero que el reporte 'Resumen de Ventas por Formas de Pago' responda correctamente sin congelarse, para poder consultar la información de ventas sin interrupciones.",
       "tags": {
-        "modulo": "Reportes — Ventas",
-        "epica_id": "EP-008"
+        "modulo": "Ventas - Reportes",
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Media",
       "actor": "Gerente / Administrador",
@@ -7207,8 +7207,8 @@
     {
       "historia_usuario": "Como analista de Constitución, quiero que el reporte 'Resumen de Ventas por Artículo' exportado en formato de datos incluya el código de barras y la descripción del laboratorio, para facilitar el análisis en Excel.",
       "tags": {
-        "modulo": "Reportes — Ventas",
-        "epica_id": "EP-008"
+        "modulo": "Ventas - Reportes",
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Analista de ventas",
@@ -7223,11 +7223,11 @@
         "Las columnas adicionales están disponibles en los formatos xls y xlsx.",
         "Los datos son correctos para cada artículo listado."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 3,
+      "presion": 0,
+      "score": 8,
       "identificador": "TAREA 515"
     },
     {
@@ -8149,7 +8149,7 @@
     },
     {
       "identificador": "TAREA 496",
-      "id_epica": "EP-008"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 497",
@@ -8209,11 +8209,11 @@
     },
     {
       "identificador": "TAREA 514",
-      "id_epica": "EP-008"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 515",
-      "id_epica": "EP-008"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 516",
