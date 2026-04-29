@@ -2869,10 +2869,10 @@
       "identificador": "TAREA 161"
     },
     {
-      "historia_usuario": "Como analista de V&S, quiero poder filtrar por cliente fidelizado en los reportes del sistema, para obtener estadísticas segmentadas por este tipo de cliente.",
+      "historia_usuario": "Como analista, quiero poder filtrar por cliente fidelizado en los reportes del sistema, para obtener estadísticas segmentadas por este tipo de cliente.",
       "tags": {
-        "modulo": "Reportes — Ventas / Fidelización",
-        "epica_id": "EP-008"
+        "modulo": "Ventas - Reportes",
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Media",
       "actor": "Analista de ventas / Gerente",
@@ -2886,18 +2886,18 @@
         "Al aplicar el filtro, el reporte muestra solo transacciones de clientes fidelizados.",
         "El filtro es compatible con los demás filtros existentes de cada reporte."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 162"
     },
     {
       "historia_usuario": "Como gerente de Constitución, quiero un reporte que, dado un cliente fidelizado, liste los productos que compró en un período determinado con opción de detalle, para analizar los hábitos de compra de mis clientes.",
       "tags": {
-        "modulo": "Reportes — Ventas / Fidelización",
-        "epica_id": "EP-008"
+        "modulo": "Ventas - Reportes",
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Media",
       "actor": "Gerente / Analista comercial",
@@ -2912,11 +2912,11 @@
         "Un checkbox permite ver el detalle completo de cada producto comprado.",
         "El reporte puede exportarse a Excel."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 163"
     },
     {
@@ -3156,8 +3156,8 @@
     {
       "historia_usuario": "Como responsable de compras de Farmacia La Esquina, quiero un reporte que cruce ingresos de compras con facturas e identifique la familia de productos, para tener una visión completa del gasto por categoría.",
       "tags": {
-        "modulo": "Reportes — Compras / Stock",
-        "epica_id": "EP-008"
+        "modulo": "Compras - Reportes",
+        "epica_id": "EP-002"
       },
       "complejidad_estimada": "Alta",
       "actor": "Responsable de compras",
@@ -3172,18 +3172,18 @@
         "El reporte puede filtrarse por familia de productos.",
         "El resultado puede exportarse a Excel."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 200"
     },
     {
       "historia_usuario": "Como contador de Farmacia La Esquina, quiero un reporte que identifique comprobantes que figuran en ARCA y no en Zafiro, para detectar discrepancias entre el registro fiscal y el sistema.",
       "tags": {
-        "modulo": "Reportes — Fiscal / ARCA",
-        "epica_id": "EP-008"
+        "modulo": "Contabilidad - Reportes",
+        "epica_id": "EP-006"
       },
       "complejidad_estimada": "Alta",
       "actor": "Contador / Administrador fiscal",
@@ -3198,18 +3198,18 @@
         "Los datos son correctos y auditables.",
         "El reporte puede exportarse a Excel para su análisis."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 202"
     },
     {
       "historia_usuario": "Como administrador de fondos de Farmacia La Esquina, quiero un reporte unificado de movimientos de fondos que muestre todas las cuentas simultáneamente, para no tener que consultar de a una por vez.",
       "tags": {
-        "modulo": "Reportes — Fondos",
-        "epica_id": "EP-008"
+        "modulo": "Fondos - Reportes",
+        "epica_id": "EP-004"
       },
       "complejidad_estimada": "Media",
       "actor": "Administrador de fondos / Tesorero",
@@ -3311,8 +3311,8 @@
     {
       "historia_usuario": "Como contador de Farmacia La Esquina, quiero un reporte de sumas y saldos discriminado por sucursal (sin modificar el actual), para poder analizar la situación contable de cada sucursal individualmente.",
       "tags": {
-        "modulo": "Reportes — Contabilidad",
-        "epica_id": "EP-008"
+        "modulo": "Contabilidad - Reportes ",
+        "epica_id": "EP-006"
       },
       "complejidad_estimada": "Alta",
       "actor": "Contador",
@@ -3327,11 +3327,11 @@
         "Solo es exportable a Excel debido al alto número de columnas.",
         "Los datos son correctos y auditables."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 208"
     },
     {
@@ -3352,11 +3352,11 @@
         "El Pareto resultante es correcto para el subconjunto filtrado.",
         "El reporte no muestra valores del Pareto general al estar activo el filtro."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 209"
     },
     {
@@ -7533,11 +7533,11 @@
     },
     {
       "identificador": "TAREA 162",
-      "id_epica": "EP-008"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 163",
-      "id_epica": "EP-008"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 165",
@@ -7577,15 +7577,15 @@
     },
     {
       "identificador": "TAREA 200",
-      "id_epica": "EP-008"
+      "id_epica": "EP-002"
     },
     {
       "identificador": "TAREA 202",
-      "id_epica": "EP-008"
+      "id_epica": "EP-006"
     },
     {
       "identificador": "TAREA 203",
-      "id_epica": "EP-008"
+      "id_epica": "EP-004"
     },
     {
       "identificador": "TAREA 204",
@@ -7601,7 +7601,7 @@
     },
     {
       "identificador": "TAREA 208",
-      "id_epica": "EP-008"
+      "id_epica": "EP-006"
     },
     {
       "identificador": "TAREA 209",
