@@ -3770,8 +3770,8 @@
     {
       "historia_usuario": "Como analista de ventas de Red Colon, quiero que el reporte 'Resumen de Ventas por Artículo y Sucursal' no genere errores de 'Duplicate Name', para poder consultar las ventas sin interrupciones.",
       "tags": {
-        "modulo": "Reportes — Ventas",
-        "epica_id": "EP-008"
+        "modulo": "Ventas - Reportes",
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Analista de ventas",
@@ -3785,11 +3785,11 @@
         "Los datos del reporte son correctos y completos.",
         "El reporte puede exportarse sin errores."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 254"
     },
     {
@@ -3896,7 +3896,7 @@
     {
       "historia_usuario": "Como gerente de Red Colon, quiero un reporte BI que compare ventas y stock de dos períodos diferentes por sucursal, para identificar tendencias y tomar decisiones comerciales.",
       "tags": {
-        "modulo": "Reportes — BI / Stock",
+        "modulo": "BI - Reportes",
         "epica_id": "EP-008"
       },
       "complejidad_estimada": "Alta",
@@ -3938,11 +3938,11 @@
         "La notificación indica el timestamp de la recarga exitosa.",
         "Si la recarga falla, también se genera una notificación de error."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 285"
     },
     {
@@ -4407,8 +4407,8 @@
     {
       "historia_usuario": "Como auditor de Constitución, quiero que la pantalla de 'Auditoría General' indique qué tipos de comprobantes se pueden buscar, para no perder tiempo intentando buscar comprobantes que no están disponibles.",
       "tags": {
-        "modulo": "Reportes — Auditoría",
-        "epica_id": "EP-008"
+        "modulo": "Ventas — Auditoría",
+        "epica_id": "EP-001"
       },
       "complejidad_estimada": "Baja",
       "actor": "Auditor / Administrador",
@@ -4422,11 +4422,11 @@
         "La información es visible antes de iniciar la búsqueda.",
         "No se requiere documentación externa para conocer los tipos disponibles."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 3,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 331"
     },
     {
@@ -7673,7 +7673,7 @@
     },
     {
       "identificador": "TAREA 254",
-      "id_epica": "EP-008"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 258",
@@ -7773,7 +7773,7 @@
     },
     {
       "identificador": "TAREA 331",
-      "id_epica": "EP-008"
+      "id_epica": "EP-001"
     },
     {
       "identificador": "TAREA 332",
