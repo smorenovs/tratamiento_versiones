@@ -3337,7 +3337,7 @@
     {
       "historia_usuario": "Como analista de compras de Farmacia La Esquina, quiero que el reporte BI de Ventas Pareto recalcule los valores al aplicar el filtro de laboratorio, para obtener un análisis Pareto correcto del segmento filtrado.",
       "tags": {
-        "modulo": "Reportes — BI / Pareto",
+        "modulo": "BI - Reportes",
         "epica_id": "EP-008"
       },
       "complejidad_estimada": "Media",
@@ -3362,7 +3362,7 @@
     {
       "historia_usuario": "Como analista de compras de Farmacia La Esquina, quiero que el reporte BI Pareto incluya el cálculo de días de stock valorizado, para poder tomar decisiones de compra más informadas.",
       "tags": {
-        "modulo": "Reportes — BI / Pareto",
+        "modulo": "BI - Reportes",
         "epica_id": "EP-008"
       },
       "complejidad_estimada": "Alta",
@@ -3378,11 +3378,11 @@
         "El reporte puede filtrarse por categoría y sucursal.",
         "El resultado puede exportarse a Excel."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 210"
     },
     {
@@ -3745,8 +3745,8 @@
     {
       "historia_usuario": "Como encargado de stock de Red Colon, quiero ver los saldos de stock de todas las empresas y sucursales en un solo reporte exportable a Excel, para poder gestionar el inventario consolidado.",
       "tags": {
-        "modulo": "Reportes — Stock",
-        "epica_id": "EP-008"
+        "modulo": "Stock - Reportes",
+        "epica_id": "EP-003"
       },
       "complejidad_estimada": "Media",
       "actor": "Encargado de stock / Responsable de compras",
@@ -3760,11 +3760,11 @@
         "La opción está disponible exclusivamente para exportación a Excel.",
         "Los saldos son correctos y actualizados al momento de la consulta."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 253"
     },
     {
@@ -7669,7 +7669,7 @@
     },
     {
       "identificador": "TAREA 253",
-      "id_epica": "EP-008"
+      "id_epica": "EP-003"
     },
     {
       "identificador": "TAREA 254",
