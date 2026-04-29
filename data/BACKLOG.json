@@ -4346,11 +4346,11 @@
         "El equipo puede operar y mantener ZIA usando la documentación.",
         "La documentación está actualizada y es accesible."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 1,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 5,
       "identificador": "TAREA 328"
     },
     {
@@ -4777,11 +4777,11 @@
         "El dato de sesión es accesible para auditoría.",
         "El registro de ID de sesión no afecta el rendimiento de ZIA."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 0,
+      "score": 7,
       "identificador": "TAREA 362"
     },
     {
@@ -5133,11 +5133,11 @@
         "Los tickets se generan y registran automáticamente.",
         "El flujo de cierre o nueva acción está implementado."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 2,
+      "esfuerzo": 2,
+      "presion": 1,
+      "score": 8,
       "identificador": "TAREA 403"
     },
     {
@@ -5539,11 +5539,11 @@
         "Muestra artículos pendientes con cantidades.",
         "La lista se actualiza en tiempo real con cada escaneo."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 2,
+      "estado_ejec": 3,
+      "esfuerzo": 1,
+      "presion": 0,
+      "score": 6,
       "identificador": "TAREA 434"
     },
     {
@@ -6485,11 +6485,11 @@
         "No hay desfasajes de formato ni valor.",
         "Los reportes de vencimiento muestran datos de ZIA sin distorsión."
       ],
-      "impacto": null,
-      "estado_ejec": null,
-      "esfuerzo": null,
-      "presion": null,
-      "score": null,
+      "impacto": 3,
+      "estado_ejec": 3,
+      "esfuerzo": 2,
+      "presion": 1,
+      "score": 9,
       "identificador": "TAREA 483"
     },
     {
