@@ -1422,7 +1422,7 @@
     {
       "id_ev_des": "32fbc3a8",
       "identificador": "TAREA 442",
-      "tema": "",
+      "tema": "Mejorar mensaje de error cuando ARCA/AFIP no permite facturar, pasar a CAEA",
       "detalle": "Zafiro debe ser mas claro cuando ARCA/AFIP no está disponible para facturar, e indicarle al cliente que debe usar las Cajas CAEA.           UBICACIÓN: Ventas.           ¿QUÉ HIZO?: Al Facturar.           ¿QUÉ PASÓ?: Web Service de Facturacion no disponible.           ¿QUÉ ESPERABA O DEBERÍA PASAR?: Facturar.           FRECUENCIA: Siempre pasa.",
       "cliente": "VS Interno",
       "tipo": "Revisar",
