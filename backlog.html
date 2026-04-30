@@ -276,6 +276,20 @@
   .prio-null { color: var(--text2); text-align: center; }
   .prio-tema { max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .prio-sep td { background: rgba(79,142,247,.05); font-size: 11px; color: var(--text2); font-style: italic; padding: 5px 12px; }
+  .prio-edit-cell { padding: 4px 6px !important; text-align: center; }
+  .prio-inline-input {
+    width: 52px; background: transparent; border: 1px solid transparent;
+    color: var(--accent); font-weight: 700; font-size: 14px;
+    text-align: center; border-radius: 4px; padding: 3px 4px;
+    cursor: pointer; font-family: inherit;
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+  .prio-inline-input::-webkit-outer-spin-button,
+  .prio-inline-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+  .prio-inline-input:hover { border-color: var(--border); background: var(--bg3); }
+  .prio-inline-input:focus { outline: none; border-color: var(--accent); background: var(--bg3); cursor: text; }
+  .prio-inline-input::placeholder { color: var(--text2); font-weight: 400; font-size: 12px; }
   /* Inputs prioridad en el formulario */
   .prio-pair { display: flex; gap: 6px; }
   .prio-pair .field { flex: 1; }
@@ -1207,6 +1221,20 @@ document.addEventListener('click', e => {
 });
 
 // ── Prioridad view ─────────────────────────────────────────────────────────
+function savePrioInline(id, field, rawValue) {
+  const t = backlog?.TAREAS.find(t => t.identificador === id);
+  if (!t) return;
+  const n = parseInt(rawValue);
+  t[field] = (rawValue.trim() !== '' && !isNaN(n) && n >= 1) ? n : null;
+  markDirty();
+  renderPrioridad();
+}
+
+function prioInlineKey(e) {
+  if (e.key === 'Enter')  { e.target.blur(); e.stopPropagation?.(); }
+  if (e.key === 'Escape') { e.target.value = ''; e.target.blur(); }
+}
+
 let prioSort = 'prioridad';
 
 function setPrioSort(key) {
@@ -1263,16 +1291,29 @@ function renderPrioridad() {
   </div>`;
 
   const row = ({ t, cu }, cls = '') => {
-    const ep  = cu?.tags?.epica_id || '—';
-    const est = estadoLabel(t.estado);
+    const id     = t.identificador;
+    const ep     = cu?.tags?.epica_id || '—';
+    const est    = estadoLabel(t.estado);
     const estCls = badgeEstadoClass(t.estado);
-    const prio  = t.prioridad    != null ? `<span class="prio-num">${t.prioridad}</span>`    : '<span class="prio-null">—</span>';
-    const sub   = t.subprioridad != null ? `<span class="prio-num">${t.subprioridad}</span>` : '<span class="prio-null">—</span>';
-    const score = cu?.score      != null ? `<span class="prio-score">${cu.score}</span>`     : '<span class="prio-null">—</span>';
-    return `<tr class="${cls}" onclick="openFromPrio('${t.identificador}')">
-      <td style="text-align:center">${prio}</td>
-      <td style="text-align:center">${sub}</td>
-      <td style="color:var(--accent);font-weight:700;white-space:nowrap">${t.identificador}</td>
+    const score  = cu?.score != null ? `<span class="prio-score">${cu.score}</span>` : '<span class="prio-null">—</span>';
+    const prioVal = t.prioridad    != null ? t.prioridad    : '';
+    const subVal  = t.subprioridad != null ? t.subprioridad : '';
+    return `<tr class="${cls}" onclick="openFromPrio('${id}')">
+      <td class="prio-edit-cell">
+        <input class="prio-inline-input" type="number" min="1" placeholder="—" value="${prioVal}"
+          title="Prioridad"
+          onclick="event.stopPropagation()"
+          onkeydown="prioInlineKey(event)"
+          onchange="savePrioInline('${id}','prioridad',this.value)">
+      </td>
+      <td class="prio-edit-cell">
+        <input class="prio-inline-input" type="number" min="1" placeholder="—" value="${subVal}"
+          title="Subprioridad"
+          onclick="event.stopPropagation()"
+          onkeydown="prioInlineKey(event)"
+          onchange="savePrioInline('${id}','subprioridad',this.value)">
+      </td>
+      <td style="color:var(--accent);font-weight:700;white-space:nowrap">${id}</td>
       <td class="prio-tema" title="${escHtml(t.tema)}">${escHtml(t.tema)}</td>
       <td><span class="badge badge-epica">${ep}</span></td>
       <td><span class="badge ${estCls}">${est}</span></td>
