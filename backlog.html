@@ -262,13 +262,19 @@
 
   /* ── VISTA PRIORIDAD ── */
   #prioridad-view { display: none; overflow-y: auto; padding: 24px; flex: 1; }
+  .prio-sort-bar { display: flex; align-items: center; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+  .prio-sort-bar span { font-size: 11px; color: var(--text2); font-weight: 600; text-transform: uppercase; letter-spacing: .5px; margin-right: 4px; }
+  .prio-sort-btn { background: var(--bg3); border: 1px solid var(--border); color: var(--text2); border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all .15s; }
+  .prio-sort-btn:hover { border-color: var(--accent); color: var(--text); }
+  .prio-sort-btn.active { background: rgba(79,142,247,.15); border-color: var(--accent); color: var(--accent); }
   .prio-table { width: 100%; border-collapse: collapse; font-size: 13px; }
   .prio-table th { text-align: left; padding: 8px 12px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--text2); border-bottom: 2px solid var(--border); }
   .prio-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
   .prio-table tr:hover td { background: var(--bg3); cursor: pointer; }
   .prio-num { font-size: 14px; font-weight: 700; color: var(--accent); text-align: center; }
+  .prio-score { font-size: 14px; font-weight: 700; color: var(--yellow); }
   .prio-null { color: var(--text2); text-align: center; }
-  .prio-tema { max-width: 320px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .prio-tema { max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .prio-sep td { background: rgba(79,142,247,.05); font-size: 11px; color: var(--text2); font-style: italic; padding: 5px 12px; }
   /* Inputs prioridad en el formulario */
   .prio-pair { display: flex; gap: 6px; }
@@ -1068,28 +1074,55 @@ function togglePrioridad() {
   }
 }
 
+let prioSort = 'prioridad';
+
+function setPrioSort(key) {
+  prioSort = key;
+  renderPrioridad();
+}
+
 function renderPrioridad() {
   if (!backlog) return;
   if (currentId) saveCurrentToMemory();
 
   const tareas = backlog.TAREAS.map(t => ({ t, cu: cuMap[t.identificador] }));
 
-  const conPrio   = tareas.filter(({ t }) => t.prioridad != null);
-  const sinPrio   = tareas.filter(({ t }) => t.prioridad == null);
+  const comparators = {
+    prioridad:    (a, b) => {
+      const pa = a.t.prioridad ?? Infinity, pb = b.t.prioridad ?? Infinity;
+      if (pa !== pb) return pa - pb;
+      return (a.t.subprioridad ?? Infinity) - (b.t.subprioridad ?? Infinity);
+    },
+    subprioridad: (a, b) => (a.t.subprioridad ?? Infinity) - (b.t.subprioridad ?? Infinity),
+    id:           (a, b) => {
+      const na = parseInt(a.t.identificador.replace(/\D/g, '')) || 0;
+      const nb = parseInt(b.t.identificador.replace(/\D/g, '')) || 0;
+      return na - nb;
+    },
+    epica:        (a, b) => (a.cu?.tags?.epica_id || '').localeCompare(b.cu?.tags?.epica_id || ''),
+    estado:       (a, b) => (a.t.estado || '').localeCompare(b.t.estado || ''),
+    score:        (a, b) => (b.cu?.score ?? -1) - (a.cu?.score ?? -1),
+  };
 
-  conPrio.sort((a, b) => {
-    if (a.t.prioridad !== b.t.prioridad) return a.t.prioridad - b.t.prioridad;
-    const sa = a.t.subprioridad ?? Infinity;
-    const sb = b.t.subprioridad ?? Infinity;
-    return sa - sb;
-  });
+  const sorted = [...tareas].sort(comparators[prioSort] || comparators.prioridad);
+  const conPrio = tareas.filter(({ t }) => t.prioridad != null);
+  const sinPrio = tareas.filter(({ t }) => t.prioridad == null);
+
+  const sortKeys = ['prioridad','subprioridad','id','epica','estado','score'];
+  const sortLabels = { prioridad:'Prioridad', subprioridad:'Subprioridad', id:'ID', epica:'Épica', estado:'Estado', score:'Score' };
+
+  const sortBar = `<div class="prio-sort-bar">
+    <span style="font-size:12px;color:var(--text2);font-weight:600">Ordenar:</span>
+    ${sortKeys.map(k => `<button class="prio-sort-btn${prioSort===k?' active':''}" onclick="setPrioSort('${k}')">${sortLabels[k]}</button>`).join('')}
+  </div>`;
 
   const row = ({ t, cu }, cls = '') => {
     const ep  = cu?.tags?.epica_id || '—';
     const est = estadoLabel(t.estado);
     const estCls = badgeEstadoClass(t.estado);
-    const prio = t.prioridad    != null ? `<span class="prio-num">${t.prioridad}</span>`    : '<span class="prio-null">—</span>';
-    const sub  = t.subprioridad != null ? `<span class="prio-num">${t.subprioridad}</span>` : '<span class="prio-null">—</span>';
+    const prio  = t.prioridad    != null ? `<span class="prio-num">${t.prioridad}</span>`    : '<span class="prio-null">—</span>';
+    const sub   = t.subprioridad != null ? `<span class="prio-num">${t.subprioridad}</span>` : '<span class="prio-null">—</span>';
+    const score = cu?.score      != null ? `<span class="prio-score">${cu.score}</span>`     : '<span class="prio-null">—</span>';
     return `<tr class="${cls}" onclick="openFromPrio('${t.identificador}')">
       <td style="text-align:center">${prio}</td>
       <td style="text-align:center">${sub}</td>
@@ -1097,10 +1130,11 @@ function renderPrioridad() {
       <td class="prio-tema" title="${escHtml(t.tema)}">${escHtml(t.tema)}</td>
       <td><span class="badge badge-epica">${ep}</span></td>
       <td><span class="badge ${estCls}">${est}</span></td>
+      <td style="text-align:center">${score}</td>
     </tr>`;
   };
 
-  let html = `<table class="prio-table">
+  let html = sortBar + `<table class="prio-table">
     <thead><tr>
       <th style="text-align:center;width:60px">Prio.</th>
       <th style="text-align:center;width:60px">Sub.</th>
@@ -1108,13 +1142,19 @@ function renderPrioridad() {
       <th>Tema</th>
       <th style="width:80px">Épica</th>
       <th style="width:110px">Estado</th>
+      <th style="text-align:center;width:60px">Score</th>
     </tr></thead><tbody>`;
 
-  for (const item of conPrio) html += row(item);
-
-  if (sinPrio.length) {
-    html += `<tr class="prio-sep"><td colspan="6">Sin prioridad asignada (${sinPrio.length} tareas)</td></tr>`;
-    for (const item of sinPrio) html += row(item);
+  if (prioSort === 'prioridad') {
+    conPrio.sort(comparators.prioridad);
+    sinPrio.sort(comparators.prioridad);
+    for (const item of conPrio) html += row(item);
+    if (sinPrio.length) {
+      html += `<tr class="prio-sep"><td colspan="7">Sin prioridad asignada (${sinPrio.length} tareas)</td></tr>`;
+      for (const item of sinPrio) html += row(item);
+    }
+  } else {
+    for (const item of sorted) html += row(item);
   }
 
   html += '</tbody></table>';
