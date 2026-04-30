@@ -280,6 +280,46 @@
   .prio-pair { display: flex; gap: 6px; }
   .prio-pair .field { flex: 1; }
 
+  /* ── GLOBAL SEARCH ── */
+  #global-search-wrap { position: relative; flex: 1; max-width: 380px; }
+  #global-search {
+    width: 100%; background: var(--bg3); border: 1px solid var(--border);
+    color: var(--text); border-radius: 6px; padding: 7px 12px 7px 30px;
+    font-size: 13px;
+  }
+  #global-search::placeholder { color: var(--text2); }
+  #global-search:focus { outline: none; border-color: var(--accent); }
+  .gs-icon {
+    position: absolute; left: 9px; top: 50%; transform: translateY(-50%);
+    font-size: 13px; pointer-events: none; color: var(--text2);
+  }
+  #global-search-dropdown {
+    display: none; position: absolute; top: calc(100% + 6px); left: 0;
+    width: max(100%, 520px); background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 8px; box-shadow: 0 8px 32px rgba(0,0,0,.55); z-index: 999;
+    max-height: 400px; overflow-y: auto;
+  }
+  #global-search-dropdown.open { display: block; }
+  .gsd-table { width: 100%; border-collapse: collapse; }
+  .gsd-table th {
+    padding: 7px 10px; font-size: 10px; font-weight: 700; color: var(--text2);
+    text-transform: uppercase; letter-spacing: .5px;
+    border-bottom: 1px solid var(--border); background: var(--bg3); text-align: left;
+    position: sticky; top: 0;
+  }
+  .gsd-table td { padding: 8px 10px; font-size: 12px; border-bottom: 1px solid var(--border); }
+  .gsd-table tr:last-child td { border-bottom: none; }
+  .gsd-table tbody tr { cursor: pointer; transition: background .1s; }
+  .gsd-table tbody tr:hover { background: rgba(79,142,247,.08); }
+  .gsd-id { color: var(--accent); font-weight: 700; white-space: nowrap; }
+  .gsd-tema { max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .gsd-count {
+    padding: 6px 10px; font-size: 11px; color: var(--text2);
+    border-top: 1px solid var(--border); background: var(--bg3);
+    border-radius: 0 0 8px 8px;
+  }
+  mark.gsd-hl { background: rgba(79,142,247,.35); color: inherit; border-radius: 2px; }
+
   /* ── TOAST ── */
   #toast {
     position: fixed; bottom: 24px; right: 24px; z-index: 200;
@@ -305,6 +345,13 @@
   <h1>BACKLOG Editor</h1>
   <span id="sync-status">Cargando…</span>
   <span id="dirty-badge">● Sin guardar</span>
+  <span class="sep"></span>
+  <div id="global-search-wrap">
+    <span class="gs-icon">🔍</span>
+    <input id="global-search" type="text" placeholder="Buscar tarea…"
+           oninput="onGlobalSearch()" onkeydown="onGlobalSearchKey(event)">
+    <div id="global-search-dropdown"></div>
+  </div>
   <span class="sep"></span>
   <a href="index.html" class="btn-back">← Volver</a>
   <button class="btn-secondary" onclick="openPatModal()">🔑 Token GitHub</button>
@@ -1074,6 +1121,92 @@ function togglePrioridad() {
   }
 }
 
+// ── Global search ──────────────────────────────────────────────────────────
+let globalSearchTerm = '';
+
+function onGlobalSearch() {
+  const q = document.getElementById('global-search').value.trim().toLowerCase();
+  globalSearchTerm = q;
+  const dd = document.getElementById('global-search-dropdown');
+  if (prioActive) renderPrioridad();
+  if (!q) { dd.classList.remove('open'); dd.innerHTML = ''; return; }
+  if (!backlog) { dd.classList.remove('open'); return; }
+
+  const matches = [];
+  for (const t of backlog.TAREAS) {
+    const cu = cuMap[t.identificador];
+    const hay = [t.identificador, t.tema, t.detalle, t.cliente, cu?.historia_usuario]
+      .filter(Boolean).join(' ').toLowerCase();
+    if (hay.includes(q)) matches.push({ t, cu });
+    if (matches.length >= 20) break;
+  }
+
+  if (!matches.length) {
+    dd.innerHTML = '<div class="gsd-count">Sin resultados.</div>';
+    dd.classList.add('open');
+    return;
+  }
+
+  const rows = matches.map(({ t, cu }) => {
+    const ep     = cu?.tags?.epica_id || '—';
+    const est    = estadoLabel(t.estado);
+    const estCls = badgeEstadoClass(t.estado);
+    const tema   = gsdHighlight(escHtml(t.tema), q);
+    return `<tr onclick="selectFromGlobalSearch('${t.identificador}')">
+      <td class="gsd-id">${t.identificador}</td>
+      <td class="gsd-tema" title="${escHtml(t.tema)}">${tema}</td>
+      <td><span class="badge badge-epica">${ep}</span></td>
+      <td><span class="badge ${estCls}">${est}</span></td>
+    </tr>`;
+  }).join('');
+
+  const total = matches.length;
+  const suffix = total === 20 ? ' (mostrando primeros 20)' : '';
+  dd.innerHTML = `<table class="gsd-table">
+    <thead><tr><th>ID</th><th>Tema</th><th>Épica</th><th>Estado</th></tr></thead>
+    <tbody>${rows}</tbody>
+  </table><div class="gsd-count">${total} resultado${total !== 1 ? 's' : ''}${suffix}</div>`;
+  dd.classList.add('open');
+}
+
+function gsdHighlight(text, q) {
+  if (!q) return text;
+  const idx = text.toLowerCase().indexOf(q);
+  if (idx === -1) return text;
+  return text.slice(0, idx)
+    + '<mark class="gsd-hl">' + text.slice(idx, idx + q.length) + '</mark>'
+    + text.slice(idx + q.length);
+}
+
+function onGlobalSearchKey(e) {
+  if (e.key === 'Escape') closeGlobalSearch();
+}
+
+function closeGlobalSearch() {
+  const inp = document.getElementById('global-search');
+  const dd  = document.getElementById('global-search-dropdown');
+  if (inp) inp.value = '';
+  if (dd) dd.classList.remove('open');
+  globalSearchTerm = '';
+  if (prioActive) renderPrioridad();
+}
+
+function selectFromGlobalSearch(id) {
+  closeGlobalSearch();
+  if (prioActive) togglePrioridad();
+  if (dashActive) toggleDashboard();
+  selectTask(id);
+}
+
+document.addEventListener('click', e => {
+  const wrap = document.getElementById('global-search-wrap');
+  if (wrap && !wrap.contains(e.target)) {
+    const dd = document.getElementById('global-search-dropdown');
+    if (dd) dd.classList.remove('open');
+  }
+});
+
+// ── Prioridad view ─────────────────────────────────────────────────────────
 let prioSort = 'prioridad';
 
 function setPrioSort(key) {
@@ -1085,7 +1218,15 @@ function renderPrioridad() {
   if (!backlog) return;
   if (currentId) saveCurrentToMemory();
 
-  const tareas = backlog.TAREAS.map(t => ({ t, cu: cuMap[t.identificador] }));
+  const gq = globalSearchTerm.toLowerCase();
+  const allTareas = backlog.TAREAS.map(t => ({ t, cu: cuMap[t.identificador] }));
+  const tareas = gq
+    ? allTareas.filter(({ t, cu }) => {
+        const hay = [t.identificador, t.tema, t.detalle, t.cliente, cu?.historia_usuario]
+          .filter(Boolean).join(' ').toLowerCase();
+        return hay.includes(gq);
+      })
+    : allTareas;
 
   const comparators = {
     prioridad:    (a, b) => {
@@ -1108,12 +1249,17 @@ function renderPrioridad() {
   const conPrio = tareas.filter(({ t }) => t.prioridad != null);
   const sinPrio = tareas.filter(({ t }) => t.prioridad == null);
 
-  const sortKeys = ['prioridad','subprioridad','id','epica','estado','score'];
-  const sortLabels = { prioridad:'Prioridad', subprioridad:'Subprioridad', id:'ID', epica:'Épica', estado:'Estado', score:'Score' };
+  const sortKeys = ['prioridad','id','epica','estado','score'];
+  const sortLabels = { prioridad:'Prioridad', id:'ID', epica:'Épica', estado:'Estado', score:'Score' };
+
+  const filterBadge = gq
+    ? `<span style="margin-left:8px;font-size:11px;background:rgba(79,142,247,.15);color:var(--accent);border:1px solid var(--accent);border-radius:10px;padding:2px 8px">🔍 "${gq}" — ${tareas.length} resultado${tareas.length !== 1 ? 's' : ''}</span>`
+    : '';
 
   const sortBar = `<div class="prio-sort-bar">
     <span style="font-size:12px;color:var(--text2);font-weight:600">Ordenar:</span>
     ${sortKeys.map(k => `<button class="prio-sort-btn${prioSort===k?' active':''}" onclick="setPrioSort('${k}')">${sortLabels[k]}</button>`).join('')}
+    ${filterBadge}
   </div>`;
 
   const row = ({ t, cu }, cls = '') => {
