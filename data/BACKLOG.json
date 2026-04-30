@@ -28,8 +28,8 @@
       "tipo": "Ajuste",
       "estado": "2_PENDIENTE",
       "responsable": "Pablo Vazquez",
-      "prioridad": 1,
-      "subprioridad": 2
+      "prioridad": null,
+      "subprioridad": null
     },
     {
       "id_ev_des": "c5a0a327",
@@ -40,8 +40,8 @@
       "tipo": "Mejora",
       "estado": "2_PENDIENTE",
       "responsable": "Pablo Vazquez",
-      "prioridad": 2,
-      "subprioridad": 2
+      "prioridad": null,
+      "subprioridad": null
     },
     {
       "id_ev_des": "5582d584",
@@ -52,8 +52,8 @@
       "tipo": "Mejora",
       "estado": "1_BACKLOG",
       "responsable": "#N/A",
-      "prioridad": 2,
-      "subprioridad": 1
+      "prioridad": null,
+      "subprioridad": null
     },
     {
       "id_ev_des": "49255ea6",
