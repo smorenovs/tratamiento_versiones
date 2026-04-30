@@ -27,7 +27,9 @@
       "cliente": "V&S",
       "tipo": "Ajuste",
       "estado": "2_PENDIENTE",
-      "responsable": "Pablo Vazquez"
+      "responsable": "Pablo Vazquez",
+      "prioridad": null,
+      "subprioridad": null
     },
     {
       "id_ev_des": "c5a0a327",
