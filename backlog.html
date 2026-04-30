@@ -363,7 +363,7 @@
   <div id="global-search-wrap">
     <span class="gs-icon">🔍</span>
     <input id="global-search" type="text" placeholder="Buscar tarea…"
-           oninput="onGlobalSearch()" onkeydown="onGlobalSearchKey(event)">
+           oninput="onGlobalSearch()" onkeydown="onGlobalSearchKey(event)" autocomplete="off">
     <div id="global-search-dropdown"></div>
   </div>
   <span class="sep"></span>
@@ -380,7 +380,7 @@
   <!-- SIDEBAR -->
   <div id="sidebar">
     <div id="filters">
-      <input id="search" type="text" placeholder="🔍  Buscar por ID, tema, cliente…" oninput="renderList()">
+      <input id="search" type="text" placeholder="🔍  Buscar por ID, tema, cliente…" oninput="renderList()" autocomplete="off">
       <div class="filter-row">
         <select id="f-epica" onchange="renderList()">
           <option value="">Todas las épicas</option>
@@ -1227,7 +1227,7 @@ function savePrioInline(id, field, rawValue) {
   const n = parseInt(rawValue);
   t[field] = (rawValue.trim() !== '' && !isNaN(n) && n >= 1) ? n : null;
   markDirty();
-  renderPrioridad();
+  // No re-renderizar: reconstruir el DOM mataría el foco en el siguiente input
 }
 
 function prioInlineKey(e) {
