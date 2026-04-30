@@ -29,7 +29,7 @@
       "estado": "2_PENDIENTE",
       "responsable": "Pablo Vazquez",
       "prioridad": null,
-      "subprioridad": 2
+      "subprioridad": null
     },
     {
       "id_ev_des": "c5a0a327",
