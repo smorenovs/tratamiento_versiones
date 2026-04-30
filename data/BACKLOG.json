@@ -28,8 +28,8 @@
       "tipo": "Ajuste",
       "estado": "2_PENDIENTE",
       "responsable": "Pablo Vazquez",
-      "prioridad": null,
-      "subprioridad": null
+      "prioridad": 1,
+      "subprioridad": 2
     },
     {
       "id_ev_des": "c5a0a327",
@@ -39,7 +39,9 @@
       "cliente": "V&S",
       "tipo": "Mejora",
       "estado": "2_PENDIENTE",
-      "responsable": "Pablo Vazquez"
+      "responsable": "Pablo Vazquez",
+      "prioridad": 2,
+      "subprioridad": 2
     },
     {
       "id_ev_des": "5582d584",
@@ -49,7 +51,9 @@
       "cliente": "Farmacia La Esquina",
       "tipo": "Mejora",
       "estado": "1_BACKLOG",
-      "responsable": "#N/A"
+      "responsable": "#N/A",
+      "prioridad": 2,
+      "subprioridad": 1
     },
     {
       "id_ev_des": "49255ea6",
